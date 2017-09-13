@@ -34,13 +34,10 @@
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
         android:gravity="center"
-        android:numColumns="2"
-        android:adjustViewBounds="true"
-        android:horizontalSpacing="10dp"
-        android:verticalSpacing="10dp"
-        android:padding="10dp"
-        android:paddingBottom="10dp">
+        android:background="@color/colorPrimary">
     </GridView>
 
 </LinearLayout>
