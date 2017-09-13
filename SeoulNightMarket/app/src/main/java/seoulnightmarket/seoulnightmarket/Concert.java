@@ -7,6 +7,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ public class Concert extends AppCompatActivity {
     public String[] musicianName = {"딸기주스가너무달아", "고나영", "마멀레이드키친"};
     public ConcertAdapter concertAdapter;
     public GridView gridView;
+    private TextView textView;
     private Spinner spinnerMonth;
     private Spinner spinnerDay;
     private ArrayList<String> monthList = new ArrayList<>();
@@ -29,6 +31,7 @@ public class Concert extends AppCompatActivity {
 
         concertAdapter = new ConcertAdapter(getApplicationContext(), musicianImage, musicianName);
 
+        textView = (TextView) findViewById(R.id.concertDate);
         gridView = (GridView) findViewById(R.id.gridViewConcert);
         gridView.setAdapter(concertAdapter);
 
@@ -54,6 +57,7 @@ public class Concert extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 Toast.makeText(getApplicationContext(), day[position], Toast.LENGTH_SHORT).show();
+                textView.setText(day[position]);
             }
 
             @Override

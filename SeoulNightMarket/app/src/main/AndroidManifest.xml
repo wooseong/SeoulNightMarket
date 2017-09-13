@@ -10,11 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".NightMarket">
-
-        </activity>
-        <activity android:name=".FoodTruck" />
-        <activity android:name=".Concert">
+        <activity android:name=".NightMarket"></activity>
+        <activity android:name=".FoodTruck"></activity>
+        <activity android:name=".Concert"></activity>
+        <activity android:name=".Introduction">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
