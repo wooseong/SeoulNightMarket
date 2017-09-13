@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SeoulNightMarket</string>
+    <string-array name="array_food">
+        <item>apple</item>
+        <item>kiwi</item>
+    </string-array>
 </resources>

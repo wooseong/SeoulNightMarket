@@ -9,11 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".NightMarket"></activity>
-        <activity android:name=".FoodTruck"></activity>
-        <activity android:name=".Concert"></activity>
-        <activity android:name=".Introduction">
+        <activity android:name=".MainActivity" />
+        <activity android:name=".NightMarket" />
+        <activity android:name=".FoodTruck" />
+        <activity android:name=".Concert" />
+        <activity android:name=".Introduction"></activity>
+        <activity android:name=".InitialScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
