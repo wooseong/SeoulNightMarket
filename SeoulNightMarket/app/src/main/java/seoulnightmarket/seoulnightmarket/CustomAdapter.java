@@ -48,8 +48,8 @@ public class CustomAdapter extends BaseAdapter {
         if (convertView == null) {
             gridView = new View(context);
             gridView = inflater.inflate(R.layout.gridview_market, null);
-            ImageView imageView = gridView.findViewById(R.id.imageView);
-            TextView textView = gridView.findViewById(R.id.textView);
+            ImageView imageView = gridView.findViewById(R.id.imageViewMarket);
+            TextView textView = gridView.findViewById(R.id.textViewMarket);
 
             imageView.setImageResource(image[position]);
             textView.setText(text[position]);

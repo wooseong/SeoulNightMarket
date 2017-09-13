@@ -7,8 +7,10 @@
     tools:context="seoulnightmarket.seoulnightmarket.InitialScreen">
 
     <ImageView
-        android:layout_width="390dp"
-        android:layout_height="150dp"
+        android:id="@+id/imageViewInitial"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:scaleType="fitXY"
         android:src="@drawable/banpo"/>
 
     <GridView

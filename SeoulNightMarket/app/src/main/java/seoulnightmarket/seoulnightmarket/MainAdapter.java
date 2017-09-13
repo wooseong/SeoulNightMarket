@@ -6,21 +6,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 /**
- * Created by Yookmoonsu on 2017-09-13.
+ * Created by Yookmoonsu on 2017-09-14.
  */
 
-public class ConcertAdapter extends BaseAdapter {
+public class MainAdapter extends BaseAdapter {
     private Context context;
     private int[] image;
-    private String[] text;
 
-    public ConcertAdapter(Context context, int[] image, String[] text) {
+    public MainAdapter(Context context, int[] image) {
         this.context = context;
         this.image = image;
-        this.text = text;
     }
 
     @Override
@@ -45,12 +42,11 @@ public class ConcertAdapter extends BaseAdapter {
 
         if (convertView == null) {
             gridView = new View(context);
-            gridView = inflater.inflate(R.layout.gridview_concert, null);
-            ImageView imageView = gridView.findViewById(R.id.musicianImage);
-            TextView textView = gridView.findViewById(R.id.musicianName);
+            gridView = inflater.inflate(R.layout.gridview_home, null);
+            ImageView imageView = gridView.findViewById(R.id.imageViewHome);
 
             imageView.setImageResource(image[position]);
-            textView.setText(text[position]);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         } else {
             gridView = convertView;
         }
