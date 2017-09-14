@@ -55,7 +55,7 @@ public class MainAdapter extends BaseAdapter {
         gridView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, NightMarket.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                context.startActivity(new Intent(context, NightMarketFragment.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
             }
         });
 

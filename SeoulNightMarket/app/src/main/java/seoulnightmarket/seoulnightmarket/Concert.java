@@ -24,6 +24,7 @@ public class Concert extends AppCompatActivity {
     private ArrayList<String> dayList = new ArrayList<>();
     String[] month = { "3월", "4월", "5월", "6월", "7월", "8월", "9월"};
     String[] day = { "1일", "10일", "15일", "16일", "24일", "25일", "30일"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
