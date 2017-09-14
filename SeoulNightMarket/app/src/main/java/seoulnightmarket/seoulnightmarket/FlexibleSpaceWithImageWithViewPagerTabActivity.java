@@ -174,7 +174,7 @@ public class FlexibleSpaceWithImageWithViewPagerTabActivity extends BaseActivity
      */
     private static class NavigationAdapter extends CacheFragmentStatePagerAdapter {
 
-        private static final String[] TITLES = new String[]{"Applepie", "Butter Cookie", "Cupcake", "Donut", "Eclair", "Froyo", "Gingerbread", "Honeycomb", "Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop"};
+        private static final String[] TITLES = new String[]{"소개","상단소개","공연일정","기타"};
 
         private int mScrollY;
 
@@ -192,7 +192,7 @@ public class FlexibleSpaceWithImageWithViewPagerTabActivity extends BaseActivity
             final int pattern = position % 4;
             switch (pattern) {
                 case 0: {
-                    f = new FlexibleSpaceWithImageScrollViewFragment();
+                    f = new FlexibleSpaceWithImageGridViewFragment();
                     break;
                 }
                 case 1: {
@@ -205,7 +205,7 @@ public class FlexibleSpaceWithImageWithViewPagerTabActivity extends BaseActivity
                 }
                 case 3:
                 default: {
-                    f = new FlexibleSpaceWithImageGridViewFragment();
+                    f = new FlexibleSpaceWithImageScrollViewFragment();
                     break;
                 }
             }
