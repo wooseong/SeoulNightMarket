@@ -1,6 +1,7 @@
 package seoulnightmarket.seoulnightmarket;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +51,13 @@ public class MainAdapter extends BaseAdapter {
         } else {
             gridView = convertView;
         }
+
+        gridView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, NightMarket.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+            }
+        });
 
         return gridView;
     }

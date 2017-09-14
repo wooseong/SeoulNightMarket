@@ -9,18 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".NightMarket" />
-        <activity android:name=".FoodTruck" />
-        <activity android:name=".Concert" />
-        <activity android:name=".Introduction"></activity>
-        <activity android:name=".InitialScreen">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NightMarket" />
+        <activity android:name=".FoodTruck" />
+        <activity android:name=".Concert" />
+        <activity android:name=".Introduction" />
+        <activity android:name=".InitialScreen" />
+        <activity android:name=".NightMarketFragment" />
+        <activity android:name=".FragmentIntroduction" />
+        <activity android:name=".FragmentMarket" />
+        <activity android:name=".FragmentConcert"></activity>
     </application>
 
 </manifest>

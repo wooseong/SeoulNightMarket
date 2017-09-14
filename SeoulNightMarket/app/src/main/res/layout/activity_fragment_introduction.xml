@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="seoulnightmarket.seoulnightmarket.Introduction">
+    tools:context="seoulnightmarket.seoulnightmarket.FragmentIntroduction">
 
     <TextView
         android:id="@+id/introductionText0"
