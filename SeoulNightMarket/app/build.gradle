@@ -30,4 +30,7 @@ dependencies {
     compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
     testCompile 'junit:junit:4.12'
     compile files('libs/android-observablescrollview-1.6.0-javadoc.jar')
+
+    compile 'com.android.support:recyclerview-v7:26.+'
+    compile 'com.melnykov:floatingactionbutton:1.0.7'
 }
