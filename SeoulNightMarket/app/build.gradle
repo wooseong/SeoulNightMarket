@@ -25,9 +25,9 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.nineoldandroids:library:2.4.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
     testCompile 'junit:junit:4.12'
     compile files('libs/android-observablescrollview-1.6.0-javadoc.jar')
-    //compile 'com.github.ksoichiro:android-observablescrollview:1.6.0'
 }
