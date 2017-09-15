@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="seoulnightmarket.seoulnightmarket.NightMarketFragment">
+    tools:context="seoulnightmarket.seoulnightmarket.FoodTruckFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,33 +13,33 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnFragment1"
+            android:id="@+id/btnMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="btnIntroduction"
-            android:text="소개" />
+            android:onClick="btnMenu"
+            android:text="Menu" />
 
         <Button
-            android:id="@+id/btnFragment2"
+            android:id="@+id/btnInformation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="btnMarket"
-            android:text="야시장" />
+            android:onClick="btnInformation"
+            android:text="Information" />
 
         <Button
-            android:id="@+id/btnFragment3"
+            android:id="@+id/btnReview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:onClick="btnConcert"
-            android:text="공연" />
+            android:onClick="btnReview"
+            android:text="Review" />
 
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/fragmentMarket"
+        android:id="@+id/fragmentFoodTruck"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     </FrameLayout>

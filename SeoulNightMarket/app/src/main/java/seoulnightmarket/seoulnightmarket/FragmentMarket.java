@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
-import android.widget.Toast;
 
 public class FragmentMarket extends Fragment {
     public int foodTruck[] = {R.drawable.herotruck, R.drawable.shimlimphinhiya, R.drawable.chickenfit, R.drawable.imsteak, R.drawable.jayfresh, R.drawable.pandagrill};
@@ -45,7 +44,6 @@ public class FragmentMarket extends Fragment {
             @Override
             public void onClick(View view) {
                 type = "foodTruck";
-                Toast.makeText(getActivity().getApplicationContext(), "푸드트럭", Toast.LENGTH_LONG).show();
 
                 if (type == "foodTruck") {
                     adapter = new CustomAdapter(getActivity().getApplicationContext(), foodTruck, foodTruckName);
@@ -60,7 +58,6 @@ public class FragmentMarket extends Fragment {
             @Override
             public void onClick(View view) {
                 type = "handMade";
-                Toast.makeText(getActivity().getApplicationContext(), "핸드메이드", Toast.LENGTH_LONG).show();
 
                 if (type == "handMade") {
                     adapter = new CustomAdapter(getActivity().getApplicationContext(), handMade, handMadeName);

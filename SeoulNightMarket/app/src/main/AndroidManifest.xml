@@ -16,15 +16,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NightMarket" />
-        <activity android:name=".FoodTruck" />
-        <activity android:name=".Concert" />
-        <activity android:name=".Introduction" />
         <activity android:name=".InitialScreen" />
         <activity android:name=".NightMarketFragment" />
         <activity android:name=".FragmentIntroduction" />
         <activity android:name=".FragmentMarket" />
-        <activity android:name=".FragmentConcert"></activity>
+        <activity android:name=".FragmentConcert" />
+        <activity android:name=".FragmentReview" />
+        <activity android:name=".FoodTruckFragment" />
+        <activity android:name=".FragmentMenu" />
+        <activity android:name=".FragmentInformation"></activity>
     </application>
 
 </manifest>

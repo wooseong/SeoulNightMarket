@@ -18,14 +18,14 @@ public class NightMarketFragment extends AppCompatActivity {
     }
 
     public void btnIntroduction(View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new FragmentIntroduction()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMarket, new FragmentIntroduction()).commit();
     }
 
     public void btnMarket(View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new FragmentMarket()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMarket, new FragmentMarket()).commit();
     }
 
     public void btnConcert(View v) {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new FragmentConcert()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMarket, new FragmentConcert()).commit();
     }
 }

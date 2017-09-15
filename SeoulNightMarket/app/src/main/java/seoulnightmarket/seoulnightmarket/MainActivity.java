@@ -16,20 +16,4 @@ public class MainActivity extends AppCompatActivity {
     public void home(View v) {
         startActivity(new Intent(MainActivity.this, InitialScreen.class));
     }
-
-    public void introduction(View v) {
-        startActivity(new Intent(MainActivity.this, Introduction.class));
-    }
-
-    public void nightMarket(View v) {
-        startActivity(new Intent(MainActivity.this, NightMarket.class));
-    }
-
-    public void concert(View v) {
-        startActivity(new Intent(MainActivity.this, Concert.class));
-    }
-
-    public void fragment(View v) {
-        startActivity(new Intent(MainActivity.this, NightMarketFragment.class));
-    }
 }

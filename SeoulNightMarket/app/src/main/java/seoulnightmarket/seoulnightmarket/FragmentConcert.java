@@ -11,7 +11,6 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,7 +52,7 @@ public class FragmentConcert extends Fragment {
         spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) { // 목록을 선택 했을 때
-                Toast.makeText(getActivity().getApplicationContext(), month[position], Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -65,7 +64,7 @@ public class FragmentConcert extends Fragment {
         spinnerDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                Toast.makeText(getActivity().getApplicationContext(), day[position], Toast.LENGTH_SHORT).show();
+
                 textView.setText(day[position]);
             }
 
