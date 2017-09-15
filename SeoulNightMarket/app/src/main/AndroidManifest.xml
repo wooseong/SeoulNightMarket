@@ -9,23 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.Toolbar">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".FlexibleSpaceWithImageWithViewPagerTabActivity"
-            android:label="@string/title_activity_flexiblespacewithimagewithviewpagertab"
-            android:theme="@style/AppTheme.Toolbar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="seoulnightmarket.seoulnightmarket" />
             </intent-filter>
         </activity>
     </application>
