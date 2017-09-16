@@ -46,7 +46,6 @@ public class MarketAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-            gridView = new View(context);
             gridView = inflater.inflate(R.layout.gridview_market, null);
             ImageView imageView = gridView.findViewById(R.id.imageViewMarket);
             TextView textView = gridView.findViewById(R.id.textViewMarket);

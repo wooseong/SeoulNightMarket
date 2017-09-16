@@ -27,8 +27,8 @@ public class FragmentConcert extends Fragment {
     public Spinner spinnerDay;
     public ArrayList<String> monthList = new ArrayList<>();
     public ArrayList<String> dayList = new ArrayList<>();
-    String[] month = { "3월", "4월", "5월", "6월", "7월", "8월", "9월"};
-    String[] day = { "1일", "10일", "15일", "16일", "24일", "25일", "30일"};
+    String[] month = {"3월", "4월", "5월", "6월", "7월", "8월", "9월"};
+    String[] day = {"1일", "10일", "15일", "16일", "24일", "25일", "30일"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -88,8 +88,7 @@ public class FragmentConcert extends Fragment {
                 monthList.add(date[i]);
             }
             adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, monthList);
-        }
-        else {
+        } else {
             for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
                 dayList.add(date[i]);
             }

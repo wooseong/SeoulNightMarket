@@ -12,7 +12,7 @@ import android.widget.GridView;
 import seoulnightmarket.seoulnightmarket.adapter.MainAdapter;
 
 public class InitialScreen extends AppCompatActivity {
-    public int[] nightMarket = {R.drawable.home_banpo,R.drawable.home_cgc,R.drawable.home_cggj, R.drawable.home_ddp, R.drawable.home_yyd};
+    public int[] nightMarket = {R.drawable.home_banpo, R.drawable.home_cgc, R.drawable.home_cggj, R.drawable.home_ddp, R.drawable.home_yyd};
     public GridView gridView;
     MainAdapter mainAdapter;
 

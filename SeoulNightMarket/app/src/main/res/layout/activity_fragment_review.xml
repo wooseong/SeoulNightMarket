@@ -4,13 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="seoulnightmarket.seoulnightmarket.fragment.FragmentReview">
 
-    <TextView
-        android:id="@+id/textReview"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="리뷰다"/>
+        android:orientation="vertical"
+        android:layout_weight="1">
+
+        <ListView
+            android:id="@+id/review"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_weight="8">
+
+        <ImageButton
+            android:id="@+id/star"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:onClick="btnStar"
+            android:layout_weight="3"
+            android:src="@drawable/star"
+            android:scaleType="centerCrop"/>
+
+        <EditText
+            android:id="@+id/edit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"/>
+
+        <Button
+            android:id="@+id/submit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3"
+            android:onClick="btnSubmit"
+            android:text="전송"/>
+
+    </LinearLayout>
 
 </LinearLayout>

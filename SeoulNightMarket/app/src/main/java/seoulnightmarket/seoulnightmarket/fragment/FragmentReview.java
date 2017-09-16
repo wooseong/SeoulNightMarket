@@ -21,6 +21,8 @@ public class FragmentReview extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
         View view = inflater.inflate(R.layout.activity_fragment_review, container, false);
 
+
+
         return view;
     }
 }

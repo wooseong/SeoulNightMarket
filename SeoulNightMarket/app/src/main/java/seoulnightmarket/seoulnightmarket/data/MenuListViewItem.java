@@ -11,6 +11,10 @@ public class MenuListViewItem { // 리스트뷰에 들어갈 데이터 클래스
     private String menuName;
     private int menuPrice;
 
+    public MenuListViewItem() {
+
+    }
+
     public Drawable getMenuImage() {
         return this.menuImage;
     }

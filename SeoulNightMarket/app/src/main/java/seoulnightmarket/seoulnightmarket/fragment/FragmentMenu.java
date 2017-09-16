@@ -25,12 +25,12 @@ public class FragmentMenu extends Fragment {
         View view = inflater.inflate(R.layout.activity_fragment_menu, null);
 
         MenuAdapter adapter = new MenuAdapter();
-        ListView listView = (ListView) view.findViewById(R.id.listView);
+        ListView listView = view.findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.chickenfit), "치킨핏", 12000) ;
-        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.jayfresh), "제이프레시", 25000) ;
-        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.imsteak), "아임스테이크", 16000) ;
+        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.chickenfit), "치킨핏", 12000);
+        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.jayfresh), "제이프레시", 25000);
+        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.imsteak), "아임스테이크", 16000);
 
         return view;
     }

@@ -46,7 +46,6 @@ public class ConcertAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if (convertView == null) {
-            gridView = new View(context);
             gridView = inflater.inflate(R.layout.gridview_concert, null);
             ImageView imageView = gridView.findViewById(R.id.musicianImage);
             TextView textView = gridView.findViewById(R.id.musicianName);
