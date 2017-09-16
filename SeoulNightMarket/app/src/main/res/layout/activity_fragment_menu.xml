@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="seoulnightmarket.seoulnightmarket.FragmentMenu">
+    tools:context="seoulnightmarket.seoulnightmarket.fragment.FragmentMenu">
 
     <ListView
-        android:id="@+id/menulistView"
+        android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

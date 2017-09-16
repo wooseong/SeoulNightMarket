@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="seoulnightmarket.seoulnightmarket.FoodTruckFragment">
+    tools:context="seoulnightmarket.seoulnightmarket.fragment.FoodTruckFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,25 +16,25 @@
             android:id="@+id/btnMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_weight="1"
-            android:onClick="btnMenu"
-            android:text="Menu" />
+            android:text="메뉴"/>
 
         <Button
             android:id="@+id/btnInformation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_weight="1"
-            android:onClick="btnInformation"
-            android:text="Information" />
+            android:text="정보"/>
 
         <Button
             android:id="@+id/btnReview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_weight="1"
-            android:onClick="btnReview"
-            android:text="Review" />
+            android:text="리뷰"/>
 
     </LinearLayout>
 
@@ -42,6 +42,7 @@
         android:id="@+id/fragmentFoodTruck"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
     </FrameLayout>
 
 </LinearLayout>

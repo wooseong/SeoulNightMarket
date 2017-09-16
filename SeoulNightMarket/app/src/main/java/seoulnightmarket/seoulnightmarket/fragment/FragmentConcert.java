@@ -1,4 +1,4 @@
-package seoulnightmarket.seoulnightmarket;
+package seoulnightmarket.seoulnightmarket.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,6 +13,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.adapter.ConcertAdapter;
 
 public class FragmentConcert extends Fragment {
     public int[] musicianImage = {R.drawable.ddalgi, R.drawable.gonayoung, R.drawable.kichin};

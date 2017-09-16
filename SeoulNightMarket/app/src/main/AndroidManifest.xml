@@ -17,14 +17,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".InitialScreen" />
-        <activity android:name=".NightMarketFragment" />
-        <activity android:name=".FragmentIntroduction" />
-        <activity android:name=".FragmentMarket" />
-        <activity android:name=".FragmentConcert" />
-        <activity android:name=".FragmentReview" />
-        <activity android:name=".FoodTruckFragment" />
-        <activity android:name=".FragmentMenu" />
-        <activity android:name=".FragmentInformation"></activity>
+        <activity android:name=".fragment.NightMarketFragment" />
+        <activity android:name=".fragment.FragmentIntroduction" />
+        <activity android:name=".fragment.FragmentMarket" />
+        <activity android:name=".fragment.FragmentConcert" />
+        <activity android:name=".fragment.FragmentReview" />
+        <activity android:name=".fragment.FoodTruckFragment" />
+        <activity android:name=".fragment.FragmentMenu" />
+        <activity android:name=".fragment.FragmentInformation" />
+        <activity android:name=".adapter.MarketAdapter"></activity>
     </application>
 
 </manifest>

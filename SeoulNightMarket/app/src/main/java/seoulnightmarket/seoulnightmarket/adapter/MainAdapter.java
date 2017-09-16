@@ -1,4 +1,4 @@
-package seoulnightmarket.seoulnightmarket;
+package seoulnightmarket.seoulnightmarket.adapter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,22 +7,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import seoulnightmarket.seoulnightmarket.fragment.NightMarketFragment;
+import seoulnightmarket.seoulnightmarket.R;
 
 /**
- * Created by Yookmoonsu on 2017-09-12.
+ * Created by Yookmoonsu on 2017-09-14.
  */
 
-public class CustomAdapter extends BaseAdapter {
+public class MainAdapter extends BaseAdapter {
     private Context context;
     private int[] image;
-    private String[] text;
 
-    public CustomAdapter(Context context, int[] image, String[] text) {
+    public MainAdapter(Context context, int[] image) {
         this.context = context;
         this.image = image;
-        this.text = text;
     }
 
     @Override
@@ -47,22 +46,19 @@ public class CustomAdapter extends BaseAdapter {
 
         if (convertView == null) {
             gridView = new View(context);
-            gridView = inflater.inflate(R.layout.gridview_market, null);
-            ImageView imageView = gridView.findViewById(R.id.imageViewMarket);
-            TextView textView = gridView.findViewById(R.id.textViewMarket);
+            gridView = inflater.inflate(R.layout.gridview_home, null);
+            ImageView imageView = gridView.findViewById(R.id.imageViewHome);
 
             imageView.setImageResource(image[position]);
-            textView.setText(text[position]);
+            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
         } else {
             gridView = convertView;
         }
 
-        gridView.setOnClickListener(new View.OnClickListener() { // 아이템 클릭 이벤트
+        gridView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Toast.makeText(context, "You Clicked " + text[position], Toast.LENGTH_SHORT).show();
-                context.startActivity(new Intent(context, FoodTruckFragment.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+            public void onClick(View view) {
+                context.startActivity(new Intent(context, NightMarketFragment.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
             }
         });
 

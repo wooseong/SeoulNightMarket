@@ -4,8 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="seoulnightmarket.seoulnightmarket.FragmentReview">
+    tools:context="seoulnightmarket.seoulnightmarket.fragment.FragmentReview">
 
-
+    <TextView
+        android:id="@+id/textReview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="리뷰다"/>
 
 </LinearLayout>

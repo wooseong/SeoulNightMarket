@@ -1,4 +1,4 @@
-package seoulnightmarket.seoulnightmarket;
+package seoulnightmarket.seoulnightmarket.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import seoulnightmarket.seoulnightmarket.R;
 
 public class FragmentIntroduction extends Fragment {
     public TextView textView0;

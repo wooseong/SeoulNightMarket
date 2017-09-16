@@ -1,4 +1,4 @@
-package seoulnightmarket.seoulnightmarket;
+package seoulnightmarket.seoulnightmarket.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,11 +9,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.GridView;
 
+import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
+
 public class FragmentMarket extends Fragment {
     public int foodTruck[] = {R.drawable.herotruck, R.drawable.shimlimphinhiya, R.drawable.chickenfit, R.drawable.imsteak, R.drawable.jayfresh, R.drawable.pandagrill};
     public int handMade[] = {R.drawable.andro, R.drawable.babo, R.drawable.bom, R.drawable.soso};
     public String type = "foodTruck";
-    public CustomAdapter adapter;
+    public MarketAdapter adapter;
     public GridView gridView;
     public String foodTruckName[] = {"hero truck", "쉬림프컵히야", "치킨핏", "아임 스테이크", "제이프레시", "팬더그릴"};
     public String handMadeName[] = {"안드로행성712공방", "바보공방", "봄이네", "소소공방"};
@@ -31,9 +34,9 @@ public class FragmentMarket extends Fragment {
         View view = inflater.inflate(R.layout.activity_fragment_market, container, false);
 
         if (type == "foodTruck") {
-            adapter = new CustomAdapter(view.getContext(), foodTruck, foodTruckName);
+            adapter = new MarketAdapter(view.getContext(), foodTruck, foodTruckName);
         } else if (type == "handMade") {
-            adapter = new CustomAdapter(view.getContext(), handMade, handMadeName);
+            adapter = new MarketAdapter(view.getContext(), handMade, handMadeName);
         }
 
         gridView = view.findViewById(R.id.gridView);
@@ -46,7 +49,7 @@ public class FragmentMarket extends Fragment {
                 type = "foodTruck";
 
                 if (type == "foodTruck") {
-                    adapter = new CustomAdapter(getActivity().getApplicationContext(), foodTruck, foodTruckName);
+                    adapter = new MarketAdapter(getActivity().getApplicationContext(), foodTruck, foodTruckName);
                     gridView.invalidateViews();
                     gridView.setAdapter(adapter);
                 }
@@ -60,7 +63,7 @@ public class FragmentMarket extends Fragment {
                 type = "handMade";
 
                 if (type == "handMade") {
-                    adapter = new CustomAdapter(getActivity().getApplicationContext(), handMade, handMadeName);
+                    adapter = new MarketAdapter(getActivity().getApplicationContext(), handMade, handMadeName);
                     gridView.invalidateViews();
                     gridView.setAdapter(adapter);
                 }

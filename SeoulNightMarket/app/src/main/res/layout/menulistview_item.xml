@@ -9,7 +9,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/menuImage0"
+            android:id="@+id/menuImage"
             android:layout_width="230dp"
             android:layout_height="150dp" />
 
@@ -19,20 +19,18 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/menuText0"
+                android:id="@+id/menuName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
-                android:layout_gravity="center"
-                android:text="무뼈닭발" />
+                android:layout_gravity="center" />
 
             <TextView
-                android:id="@+id/menuPrice0"
+                android:id="@+id/menuPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:layout_gravity="center"
-                android:text="12000" />
+                android:layout_gravity="center" />
         </LinearLayout>
 
     </LinearLayout>

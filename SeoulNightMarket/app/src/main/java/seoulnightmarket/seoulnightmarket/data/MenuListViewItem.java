@@ -3,10 +3,10 @@ package seoulnightmarket.seoulnightmarket.data;
 import android.graphics.drawable.Drawable;
 
 /**
- * Created by Yookmoonsu on 2017-09-15.
+ * Created by Yookmoonsu on 2017-09-16.
  */
 
-public class MenuListViewItem { // ListView 아이템에 출력될 데이터 클래스
+public class MenuListViewItem { // 리스트뷰에 들어갈 데이터 클래스
     private Drawable menuImage;
     private String menuName;
     private int menuPrice;
@@ -23,7 +23,7 @@ public class MenuListViewItem { // ListView 아이템에 출력될 데이터 클
         return this.menuPrice;
     }
 
-    public void setMenuImagee(Drawable image) {
+    public void setMenuImage(Drawable image) {
         menuImage = image;
     }
 

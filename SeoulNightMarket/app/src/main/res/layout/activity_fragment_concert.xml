@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="seoulnightmarket.seoulnightmarket.FragmentConcert">
+    tools:context="seoulnightmarket.seoulnightmarket.fragment.FragmentConcert">
 
     <TextView
         android:layout_width="match_parent"
