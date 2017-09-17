@@ -10,12 +10,13 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.Singleton;
 import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
 
 public class FragmentMarket extends Fragment {
     public int foodTruck[] = {R.drawable.herotruck, R.drawable.shimlimphinhiya, R.drawable.chickenfit, R.drawable.imsteak, R.drawable.jayfresh, R.drawable.pandagrill};
     public int handMade[] = {R.drawable.andro, R.drawable.babo, R.drawable.bom, R.drawable.soso};
-    public String type = "foodTruck";
+    static String type = "foodTruck";
     public MarketAdapter adapter;
     public GridView gridView;
     public String foodTruckName[] = {"hero truck", "쉬림프컵히야", "치킨핏", "아임 스테이크", "제이프레시", "팬더그릴"};
@@ -42,11 +43,14 @@ public class FragmentMarket extends Fragment {
         gridView = view.findViewById(R.id.gridView);
         gridView.setAdapter(adapter); // 그리드뷰에 어댑터 연결
 
+        Singleton.getInstance().setType(type);
+
         Button btnFoodTruck = view.findViewById(R.id.foodTruck);
         btnFoodTruck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 type = "foodTruck";
+                Singleton.getInstance().setType(type);
 
                 if (type == "foodTruck") {
                     adapter = new MarketAdapter(getActivity().getApplicationContext(), foodTruck, foodTruckName);
@@ -61,6 +65,7 @@ public class FragmentMarket extends Fragment {
             @Override
             public void onClick(View view) {
                 type = "handMade";
+                Singleton.getInstance().setType(type);
 
                 if (type == "handMade") {
                     adapter = new MarketAdapter(getActivity().getApplicationContext(), handMade, handMadeName);
