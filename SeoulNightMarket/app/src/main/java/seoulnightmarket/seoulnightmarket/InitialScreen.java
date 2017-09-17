@@ -1,5 +1,6 @@
 package seoulnightmarket.seoulnightmarket;
 
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import seoulnightmarket.seoulnightmarket.adapter.MainAdapter;
 
@@ -21,7 +23,11 @@ public class InitialScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_initial_screen);
 
-        mainAdapter = new MainAdapter(getApplicationContext(), nightMarket);
+        ImageView imageView = (ImageView) findViewById(R.id.imageViewInitial);
+        AnimationDrawable drawable = (AnimationDrawable) imageView.getBackground(); // 이미지뷰의 배경으로 애니메이션 객체 얻음
+        drawable.start();
+
+        mainAdapter = new MainAdapter(getApplicationContext(), nightMarket); // 그리드뷰에 어댑터 연결
         gridView = (GridView) findViewById(R.id.gridViewInitial);
         gridView.setAdapter(mainAdapter);
     }

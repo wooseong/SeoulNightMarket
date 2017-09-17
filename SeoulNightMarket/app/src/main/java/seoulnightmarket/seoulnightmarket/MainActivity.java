@@ -9,8 +9,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+        try {
+            Thread.sleep(3000);
+            setContentView(R.layout.activity_main);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     public void home(View v) {
