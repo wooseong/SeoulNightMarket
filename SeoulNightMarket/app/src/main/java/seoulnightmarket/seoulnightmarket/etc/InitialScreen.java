@@ -1,4 +1,4 @@
-package seoulnightmarket.seoulnightmarket;
+package seoulnightmarket.seoulnightmarket.etc;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.ImageView;
 
+import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.MainAdapter;
 
 public class InitialScreen extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class InitialScreen extends AppCompatActivity {
 
         ImageView imageView = (ImageView) findViewById(R.id.imageViewInitial);
         AnimationDrawable drawable = (AnimationDrawable) imageView.getBackground(); // 이미지뷰의 배경으로 애니메이션 객체 얻음
-        drawable.start();
+        drawable.start(); // 애니메이션 시작
 
         mainAdapter = new MainAdapter(getApplicationContext(), nightMarket); // 그리드뷰에 어댑터 연결
         gridView = (GridView) findViewById(R.id.gridViewInitial);
@@ -43,11 +44,13 @@ public class InitialScreen extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) { // 검색어 완료시
                 searchView.clearFocus();
+
                 return true;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) { // 검색어 입력할 때
+
                 return false;
             }
         });

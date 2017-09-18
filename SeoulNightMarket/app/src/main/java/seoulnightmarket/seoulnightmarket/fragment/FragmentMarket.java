@@ -10,7 +10,7 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import seoulnightmarket.seoulnightmarket.R;
-import seoulnightmarket.seoulnightmarket.Singleton;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
 
 public class FragmentMarket extends Fragment {

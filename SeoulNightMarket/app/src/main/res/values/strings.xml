@@ -1,10 +1,14 @@
 <resources>
     <string name="app_name">SeoulNightMarket</string>
-    <string-array name="array_food">
-        <item>apple</item>
-        <item>kiwi</item>
-    </string-array>
+    <string name="facebook_app_id">1917610098510150</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="introduction">오늘 밤의 낭만이 시작되는 곳", "종합 안내소 겸 상황실입니다. 운영본부와 의료지원 부스가 마련되어 있으니 궁금한 점이 있거나 비상 및 응급 상황 발생시 인포센터를 찾아주세요</string>
+    <string name="introduction1">한강에서 즐기는 로맨틱한 저녁 식사", "한강과 가장 가까운 특별한 식당
+ 전 세계 음식을 맛볼 수 있는 푸드존에서 낭만적인 저녁 식사를 즐겨보세요</string>
+    <string name="introduction2">나만을 위한 특별한 작품", "다양한 분야의 핸드메이드 작가들이 반짝이는 아이디어와 솜씨로 여러분을 위한
+ 세상에 단 하나뿐인 작품을 준비했습니다</string>
+
 </resources>

@@ -1,4 +1,4 @@
-package seoulnightmarket.seoulnightmarket;
+package seoulnightmarket.seoulnightmarket.etc;
 
 /**
  * Created by Yookmoonsu on 2017-09-17.

@@ -27,8 +27,11 @@ public class FragmentConcert extends Fragment {
     public Spinner spinnerDay;
     public ArrayList<String> monthList = new ArrayList<>();
     public ArrayList<String> dayList = new ArrayList<>();
-    String[] month = {"3월", "4월", "5월", "6월", "7월", "8월", "9월"};
-    String[] day = {"1일", "10일", "15일", "16일", "24일", "25일", "30일"};
+    String[] month = {"3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월"};
+    String[] dayJune = {"2일", "3일", "9일", "10일", "16일", "17일", "23일", "24일", "30일", "1일"};
+    String[] dayJuly = {"7일", "8일", "14일", "15일", "21일", "22일", "28일", "29일"};
+    String[] dayAugust = {"4일", "5일", "11일", "12일", "18일", "19일", "25일", "26일"};
+    String[] daySeptember = {"1일", "2일", "8일", "9일", "15일", "16일", "22일", "23일", "29일", "30일"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -50,12 +53,37 @@ public class FragmentConcert extends Fragment {
         spinnerDay = view.findViewById(R.id.spinnerDay);
 
         initSpinner(spinnerMonth, month); // month
-        initSpinner(spinnerDay, day); // day
+        initSpinner(spinnerDay, dayAugust); // day
 
         spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) { // 목록을 선택 했을 때
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) { // month를 선택하면 day가 바뀜
+                switch (position) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
 
+                        break;
+                    case 3:
+                        initSpinner(spinnerDay, dayJune);
+                        break;
+                    case 4:
+                        initSpinner(spinnerDay, dayJuly);
+                        break;
+                    case 5:
+                        initSpinner(spinnerDay, dayAugust);
+                        break;
+                    case 6:
+                        initSpinner(spinnerDay, daySeptember);
+                        break;
+                    case 7:
+
+                        break;
+                    default:
+                        break;
+                }
             }
 
             @Override
@@ -67,8 +95,7 @@ public class FragmentConcert extends Fragment {
         spinnerDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-
-                textView.setText(day[position]);
+                textView.setText(dayList.get(position));
             }
 
             @Override
@@ -81,18 +108,24 @@ public class FragmentConcert extends Fragment {
     }
 
     public void initSpinner(Spinner spinner, String[] date) { // 스피너 초기화 함수 // 나중에 서버에서 데이터 긁어 오면 됨
-        ArrayAdapter<String> adapter; // 스피너에 뿌려질 Array형식의 Data를 담을 Adapter
+        ArrayAdapter<String> adapter = null; // 스피너에 뿌려질 Array형식의 Data를 담을 Adapter
 
         if (date == month) {
             for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
                 monthList.add(date[i]);
             }
-            adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, monthList);
-        } else {
-            for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
-                dayList.add(date[i]);
+            adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, monthList); // 어댑터 생성
+        }
+        else {
+            if (dayList.size() > 0) {
+                dayList.clear();
             }
-            adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, dayList);
+            if (dayList.size() == 0) {
+                for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
+                    dayList.add(date[i]);
+                }
+                adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, dayList);
+            }
         }
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

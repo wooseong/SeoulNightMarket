@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="seoulnightmarket.seoulnightmarket">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".etc.MainActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,18 +20,31 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InitialScreen" />
+
+        <activity android:name=".etc.InitialScreen" />
         <activity android:name=".fragment.NightMarketFragment" />
-        <activity android:name=".fragment.FragmentIntroduction" />
-        <activity android:name=".fragment.FragmentMarket" />
-        <activity android:name=".fragment.FragmentConcert" />
-        <activity android:name=".fragment.FragmentReview" />
+
+        <fragment android:name=".fragment.FragmentIntroduction" />
+        <fragment android:name=".fragment.FragmentMarket" />
+        <fragment android:name=".fragment.FragmentConcert" />
+        <fragment android:name=".fragment.FragmentReview" />
+
         <activity android:name=".fragment.FoodTruckFragment" />
-        <activity android:name=".fragment.FragmentMenu" />
-        <activity android:name=".fragment.FragmentInformation" />
-        <activity android:name=".adapter.MarketAdapter" />
-        <activity android:name=".fragment.FragmentProduct" />
-        <activity android:name=".fragment.FragmentDirections"></activity>
+
+        <fragment android:name=".fragment.FragmentMenu" />
+        <fragment android:name=".fragment.FragmentInformation" />
+
+        <adapter android:name=".adapter.MarketAdapter" />
+
+        <fragment android:name=".fragment.FragmentProduct" />
+        <fragment android:name=".fragment.FragmentDirections" />
+
+        <activity android:name=".etc.LoginActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:label="@string/app_name"/>
+        <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+
     </application>
 
 </manifest>

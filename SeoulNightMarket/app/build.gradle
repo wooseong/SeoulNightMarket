@@ -29,4 +29,5 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
     compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
     testCompile 'junit:junit:4.12'
+    compile 'com.facebook.android:facebook-android-sdk:4.8.2'
 }

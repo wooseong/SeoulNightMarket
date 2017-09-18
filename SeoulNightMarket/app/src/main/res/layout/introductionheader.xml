@@ -36,7 +36,7 @@
             android:text="달빛을 배경으로 펼쳐지는 한밤의 달빛 시장\n 빛을 이용한 다양한 이벤트와\n 재즈, 어쿠스틱 등 로맨틱한 공연,\n 한강과 가장 가까운 푸드트럭 식당과\n 다양한 핸드메이드 상품까지!\n 광장을 가득 채우는 달빛과\n 쏟아지는 무지개분수 아래에서\n 서울의 낭만을 즐겨보세요!"/>
 
         <ImageView
-            android:id="@+id/introductionImage"
+            android:id="@+id/introductionHeaderImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
