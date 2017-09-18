@@ -27,17 +27,17 @@
         android:orientation="horizontal"
         android:layout_weight="8">
 
-        <Button
-            android:id="@+id/btn_star"
+        <Spinner
+            android:id="@+id/spinnerStar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:onClick="btnStar"
             android:layout_weight="3"
-            android:background="@drawable/star"
-            android:scaleType="centerCrop"/>
+            android:background="@drawable/onestar">
+
+        </Spinner>
 
         <EditText
-            android:id="@+id/edit"
+            android:id="@+id/editText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
