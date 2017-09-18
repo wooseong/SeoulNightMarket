@@ -36,6 +36,14 @@
             android:onClick="btnConcert"
             android:text="공연" />
 
+        <Button
+            android:id="@+id/btnFragment4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="btnRoad"
+            android:text="오시는길"/>
+
     </LinearLayout>
 
     <FrameLayout

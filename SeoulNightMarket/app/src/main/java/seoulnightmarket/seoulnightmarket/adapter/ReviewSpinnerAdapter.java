@@ -42,7 +42,7 @@ public class ReviewSpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         convertView = inflater.inflate(R.layout.spinner_item, null);
-        ImageView imageView = (ImageView) convertView.findViewById(R.id.imageViewSpinner);
+        ImageView imageView = convertView.findViewById(R.id.imageViewSpinner);
         imageView.setImageResource(flags[position]);
 
         return convertView;

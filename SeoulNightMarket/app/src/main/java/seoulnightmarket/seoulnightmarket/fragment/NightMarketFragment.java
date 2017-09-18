@@ -30,4 +30,8 @@ public class NightMarketFragment extends AppCompatActivity {
     public void btnConcert(View v) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMarket, new FragmentConcert()).commit();
     }
+
+    public void btnRoad(View v) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragmentMarket, new FragmentDirections()).commit();
+    }
 }

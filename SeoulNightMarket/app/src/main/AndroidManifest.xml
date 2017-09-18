@@ -28,7 +28,8 @@
         <activity android:name=".fragment.FragmentMenu" />
         <activity android:name=".fragment.FragmentInformation" />
         <activity android:name=".adapter.MarketAdapter" />
-        <activity android:name=".fragment.FragmentProduct"></activity>
+        <activity android:name=".fragment.FragmentProduct" />
+        <activity android:name=".fragment.FragmentDirections"></activity>
     </application>
 
 </manifest>

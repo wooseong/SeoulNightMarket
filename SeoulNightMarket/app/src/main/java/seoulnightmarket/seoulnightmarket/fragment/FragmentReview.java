@@ -60,6 +60,7 @@ public class FragmentReview extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 spinnerStar.setBackground(null);
+                Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
             }
 
             @Override
