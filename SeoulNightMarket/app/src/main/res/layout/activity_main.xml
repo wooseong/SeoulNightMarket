@@ -7,11 +7,20 @@
     android:orientation="vertical"
     tools:context="seoulnightmarket.seoulnightmarket.etc.MainActivity">
 
-    <Button
-        android:id="@+id/button"
+    <ImageView
+        android:id="@+id/imageViewInitial"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="home"
-        android:text="Home" />
+        android:layout_height="160dp"
+        android:background="@drawable/animation"/>
+
+    <GridView
+        android:id="@+id/gridViewInitial"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="auto_fit"
+        android:stretchMode="columnWidth"
+        android:gravity="center">
+
+    </GridView>
 
 </LinearLayout>
