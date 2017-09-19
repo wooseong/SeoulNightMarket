@@ -6,15 +6,19 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
+        android:largeHeap="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".etc.MainActivity"
             android:theme="@style/SplashTheme"
             android:label="@string/app_name">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +26,7 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".AreaInformationWithTabBar"/>
         <activity android:name=".fragment.NightMarketFragment" />
 
         <fragment android:name=".fragment.FragmentIntroduction" />
@@ -38,6 +43,15 @@
 
         <fragment android:name=".fragment.FragmentProduct" />
         <fragment android:name=".fragment.FragmentDirections" />
+
+
+        <activity
+            android:name=".DetailActivity"
+            android:parentActivityName=".AreaInformationWithTabBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AreaInformationWithTabBar" />
+        </activity>
 
     </application>
 
