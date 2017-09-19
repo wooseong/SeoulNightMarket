@@ -10,8 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import seoulnightmarket.seoulnightmarket.DetailActivity;
 import seoulnightmarket.seoulnightmarket.R;
-import seoulnightmarket.seoulnightmarket.fragment.FoodTruckFragment;
 
 public class MarketAdapter extends BaseAdapter {
 
@@ -61,7 +61,7 @@ public class MarketAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Toast.makeText(context, "You Clicked " + text[position], Toast.LENGTH_SHORT).show();
-                context.startActivity(new Intent(context, FoodTruckFragment.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                context.startActivity(new Intent(context, DetailActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
             }
         });
 

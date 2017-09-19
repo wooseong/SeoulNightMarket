@@ -26,7 +26,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".AreaInformationWithTabBar"/>
+        <activity android:name=".AreaInformationWithTabBar"
+            android:theme="@style/TabBarTheme"/>
         <activity android:name=".fragment.NightMarketFragment" />
 
         <fragment android:name=".fragment.FragmentIntroduction" />

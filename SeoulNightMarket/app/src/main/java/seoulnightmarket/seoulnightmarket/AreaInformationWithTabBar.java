@@ -2,9 +2,7 @@ package seoulnightmarket.seoulnightmarket;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
@@ -19,11 +17,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import seoulnightmarket.seoulnightmarket.fragment.FragmentConcert;
+import seoulnightmarket.seoulnightmarket.fragment.FragmentDirections;
+import seoulnightmarket.seoulnightmarket.fragment.FragmentIntroduction;
+import seoulnightmarket.seoulnightmarket.fragment.FragmentMarket;
 
 public class AreaInformationWithTabBar extends AppCompatActivity {
 
@@ -64,7 +66,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         if (supportActionBar != null) {
             VectorDrawableCompat indicator =
                     VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
-            indicator.setTint(ResourcesCompat.getColor(getResources(),R.color.white,getTheme()));
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.white, getTheme()));
             supportActionBar.setHomeAsUpIndicator(indicator);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
@@ -84,22 +86,15 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
                         return true;
                     }
                 });
-        // Adding Floating Action Button to bottom right of main view
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar.make(v, "Hello Snackbar!",
-                        Snackbar.LENGTH_LONG).show();
-            }
-        });
     }
+
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new ListContentFragment(), "List");
-        adapter.addFragment(new TileContentFragment(), "Tile");
-        adapter.addFragment(new CardContentFragment(), "Card");
+        adapter.addFragment(new FragmentIntroduction(), "소개");
+        adapter.addFragment(new FragmentMarket(), "야시장");
+        adapter.addFragment(new FragmentConcert(), "공연");
+        adapter.addFragment(new FragmentDirections(), "오시는길");
         viewPager.setAdapter(adapter);
     }
 
@@ -146,9 +141,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        } else if (id == android.R.id.home) {
+        if (id == android.R.id.home) {
             mDrawerLayout.openDrawer(GravityCompat.START);
         }
         return super.onOptionsItemSelected(item);
