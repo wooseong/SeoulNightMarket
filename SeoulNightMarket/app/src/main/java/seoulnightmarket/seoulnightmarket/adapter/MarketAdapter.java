@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import seoulnightmarket.seoulnightmarket.DetailActivity;
+import seoulnightmarket.seoulnightmarket.etc.DetailActivity;
 import seoulnightmarket.seoulnightmarket.R;
 
 public class MarketAdapter extends BaseAdapter {

@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import seoulnightmarket.seoulnightmarket.AreaInformationWithTabBar;
+import seoulnightmarket.seoulnightmarket.etc.AreaInformationWithTabBar;
 import seoulnightmarket.seoulnightmarket.R;
 
 /**
@@ -57,7 +57,12 @@ public class MainAdapter extends BaseAdapter {
         gridView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                if (position == 0) {
+
+                }
+                else {
+                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                }
             }
         });
 
