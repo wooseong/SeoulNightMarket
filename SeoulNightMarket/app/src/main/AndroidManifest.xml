@@ -47,7 +47,8 @@
                 android:value=".etc.AreaInformationWithTabBar" />
         </activity>
         <activity android:name=".etc.NumberTicketActivity" />
-        <activity android:name=".etc.LoginActivity"></activity>
+        <activity android:name=".etc.LoginActivity" />
+        <activity android:name=".etc.MembershipJoinActivity"></activity>
     </application>
 
 </manifest>

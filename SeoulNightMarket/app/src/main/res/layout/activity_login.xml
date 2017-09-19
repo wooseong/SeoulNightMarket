@@ -13,11 +13,11 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/idText"
+            android:id="@+id/phoneNumberText"
             android:layout_marginTop="200dp"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:hint="ID"
+            android:hint="PhoneNumber"
             android:layout_gravity="center" />
 
         <EditText
