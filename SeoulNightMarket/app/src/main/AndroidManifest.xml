@@ -46,7 +46,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".etc.AreaInformationWithTabBar" />
         </activity>
-        <activity android:name=".etc.NumberTicketActivity"></activity>
+        <activity android:name=".etc.NumberTicketActivity" />
+        <activity android:name=".etc.LoginActivity"></activity>
     </application>
 
 </manifest>
