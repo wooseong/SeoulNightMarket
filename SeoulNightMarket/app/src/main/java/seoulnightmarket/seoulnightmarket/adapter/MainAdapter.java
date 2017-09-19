@@ -10,6 +10,7 @@ import android.widget.ImageView;
 
 import seoulnightmarket.seoulnightmarket.etc.AreaInformationWithTabBar;
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.etc.NumberTicketActivity;
 
 /**
  * Created by Yookmoonsu on 2017-09-14.
@@ -40,7 +41,7 @@ public class MainAdapter extends BaseAdapter {
     } // 아이템의 아이디
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, final View convertView, ViewGroup parent) {
         View gridView;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -58,7 +59,7 @@ public class MainAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 if (position == 0) {
-
+                    context.startActivity(new Intent(context, NumberTicketActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
                 else {
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
