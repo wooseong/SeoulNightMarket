@@ -60,7 +60,7 @@ public class MainAdapter extends BaseAdapter {
         gridView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (position == 0) {
+                if (position == 0) { // 로그인 버튼
                     if (!login) {
                         context.startActivity(new Intent(context, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 로그아웃 상태일때 로그인 화면으로 이동
                     }

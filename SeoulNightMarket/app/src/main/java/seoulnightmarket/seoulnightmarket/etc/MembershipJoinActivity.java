@@ -30,7 +30,7 @@ public class MembershipJoinActivity extends AppCompatActivity {
         nicknameText = (EditText) findViewById(R.id.nickname);
     }
 
-    public void btnConfirm(View v) {
+    public void btnConfirm(View v) { // 회원 가입 버튼 서버로 회원 정보 전송
         phonenumber = phonenumberText.getText().toString();
         password = passwordText.getText().toString();
         repassword = repasswordText.getText().toString();

@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "아이디와 패스워드를 다시 확인하세요", Toast.LENGTH_SHORT).show();
         }
 
-        startActivity(new Intent(LoginActivity.this, AreaInformationWithTabBar.class));
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
     }
 
     public void btnJoin(View v) { // 회원가입 버튼

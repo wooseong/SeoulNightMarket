@@ -19,9 +19,11 @@ import java.util.List;
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentInformation;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentMenu;
+import seoulnightmarket.seoulnightmarket.fragment.FragmentProduct;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
 
 public class DetailActivity extends AppCompatActivity {
+    private String type;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,18 +33,15 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         //////////
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Set Collapsing Toolbar layout to the screen
-        CollapsingToolbarLayout collapsingToolbar =
-                (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         // Set title of Detail page
         // collapsingToolbar.setTitle(getString(R.string.item_title));
         //////////
         ImageView placePicutre = (ImageView) findViewById(R.id.image);
-        placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.a));
-
+        placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.bam1));
 
         // Setting ViewPager for each Tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -64,7 +63,15 @@ public class DetailActivity extends AppCompatActivity {
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
-        adapter.addFragment(new FragmentMenu(), "메뉴");
+        type = Singleton.getInstance().getType();
+
+        if (type.equals("foodTruck")) {
+            adapter.addFragment(new FragmentMenu(), "메뉴");
+        }
+        else if (type.equals("handMade")) {
+            adapter.addFragment(new FragmentProduct(), "상품");
+        }
+
         adapter.addFragment(new FragmentInformation(), "정보");
         adapter.addFragment(new FragmentReview(), "리뷰");
         viewPager.setAdapter(adapter);

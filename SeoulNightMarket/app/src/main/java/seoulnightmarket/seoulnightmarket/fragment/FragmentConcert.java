@@ -25,9 +25,12 @@ public class FragmentConcert extends Fragment {
     public TextView textView;
     public Spinner spinnerMonth;
     public Spinner spinnerDay;
-    public ArrayList<String> monthList = new ArrayList<>();
-    public ArrayList<String> dayList = new ArrayList<>();
+    public ArrayList<String> monthList;
+    public ArrayList<String> dayList;
     String[] month = {"3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월"};
+    String[] dayMarch = {"24일", "25일", "31일", "1일"};
+    String[] dayApril = {"7일", "8일", "14일", "15일", "21일", "22일", "28일", "29일"};
+    String[] dayMay = {"5일", "6일", "12일", "13일", "19일", "20일", "26일", "27일"};
     String[] dayJune = {"2일", "3일", "9일", "10일", "16일", "17일", "23일", "24일", "30일", "1일"};
     String[] dayJuly = {"7일", "8일", "14일", "15일", "21일", "22일", "28일", "29일"};
     String[] dayAugust = {"4일", "5일", "11일", "12일", "18일", "19일", "25일", "26일"};
@@ -36,6 +39,9 @@ public class FragmentConcert extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        monthList = new ArrayList<>();
+        dayList = new ArrayList<>();
     }
 
     @Nullable
@@ -43,7 +49,7 @@ public class FragmentConcert extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_concert, container, false);
 
-        concertAdapter = new ConcertAdapter(view.getContext(), musicianImage, musicianName);
+        concertAdapter = new ConcertAdapter(view.getContext(), musicianImage, musicianName); // 그리드뷰 어댑터 연결
 
         textView = view.findViewById(R.id.concertDate);
         gridView = view.findViewById(R.id.gridViewConcert);
@@ -55,16 +61,18 @@ public class FragmentConcert extends Fragment {
         initSpinner(spinnerMonth, month); // month
         initSpinner(spinnerDay, dayAugust); // day
 
-        spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // month 스피너 리스너
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) { // month를 선택하면 day가 바뀜
                 switch (position) {
                     case 0:
+                        initSpinner(spinnerDay, dayMarch);
                         break;
                     case 1:
+                        initSpinner(spinnerDay, dayApril);
                         break;
                     case 2:
-
+                        initSpinner(spinnerDay, dayMay);
                         break;
                     case 3:
                         initSpinner(spinnerDay, dayJune);
@@ -78,7 +86,7 @@ public class FragmentConcert extends Fragment {
                     case 6:
                         initSpinner(spinnerDay, daySeptember);
                         break;
-                    case 7:
+                    case 7: // 10월
 
                         break;
                     default:
@@ -87,12 +95,12 @@ public class FragmentConcert extends Fragment {
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onNothingSelected(AdapterView<?> adapterView) { // 아무것도 선택 안했을 때
 
             }
         });
 
-        spinnerDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinnerDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // day 스피너 리스너
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
                 textView.setText(dayList.get(position));
@@ -108,7 +116,7 @@ public class FragmentConcert extends Fragment {
     }
 
     public void initSpinner(Spinner spinner, String[] date) { // 스피너 초기화 함수 // 나중에 서버에서 데이터 긁어 오면 됨
-        ArrayAdapter<String> adapter = null; // 스피너에 뿌려질 Array형식의 Data를 담을 Adapter
+        ArrayAdapter<String> adapter; // 스피너에 뿌려질 Array형식의 Data를 담을 Adapter
 
         if (date == month) {
             for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
@@ -117,15 +125,12 @@ public class FragmentConcert extends Fragment {
             adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, monthList); // 어댑터 생성
         }
         else {
-            if (dayList.size() > 0) {
-                dayList.clear();
+            dayList.clear();
+
+            for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
+                dayList.add(date[i]);
             }
-            if (dayList.size() == 0) {
-                for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
-                    dayList.add(date[i]);
-                }
-                adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, dayList);
-            }
+            adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, dayList);
         }
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

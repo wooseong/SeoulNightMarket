@@ -10,7 +10,7 @@ import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.MainAdapter;
 
 public class MainActivity extends AppCompatActivity {
-    public int[] nightMarket = {R.drawable.order, R.drawable.home_banpo, R.drawable.home_ddp, R.drawable.home_yyd, R.drawable.home_cgc, R.drawable.home_cggj};
+    public int[] nightMarket = {R.drawable.order, R.drawable.home_yyd, R.drawable.home_ddp, R.drawable.home_banpo, R.drawable.home_cgc, R.drawable.home_cggj};
     public GridView gridView;
     MainAdapter mainAdapter;
 
