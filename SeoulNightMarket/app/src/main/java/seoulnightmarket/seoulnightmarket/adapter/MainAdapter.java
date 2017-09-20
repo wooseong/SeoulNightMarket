@@ -9,9 +9,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import seoulnightmarket.seoulnightmarket.R;
-import seoulnightmarket.seoulnightmarket.etc.AreaInformationWithTabBar;
-import seoulnightmarket.seoulnightmarket.etc.LoginActivity;
-import seoulnightmarket.seoulnightmarket.etc.NumberTicketActivity;
+import seoulnightmarket.seoulnightmarket.Activity.AreaInformationWithTabBar;
+import seoulnightmarket.seoulnightmarket.Activity.LoginActivity;
+import seoulnightmarket.seoulnightmarket.Activity.NumberTicketActivity;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
 /**
  * Created by Yookmoonsu on 2017-09-14.
@@ -21,6 +22,7 @@ public class MainAdapter extends BaseAdapter {
     private Context context;
     private int[] image;
     private boolean login = false;
+    private String region;
 
     public MainAdapter(Context context, int[] image) {
         this.context = context;
@@ -68,7 +70,19 @@ public class MainAdapter extends BaseAdapter {
                         context.startActivity(new Intent(context, NumberTicketActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 로그인 상태일때 번호표 화면으로 이동
                     }
                 }
-                else {
+                else if (position == 1 || position == 2 || position == 3){
+                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                    region = "noCheonggye";
+                    Singleton.getInstance().setRegion(region);
+                }
+                else if (position == 4){
+                    region = "Cheonggye";
+                    Singleton.getInstance().setRegion(region);
+                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                }
+                else if (position == 5) {
+                    region = "Plaza";
+                    Singleton.getInstance().setRegion(region);
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
                 }
             }

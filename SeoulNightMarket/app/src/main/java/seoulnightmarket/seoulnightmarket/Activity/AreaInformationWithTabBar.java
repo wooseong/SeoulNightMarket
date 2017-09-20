@@ -1,4 +1,4 @@
-package seoulnightmarket.seoulnightmarket.etc;
+package seoulnightmarket.seoulnightmarket.Activity;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -22,14 +22,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentConcert;
+import seoulnightmarket.seoulnightmarket.fragment.FragmentConcertCheonggye;
+import seoulnightmarket.seoulnightmarket.fragment.FragmentConcertPlaza;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentDirections;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentIntroduction;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentMarket;
 
 public class AreaInformationWithTabBar extends AppCompatActivity {
-
     private DrawerLayout mDrawerLayout;
+    private String region;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        region = Singleton.getInstance().getRegion();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Set Collapsing Toolbar layout to the screen
@@ -87,10 +92,22 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
         Adapter adapter = new Adapter(getSupportFragmentManager());
+
         adapter.addFragment(new FragmentIntroduction(), "소개");
         adapter.addFragment(new FragmentMarket(), "야시장");
-        adapter.addFragment(new FragmentConcert(), "공연");
+
+        if (region.equals("noCheonggye")) {
+            adapter.addFragment(new FragmentConcert(), "공연");
+        }
+        else if (region.equals("Cheonggye")) {
+            adapter.addFragment(new FragmentConcertCheonggye(), "공연");
+        }
+        else if (region.equals("Plaza")) {
+            adapter.addFragment(new FragmentConcertPlaza(), "공연");
+        }
+
         adapter.addFragment(new FragmentDirections(), "오시는길");
+
         viewPager.setAdapter(adapter);
     }
 

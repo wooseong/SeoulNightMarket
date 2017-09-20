@@ -70,6 +70,8 @@
                 android:layout_height="40dp"
                 android:layout_gravity="right|bottom"
                 android:layout_marginBottom="50dp"
+                android:background="#00ff0000"
+                android:textColor="@color/md_black_1000"
                 android:onClick="btnOrder"
                 android:text="번호표 받기"/>
 

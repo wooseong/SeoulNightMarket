@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".etc.MainActivity"
+            android:name=".Activity.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".etc.AreaInformationWithTabBar"
+            android:name=".Activity.AreaInformationWithTabBar"
             android:theme="@style/TabBarTheme" />
 
         <fragment android:name=".fragment.FragmentIntroduction" />
@@ -40,16 +40,18 @@
         <fragment android:name=".fragment.FragmentDirections" />
 
         <activity
-            android:name=".etc.DetailActivity"
-            android:parentActivityName=".etc.AreaInformationWithTabBar">
+            android:name=".Activity.DetailActivity"
+            android:parentActivityName=".Activity.AreaInformationWithTabBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".etc.AreaInformationWithTabBar" />
+                android:value=".Activity.AreaInformationWithTabBar" />
         </activity>
-        <activity android:name=".etc.NumberTicketActivity" />
-        <activity android:name=".etc.LoginActivity" />
-        <activity android:name=".etc.MembershipJoinActivity" />
-        <activity android:name=".etc.HandMadeActivity"></activity>
+        <activity android:name=".Activity.NumberTicketActivity" />
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.MembershipJoinActivity" />
+        <activity android:name=".Activity.HandMadeActivity" />
+        <activity android:name=".fragment.FragmentConcertCheonggye" />
+        <activity android:name=".fragment.FragmentConcertPlaza"></activity>
     </application>
 
 </manifest>

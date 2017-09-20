@@ -1,4 +1,4 @@
-package seoulnightmarket.seoulnightmarket.etc;
+package seoulnightmarket.seoulnightmarket.Activity;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;

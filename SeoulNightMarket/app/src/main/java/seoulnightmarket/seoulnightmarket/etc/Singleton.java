@@ -6,6 +6,7 @@ package seoulnightmarket.seoulnightmarket.etc;
 
 public class Singleton {
     private String type;
+    private String region;
     private static Singleton instance = null;
 
     public String getType() {
@@ -14,6 +15,14 @@ public class Singleton {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public static synchronized Singleton getInstance() {

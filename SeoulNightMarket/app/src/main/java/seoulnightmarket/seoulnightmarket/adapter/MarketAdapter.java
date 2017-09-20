@@ -11,8 +11,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import seoulnightmarket.seoulnightmarket.R;
-import seoulnightmarket.seoulnightmarket.etc.DetailActivity;
-import seoulnightmarket.seoulnightmarket.etc.HandMadeActivity;
+import seoulnightmarket.seoulnightmarket.Activity.DetailActivity;
+import seoulnightmarket.seoulnightmarket.Activity.HandMadeActivity;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
 public class MarketAdapter extends BaseAdapter {
