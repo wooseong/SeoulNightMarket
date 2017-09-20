@@ -11,33 +11,26 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentInformation;
-import seoulnightmarket.seoulnightmarket.fragment.FragmentMenu;
+import seoulnightmarket.seoulnightmarket.fragment.FragmentProduct;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
 
-public class DetailActivity extends AppCompatActivity {
-    private int orderNumber;
-    private TextView currentOrderNumber;
-    private int count = 0;
+public class HandMadeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
+        setContentView(R.layout.activity_hand_made);
+
         // Adding Toolbar to Main screen
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        currentOrderNumber = (TextView) findViewById(R.id.currentOrderNumber);
 
         //////////
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -68,9 +61,9 @@ public class DetailActivity extends AppCompatActivity {
 
     // Add Fragments to Tabs
     private void setupViewPager(ViewPager viewPager) {
-        Adapter adapter = new Adapter(getSupportFragmentManager());
+        HandMadeActivity.Adapter adapter = new Adapter(getSupportFragmentManager());
 
-        adapter.addFragment(new FragmentMenu(), "메뉴");
+        adapter.addFragment(new FragmentProduct(), "상품");
         adapter.addFragment(new FragmentInformation(), "정보");
         adapter.addFragment(new FragmentReview(), "리뷰");
 
@@ -114,17 +107,5 @@ public class DetailActivity extends AppCompatActivity {
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
         return super.onOptionsItemSelected(item);
-    }
-
-    public void btnOrder(View v) { // 번호표 뽑기 버튼 이벤트
-        if (count == 0) {
-            orderNumber = Integer.parseInt((String) currentOrderNumber.getText());
-            orderNumber++;
-            currentOrderNumber.setText(Integer.toString(orderNumber));
-            count++;
-        }
-        else {
-            Toast.makeText(getApplicationContext(), "이미 번호표를 발급 받았습니다", Toast.LENGTH_SHORT).show();
-        }
     }
 }

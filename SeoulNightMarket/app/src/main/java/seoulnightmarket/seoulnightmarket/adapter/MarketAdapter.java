@@ -10,14 +10,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import seoulnightmarket.seoulnightmarket.etc.DetailActivity;
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.etc.DetailActivity;
+import seoulnightmarket.seoulnightmarket.etc.HandMadeActivity;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
 public class MarketAdapter extends BaseAdapter {
-
     private Context context;
     private int[] image;
     private String[] text;
+    private String type;
 
     public MarketAdapter(Context context, int[] image, String[] text) {
         this.context = context;
@@ -61,7 +63,14 @@ public class MarketAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Toast.makeText(context, "You Clicked " + text[position], Toast.LENGTH_SHORT).show();
-                context.startActivity(new Intent(context, DetailActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                type = Singleton.getInstance().getType();
+
+                if (type == "foodTruck") {
+                    context.startActivity(new Intent(context, DetailActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                }
+                else if (type == "handMade") {
+                    context.startActivity(new Intent(context, HandMadeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                }
             }
         });
 

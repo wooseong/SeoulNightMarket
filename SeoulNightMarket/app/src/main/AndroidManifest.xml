@@ -48,7 +48,8 @@
         </activity>
         <activity android:name=".etc.NumberTicketActivity" />
         <activity android:name=".etc.LoginActivity" />
-        <activity android:name=".etc.MembershipJoinActivity"></activity>
+        <activity android:name=".etc.MembershipJoinActivity" />
+        <activity android:name=".etc.HandMadeActivity"></activity>
     </application>
 
 </manifest>
