@@ -17,7 +17,7 @@ import seoulnightmarket.seoulnightmarket.etc.Singleton;
 public class FragmentMarket extends Fragment {
     public int foodTruck[] = {R.drawable.herotruck, R.drawable.shimlimphinhiya, R.drawable.chickenfit, R.drawable.imsteak, R.drawable.jayfresh, R.drawable.pandagrill};
     public int handMade[] = {R.drawable.andro, R.drawable.babo, R.drawable.bom, R.drawable.soso};
-    static String type = "foodTruck";
+    private String type = "foodTruck";
     private String region = "";
     public MarketAdapter adapter;
     public GridView gridView;
@@ -127,6 +127,7 @@ public class FragmentMarket extends Fragment {
                         default:
                             break;
                     }
+
                     adapter = new MarketAdapter(getActivity().getApplicationContext(), foodTruck, foodTruckName);
                     gridView.invalidateViews();
                     gridView.setAdapter(adapter);

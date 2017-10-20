@@ -51,7 +51,8 @@
         <activity android:name=".Activity.MembershipJoinActivity" />
         <activity android:name=".Activity.HandMadeActivity" />
         <activity android:name=".fragment.FragmentConcertCheonggye" />
-        <activity android:name=".fragment.FragmentConcertPlaza"></activity>
+        <activity android:name=".fragment.FragmentConcertPlaza" />
+        <activity android:name=".Activity.SellerActivity"></activity>
     </application>
 
 </manifest>

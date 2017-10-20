@@ -5,25 +5,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/background"
     tools:context="seoulnightmarket.seoulnightmarket.Activity.MembershipJoinActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="170dp"
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:textColor="@color/md_white_1000"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:textSize="20dp"
             android:text="핸드폰 번호"/>
 
         <EditText
             android:id="@+id/phoneNumber"
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:textColor="@color/md_white_1000"
+            android:textColorHint="@color/md_white_1000"
             android:hint="-없이 입력"/>
     </LinearLayout>
 
@@ -33,16 +40,22 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:textColor="@color/md_white_1000"
+            android:textSize="20dp"
+            android:textAlignment="center"
             android:text="비밀번호"/>
 
         <EditText
             android:id="@+id/password"
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_weight="1"
+            android:textColor="@color/md_white_1000"
+            android:textColorHint="@color/md_white_1000"
             android:hint="문자 또는 숫자"/>
     </LinearLayout>
 
@@ -52,16 +65,22 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:textColor="@color/md_white_1000"
+            android:textSize="20dp"
+            android:textAlignment="center"
             android:text="비밀번호 확인"/>
 
         <EditText
             android:id="@+id/repassword"
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
+            android:layout_marginRight="40dp"
+            android:textColor="@color/md_white_1000"
+            android:textColorHint="@color/md_white_1000"
             android:hint="비밀번호 재확인"/>
     </LinearLayout>
 
@@ -71,25 +90,32 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
+            android:layout_weight="1"
+            android:textColor="@color/md_white_1000"
+            android:textSize="20dp"
+            android:textAlignment="center"
             android:text="닉네임"/>
 
         <EditText
             android:id="@+id/nickname"
-            android:layout_width="180dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="55dp"
+            android:layout_weight="1"
+            android:layout_marginRight="40dp"
+            android:textColorHint="@color/md_white_1000"
+            android:textColor="@color/md_white_1000"
             android:hint="영어 또는 한글"/>
     </LinearLayout>
 
     <Button
         android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_gravity="center"
+        android:background="@drawable/checkmark"
         android:onClick="btnConfirm"
-        android:text="확인"/>
+        android:text=""/>
 
 </LinearLayout>

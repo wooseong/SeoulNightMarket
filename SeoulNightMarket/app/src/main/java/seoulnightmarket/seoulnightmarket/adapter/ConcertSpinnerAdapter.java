@@ -31,7 +31,8 @@ public class ConcertSpinnerAdapter extends ArrayAdapter<String> {
 
         TextView tv = (TextView) convertView.findViewById(android.R.id.text1);
         tv.setText(items[position]);
-        tv.setTextColor(Color.BLACK);
+        tv.setTextColor(Color.WHITE);
+        tv.setBackgroundColor(Color.parseColor("#FFA726"));
         tv.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
         tv.setTextSize(20);
 
@@ -48,7 +49,6 @@ public class ConcertSpinnerAdapter extends ArrayAdapter<String> {
         TextView tv = (TextView) convertView.findViewById(android.R.id.text1);
         tv.setText(items[position]);
         tv.setTextColor(Color.BLACK);
-        tv.setBackgroundColor(Color.parseColor("#FFA726"));
         tv.setTextSize(15);
 
         return convertView;
