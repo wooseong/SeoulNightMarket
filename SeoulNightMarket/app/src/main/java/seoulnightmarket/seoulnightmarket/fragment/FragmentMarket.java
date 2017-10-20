@@ -1,5 +1,6 @@
 package seoulnightmarket.seoulnightmarket.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,13 +11,14 @@ import android.widget.Button;
 import android.widget.GridView;
 
 import seoulnightmarket.seoulnightmarket.R;
-import seoulnightmarket.seoulnightmarket.etc.Singleton;
 import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
 public class FragmentMarket extends Fragment {
     public int foodTruck[] = {R.drawable.herotruck, R.drawable.shimlimphinhiya, R.drawable.chickenfit, R.drawable.imsteak, R.drawable.jayfresh, R.drawable.pandagrill};
     public int handMade[] = {R.drawable.andro, R.drawable.babo, R.drawable.bom, R.drawable.soso};
     static String type = "foodTruck";
+    private String region = "";
     public MarketAdapter adapter;
     public GridView gridView;
     public String foodTruckName[] = {"hero truck", "쉬림프컵히야", "치킨핏", "아임 스테이크", "제이프레시", "팬더그릴"};
@@ -45,7 +47,45 @@ public class FragmentMarket extends Fragment {
 
         Singleton.getInstance().setType(type);
 
-        Button btnFoodTruck = view.findViewById(R.id.foodTruck);
+        final Button btnFoodTruck = view.findViewById(R.id.foodTruck);
+        final Button btnHandMade = view.findViewById(R.id.handMade);
+
+        region = Singleton.getInstance().getRegion();
+        switch (region) {
+            case "Yeouido":
+                btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
+                btnFoodTruck.setBackgroundResource(R.color.md_deep_orange_400);
+                btnHandMade.setTextColor(Color.parseColor("#000000"));
+                btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                break;
+            case "DDP":
+                btnFoodTruck.setTextColor(Color.parseColor("#FFEB3B"));
+                btnFoodTruck.setBackgroundResource(R.color.md_deep_purple_400);
+                btnHandMade.setTextColor(Color.parseColor("#000000"));
+                btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                break;
+            case "Banpo":
+                btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                btnFoodTruck.setBackgroundResource(R.color.md_yellow_500);
+                btnHandMade.setTextColor(Color.parseColor("#000000"));
+                btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                break;
+            case "Cheonggyecheon":
+                btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                btnFoodTruck.setBackgroundResource(R.color.md_light_green_500);
+                btnHandMade.setTextColor(Color.parseColor("#000000"));
+                btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                break;
+            case "CheonggyePlaza":
+                btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                btnFoodTruck.setBackgroundResource(R.color.md_blue_400);
+                btnHandMade.setTextColor(Color.parseColor("#000000"));
+                btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                break;
+            default:
+                break;
+        }
+
         btnFoodTruck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,6 +93,40 @@ public class FragmentMarket extends Fragment {
                 Singleton.getInstance().setType(type);
 
                 if (type == "foodTruck") {
+                    switch (region) {
+                        case "Yeouido":
+                            btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_deep_orange_400);
+                            btnHandMade.setTextColor(Color.parseColor("#000000"));
+                            btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                            break;
+                        case "DDP":
+                            btnFoodTruck.setTextColor(Color.parseColor("#FFEB3B"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_deep_purple_400);
+                            btnHandMade.setTextColor(Color.parseColor("#000000"));
+                            btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                            break;
+                        case "Banpo":
+                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_yellow_500);
+                            btnHandMade.setTextColor(Color.parseColor("#000000"));
+                            btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                            break;
+                        case "Cheonggyecheon":
+                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_light_green_500);
+                            btnHandMade.setTextColor(Color.parseColor("#000000"));
+                            btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                            break;
+                        case "CheonggyePlaza":
+                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_blue_400);
+                            btnHandMade.setTextColor(Color.parseColor("#000000"));
+                            btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                            break;
+                        default:
+                            break;
+                    }
                     adapter = new MarketAdapter(getActivity().getApplicationContext(), foodTruck, foodTruckName);
                     gridView.invalidateViews();
                     gridView.setAdapter(adapter);
@@ -60,7 +134,6 @@ public class FragmentMarket extends Fragment {
             }
         });
 
-        Button btnHandMade = view.findViewById(R.id.handMade);
         btnHandMade.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,6 +141,41 @@ public class FragmentMarket extends Fragment {
                 Singleton.getInstance().setType(type);
 
                 if (type == "handMade") {
+                    switch (region) {
+                        case "Yeouido":
+                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_white_1000);
+                            btnHandMade.setTextColor(Color.parseColor("#ffffff"));
+                            btnHandMade.setBackgroundResource(R.color.md_deep_orange_400);
+                            break;
+                        case "DDP":
+                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_white_1000);
+                            btnHandMade.setTextColor(Color.parseColor("#FFEB3B"));
+                            btnHandMade.setBackgroundResource(R.color.md_deep_purple_400);
+                            break;
+                        case "Banpo":
+                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_white_1000);
+                            btnHandMade.setTextColor(Color.parseColor("#000000"));
+                            btnHandMade.setBackgroundResource(R.color.md_yellow_500);
+                            break;
+                        case "Cheonggyecheon":
+                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_white_1000);
+                            btnHandMade.setTextColor(Color.parseColor("#000000"));
+                            btnHandMade.setBackgroundResource(R.color.md_light_green_500);
+                            break;
+                        case "CheonggyePlaza":
+                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                            btnFoodTruck.setBackgroundResource(R.color.md_white_1000);
+                            btnHandMade.setTextColor(Color.parseColor("#000000"));
+                            btnHandMade.setBackgroundResource(R.color.md_blue_400);
+                            break;
+                        default:
+                            break;
+                    }
+
                     adapter = new MarketAdapter(getActivity().getApplicationContext(), handMade, handMadeName);
                     gridView.invalidateViews();
                     gridView.setAdapter(adapter);

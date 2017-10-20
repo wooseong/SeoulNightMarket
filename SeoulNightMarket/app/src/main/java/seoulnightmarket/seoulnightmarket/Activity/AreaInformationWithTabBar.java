@@ -96,13 +96,13 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         adapter.addFragment(new FragmentIntroduction(), "소개");
         adapter.addFragment(new FragmentMarket(), "야시장");
 
-        if (region.equals("noCheonggye")) {
+        if (region.equals("Yeouido") || region.equals("DDP") || region.equals("Banpo")) {
             adapter.addFragment(new FragmentConcert(), "공연");
         }
-        else if (region.equals("Cheonggye")) {
+        else if (region.equals("Cheonggyecheon")) {
             adapter.addFragment(new FragmentConcertCheonggye(), "공연");
         }
-        else if (region.equals("Plaza")) {
+        else if (region.equals("CheonggyePlaza")) {
             adapter.addFragment(new FragmentConcertPlaza(), "공연");
         }
 

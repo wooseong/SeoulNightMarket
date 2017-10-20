@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.ConcertAdapter;
+import seoulnightmarket.seoulnightmarket.adapter.ConcertSpinnerAdapter;
 
 public class FragmentConcert extends Fragment {
     public int[] musicianImage = {R.drawable.ddalgi, R.drawable.gonayoung, R.drawable.kichin};
@@ -35,6 +35,7 @@ public class FragmentConcert extends Fragment {
     String[] dayJuly = {"7일", "8일", "14일", "15일", "21일", "22일", "28일", "29일"};
     String[] dayAugust = {"4일", "5일", "11일", "12일", "18일", "19일", "25일", "26일"};
     String[] daySeptember = {"1일", "2일", "8일", "9일", "15일", "16일", "22일", "23일", "29일", "30일"};
+    String[] dayOctober = {"13일", "14일", "20일", "21일", "27일", "28일"};
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class FragmentConcert extends Fragment {
         concertAdapter = new ConcertAdapter(view.getContext(), musicianImage, musicianName); // 그리드뷰 어댑터 연결
 
         textView = view.findViewById(R.id.concertDate);
+
         gridView = view.findViewById(R.id.gridViewConcert);
         gridView.setAdapter(concertAdapter);
 
@@ -87,7 +89,7 @@ public class FragmentConcert extends Fragment {
                         initSpinner(spinnerDay, daySeptember);
                         break;
                     case 7: // 10월
-
+                        initSpinner(spinnerDay, dayOctober);
                         break;
                     default:
                         break;
@@ -116,24 +118,27 @@ public class FragmentConcert extends Fragment {
     }
 
     public void initSpinner(Spinner spinner, String[] date) { // 스피너 초기화 함수 // 나중에 서버에서 데이터 긁어 오면 됨
-        ArrayAdapter<String> adapter; // 스피너에 뿌려질 Array형식의 Data를 담을 Adapter
+//        ArrayAdapter<String> adapter; // 스피너에 뿌려질 Array형식의 Data를 담을 Adapter
+        ConcertSpinnerAdapter concertSpinnerAdapter;
 
         if (date == month) {
             for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
                 monthList.add(date[i]);
             }
-            adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, monthList); // 어댑터 생성
-        }
-        else {
+//            adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item_custom, monthList); // 어댑터 생성
+            concertSpinnerAdapter = new ConcertSpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, month);
+        } else {
             dayList.clear();
 
             for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
                 dayList.add(date[i]);
             }
-            adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, dayList);
+//            adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, dayList);
+            concertSpinnerAdapter = new ConcertSpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, date);
         }
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
+        concertSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        spinner.setAdapter(adapter);
+        spinner.setAdapter(concertSpinnerAdapter);
     }
 }

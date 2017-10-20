@@ -2,6 +2,7 @@ package seoulnightmarket.seoulnightmarket.Activity;
 
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -26,8 +27,9 @@ import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
 
 public class DetailActivity extends AppCompatActivity {
     private int orderNumber;
-    private TextView currentOrderNumber;
     private int count = 0;
+    private TextView currentOrderNumber;
+    private CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class DetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         currentOrderNumber = (TextView) findViewById(R.id.currentOrderNumber);
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         // Set Collapsing Toolbar layout to the screen
@@ -112,6 +115,7 @@ public class DetailActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
+
         return super.onOptionsItemSelected(item);
     }
 

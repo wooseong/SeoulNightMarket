@@ -70,20 +70,30 @@ public class MainAdapter extends BaseAdapter {
                         context.startActivity(new Intent(context, NumberTicketActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 로그인 상태일때 번호표 화면으로 이동
                     }
                 }
-                else if (position == 1 || position == 2 || position == 3){
-                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
-                    region = "noCheonggye";
+                else if (position == 1){
+                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 시장 상세 화면으로 이동
+                    region = "Yeouido";
+                    Singleton.getInstance().setRegion(region);
+                }
+                else if (position == 2) {
+                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    region = "DDP";
+                    Singleton.getInstance().setRegion(region);
+                }
+                else if (position == 3) {
+                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+                    region = "Banpo";
                     Singleton.getInstance().setRegion(region);
                 }
                 else if (position == 4){
-                    region = "Cheonggye";
+                    region = "Cheonggyecheon";
                     Singleton.getInstance().setRegion(region);
-                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
                 else if (position == 5) {
-                    region = "Plaza";
+                    region = "CheonggyePlaza";
                     Singleton.getInstance().setRegion(region);
-                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
+                    context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
             }
         });

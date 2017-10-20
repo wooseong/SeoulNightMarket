@@ -17,23 +17,39 @@
         android:text="공연안내"/>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
-        <Spinner
-            android:id="@+id/spinnerMonth"
-            android:layout_width="150dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:textAlignment="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
-        <Spinner
-            android:id="@+id/spinnerDay"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="10dp"
-            android:textAlignment="center"/>
+            <Spinner
+                android:id="@+id/spinnerMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+            <Spinner
+                android:id="@+id/spinnerDay"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="5dp"
+
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+
     </LinearLayout>
 
     <TextView
