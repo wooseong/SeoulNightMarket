@@ -23,9 +23,9 @@ import seoulnightmarket.seoulnightmarket.adapter.ReviewAdapter;
 import seoulnightmarket.seoulnightmarket.adapter.ReviewSpinnerAdapter;
 
 public class FragmentReview extends Fragment {
-    private String[] nickName = {"내이름은 효스완스", "감태균입니다"};
+    private String[] nickName = {"내이름은 효스완스", "감태균입니다"}; // 서버에서 닉네임과 리뷰 받아옴
     private String[] review = {"치킨이 정말 끝내줘요", "나는 엔샵 귀염둥이"};
-    private String today;
+    private String today; // 리뷰 쓴 날짜
     private int[] flags = {R.drawable.onestar, R.drawable.twostar, R.drawable.threestar, R.drawable.fourstar, R.drawable.fivestar};
 
     @Override
@@ -45,14 +45,14 @@ public class FragmentReview extends Fragment {
         ListView listView = view.findViewById(R.id.reviewListView);
         listView.setAdapter(adapter);
 
-        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.hyowan), nickName[0],
-                ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.fivestar), today, review[0]);
-        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.taegyun), nickName[1],
-                ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.fivestar), today, review[1]);
+        for (int i = 0; i < nickName.length; i++) {
+            adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.user), nickName[i],
+                    ContextCompat.getDrawable(getActivity().getApplicationContext(), flags[i]), today, review[i]);
+        }
 
         final EditText editText = view.findViewById(R.id.editText);
-
         final Spinner spinnerStar = view.findViewById(R.id.spinnerStar);
+
         ReviewSpinnerAdapter reviewSpinnerAdapter = new ReviewSpinnerAdapter(getActivity(), flags);
         spinnerStar.setAdapter(reviewSpinnerAdapter);
 
