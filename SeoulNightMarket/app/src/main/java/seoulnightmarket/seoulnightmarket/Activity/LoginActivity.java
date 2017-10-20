@@ -40,7 +40,16 @@ public class LoginActivity extends AppCompatActivity {
         else { // 데이터베이스에 있는 회원 아이디와 비밀번호가 일치하면
             Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
 
-            startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
+//            if () { // 판매자
+//                startActivity(new Intent(LoginActivity.this, SellerActivity.class));
+//            }
+//
+//            else if () { // 구매자
+//                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
+//            }
+
+            startActivity(new Intent(LoginActivity.this, SellerActivity.class));
+//            startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
         }
     }
 
