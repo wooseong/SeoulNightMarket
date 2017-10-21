@@ -31,6 +31,7 @@
             android:layout_weight="1"
             android:textColor="@color/md_white_1000"
             android:textColorHint="@color/md_white_1000"
+            android:inputType="number"
             android:hint="-없이 입력"/>
     </LinearLayout>
 

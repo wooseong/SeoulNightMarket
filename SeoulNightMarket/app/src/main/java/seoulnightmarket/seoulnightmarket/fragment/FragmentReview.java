@@ -23,10 +23,13 @@ import seoulnightmarket.seoulnightmarket.adapter.ReviewAdapter;
 import seoulnightmarket.seoulnightmarket.adapter.ReviewSpinnerAdapter;
 
 public class FragmentReview extends Fragment {
-    private String[] nickName = {"내이름은 효스완스", "감태균입니다"}; // 서버에서 닉네임과 리뷰 받아옴
+    private String[] nickName = {"내이름은 효스완스", "감태균입니다"}; // 서버에서 닉네임과 리뷰 쓴 날짜 리뷰 내용 받아옴
     private String[] review = {"치킨이 정말 끝내줘요", "나는 엔샵 귀염둥이"};
-    private String today; // 리뷰 쓴 날짜
+    private String[] reviewDate = {};
+    private String today;
+    private int[] users = {R.drawable.boy, R.drawable.girl, R.drawable.man};
     private int[] flags = {R.drawable.onestar, R.drawable.twostar, R.drawable.threestar, R.drawable.fourstar, R.drawable.fivestar};
+    private int imageCount = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -46,8 +49,14 @@ public class FragmentReview extends Fragment {
         listView.setAdapter(adapter);
 
         for (int i = 0; i < nickName.length; i++) {
-            adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.user), nickName[i],
-                    ContextCompat.getDrawable(getActivity().getApplicationContext(), flags[i]), today, review[i]);
+            if (imageCount < 3) {
+                adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), users[imageCount]), nickName[i],
+                        ContextCompat.getDrawable(getActivity().getApplicationContext(), flags[i]), today, review[i]);
+                imageCount++;
+            }
+            if (imageCount == 3) {
+                imageCount = 0;
+            }
         }
 
         final EditText editText = view.findViewById(R.id.editText);
@@ -74,6 +83,7 @@ public class FragmentReview extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(), editText.getText().toString(), Toast.LENGTH_SHORT).show();
+                // 닉네임, 날짜, 평점, 리뷰 서버에 전송
             }
         });
 

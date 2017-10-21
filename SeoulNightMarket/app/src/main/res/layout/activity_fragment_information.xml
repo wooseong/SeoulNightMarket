@@ -18,12 +18,21 @@
         android:textColor="@color/md_black_1000"
         android:text="야시장 순환 일정" />
 
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:mcv_showOtherDates="all"
+        app:mcv_selectionColor="#FF4081">
+    </com.prolificinteractive.materialcalendarview.MaterialCalendarView>
+
     <ListView
         android:id="@+id/informationlistview"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
     </ListView>
+
+
 
 </LinearLayout>
