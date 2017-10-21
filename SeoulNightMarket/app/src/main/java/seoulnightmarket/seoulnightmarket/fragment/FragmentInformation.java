@@ -28,8 +28,6 @@ import java.util.Date;
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.InformationAdapter;
 
-import static com.facebook.FacebookSdk.getApplicationContext;
-
 public class FragmentInformation extends Fragment {
     private ArrayList<String> regionList = new ArrayList<>();
     private String[] region = {"청계천", "여의도", "DDP", "반포", "여의도", "DDP", "반포", "청계천", "반포", "여의도"};
@@ -60,13 +58,12 @@ public class FragmentInformation extends Fragment {
         adapter.addItem("10회차", "09.25-10.22", region[9]);
 
         MaterialCalendarView calendarView = view.findViewById(R.id.calendarView);
-
         calendarView.addDecorators(new FridayDecorator(), new SaturdayDecorator(), new OneDayDecorator());
 
         calendarView.setOnDateChangedListener(new OnDateSelectedListener() { // 달력 클릭 이벤트
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-                Toast.makeText(getApplicationContext(), String.valueOf(date.getMonth() + 1) + "월" + String.valueOf(date.getDay()) + "일", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), String.valueOf(date.getMonth() + 1) + "월" + String.valueOf(date.getDay()) + "일", Toast.LENGTH_SHORT).show();
             }
         });
         return view;
@@ -108,7 +105,7 @@ public class FragmentInformation extends Fragment {
 
         @Override
         public void decorate(DayViewFacade view) {
-            view.addSpan(new ForegroundColorSpan(Color.BLUE));
+            view.addSpan(new ForegroundColorSpan(Color.RED));
         }
     }
 
@@ -128,7 +125,7 @@ public class FragmentInformation extends Fragment {
         public void decorate(DayViewFacade view) {
             view.addSpan(new StyleSpan(Typeface.BOLD));
             view.addSpan(new RelativeSizeSpan(1.4f));
-            view.addSpan(new ForegroundColorSpan(Color.RED));
+            view.addSpan(new ForegroundColorSpan(Color.BLUE));
         }
 
         public void setDate(Date date) {

@@ -14,15 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Activity.MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/SplashTheme">
+            android:name=".etc.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.MainActivity"/>
         <activity
             android:name=".Activity.AreaInformationWithTabBar"
             android:theme="@style/TabBarTheme" />
@@ -50,8 +49,8 @@
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.MembershipJoinActivity" />
         <activity android:name=".Activity.HandMadeActivity" />
-        <activity android:name=".fragment.FragmentConcertCheonggye" />
-        <activity android:name=".fragment.FragmentConcertPlaza" />
+        <fragment android:name=".fragment.FragmentConcertCheonggye" />
+        <fragment android:name=".fragment.FragmentConcertPlaza" />
         <activity android:name=".Activity.SellerActivity"></activity>
     </application>
 

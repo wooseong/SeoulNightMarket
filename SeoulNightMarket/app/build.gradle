@@ -32,5 +32,6 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:26.+'
     compile 'com.facebook.android:facebook-android-sdk:4.8.2'
     compile 'com.prolificinteractive:material-calendarview:1.4.3'
+    compile 'gr.pantrif:easy-android-splash-screen:0.0.1'
     testCompile 'junit:junit:4.12'
 }
