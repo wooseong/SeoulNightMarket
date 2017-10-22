@@ -30,9 +30,7 @@ public class MainAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() {
-        return image.length;
-    } // 그리드뷰에 출력할 목록 갯수
+    public int getCount() { return image.length; } // 그리드뷰에 출력할 목록 갯수
 
     @Override
     public Object getItem(int position) {
