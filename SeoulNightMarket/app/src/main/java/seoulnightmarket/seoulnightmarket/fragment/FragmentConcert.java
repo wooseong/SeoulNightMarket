@@ -133,15 +133,11 @@ public class FragmentConcert extends Fragment
                                 }
                             }
 
-                            Log.e("Test", selectedDate);
-                            Log.e("Test", serverDate);
-
                             uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/performance")
                                     .buildUpon()
                                     .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
                                     .appendQueryParameter("date", serverDate)
                                     .build().toString();
-                            Log.e("URL", uri);
                             HttpAsyncTask httpAsyncTask = new HttpAsyncTask("공연");
                             httpAsyncTask.execute(uri);
 
