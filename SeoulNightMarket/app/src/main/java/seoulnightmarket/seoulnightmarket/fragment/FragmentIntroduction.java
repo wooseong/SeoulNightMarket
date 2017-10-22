@@ -1,8 +1,11 @@
 package seoulnightmarket.seoulnightmarket.fragment;
 
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,44 +13,139 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.IntroductionAdapter;
+import seoulnightmarket.seoulnightmarket.etc.HttpTask;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentIntroduction extends Fragment {
+public class FragmentIntroduction extends Fragment
+{
+    String region;
+    String uri;
+    View view ;
+    IntroductionAdapter adapter;
+    ListView listView;
+    View header; // 리스트뷰 헤더
+    TextView textView0 ;
+    TextView textView1 ;
+    TextView textView2 ;
+    TextView textView3 ;
+    TextView textView4 ;
+    ImageView imageView;
+    View footer;
+    ImageView imageView1;
+    ArrayList<String> adapterHead = new ArrayList<String>();
+    ArrayList<String> adapterString = new ArrayList<String>();
 
     @Override
-    public void onCreate(Bundle savedInstanceState) { // Fragment가 생성될때 호출
+    public void onCreate(Bundle savedInstanceState)
+    { // Fragment가 생성될때 호출
         super.onCreate(savedInstanceState);
     }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
-        View view = inflater.inflate(R.layout.activity_fragment_introduction, null);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    { // onCreate 후에 화면을 구성할때 호출
+        view = inflater.inflate(R.layout.activity_fragment_introduction, null);
 
-        IntroductionAdapter adapter = new IntroductionAdapter();
-        ListView listView = view.findViewById(R.id.introductionListView);
-        listView.setAdapter(adapter);
+        listView = view.findViewById(R.id.introductionListView);
 
-        View header = getLayoutInflater(savedInstanceState).inflate(R.layout.introductionheader, null, false); // 리스트뷰 헤더
+        header = getLayoutInflater(savedInstanceState).inflate(R.layout.introductionheader, null, false); // 리스트뷰 헤더
         listView.addHeaderView(header);
 
-        TextView textView0 = view.findViewById(R.id.introductionText0);
-        TextView textView1 = view.findViewById(R.id.introductionText1);
-        TextView textView2 = view.findViewById(R.id.introductionText2);
-        TextView textView3 = view.findViewById(R.id.introductionText3);
-        TextView textView4 = view.findViewById(R.id.introductionText4);
-        ImageView imageView = view.findViewById(R.id.introductionHeaderImage);
+        textView0 = view.findViewById(R.id.introductionText0);
+        textView1 = view.findViewById(R.id.introductionText1);
+        textView2 = view.findViewById(R.id.introductionText2);
+        textView3 = view.findViewById(R.id.introductionText3);
+        textView4 = view.findViewById(R.id.introductionText4);
+        imageView = view.findViewById(R.id.introductionHeaderImage);
 
-        View footer = getLayoutInflater(savedInstanceState).inflate(R.layout.introductionfooter, null, false); // 리스트뷰 푸터
+        footer = getLayoutInflater(savedInstanceState).inflate(R.layout.introductionfooter, null, false); // 리스트뷰 푸터
         listView.addFooterView(footer);
 
-        ImageView imageView1 = view.findViewById(R.id.introductionFooterImage);
+        imageView1 = view.findViewById(R.id.introductionFooterImage);
 
-        adapter.addItem("인포센터 ", getString(R.string.introduction));
-        adapter.addItem("푸드존 ", getString(R.string.introduction1));
-        adapter.addItem("셀러존 ", getString(R.string.introduction2));
+        // onCreate 후에 화면을 구성할때 호출
+        region = HttpTask.getInstance().regionTranslate(Singleton.getInstance().getRegion());
+
+        Singleton.getInstance().setServerRequest(false);
+        uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/intro")
+                .buildUpon()
+                .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
+                .build().toString();
+
+        HttpAsyncTask httpAsyncTask = new HttpAsyncTask("소개");
+        httpAsyncTask.execute(uri);
 
         return view;
+    }
+
+    public class HttpAsyncTask extends AsyncTask<String, Void, String>
+    {
+        int count;
+        int beforeIndex;
+        String type;
+
+        HttpAsyncTask(String type) { this.type = type; }
+
+        @Override
+        protected String doInBackground(String ...urls)
+        {
+            //urls[0] 은 URL 주소
+            return HttpTask.getInstance().GET(urls[0], type);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+            super.onPostExecute(result);
+
+            textView0.setText(Singleton.getInstance().getOutlineTitle());
+            textView1.setText(Singleton.getInstance().getOutlineSubtitle().replace("/", "\n"));
+            textView2.setText(Singleton.getInstance().getOutlineDescribe().replace("/", "\n"));
+            textView3.setText(Singleton.getInstance().getFormTitle());
+            textView4.setText(Singleton.getInstance().getFormSubtitle().replace("/", "\n"));
+            imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getOutlineSource()));
+            imageView1.setImageBitmap(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getFormSource()));
+
+            adapter = new IntroductionAdapter();
+
+            adapterHead.clear();
+            adapterString.clear();
+            count = 1;
+            beforeIndex = 0;
+
+            for(int i=0; i<Singleton.getInstance().getFormDescribe().length(); i++)
+            {
+                if(Singleton.getInstance().getFormDescribe().substring(i,i+1).equals("/"))
+                {
+                    if(count%2 ==1) {
+                        Log.e("Header", Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
+                        adapterHead.add(Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
+                    }
+                    else
+                    {
+                        Log.e("Describe", Singleton.getInstance().getFormDescribe().substring(beforeIndex,i));
+                        adapterString.add(Singleton.getInstance().getFormDescribe().substring(beforeIndex,i));
+                    }
+
+                    beforeIndex = i+1;
+                    count++;
+                }
+            }
+
+            for(int i=0; i<adapterHead.size(); i++)
+            {
+                adapter.addItem(adapterHead.get(i), adapterString.get(i).replace("=","\n"));
+            }
+
+            listView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+            listView.invalidateViews();
+        }
     }
 }

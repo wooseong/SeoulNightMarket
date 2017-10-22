@@ -16,6 +16,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 /**
  * Created by cjw94 on 2017-10-22.
@@ -24,7 +25,8 @@ import java.net.URLEncoder;
 public class HttpTask
 {
     private static HttpTask instance = null;
-    Bitmap bitmap;
+    private Bitmap bitmap;
+
 
     public static synchronized HttpTask getInstance()
     {
@@ -39,6 +41,7 @@ public class HttpTask
     {
         InputStream is = null;
         String result = "";
+        int count;
 
         try
         {
@@ -76,23 +79,38 @@ public class HttpTask
             switch(type)
             {
                 case "소개":
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        Singleton.getInstance().setOutlineTitle(posts.optJSONObject(i).getString("Outline_Title"));
+                        Singleton.getInstance().setOutlineSubtitle(posts.optJSONObject(i).getString("Outline_Subtitle"));
+                        Singleton.getInstance().setOutlineDescribe(posts.optJSONObject(i).getString("Outline_Describe"));
+                        Singleton.getInstance().setOutlineSource(posts.optJSONObject(i).getString("Outline_Source"));
+                        Singleton.getInstance().setFormTitle(posts.optJSONObject(i).getString("Form_Title"));
+                        Singleton.getInstance().setFormSubtitle(posts.optJSONObject(i).getString("Form_Subtitle"));
+                        Singleton.getInstance().setFormDescribe(posts.optJSONObject(i).getString("Form_Describe"));
+                        Singleton.getInstance().setFormSource(posts.optJSONObject(i).getString("Form_Source"));
+                    }
                     break;
                 case "야시장":
                     Singleton.getInstance().initStoreList();
 
                     for (int i = 0; i < posts.length(); i++)
                     {
-                        String storeName = posts.optJSONObject(i).getString("Store_Name");
-                        String imageSource = posts.optJSONObject(i).getString("Image_Source");
-
-                        Singleton.getInstance().addStoreList(storeName,imageSource);
+                        Singleton.getInstance().addStoreList(posts.optJSONObject(i).getString("Store_Name"),posts.optJSONObject(i).getString("Image_Source"));
                     }
-
-                    Singleton.getInstance().setServerRequest(true);
                     break;
                 case "공연":
                     break;
                 case "오시는길":
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        Singleton.getInstance().setMarketPlace(posts.optJSONObject(i).getString("Market_Place"));
+                        Singleton.getInstance().setMarketAddress(posts.optJSONObject(i).getString("Market_Address"));
+                        Singleton.getInstance().setBusWay(posts.optJSONObject(i).getString("Bus_Way"));
+                        Singleton.getInstance().setSubwayWay(posts.optJSONObject(i).getString("Subway_Way"));
+                        Singleton.getInstance().setCarWay(posts.optJSONObject(i).getString("Car_Way"));
+                        Singleton.getInstance().setLoadmapSource(posts.optJSONObject(i).getString("Loadmap_Source"));
+                    }
                     break;
             }
 

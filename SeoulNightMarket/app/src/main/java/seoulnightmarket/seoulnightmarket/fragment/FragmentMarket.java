@@ -200,7 +200,6 @@ public class FragmentMarket extends Fragment
                     Log.e("URL", uri);
                     HttpAsyncTask httpAsyncTask = new HttpAsyncTask("야시장");
                     httpAsyncTask.execute(uri);
-
                 }
             }
         });
@@ -226,14 +225,6 @@ public class FragmentMarket extends Fragment
         protected void onPostExecute(String result)
         {
             super.onPostExecute(result);
-
-            Log.e("Size", Singleton.getInstance().getStoreImageList().size()+"");
-
-            for(int i=0; i<Singleton.getInstance().getStoreImageList().size(); i++)
-            {
-                Log.e("Store Name", i+ " : " +Singleton.getInstance().getStoreNameList().get(i));
-                Log.e("Image Source", i+ " : " +Singleton.getInstance().getStoreImageList().get(i));
-            }
 
             adapter = new MarketAdapter(getActivity().getApplicationContext(),Singleton.getInstance().getStoreImageList(), Singleton.getInstance().getStoreNameList());
             gridView.setAdapter(adapter);
