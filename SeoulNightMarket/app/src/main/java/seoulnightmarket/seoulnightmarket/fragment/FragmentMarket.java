@@ -1,9 +1,12 @@
 package seoulnightmarket.seoulnightmarket.fragment;
 
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +15,17 @@ import android.widget.GridView;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
+import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentMarket extends Fragment {
-    public Integer[] foodTruck = {R.drawable.herotruck, R.drawable.shimlimphinhiya, R.drawable.chickenfit, R.drawable.imsteak, R.drawable.jayfresh, R.drawable.pandagrill, R.drawable.girl};
-    public Integer[] handMade = {R.drawable.andro, R.drawable.babo, R.drawable.bom, R.drawable.soso};
-    private String type = "foodTruck";
+
+public class FragmentMarket extends Fragment
+{
+    static String type = "foodTruck";
     private String region = "";
-    private MarketAdapter adapter;
-    public String[] foodTruckName = {"hero truck", "쉬림프컵히야", "치킨핏", "아임 스테이크", "제이프레시", "팬더그릴", "보이"};
-    public String[] handMadeName = {"안드로행성712공방", "바보공방", "봄이네", "소소공방"};
-//    public ArrayList<String> foodTruckName = new ArrayList<String>();
-//    public ArrayList<String> handMadeName = new ArrayList<String>(); // 서버에서 데이터 받아올때 어레이리스트 쓸 것
+    private String uri;
+    public MarketAdapter adapter;
+    public GridView gridView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -32,21 +34,33 @@ public class FragmentMarket extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.activity_fragment_market, container, false);
-        final GridView gridView = view.findViewById(R.id.gridView);
 
-        adapter = new MarketAdapter(getActivity().getApplicationContext(), foodTruck, foodTruckName); // 디폴트 푸드트럭
-        gridView.invalidateViews();
-        gridView.setAdapter(adapter); // 그리드뷰에 어댑터 연결
+        region = Singleton.getInstance().getRegion();
+        region = HttpTask.getInstance().regionTranslate(region);
+
+        Singleton.getInstance().setServerRequest(false);
+        uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/foodstore")
+                .buildUpon()
+                .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
+                .build().toString();
+        Log.e("URL", uri);
 
         Singleton.getInstance().setType(type);
+//        adapter = new MarketAdapter(view.getContext(), Singleton.getInstance().getStoreImageList(), Singleton.getInstance().getStoreNameList());
+
+        gridView = view.findViewById(R.id.gridView);
+
+        HttpAsyncTask httpAsyncTask = new HttpAsyncTask("야시장");
+        httpAsyncTask.execute(uri);
 
         final Button btnFoodTruck = view.findViewById(R.id.foodTruck);
         final Button btnHandMade = view.findViewById(R.id.handMade);
 
-        region = Singleton.getInstance().getRegion(); // 지역에 따라 바뀜
-        switch (region) {
+        switch (region)
+        {
             case "Yeouido":
                 btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.color.md_deep_orange_400);
@@ -87,7 +101,8 @@ public class FragmentMarket extends Fragment {
                 type = "foodTruck";
                 Singleton.getInstance().setType(type);
 
-                if (type == "foodTruck") {
+                if (type == "foodTruck")
+                {
                     switch (region) {
                         case "Yeouido":
                             btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
@@ -123,9 +138,14 @@ public class FragmentMarket extends Fragment {
                             break;
                     }
 
-                    adapter = new MarketAdapter(getActivity().getApplicationContext(), foodTruck, foodTruckName);
-                    gridView.invalidateViews();
-                    gridView.setAdapter(adapter);
+                    Singleton.getInstance().setServerRequest(false);
+                    uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/foodstore")
+                            .buildUpon()
+                            .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
+                            .build().toString();
+                    Log.e("URL", uri);
+                    HttpAsyncTask httpAsyncTask = new HttpAsyncTask("야시장");
+                    httpAsyncTask.execute(uri);
                 }
             }
         });
@@ -172,13 +192,53 @@ public class FragmentMarket extends Fragment {
                             break;
                     }
 
-                    adapter = new MarketAdapter(getActivity().getApplicationContext(), handMade, handMadeName);
-                    gridView.invalidateViews();
-                    gridView.setAdapter(adapter);
+                    Singleton.getInstance().setServerRequest(false);
+                    uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/handmadestore")
+                            .buildUpon()
+                            .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
+                            .build().toString();
+                    Log.e("URL", uri);
+                    HttpAsyncTask httpAsyncTask = new HttpAsyncTask("야시장");
+                    httpAsyncTask.execute(uri);
+
                 }
             }
         });
 
         return view;
+    }
+
+    public class HttpAsyncTask extends AsyncTask<String, Void, String>
+    {
+        String type;
+
+        HttpAsyncTask(String type) { this.type = type; }
+
+        @Override
+        protected String doInBackground(String ...urls)
+        {
+            //urls[0] 은 URL 주소
+            return HttpTask.getInstance().GET(urls[0], type);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+            super.onPostExecute(result);
+
+            Log.e("Size", Singleton.getInstance().getStoreImageList().size()+"");
+
+            for(int i=0; i<Singleton.getInstance().getStoreImageList().size(); i++)
+            {
+                Log.e("Store Name", i+ " : " +Singleton.getInstance().getStoreNameList().get(i));
+                Log.e("Image Source", i+ " : " +Singleton.getInstance().getStoreImageList().get(i));
+            }
+
+            adapter = new MarketAdapter(getActivity().getApplicationContext(),Singleton.getInstance().getStoreImageList(), Singleton.getInstance().getStoreNameList());
+            gridView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+            gridView.invalidateViews();
+        }
     }
 }

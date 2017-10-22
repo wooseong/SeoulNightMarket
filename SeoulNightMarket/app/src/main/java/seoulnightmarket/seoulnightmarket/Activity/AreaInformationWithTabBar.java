@@ -90,7 +90,8 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
     }
 
     // Add Fragments to Tabs
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager(ViewPager viewPager)
+    {
         Adapter adapter = new Adapter(getSupportFragmentManager());
 
         adapter.addFragment(new FragmentIntroduction(), "소개");

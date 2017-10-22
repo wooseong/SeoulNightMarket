@@ -13,7 +13,8 @@ import java.util.ArrayList;
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.InformationAdapter;
 
-public class FragmentInformation extends Fragment {
+public class FragmentInformation extends Fragment
+{
     private ArrayList<String> regionList = new ArrayList<>();
     private String[] region = {"청계천", "여의도", "DDP", "반포", "여의도", "DDP", "반포", "청계천", "반포", "여의도"};
 
