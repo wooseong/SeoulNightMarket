@@ -77,6 +77,13 @@ public class MarketAdapter extends BaseAdapter
             ImageView imageView = gridView.findViewById(R.id.imageViewMarket);
             TextView textView = gridView.findViewById(R.id.textViewMarket);
 
+
+            Log.e("Size", image.size()+"");
+
+            Log.e("Store Name",  text.get(position));
+            Log.e("Image Source", image.get(position));
+
+
             imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(image.get(position)));
             textView.setText(text.get(position));
         }
@@ -87,6 +94,8 @@ public class MarketAdapter extends BaseAdapter
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Toast.makeText(context, "You Clicked " + text.get(position), Toast.LENGTH_SHORT).show();
+
+                Log.e("Image Source", image.get(position));
                 type = Singleton.getInstance().getType();
 
                 if (type == "foodTruck") {
