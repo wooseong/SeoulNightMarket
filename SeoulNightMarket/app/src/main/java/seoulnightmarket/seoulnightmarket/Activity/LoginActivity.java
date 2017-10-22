@@ -35,9 +35,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (phoneNumber.length() == 0 || password.length() == 0) { // 일치하지 않으면
             Toast.makeText(getApplicationContext(), "아이디와 패스워드를 다시 확인하세요", Toast.LENGTH_SHORT).show();
-        }
-
-        else { // 데이터베이스에 있는 회원 아이디와 비밀번호가 일치하면
+        } else { // 데이터베이스에 있는 회원 아이디와 비밀번호가 일치하면
             Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
 
 //            if () { // 판매자

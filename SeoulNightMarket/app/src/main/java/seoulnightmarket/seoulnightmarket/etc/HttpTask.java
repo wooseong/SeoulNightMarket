@@ -16,40 +16,33 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 
 /**
  * Created by cjw94 on 2017-10-22.
  */
 
-public class HttpTask
-{
+public class HttpTask {
     private static HttpTask instance = null;
     private Bitmap bitmap;
 
 
-    public static synchronized HttpTask getInstance()
-    {
+    public static synchronized HttpTask getInstance() {
         if (instance == null) {
             instance = new HttpTask();
         }
         return instance;
     }
 
-
-    public static String GET(String url, String type)
-    {
+    public static String GET(String url, String type) {
         InputStream is = null;
         String result = "";
         int count;
 
-        try
-        {
+        try {
             URL urlCon = new URL(url);
             HttpURLConnection httpCon = (HttpURLConnection) urlCon.openConnection();
 
-            if(httpCon != null)
-            {
+            if (httpCon != null) {
                 httpCon.setRequestMethod("GET");
                 httpCon.setRequestProperty("Accept-Charset", "UTF-8");
                 httpCon.setRequestProperty("Accept", "application/json");
@@ -61,11 +54,10 @@ public class HttpTask
 
             StringBuilder builder = new StringBuilder(); //문자열을 담기 위한 객체
             BufferedReader reader = new BufferedReader(new InputStreamReader(httpCon.getInputStream(), "UTF-8")); //문자열 셋 세팅
-            String line=null;
+            String line = null;
 
-            while ((line = reader.readLine()) != null)
-            {
-                builder.append(line+ "\n");
+            while ((line = reader.readLine()) != null) {
+                builder.append(line + "\n");
             }
 
             result = builder.toString();
@@ -76,11 +68,9 @@ public class HttpTask
             JSONObject response = new JSONObject(result);
             JSONArray posts = response.optJSONArray("results");
 
-            switch(type)
-            {
+            switch (type) {
                 case "소개":
-                    for (int i = 0; i < posts.length(); i++)
-                    {
+                    for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().setOutlineTitle(posts.optJSONObject(i).getString("Outline_Title"));
                         Singleton.getInstance().setOutlineSubtitle(posts.optJSONObject(i).getString("Outline_Subtitle"));
                         Singleton.getInstance().setOutlineDescribe(posts.optJSONObject(i).getString("Outline_Describe"));
@@ -94,16 +84,14 @@ public class HttpTask
                 case "야시장":
                     Singleton.getInstance().initStoreList();
 
-                    for (int i = 0; i < posts.length(); i++)
-                    {
-                        Singleton.getInstance().addStoreList(posts.optJSONObject(i).getString("Store_Name"),posts.optJSONObject(i).getString("Image_Source"));
+                    for (int i = 0; i < posts.length(); i++) {
+                        Singleton.getInstance().addStoreList(posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Image_Source"));
                     }
                     break;
                 case "공연":
                     break;
                 case "오시는길":
-                    for (int i = 0; i < posts.length(); i++)
-                    {
+                    for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().setMarketPlace(posts.optJSONObject(i).getString("Market_Place"));
                         Singleton.getInstance().setMarketAddress(posts.optJSONObject(i).getString("Market_Address"));
                         Singleton.getInstance().setBusWay(posts.optJSONObject(i).getString("Bus_Way"));
@@ -114,36 +102,29 @@ public class HttpTask
                     break;
             }
 
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.d("InputStream", e.getLocalizedMessage());
         }
+
         return result;
     }
 
-    public static String getURLEncode(String content)
-    {
-        try
-        {
+    public static String getURLEncode(String content) {
+        try {
             return URLEncoder.encode(content, "utf-8");   // UTF-8
-        }
-        catch (UnsupportedEncodingException e)
-        {
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
         return null;
     }
 
-    public String regionTranslate(String region)
-    {
-        String translated ="";
+    public String regionTranslate(String region) {
+        String translated = "";
 
-        switch(region)
-        {
+        switch (region) {
             case "Yeouido":
                 translated = "여의도";
                 break;
@@ -164,15 +145,13 @@ public class HttpTask
         return translated;
     }
 
-    public Bitmap translateBitmap(String url)
-    {
+    public Bitmap translateBitmap(String url) {
         final String de = url;
 
-        Thread mThread = new Thread()
-        {
+        Thread mThread = new Thread() {
             @Override
-            public void run(){
-                try{
+            public void run() {
+                try {
                     URL url = new URL(de);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                     conn.setDoInput(true);
@@ -180,25 +159,21 @@ public class HttpTask
 
                     InputStream is = conn.getInputStream();
                     bitmap = BitmapFactory.decodeStream(is);
-                }
-                catch (MalformedURLException e){
+                } catch (MalformedURLException e) {
                     e.printStackTrace();
-                }
-                catch (IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
         };
         mThread.start();
 
-        try{
+        try {
             mThread.join();
-        }
-        catch (InterruptedException e){
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         return bitmap;
     }
-
 }

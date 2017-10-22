@@ -19,8 +19,7 @@ import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
 
-public class FragmentMarket extends Fragment
-{
+public class FragmentMarket extends Fragment {
     static String type = "foodTruck";
     private String region = "";
     private String uri;
@@ -34,24 +33,20 @@ public class FragmentMarket extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_market, container, false);
+        gridView = view.findViewById(R.id.gridView);
 
         region = Singleton.getInstance().getRegion();
         region = HttpTask.getInstance().regionTranslate(region);
 
+        Singleton.getInstance().setType(type);
         Singleton.getInstance().setServerRequest(false);
+
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/foodstore")
                 .buildUpon()
                 .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
                 .build().toString();
-        Log.e("URL", uri);
-
-        Singleton.getInstance().setType(type);
-//        adapter = new MarketAdapter(view.getContext(), Singleton.getInstance().getStoreImageList(), Singleton.getInstance().getStoreNameList());
-
-        gridView = view.findViewById(R.id.gridView);
 
         HttpAsyncTask httpAsyncTask = new HttpAsyncTask("야시장");
         httpAsyncTask.execute(uri);
@@ -59,8 +54,7 @@ public class FragmentMarket extends Fragment
         final Button btnFoodTruck = view.findViewById(R.id.foodTruck);
         final Button btnHandMade = view.findViewById(R.id.handMade);
 
-        switch (region)
-        {
+        switch (region) {
             case "Yeouido":
                 btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.color.md_deep_orange_400);
@@ -101,8 +95,7 @@ public class FragmentMarket extends Fragment
                 type = "foodTruck";
                 Singleton.getInstance().setType(type);
 
-                if (type == "foodTruck")
-                {
+                if (type == "foodTruck") {
                     switch (region) {
                         case "Yeouido":
                             btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
@@ -207,26 +200,25 @@ public class FragmentMarket extends Fragment
         return view;
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         String type;
 
-        HttpAsyncTask(String type) { this.type = type; }
+        HttpAsyncTask(String type) {
+            this.type = type;
+        }
 
         @Override
-        protected String doInBackground(String ...urls)
-        {
+        protected String doInBackground(String... urls) {
             //urls[0] 은 URL 주소
             return HttpTask.getInstance().GET(urls[0], type);
         }
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            adapter = new MarketAdapter(getActivity().getApplicationContext(),Singleton.getInstance().getStoreImageList(), Singleton.getInstance().getStoreNameList());
+            adapter = new MarketAdapter(getActivity().getApplicationContext(), Singleton.getInstance().getStoreImageList(), Singleton.getInstance().getStoreNameList());
             gridView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
             gridView.invalidateViews();

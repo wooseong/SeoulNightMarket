@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,17 +12,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import seoulnightmarket.seoulnightmarket.R;
-import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentDirections extends Fragment
-{
+public class FragmentDirections extends Fragment {
     String region;
     String uri;
     View view;
-    TextView textDirection0 ;
-    TextView textDirection1 ;
+    TextView textDirection0;
+    TextView textDirection1;
     TextView textAddress;
     TextView textBus;
     TextView textSubway;
@@ -37,8 +34,7 @@ public class FragmentDirections extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_fragment_directions, null);
 
         textDirection0 = view.findViewById(R.id.textDirection0);
@@ -64,26 +60,25 @@ public class FragmentDirections extends Fragment
         return view;
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         String type;
 
-        HttpAsyncTask(String type) { this.type = type; }
+        HttpAsyncTask(String type) {
+            this.type = type;
+        }
 
         @Override
-        protected String doInBackground(String ...urls)
-        {
+        protected String doInBackground(String... urls) {
             //urls[0] 은 URL 주소
             return HttpTask.getInstance().GET(urls[0], type);
         }
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            textDirection0.setText("@"+region+" 오시는 길");
+            textDirection0.setText("@" + region + " 오시는 길");
             textDirection1.setText(Singleton.getInstance().getMarketPlace());
             textAddress.setText(Singleton.getInstance().getMarketAddress());
             textBus.setText(Singleton.getInstance().getBusWay().replace("/", "\n"));

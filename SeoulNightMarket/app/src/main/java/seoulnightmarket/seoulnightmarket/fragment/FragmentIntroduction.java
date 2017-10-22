@@ -20,19 +20,18 @@ import seoulnightmarket.seoulnightmarket.adapter.IntroductionAdapter;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentIntroduction extends Fragment
-{
+public class FragmentIntroduction extends Fragment {
     String region;
     String uri;
-    View view ;
+    View view;
     IntroductionAdapter adapter;
     ListView listView;
     View header; // 리스트뷰 헤더
-    TextView textView0 ;
-    TextView textView1 ;
-    TextView textView2 ;
-    TextView textView3 ;
-    TextView textView4 ;
+    TextView textView0;
+    TextView textView1;
+    TextView textView2;
+    TextView textView3;
+    TextView textView4;
     ImageView imageView;
     View footer;
     ImageView imageView1;
@@ -40,15 +39,13 @@ public class FragmentIntroduction extends Fragment
     ArrayList<String> adapterString = new ArrayList<String>();
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    { // Fragment가 생성될때 호출
+    public void onCreate(Bundle savedInstanceState) { // Fragment가 생성될때 호출
         super.onCreate(savedInstanceState);
     }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    { // onCreate 후에 화면을 구성할때 호출
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
         view = inflater.inflate(R.layout.activity_fragment_introduction, null);
 
         listView = view.findViewById(R.id.introductionListView);
@@ -83,25 +80,24 @@ public class FragmentIntroduction extends Fragment
         return view;
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         int count;
         int beforeIndex;
         String type;
 
-        HttpAsyncTask(String type) { this.type = type; }
+        HttpAsyncTask(String type) {
+            this.type = type;
+        }
 
         @Override
-        protected String doInBackground(String ...urls)
-        {
+        protected String doInBackground(String... urls) {
             //urls[0] 은 URL 주소
             return HttpTask.getInstance().GET(urls[0], type);
         }
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
             textView0.setText(Singleton.getInstance().getOutlineTitle());
@@ -119,28 +115,23 @@ public class FragmentIntroduction extends Fragment
             count = 1;
             beforeIndex = 0;
 
-            for(int i=0; i<Singleton.getInstance().getFormDescribe().length(); i++)
-            {
-                if(Singleton.getInstance().getFormDescribe().substring(i,i+1).equals("/"))
-                {
-                    if(count%2 ==1) {
+            for (int i = 0; i < Singleton.getInstance().getFormDescribe().length(); i++) {
+                if (Singleton.getInstance().getFormDescribe().substring(i, i + 1).equals("/")) {
+                    if (count % 2 == 1) {
                         Log.e("Header", Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
                         adapterHead.add(Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
-                    }
-                    else
-                    {
-                        Log.e("Describe", Singleton.getInstance().getFormDescribe().substring(beforeIndex,i));
-                        adapterString.add(Singleton.getInstance().getFormDescribe().substring(beforeIndex,i));
+                    } else {
+                        Log.e("Describe", Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
+                        adapterString.add(Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
                     }
 
-                    beforeIndex = i+1;
+                    beforeIndex = i + 1;
                     count++;
                 }
             }
 
-            for(int i=0; i<adapterHead.size(); i++)
-            {
-                adapter.addItem(adapterHead.get(i), adapterString.get(i).replace("=","\n"));
+            for (int i = 0; i < adapterHead.size(); i++) {
+                adapter.addItem(adapterHead.get(i), adapterString.get(i).replace("=", "\n"));
             }
 
             listView.setAdapter(adapter);
