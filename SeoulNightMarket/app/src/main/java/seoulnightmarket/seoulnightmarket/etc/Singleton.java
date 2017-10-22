@@ -30,6 +30,8 @@ public class Singleton
     private boolean serverRequest = false;
     private ArrayList<String> storeNameList = new ArrayList<String>();
     private ArrayList<String> storeImageList = new ArrayList<String>();
+    private ArrayList<String> performanceNameList = new ArrayList<String>();
+    private ArrayList<String> performanceImageList = new ArrayList<String>();
     private static Singleton instance = null;
 
     public String getMarketPlace() { return marketPlace;}
@@ -55,6 +57,8 @@ public class Singleton
     public boolean getServerRequest() { return serverRequest; }
     public ArrayList<String> getStoreNameList() { return storeNameList; }
     public ArrayList<String> getStoreImageList() { return storeImageList; }
+    public ArrayList<String> getPerformanceNameList() { return performanceNameList; }
+    public ArrayList<String> getPerformanceImageList() { return performanceImageList; }
 
 
     public void setMarketPlace(String marketPlace) { this.marketPlace = marketPlace;}
@@ -85,10 +89,22 @@ public class Singleton
         storeImageList.clear();
     }
 
+    public void initPerformanceList()
+    {
+        performanceNameList.clear();
+        performanceImageList.clear();
+    }
+
     public void addStoreList(String storeName, String imageSource)
     {
         storeNameList.add(storeName);
         storeImageList.add(imageSource);
+    }
+
+    public void addPerformanceList(String performanceName, String imageSource)
+    {
+        performanceNameList.add(performanceName);
+        performanceImageList.add(imageSource);
     }
 
     public static synchronized Singleton getInstance() {

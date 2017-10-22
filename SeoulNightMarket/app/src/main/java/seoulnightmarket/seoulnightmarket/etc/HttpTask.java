@@ -83,12 +83,15 @@ public class HttpTask {
                     break;
                 case "야시장":
                     Singleton.getInstance().initStoreList();
-
                     for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().addStoreList(posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Image_Source"));
                     }
                     break;
                 case "공연":
+                    Singleton.getInstance().initPerformanceList();
+                    for (int i = 0; i < posts.length(); i++) {
+                        Singleton.getInstance().addPerformanceList(posts.optJSONObject(i).getString("Team_Name"), posts.optJSONObject(i).getString("Image_Source"));
+                    }
                     break;
                 case "오시는길":
                     for (int i = 0; i < posts.length(); i++) {

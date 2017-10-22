@@ -3,6 +3,8 @@ package seoulnightmarket.seoulnightmarket.fragment;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -31,10 +33,14 @@ import java.util.Date;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.ConcertAdapter;
+import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
+import seoulnightmarket.seoulnightmarket.etc.HttpTask;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentConcert extends Fragment {
-    public int[] musicianImage = {R.drawable.ddalgi, R.drawable.gonayoung, R.drawable.kichin};
-    public String[] musicianName = {"딸기주스가너무달아", "고나영", "마멀레이드키친"};
+public class FragmentConcert extends Fragment
+{
+    public String uri;
+    public String region;
     public ConcertAdapter concertAdapter;
     public GridView gridView;
     public TextView textView;
@@ -53,15 +59,20 @@ public class FragmentConcert extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.activity_fragment_concert, container, false);
 
-        concertAdapter = new ConcertAdapter(view.getContext(), musicianImage, musicianName); // 그리드뷰 어댑터 연결
+        region = Singleton.getInstance().getRegion();
+        region = HttpTask.getInstance().regionTranslate(region);
+
+        concertAdapter = new ConcertAdapter(view.getContext(), Singleton.getInstance().getPerformanceImageList(), Singleton.getInstance().getPerformanceNameList()); // 그리드뷰 어댑터 연결
         textView = view.findViewById(R.id.concertDate);
         gridView = view.findViewById(R.id.gridViewConcert);
         gridView.setAdapter(concertAdapter);
 
         Button btnDate = view.findViewById(R.id.btnConcert);
+
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -124,6 +135,15 @@ public class FragmentConcert extends Fragment {
 
                             Log.e("Test", selectedDate);
                             Log.e("Test", serverDate);
+
+                            uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/performance")
+                                    .buildUpon()
+                                    .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
+                                    .appendQueryParameter("date", serverDate)
+                                    .build().toString();
+                            Log.e("URL", uri);
+                            HttpAsyncTask httpAsyncTask = new HttpAsyncTask("공연");
+                            httpAsyncTask.execute(uri);
 
                             textView.setText(selectedDate);
                             dialog.dismiss();
@@ -202,15 +222,29 @@ public class FragmentConcert extends Fragment {
         }
     }
 
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) { // 현재 보고있는 프레그먼트
-//        if (isVisibleToUser) {
-//            Log.e("Test", "보인다");
-//            // 보인다.
-//        } else {
-//            Log.e("Test", "안보인다");
-//            // 안보인다.
-//        }
-//        super.setUserVisibleHint(isVisibleToUser);
-//    }
+    public class HttpAsyncTask extends AsyncTask<String, Void, String>
+    {
+        String type;
+
+        HttpAsyncTask(String type) {
+            this.type = type;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            //urls[0] 은 URL 주소
+            return HttpTask.getInstance().GET(urls[0], type);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+
+        @Override
+        protected void onPostExecute(String result) {
+            super.onPostExecute(result);
+
+            concertAdapter = new ConcertAdapter(getActivity().getApplicationContext(), Singleton.getInstance().getPerformanceImageList(), Singleton.getInstance().getPerformanceNameList()); // 그리드뷰 어댑터 연결
+            gridView.setAdapter(concertAdapter);
+            concertAdapter.notifyDataSetChanged();
+            gridView.invalidateViews();
+        }
+    }
 }
