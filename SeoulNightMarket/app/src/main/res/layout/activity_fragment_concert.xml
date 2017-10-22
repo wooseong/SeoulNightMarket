@@ -7,49 +7,31 @@
     android:orientation="vertical"
     tools:context="seoulnightmarket.seoulnightmarket.fragment.FragmentConcert">
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textAlignment="center"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:text="공연안내"/>
+        android:layout_height="wrap_content">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
-
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/textline"
-            android:layout_weight="2">
+            android:layout_marginTop="10dp"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
+            android:text="공연 안내"
+            android:id="@+id/textView" />
 
-            <Spinner
-                android:id="@+id/spinnerMonth"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textAlignment="center"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/textline"
-            android:layout_marginLeft="5dp"
-            android:layout_weight="1">
-
-            <Spinner
-                android:id="@+id/spinnerDay"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:textAlignment="center"/>
-        </LinearLayout>
-
-    </LinearLayout>
+        <Button
+            android:id="@+id/btnConcert"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:background="@drawable/calendar"
+            android:text=""
+            android:layout_marginEnd="90dp"
+            android:layout_alignTop="@+id/textView"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/concertDate"
@@ -60,6 +42,7 @@
         android:textAlignment="center"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:textColor="@color/md_black_1000"
         android:text="15일"/>
 
     <GridView
@@ -69,7 +52,9 @@
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:numColumns="auto_fit"
+        android:horizontalSpacing="5dp"
+        android:verticalSpacing="5dp"
+        android:numColumns="2"
         android:stretchMode="columnWidth"
         android:gravity="center">
     </GridView>

@@ -1,21 +1,36 @@
 package seoulnightmarket.seoulnightmarket.fragment;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
-import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.ConcertAdapter;
-import seoulnightmarket.seoulnightmarket.adapter.ConcertSpinnerAdapter;
 
 public class FragmentConcert extends Fragment {
     public int[] musicianImage = {R.drawable.ddalgi, R.drawable.gonayoung, R.drawable.kichin};
@@ -23,19 +38,10 @@ public class FragmentConcert extends Fragment {
     public ConcertAdapter concertAdapter;
     public GridView gridView;
     public TextView textView;
-    public Spinner spinnerMonth;
-    public Spinner spinnerDay;
     public ArrayList<String> monthList;
     public ArrayList<String> dayList;
-    String[] month = {"3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월"};
-    String[] dayMarch = {"24일(금)", "25일(토)", "31일(금)", "1일(토)"};
-    String[] dayApril = {"7일(금)", "8일(토)", "14일(금)", "15일(토)", "21일(금)", "22일(토)", "28일(금)", "29일(토)"};
-    String[] dayMay = {"5일(금)", "6일(토)", "12일(금)", "13일(토)", "19일(금)", "20일(토)", "26일(금)", "27일(토)"};
-    String[] dayJune = {"2일(금)", "3일(토)", "9일(금)", "10일(토)", "16일(금)", "17일(토)", "23일(금)", "24일(토)", "30일(금)", "1일(토)"};
-    String[] dayJuly = {"7일(금)", "8일(토)", "14일(금)", "15일(토)", "21일(금)", "22일(토)", "28일(금)", "29일(토)"};
-    String[] dayAugust = {"4일(금)", "5일(토)", "11일(금)", "12일(토)", "18일(금)", "19일(토)", "25일(금)", "26일(토)"};
-    String[] daySeptember = {"1일(금)", "2일(토)", "8일(금)", "9일(토)", "15일(금)", "16일(토)", "22일(금)", "23일(토)", "29일(금)", "30일(토)"};
-    String[] dayOctober = {"13일(금)", "14일(토)", "20일(금)", "21일(토)", "27일(금)", "28일(토)"};
+    private String selectedDate; // 텍스트 바꿀 날짜형식 10월 31일 (수)
+    private String serverDate; // 서버에 쓸 날짜형식 09.17
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,98 +53,164 @@ public class FragmentConcert extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_concert, container, false);
 
         concertAdapter = new ConcertAdapter(view.getContext(), musicianImage, musicianName); // 그리드뷰 어댑터 연결
-
         textView = view.findViewById(R.id.concertDate);
-
         gridView = view.findViewById(R.id.gridViewConcert);
         gridView.setAdapter(concertAdapter);
 
-        spinnerMonth = view.findViewById(R.id.spinnerMonth);
-        spinnerDay = view.findViewById(R.id.spinnerDay);
-
-        initSpinner(spinnerMonth, month); // month
-        initSpinner(spinnerDay, dayAugust); // day
-
-        spinnerMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // month 스피너 리스너
+        Button btnDate = view.findViewById(R.id.btnConcert);
+        btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) { // month를 선택하면 day가 바뀜
-                switch (position) {
-                    case 0:
-                        initSpinner(spinnerDay, dayMarch);
-                        break;
-                    case 1:
-                        initSpinner(spinnerDay, dayApril);
-                        break;
-                    case 2:
-                        initSpinner(spinnerDay, dayMay);
-                        break;
-                    case 3:
-                        initSpinner(spinnerDay, dayJune);
-                        break;
-                    case 4:
-                        initSpinner(spinnerDay, dayJuly);
-                        break;
-                    case 5:
-                        initSpinner(spinnerDay, dayAugust);
-                        break;
-                    case 6:
-                        initSpinner(spinnerDay, daySeptember);
-                        break;
-                    case 7: // 10월
-                        initSpinner(spinnerDay, dayOctober);
-                        break;
-                    default:
-                        break;
-                }
-            }
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.activity_date_dialog);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) { // 아무것도 선택 안했을 때
+                final MaterialCalendarView calendarView = dialog.findViewById(R.id.calendarView);
+                calendarView.addDecorators(new FridayDecorator(), new SaturdayDecorator(), new OneDayDecorator());
 
-            }
-        });
+                calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
+                    @Override
+                    public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                        String day = String.valueOf(date.getDate()).substring(0, 3);
 
-        spinnerDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() { // day 스피너 리스너
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-                textView.setText(dayList.get(position));
-            }
+                        switch (day) {
+                            case "Mon":
+                                day = "월";
+                                break;
+                            case "Tue":
+                                day = "화";
+                                break;
+                            case "Wed":
+                                day = "수";
+                                break;
+                            case "Thu":
+                                day = "목";
+                                break;
+                            case "Fri":
+                                day = "금";
+                                break;
+                            case "Sat":
+                                day = "토";
+                                break;
+                            case "Sun":
+                                day = "일";
+                                break;
+                            default:
+                                break;
+                        }
 
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+                        if (day != "금" && day != "토") {
+                            Toast.makeText(getActivity(), "야시장 개장날이 아닙니다", Toast.LENGTH_SHORT).show();
+                        } else {
+                            selectedDate = String.valueOf(date.getMonth() + 1) + "월 " + String.valueOf(date.getDay()) + "일 " + "(" + day + ")";
+                            Toast.makeText(getActivity(), selectedDate, Toast.LENGTH_SHORT).show();
 
+                            if (String.valueOf(date.getMonth() + 1).length() == 1) { // 1월~9월
+                                if (String.valueOf(date.getDay()).length() == 1) {
+                                    serverDate = "0" + String.valueOf(date.getMonth() + 1) + "." + "0" + String.valueOf(date.getDay());
+                                } else if (String.valueOf(date.getDay()).length() == 2) {
+                                    serverDate = "0" + String.valueOf(date.getMonth() + 1) + "." + String.valueOf(date.getDay());
+                                }
+                            } else if (String.valueOf(date.getMonth() + 1).length() == 2) { // 10월~12월
+                                if (String.valueOf(date.getDay()).length() == 1) {
+                                    serverDate = String.valueOf(date.getMonth() + 1) + "." + "0" + String.valueOf(date.getDay());
+                                } else if (String.valueOf(date.getDay()).length() == 2) {
+                                    serverDate = String.valueOf(date.getMonth() + 1) + "." + String.valueOf(date.getDay());
+                                }
+                            }
+
+                            Log.e("Test", selectedDate);
+                            Log.e("Test", serverDate);
+
+                            textView.setText(selectedDate);
+                            dialog.dismiss();
+                        }
+                    }
+                });
+
+                dialog.show();
             }
         });
 
         return view;
     }
 
-    public void initSpinner(Spinner spinner, String[] date) { // 스피너 초기화 함수 // 나중에 서버에서 데이터 긁어 오면 됨
-//        ArrayAdapter<String> adapter; // 스피너에 뿌려질 Array형식의 Data를 담을 Adapter
-        ConcertSpinnerAdapter concertSpinnerAdapter;
+    public class FridayDecorator implements DayViewDecorator { // 금요일
+        private final Calendar calendar = Calendar.getInstance();
 
-        if (date == month) {
-            for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
-                monthList.add(date[i]);
-            }
-//            adapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_item_custom, monthList); // 어댑터 생성
-            concertSpinnerAdapter = new ConcertSpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, month);
-        } else {
-            dayList.clear();
+        public FridayDecorator() {
 
-            for (int i = 0; i < date.length; i++) { // 어레이 리스트에 저장
-                dayList.add(date[i]);
-            }
-//            adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_spinner_item, dayList);
-            concertSpinnerAdapter = new ConcertSpinnerAdapter(getActivity(), android.R.layout.simple_spinner_item, date);
         }
 
-        concertSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(adapter);
-        spinner.setAdapter(concertSpinnerAdapter);
+        @Override
+        public boolean shouldDecorate(CalendarDay day) {
+            day.copyTo(calendar);
+            int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+            return weekDay == Calendar.FRIDAY;
+        }
+
+        @Override
+        public void decorate(DayViewFacade view) {
+            view.addSpan(new ForegroundColorSpan(Color.BLUE));
+        }
     }
+
+    public class SaturdayDecorator implements DayViewDecorator { // 토요일
+        private final Calendar calendar = Calendar.getInstance();
+
+        public SaturdayDecorator() {
+
+        }
+
+        @Override
+        public boolean shouldDecorate(CalendarDay day) {
+            day.copyTo(calendar);
+            int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+            return weekDay == Calendar.SATURDAY;
+        }
+
+        @Override
+        public void decorate(DayViewFacade view) {
+            view.addSpan(new ForegroundColorSpan(Color.BLUE));
+        }
+    }
+
+    public class OneDayDecorator implements DayViewDecorator { // 오늘 날짜
+        private CalendarDay date;
+
+        public OneDayDecorator() {
+            date = CalendarDay.today();
+        }
+
+        @Override
+        public boolean shouldDecorate(CalendarDay day) {
+            return date != null && day.equals(date);
+        }
+
+        @Override
+        public void decorate(DayViewFacade view) {
+            view.addSpan(new StyleSpan(Typeface.BOLD));
+            view.addSpan(new RelativeSizeSpan(1.4f));
+            view.addSpan(new ForegroundColorSpan(Color.GREEN));
+        }
+
+        public void setDate(Date date) {
+            this.date = CalendarDay.from(date);
+        }
+    }
+
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) { // 현재 보고있는 프레그먼트
+//        if (isVisibleToUser) {
+//            Log.e("Test", "보인다");
+//            // 보인다.
+//        } else {
+//            Log.e("Test", "안보인다");
+//            // 안보인다.
+//        }
+//        super.setUserVisibleHint(isVisibleToUser);
+//    }
 }

@@ -34,7 +34,7 @@
 
                 <ImageView
                     android:id="@+id/image"
-                    tools:background="@drawable/bam2"
+                    tools:background="@drawable/bom"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fitsSystemWindows="true"

@@ -17,11 +17,11 @@ import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
 public class MarketAdapter extends BaseAdapter {
     private Context context;
-    private int[] image;
+    private Integer[] image;
     private String[] text;
     private String type;
 
-    public MarketAdapter(Context context, int[] image, String[] text) {
+    public MarketAdapter(Context context, Integer[] image, String[] text) {
         this.context = context;
         this.image = image;
         this.text = text;
@@ -47,7 +47,7 @@ public class MarketAdapter extends BaseAdapter {
         View gridView;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        if (convertView == null) {
+        if (convertView == null) { // 이전에 사용한
             gridView = inflater.inflate(R.layout.gridview_market, null);
             ImageView imageView = gridView.findViewById(R.id.imageViewMarket);
             TextView textView = gridView.findViewById(R.id.textViewMarket);

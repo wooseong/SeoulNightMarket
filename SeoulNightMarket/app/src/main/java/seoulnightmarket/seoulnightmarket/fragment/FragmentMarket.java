@@ -15,14 +15,13 @@ import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
 public class FragmentMarket extends Fragment {
-    public int foodTruck[] = {R.drawable.herotruck, R.drawable.shimlimphinhiya, R.drawable.chickenfit, R.drawable.imsteak, R.drawable.jayfresh, R.drawable.pandagrill};
-    public int handMade[] = {R.drawable.andro, R.drawable.babo, R.drawable.bom, R.drawable.soso};
+    public Integer[] foodTruck = {R.drawable.herotruck, R.drawable.shimlimphinhiya, R.drawable.chickenfit, R.drawable.imsteak, R.drawable.jayfresh, R.drawable.pandagrill, R.drawable.girl};
+    public Integer[] handMade = {R.drawable.andro, R.drawable.babo, R.drawable.bom, R.drawable.soso};
     private String type = "foodTruck";
     private String region = "";
-    public MarketAdapter adapter;
-    public GridView gridView;
-    public String foodTruckName[] = {"hero truck", "쉬림프컵히야", "치킨핏", "아임 스테이크", "제이프레시", "팬더그릴"};
-    public String handMadeName[] = {"안드로행성712공방", "바보공방", "봄이네", "소소공방"};
+    private MarketAdapter adapter;
+    public String[] foodTruckName = {"hero truck", "쉬림프컵히야", "치킨핏", "아임 스테이크", "제이프레시", "팬더그릴", "보이"};
+    public String[] handMadeName = {"안드로행성712공방", "바보공방", "봄이네", "소소공방"};
 //    public ArrayList<String> foodTruckName = new ArrayList<String>();
 //    public ArrayList<String> handMadeName = new ArrayList<String>(); // 서버에서 데이터 받아올때 어레이리스트 쓸 것
 
@@ -35,14 +34,10 @@ public class FragmentMarket extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_market, container, false);
+        final GridView gridView = view.findViewById(R.id.gridView);
 
-        if (type == "foodTruck") {
-            adapter = new MarketAdapter(view.getContext(), foodTruck, foodTruckName);
-        } else if (type == "handMade") {
-            adapter = new MarketAdapter(view.getContext(), handMade, handMadeName);
-        }
-
-        gridView = view.findViewById(R.id.gridView);
+        adapter = new MarketAdapter(getActivity().getApplicationContext(), foodTruck, foodTruckName); // 디폴트 푸드트럭
+        gridView.invalidateViews();
         gridView.setAdapter(adapter); // 그리드뷰에 어댑터 연결
 
         Singleton.getInstance().setType(type);
@@ -50,7 +45,7 @@ public class FragmentMarket extends Fragment {
         final Button btnFoodTruck = view.findViewById(R.id.foodTruck);
         final Button btnHandMade = view.findViewById(R.id.handMade);
 
-        region = Singleton.getInstance().getRegion();
+        region = Singleton.getInstance().getRegion(); // 지역에 따라 바뀜
         switch (region) {
             case "Yeouido":
                 btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
