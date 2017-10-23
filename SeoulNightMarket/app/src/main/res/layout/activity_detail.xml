@@ -38,6 +38,7 @@
                 tools:background="@drawable/bom" />
 
             <TextView
+                android:id="@+id/store_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left|bottom"

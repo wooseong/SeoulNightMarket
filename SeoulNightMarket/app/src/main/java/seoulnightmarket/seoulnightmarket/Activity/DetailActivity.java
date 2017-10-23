@@ -17,10 +17,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentInformation;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentMenu;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
@@ -32,7 +35,8 @@ public class DetailActivity extends AppCompatActivity {
     private CoordinatorLayout coordinatorLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         // Adding Toolbar to Main screen
@@ -49,7 +53,11 @@ public class DetailActivity extends AppCompatActivity {
         // collapsingToolbar.setTitle(getString(R.string.item_title));
 
         ImageView placePicutre = (ImageView) findViewById(R.id.image);
+        Singleton.getInstance().setStoreImageView(placePicutre);
         placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.bom));
+
+        TextView textView = (TextView) findViewById(R.id.store_name);
+        Singleton.getInstance().setStoreTextView(textView);
 
         // Setting ViewPager for each Tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);

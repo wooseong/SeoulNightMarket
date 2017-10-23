@@ -51,6 +51,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         // collapsingToolbar.setTitle(getString(R.string.item_title));
         //////////
         ImageView placePicutre = (ImageView) findViewById(R.id.image);
+        Singleton.getInstance().setStoreImageView(placePicutre);
         placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.bom));
 
         // Setting ViewPager for each Tabs

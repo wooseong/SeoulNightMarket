@@ -49,7 +49,7 @@ public class FragmentMarket extends Fragment {
                 .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
                 .build().toString();
 
-        HttpAsyncTask httpAsyncTask = new HttpAsyncTask("야시장");
+        HttpAsyncTask httpAsyncTask = new HttpAsyncTask("푸드트럭");
         httpAsyncTask.execute(uri);
 
         final Button btnFoodTruck = view.findViewById(R.id.foodTruck);
@@ -138,7 +138,7 @@ public class FragmentMarket extends Fragment {
                             .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
                             .build().toString();
                     Log.e("URL", uri);
-                    HttpAsyncTask httpAsyncTask = new HttpAsyncTask("야시장");
+                    HttpAsyncTask httpAsyncTask = new HttpAsyncTask("푸드트럭");
                     httpAsyncTask.execute(uri);
                 }
             }
@@ -192,7 +192,7 @@ public class FragmentMarket extends Fragment {
                             .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
                             .build().toString();
                     Log.e("URL", uri);
-                    HttpAsyncTask httpAsyncTask = new HttpAsyncTask("야시장");
+                    HttpAsyncTask httpAsyncTask = new HttpAsyncTask("핸드메이드상점");
                     httpAsyncTask.execute(uri);
                 }
             }
