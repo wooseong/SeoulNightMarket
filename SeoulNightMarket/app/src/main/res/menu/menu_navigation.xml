@@ -2,15 +2,23 @@
     <group android:checkableBehavior="single">
         <item
             android:icon="@drawable/ic_home_black_24dp"
-            android:tint="@color/button_grey"
-            android:title="One" />
+            android:tint="@color/md_black_1000"
+            android:title="여의도" />
         <item
             android:icon="@drawable/ic_favorite_black_24dp"
-            android:tint="@color/button_grey"
-            android:title="Two" />
+            android:tint="@color/md_black_1000"
+            android:title="DDP" />
         <item
-            android:icon="@drawable/ic_bookmark_border_black_24dp"
-            android:tint="@color/button_grey"
-            android:title="Three" />
+            android:icon="@drawable/bpch24"
+            android:tint="@color/md_black_1000"
+            android:title="반포" />
+        <item
+            android:icon="@drawable/cgcch24"
+            android:tint="@color/md_black_1000"
+            android:title="청계천" />
+        <item
+            android:icon="@drawable/cggjch24"
+            android:tint="@color/md_black_1000"
+            android:title="청계광장" />
     </group>
 </menu>

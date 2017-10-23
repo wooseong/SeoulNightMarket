@@ -38,59 +38,50 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.areainformationwithtabbar);
-        // Adding Toolbar to Main screen
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); // Adding Toolbar to Main screen
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         region = Singleton.getInstance().getRegion();
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // Set Collapsing Toolbar layout to the screen
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        // Set title of Detail page
-        // collapsingToolbar.setTitle(getString(R.string.item_title));
-        //////////
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar); // Set Collapsing Toolbar layout to the screen
         ImageView placePicutre = (ImageView) findViewById(R.id.image);
         placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.bom));
 
-        // Setting ViewPager for each Tabs
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager); // Setting ViewPager for each Tabs
         setupViewPager(viewPager);
-        // Set Tabs inside Toolbar
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+
+        TabLayout tabs = (TabLayout) findViewById(R.id.tabs); // Set Tabs inside Toolbar
         tabs.setupWithViewPager(viewPager);
-        // Create Navigation drawer and inlfate layout
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); // Create Navigation drawer and inlfate layout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
-        // Adding menu icon to Toolbar
-        ActionBar supportActionBar = getSupportActionBar();
+
+        ActionBar supportActionBar = getSupportActionBar(); // Adding menu icon to Toolbar
         if (supportActionBar != null) {
-            VectorDrawableCompat indicator =
-                    VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
-            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.white, getTheme()));
+            VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme()); // 드로월 모양
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.white, getTheme())); // 드로월 색깔
             supportActionBar.setHomeAsUpIndicator(indicator);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
-        // Set behavior of Navigation drawer
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    // This method will trigger on item Click of navigation menu
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        // Set item in checked state
-                        menuItem.setChecked(true);
 
-                        // TODO: handle navigation
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
 
-                        // Closing drawer on item click
-                        mDrawerLayout.closeDrawers();
-                        return true;
-                    }
-                });
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) { // This method will trigger on item Click of navigation menu
+                menuItem.setChecked(true); // Set item in checked state
+
+                // TODO: handle navigation
+
+                mDrawerLayout.closeDrawers(); // Closing drawer on item click
+
+                return true;
+            }
+        });
     }
 
-    // Add Fragments to Tabs
-    private void setupViewPager(ViewPager viewPager)
+    private void setupViewPager(ViewPager viewPager) // Add Fragments to Tabs
     {
         Adapter adapter = new Adapter(getSupportFragmentManager());
 
@@ -99,11 +90,9 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
 
         if (region.equals("Yeouido") || region.equals("DDP") || region.equals("Banpo")) {
             adapter.addFragment(new FragmentConcert(), "공연");
-        }
-        else if (region.equals("Cheonggyecheon")) {
+        } else if (region.equals("Cheonggyecheon")) {
             adapter.addFragment(new FragmentConcertCheonggye(), "공연");
-        }
-        else if (region.equals("CheonggyePlaza")) {
+        } else if (region.equals("CheonggyePlaza")) {
             adapter.addFragment(new FragmentConcertPlaza(), "공연");
         }
 
