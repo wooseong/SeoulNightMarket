@@ -67,6 +67,7 @@ public class MarketAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 Toast.makeText(context, "You Clicked " + text.get(position), Toast.LENGTH_SHORT).show();
+                Singleton.getInstance().setNowStore(text.get(position));
 
                 Log.e("Image Source", image.get(position));
                 type = Singleton.getInstance().getType();

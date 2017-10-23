@@ -1,6 +1,7 @@
 package seoulnightmarket.seoulnightmarket.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,8 @@ import seoulnightmarket.seoulnightmarket.data.MenuListViewItem;
  * Created by Yookmoonsu on 2017-09-16.
  */
 
-public class MenuAdapter extends BaseAdapter {
+public class MenuAdapter extends BaseAdapter
+{
     private ArrayList<MenuListViewItem> listViewItemList = new ArrayList<>(); // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
 
     public MenuAdapter() { // 생성자
@@ -45,7 +47,7 @@ public class MenuAdapter extends BaseAdapter {
 
         MenuListViewItem listViewItem = listViewItemList.get(position); // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
 
-        imageView.setImageDrawable(listViewItem.getMenuImage()); // 아이템 내 각 위젯에 데이터 반영
+        imageView.setImageBitmap(listViewItem.getMenuImage()); // 아이템 내 각 위젯에 데이터 반영
         textView.setText(listViewItem.getMenuName());
         textView1.setText(String.valueOf(listViewItem.getMenuPrice()));
 
@@ -62,7 +64,7 @@ public class MenuAdapter extends BaseAdapter {
         return listViewItemList.get(position);
     }
 
-    public void addItem(Drawable image, String name, int price) { // 아이템 데이터 추가를 위한 함수
+    public void addItem(Bitmap image, String name, String price) { // 아이템 데이터 추가를 위한 함수
         MenuListViewItem item = new MenuListViewItem();
 
         item.setMenuImage(image);

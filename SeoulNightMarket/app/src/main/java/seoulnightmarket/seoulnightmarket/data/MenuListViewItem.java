@@ -1,5 +1,6 @@
 package seoulnightmarket.seoulnightmarket.data;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
 /**
@@ -7,15 +8,15 @@ import android.graphics.drawable.Drawable;
  */
 
 public class MenuListViewItem { // 리스트뷰에 들어갈 데이터 클래스
-    private Drawable menuImage;
+    private Bitmap menuImage;
     private String menuName;
-    private int menuPrice;
+    private String menuPrice;
 
     public MenuListViewItem() {
 
     }
 
-    public Drawable getMenuImage() {
+    public Bitmap getMenuImage() {
         return this.menuImage;
     }
 
@@ -23,11 +24,11 @@ public class MenuListViewItem { // 리스트뷰에 들어갈 데이터 클래스
         return this.menuName;
     }
 
-    public int getMenuPrice() {
+    public String getMenuPrice() {
         return this.menuPrice;
     }
 
-    public void setMenuImage(Drawable image) {
+    public void setMenuImage(Bitmap image) {
         menuImage = image;
     }
 
@@ -35,7 +36,7 @@ public class MenuListViewItem { // 리스트뷰에 들어갈 데이터 클래스
         menuName = name;
     }
 
-    public void setMenuPrice(int price) {
+    public void setMenuPrice(String price) {
         menuPrice = price;
     }
 }

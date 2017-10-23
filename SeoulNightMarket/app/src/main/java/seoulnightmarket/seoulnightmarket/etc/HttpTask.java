@@ -62,6 +62,7 @@ public class HttpTask {
 
             result = builder.toString();
 
+            Log.e("RESULT", result);
             reader.close();
             httpCon.disconnect();
 
@@ -83,12 +84,15 @@ public class HttpTask {
                     break;
                 case "야시장":
                     Singleton.getInstance().initStoreList();
-
                     for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().addStoreList(posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Image_Source"));
                     }
                     break;
                 case "공연":
+                    Singleton.getInstance().initPerformanceList();
+                    for (int i = 0; i < posts.length(); i++) {
+                        Singleton.getInstance().addPerformanceList(posts.optJSONObject(i).getString("Team_Name"), posts.optJSONObject(i).getString("Image_Source"));
+                    }
                     break;
                 case "오시는길":
                     for (int i = 0; i < posts.length(); i++) {
@@ -98,6 +102,14 @@ public class HttpTask {
                         Singleton.getInstance().setSubwayWay(posts.optJSONObject(i).getString("Subway_Way"));
                         Singleton.getInstance().setCarWay(posts.optJSONObject(i).getString("Car_Way"));
                         Singleton.getInstance().setLoadmapSource(posts.optJSONObject(i).getString("Loadmap_Source"));
+                    }
+                    break;
+                case "음식":
+                    Singleton.getInstance().initFoodList();
+                    Log.e("POSTS LENGTH", posts.length()+"");
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        Singleton.getInstance().addFoodList(posts.optJSONObject(i).getString("Food_Name"), posts.optJSONObject(i).getString("Image_source"), posts.optJSONObject(i).getString("Price"));
                     }
                     break;
             }

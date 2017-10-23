@@ -118,10 +118,8 @@ public class FragmentIntroduction extends Fragment {
             for (int i = 0; i < Singleton.getInstance().getFormDescribe().length(); i++) {
                 if (Singleton.getInstance().getFormDescribe().substring(i, i + 1).equals("/")) {
                     if (count % 2 == 1) {
-                        Log.e("Header", Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
                         adapterHead.add(Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
                     } else {
-                        Log.e("Describe", Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
                         adapterString.add(Singleton.getInstance().getFormDescribe().substring(beforeIndex, i));
                     }
 

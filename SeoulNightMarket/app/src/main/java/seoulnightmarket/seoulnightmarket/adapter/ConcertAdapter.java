@@ -8,7 +8,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 
 /**
  * Created by Yookmoonsu on 2017-09-13.
@@ -16,10 +19,10 @@ import seoulnightmarket.seoulnightmarket.R;
 
 public class ConcertAdapter extends BaseAdapter {
     private Context context;
-    private int[] image;
-    private String[] text;
+    private ArrayList<String> image;
+    private ArrayList<String> text;
 
-    public ConcertAdapter(Context context, int[] image, String[] text) {
+    public ConcertAdapter(Context context, ArrayList<String> image, ArrayList<String> text) {
         this.context = context;
         this.image = image;
         this.text = text;
@@ -27,12 +30,12 @@ public class ConcertAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return image.length;
+        return image.size();
     } // 그리드뷰에 출력할 목록 갯수
 
     @Override
     public Object getItem(int position) {
-        return image[position];
+        return HttpTask.getInstance().translateBitmap(image.get(position));
     } // 아이템 호출
 
     @Override
@@ -41,7 +44,8 @@ public class ConcertAdapter extends BaseAdapter {
     } // 아이템의 아이디
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent)
+    {
         View gridView;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -50,8 +54,8 @@ public class ConcertAdapter extends BaseAdapter {
             ImageView imageView = gridView.findViewById(R.id.musicianImage);
             TextView textView = gridView.findViewById(R.id.musicianName);
 
-            imageView.setImageResource(image[position]);
-            textView.setText(text[position]);
+            imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(image.get(position)));
+            textView.setText(text.get(position));
         } else {
             gridView = convertView;
         }
