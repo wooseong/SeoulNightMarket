@@ -11,10 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.GridView;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
+import seoulnightmarket.seoulnightmarket.etc.ExpandableHeightGridView;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
@@ -24,7 +24,7 @@ public class FragmentMarket extends Fragment {
     private String region = "";
     private String uri;
     public MarketAdapter adapter;
-    public GridView gridView;
+    public ExpandableHeightGridView gridView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class FragmentMarket extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_market, container, false);
         gridView = view.findViewById(R.id.gridView);
+        gridView.setExpanded(true);
 
         region = Singleton.getInstance().getRegion();
         region = HttpTask.getInstance().regionTranslate(region);

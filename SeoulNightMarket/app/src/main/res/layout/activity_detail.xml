@@ -35,7 +35,7 @@
                 android:fitsSystemWindows="true"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax"
-                tools:background="@drawable/bam1" />
+                tools:background="@drawable/bom" />
 
             <TextView
                 android:layout_width="wrap_content"

@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,14 +25,12 @@ public class FragmentIntroduction extends Fragment {
     View view;
     IntroductionAdapter adapter;
     ListView listView;
-    View header; // 리스트뷰 헤더
     TextView textView0;
     TextView textView1;
     TextView textView2;
     TextView textView3;
     TextView textView4;
     ImageView imageView;
-    View footer;
     ImageView imageView1;
     ArrayList<String> adapterHead = new ArrayList<String>();
     ArrayList<String> adapterString = new ArrayList<String>();
@@ -50,18 +47,12 @@ public class FragmentIntroduction extends Fragment {
 
         listView = view.findViewById(R.id.introductionListView);
 
-        header = getLayoutInflater(savedInstanceState).inflate(R.layout.introductionheader, null, false); // 리스트뷰 헤더
-        listView.addHeaderView(header);
-
         textView0 = view.findViewById(R.id.introductionText0);
         textView1 = view.findViewById(R.id.introductionText1);
         textView2 = view.findViewById(R.id.introductionText2);
         textView3 = view.findViewById(R.id.introductionText3);
         textView4 = view.findViewById(R.id.introductionText4);
         imageView = view.findViewById(R.id.introductionHeaderImage);
-
-        footer = getLayoutInflater(savedInstanceState).inflate(R.layout.introductionfooter, null, false); // 리스트뷰 푸터
-        listView.addFooterView(footer);
 
         imageView1 = view.findViewById(R.id.introductionFooterImage);
 

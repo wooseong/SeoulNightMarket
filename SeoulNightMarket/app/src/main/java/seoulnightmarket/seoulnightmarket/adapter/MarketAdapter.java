@@ -48,18 +48,25 @@ public class MarketAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
-        View gridView;
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View gridView = convertView;
 
-        if (convertView == null) {
+        if (gridView == null) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             gridView = inflater.inflate(R.layout.gridview_market, null);
-            ImageView imageView = gridView.findViewById(R.id.imageViewMarket);
-            TextView textView = gridView.findViewById(R.id.textViewMarket);
 
-            imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(image.get(position)));
-            textView.setText(text.get(position));
-        } else {
-            gridView = convertView;
+            CustomViewHolder holder = new CustomViewHolder();
+            holder.imageView = (ImageView) gridView.findViewById(R.id.imageViewMarket);
+            holder.textView = (TextView) gridView.findViewById(R.id.textViewMarket);
+            gridView.setTag(holder);
+
+//            imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(image.get(position)));
+//            textView.setText(text.get(position));
+        }
+
+        if (image.get(position) != null) {
+            CustomViewHolder holder = (CustomViewHolder) gridView.getTag();
+            holder.imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(image.get(position)));
+            holder.textView.setText(text.get(position));
         }
 
         gridView.setOnClickListener(new View.OnClickListener() { // 아이템 클릭 이벤트
@@ -81,5 +88,10 @@ public class MarketAdapter extends BaseAdapter {
         });
 
         return gridView;
+    }
+
+    public class CustomViewHolder {
+        public ImageView imageView;
+        public TextView textView;
     }
 }

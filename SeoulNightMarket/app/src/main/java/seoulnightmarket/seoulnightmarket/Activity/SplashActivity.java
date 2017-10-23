@@ -1,11 +1,10 @@
-package seoulnightmarket.seoulnightmarket.etc;
+package seoulnightmarket.seoulnightmarket.Activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import gr.net.maroulis.library.EasySplashScreen;
-import seoulnightmarket.seoulnightmarket.Activity.MainActivity;
 import seoulnightmarket.seoulnightmarket.R;
 
 /**
