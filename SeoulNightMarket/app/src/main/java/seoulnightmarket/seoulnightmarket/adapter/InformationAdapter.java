@@ -39,7 +39,8 @@ public class InformationAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent)
+    {
         final Context context = parent.getContext();
 
         if (convertView == null) { // listview_item Layout을 inflate하여 convertView 참조 획득

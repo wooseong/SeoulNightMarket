@@ -47,6 +47,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
 
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar); // Set Collapsing Toolbar layout to the screen
         ImageView placePicutre = (ImageView) findViewById(R.id.image);
+        Singleton.getInstance().setStoreImageView(placePicutre);
         placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.bom));
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager); // Setting ViewPager for each Tabs

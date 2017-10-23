@@ -91,8 +91,9 @@ public class FragmentIntroduction extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            textView0.setText(Singleton.getInstance().getOutlineTitle());
+            Singleton.getInstance().getStoreImageView().setImageBitmap(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getOutlineSource()));
 
+            textView0.setText(Singleton.getInstance().getOutlineTitle());
             textView1.setText(Singleton.getInstance().getOutlineSubtitle().replace("/", "\n"));
             textView2.setText(Singleton.getInstance().getOutlineDescribe().replace("/", "\n"));
             textView3.setText(Singleton.getInstance().getFormTitle());

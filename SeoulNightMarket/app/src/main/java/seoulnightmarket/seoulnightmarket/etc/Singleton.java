@@ -1,5 +1,11 @@
 package seoulnightmarket.seoulnightmarket.etc;
 
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,16 +34,26 @@ public class Singleton
     private String formTitle;
     private String formSubtitle;
     private String formDescribe;
-    private boolean serverRequest = false;
+    private String nowStoreImage;
+    private String course;
+    private String nowCategory;
+    private String nowStoreDetailImage;
     private ArrayList<String> storeNameList = new ArrayList<String>();
     private ArrayList<String> storeImageList = new ArrayList<String>();
+    private ArrayList<String> storeCategoryList = new ArrayList<String>();
+    private ArrayList<String> storeDetialImageList = new ArrayList<String>();
     private ArrayList<String> productNameList = new ArrayList<String>();
     private ArrayList<String> productImageList = new ArrayList<String>();
     private ArrayList<String> productPriceList = new ArrayList<String>();
     private ArrayList<String> performanceNameList = new ArrayList<String>();
     private ArrayList<String> performanceImageList = new ArrayList<String>();
+    private ImageView storeImageView;
+    private TextView storeTextView;
+    private boolean serverRequest = false;
     private static Singleton instance = null;
 
+    public String getNowCategory() { return nowCategory; }
+    public String getNowStoreDetailImage() { return nowStoreDetailImage; }
     public String getNowStore() { return nowStore; }
     public String getMarketPlace() { return marketPlace;}
     public String getMarketAddress() { return marketAddress;}
@@ -57,7 +73,9 @@ public class Singleton
         return type;
     }
     public String getRegion() { return region; }
-    public boolean getServerRequest() { return serverRequest; }
+    public String getNowStoreImage() { return nowStoreImage; }
+    public String getCourse() { return course; }
+
     public ArrayList<String> getStoreNameList() { return storeNameList; }
     public ArrayList<String> getStoreImageList() { return storeImageList; }
     public ArrayList<String> getProductNameList() { return productNameList; }
@@ -65,7 +83,13 @@ public class Singleton
     public ArrayList<String> getProductPriceList() { return productPriceList; }
     public ArrayList<String> getPerformanceNameList() { return performanceNameList; }
     public ArrayList<String> getPerformanceImageList() { return performanceImageList; }
+    public ArrayList<String> getStoreCategoryList() { return storeCategoryList; }
+    public ArrayList<String> getStoreDetialImageList() { return storeDetialImageList; }
+    public boolean getServerRequest() { return serverRequest; }
+    public ImageView getStoreImageView () { return storeImageView; }
+    public TextView getStoreTextView () { return storeTextView; }
 
+    public void setCourse(String course) { this.course = course; }
     public void setNowStore(String nowStore) { this.nowStore = nowStore; }
     public void setMarketPlace(String marketPlace) { this.marketPlace = marketPlace;}
     public void setMarketAddress(String marketAddress) { this.marketAddress = marketAddress;}
@@ -81,15 +105,26 @@ public class Singleton
     public void setFormTitle(String formTitle) { this.formTitle = formTitle;}
     public void setFormSubtitle(String formSubtitle) { this.formSubtitle = formSubtitle;}
     public void setFormDescribe(String formDescribe) { this.formDescribe = formDescribe;}
-    public void setType(String type) {
-        this.type = type;
-    }
+    public void setType(String type) { this.type = type; }
     public void setRegion(String region) {
         this.region = region;
     }
+    public void setNowStoreImage(String nowStoreImage) { this.nowStoreImage = nowStoreImage; }
     public void setServerRequest(Boolean serverRequest) { this.serverRequest = serverRequest; }
+    public void setStoreImageView(ImageView storeImageVIew) { this.storeImageView = storeImageVIew; }
+    public void setStoreTextView(TextView storeTextVIew) { this.storeTextView = storeTextVIew; }
+    public void setNowCategory(String nowCategory) { this.nowCategory = nowCategory; }
+    public void setNowStoreDetailImage(String nowStoreDetailImage) { this.nowStoreDetailImage = nowStoreDetailImage; }
 
-    public void initStoreList()
+    public void initHandmadeStoreList()
+    {
+        storeNameList.clear();
+        storeImageList.clear();
+        storeCategoryList.clear();
+        storeDetialImageList.clear();
+    }
+
+    public void initFoodStoreList()
     {
         storeNameList.clear();
         storeImageList.clear();
@@ -102,22 +137,42 @@ public class Singleton
         productPriceList.clear();
     }
 
+    public void initProductList()
+    {
+        productNameList.clear();
+        productPriceList.clear();
+    }
+
     public void initPerformanceList()
     {
         performanceNameList.clear();
         performanceImageList.clear();
     }
 
-    public void addStoreList(String storeName, String imageSource)
+    public void addFoodStoreList(String storeName, String imageSource)
     {
         storeNameList.add(storeName);
         storeImageList.add(imageSource);
+    }
+
+    public void addHandmadeStoreList(String storeName, String imageSource, String category, String detailImageSource)
+    {
+        storeNameList.add(storeName);
+        storeImageList.add(imageSource);
+        storeCategoryList.add(category);
+        storeDetialImageList.add(detailImageSource);
     }
 
     public void addFoodList(String productName, String imageSource, String price)
     {
         productNameList.add(productName);
         productImageList.add(imageSource);
+        productPriceList.add(price);
+    }
+
+    public void addProductList(String productName, String price)
+    {
+        productNameList.add(productName);
         productPriceList.add(price);
     }
 

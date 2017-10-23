@@ -3,6 +3,8 @@ package seoulnightmarket.seoulnightmarket.fragment;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -29,10 +31,16 @@ import java.util.Date;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.InformationAdapter;
+import seoulnightmarket.seoulnightmarket.adapter.IntroductionAdapter;
+import seoulnightmarket.seoulnightmarket.etc.HttpTask;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentInformation extends Fragment {
-    private ArrayList<String> regionList = new ArrayList<>();
-    private String[] region = {"청계천", "여의도", "DDP", "반포", "여의도", "DDP", "반포", "청계천", "반포", "여의도"};
+public class FragmentInformation extends Fragment
+{
+    private View view;
+    private ListView listView;
+    private InformationAdapter adapter;
+    private String uri;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -42,22 +50,28 @@ public class FragmentInformation extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
-        View view = inflater.inflate(R.layout.activity_fragment_information, null);
+        view = inflater.inflate(R.layout.activity_fragment_information, null);
 
-        InformationAdapter adapter = new InformationAdapter();
-        ListView listView = view.findViewById(R.id.informationlistview);
-        listView.setAdapter(adapter);
+        listView = view.findViewById(R.id.informationlistview);
 
-        adapter.addItem("1회차", "03.24-04.09", region[0]);
-        adapter.addItem("2회차", "04.10-04.30", region[1]);
-        adapter.addItem("3회차", "05.01-05.21", region[2]);
-        adapter.addItem("4회차", "05.22-06.11", region[3]);
-        adapter.addItem("5회차", "06.12-07.02", region[4]);
-        adapter.addItem("6회차", "07.03-07.23", region[5]);
-        adapter.addItem("7회차", "07.24-08.13", region[6]);
-        adapter.addItem("8회차", "08.14-09.03", region[7]);
-        adapter.addItem("9회차", "09.04-09.24", region[8]);
-        adapter.addItem("10회차", "09.25-10.22", region[9]);
+        if(Singleton.getInstance().getType()=="foodTruck")
+        {
+            uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/foodstore/course")
+                    .buildUpon()
+                    .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
+                    .build().toString();
+        }
+        else
+        {
+            uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/handmadestore/course")
+                    .buildUpon()
+                    .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(HttpTask.getInstance().regionTranslate(Singleton.getInstance().getRegion())))
+                    .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
+                    .build().toString();
+        }
+
+        HttpAsyncTask httpAsyncTask = new HttpAsyncTask("순환일정");
+        httpAsyncTask.execute(uri);
 
         Button btnDate = view.findViewById(R.id.btnDate);
         btnDate.setOnClickListener(new View.OnClickListener() {
@@ -201,6 +215,46 @@ public class FragmentInformation extends Fragment {
 
         public void setDate(Date date) {
             this.date = CalendarDay.from(date);
+        }
+    }
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        int count;
+        int beforeIndex;
+        String type;
+
+        HttpAsyncTask(String type) {
+            this.type = type;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            //urls[0] 은 URL 주소
+            return HttpTask.getInstance().GET(urls[0], type);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+            super.onPostExecute(result);
+
+            String[] region = Singleton.getInstance().getCourse().split("/");
+            adapter = new InformationAdapter();
+
+            adapter.addItem("1회차", "03.24-04.09", region[0]);
+            adapter.addItem("2회차", "04.10-04.30", region[1]);
+            adapter.addItem("3회차", "05.01-05.21", region[2]);
+            adapter.addItem("4회차", "05.22-06.11", region[3]);
+            adapter.addItem("5회차", "06.12-07.02", region[4]);
+            adapter.addItem("6회차", "07.03-07.23", region[5]);
+            adapter.addItem("7회차", "07.24-08.13", region[6]);
+            adapter.addItem("8회차", "08.14-09.03", region[7]);
+            adapter.addItem("9회차", "09.04-09.24", region[8]);
+            adapter.addItem("10회차", "09.25-10.22", region[9]);
+
+            listView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+            listView.invalidateViews();
         }
     }
 }

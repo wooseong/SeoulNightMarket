@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentInformation;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentProduct;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
@@ -40,6 +41,7 @@ public class HandMadeActivity extends AppCompatActivity {
         // collapsingToolbar.setTitle(getString(R.string.item_title));
         //////////
         ImageView placePicutre = (ImageView) findViewById(R.id.image);
+        Singleton.getInstance().setStoreImageView(placePicutre);
         placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.bom));
 
         // Setting ViewPager for each Tabs

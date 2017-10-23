@@ -9,7 +9,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toolbar;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.MenuAdapter;
@@ -30,8 +33,12 @@ public class FragmentMenu extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
         View view = inflater.inflate(R.layout.activity_fragment_menu, null);
-
         listView = view.findViewById(R.id.listView);
+        ImageView imageView = Singleton.getInstance().getStoreImageView();
+        imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getNowStoreImage()));
+
+        TextView textView = Singleton.getInstance().getStoreTextView();
+        textView.setText(Singleton.getInstance().getNowStore());
 
         Singleton.getInstance().setServerRequest(false);
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/food")

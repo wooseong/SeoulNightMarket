@@ -82,10 +82,16 @@ public class HttpTask {
                         Singleton.getInstance().setFormSource(posts.optJSONObject(i).getString("Form_Source"));
                     }
                     break;
-                case "야시장":
-                    Singleton.getInstance().initStoreList();
+                case "푸드트럭":
+                    Singleton.getInstance().initFoodStoreList();
                     for (int i = 0; i < posts.length(); i++) {
-                        Singleton.getInstance().addStoreList(posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Image_Source"));
+                        Singleton.getInstance().addFoodStoreList(posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Image_Source"));
+                    }
+                    break;
+                case "핸드메이드상점":
+                    Singleton.getInstance().initHandmadeStoreList();
+                    for (int i = 0; i < posts.length(); i++) {
+                        Singleton.getInstance().addHandmadeStoreList(posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Image_Source"), posts.optJSONObject(i).getString("Category"), posts.optJSONObject(i).getString("Product_Source"));
                     }
                     break;
                 case "공연":
@@ -106,10 +112,22 @@ public class HttpTask {
                     break;
                 case "음식":
                     Singleton.getInstance().initFoodList();
-                    Log.e("POSTS LENGTH", posts.length()+"");
                     for (int i = 0; i < posts.length(); i++)
                     {
                         Singleton.getInstance().addFoodList(posts.optJSONObject(i).getString("Food_Name"), posts.optJSONObject(i).getString("Image_source"), posts.optJSONObject(i).getString("Price"));
+                    }
+                    break;
+                case "핸드메이드":
+                    Singleton.getInstance().initProductList();
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        Singleton.getInstance().addProductList(posts.optJSONObject(i).getString("Handmade_Name"), posts.optJSONObject(i).getString("Price"));
+                    }
+                    break;
+                case "순환일정":
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        Singleton.getInstance().setCourse(posts.optJSONObject(i).getString("Place_Course"));
                     }
                     break;
             }
