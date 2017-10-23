@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context="seoulnightmarket.seoulnightmarket.fragment.FragmentProduct">
 
     <LinearLayout
@@ -12,13 +11,43 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textAlignment="center"
+                android:textColor="@color/md_black_1000"
+                android:textStyle="bold"
+                android:text="허니모먼트"
+                android:textSize="25dp"/>
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="귀금속보석"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/imageViewProduct"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/babo" />
+        </LinearLayout>
+
         <ListView
             android:id="@+id/listViewProduct"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="380dp">
         </ListView>
-
     </LinearLayout>
 
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>

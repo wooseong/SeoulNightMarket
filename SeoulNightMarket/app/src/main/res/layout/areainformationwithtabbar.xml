@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="256dp"
                 android:fitsSystemWindows="true"
-                app:contentScrim="?attr/colorPrimary"
+                app:contentScrim="@color/md_indigo_900"
                 app:expandedTitleMarginEnd="64dp"
                 app:expandedTitleMarginStart="48dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed"

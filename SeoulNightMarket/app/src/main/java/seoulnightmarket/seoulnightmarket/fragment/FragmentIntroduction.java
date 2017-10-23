@@ -92,6 +92,7 @@ public class FragmentIntroduction extends Fragment {
             super.onPostExecute(result);
 
             textView0.setText(Singleton.getInstance().getOutlineTitle());
+
             textView1.setText(Singleton.getInstance().getOutlineSubtitle().replace("/", "\n"));
             textView2.setText(Singleton.getInstance().getOutlineDescribe().replace("/", "\n"));
             textView3.setText(Singleton.getInstance().getFormTitle());

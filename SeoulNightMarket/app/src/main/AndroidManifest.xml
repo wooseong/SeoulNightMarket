@@ -54,7 +54,6 @@
         <fragment android:name=".fragment.FragmentConcertPlaza" />
 
         <activity android:name=".Activity.SellerActivity" />
-        <activity android:name=".etc.ExpandableHeightGridView"></activity>
     </application>
 
 </manifest>
