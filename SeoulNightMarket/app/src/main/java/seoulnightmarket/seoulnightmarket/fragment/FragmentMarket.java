@@ -55,7 +55,7 @@ public class FragmentMarket extends Fragment {
         final Button btnHandMade = view.findViewById(R.id.handMade);
 
         switch (region) {
-            case "Yeouido":
+            case "여의도":
                 btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.color.md_deep_orange_400);
                 btnHandMade.setTextColor(Color.parseColor("#000000"));
@@ -67,19 +67,19 @@ public class FragmentMarket extends Fragment {
                 btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.color.md_white_1000);
                 break;
-            case "Banpo":
+            case "반포":
                 btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                 btnFoodTruck.setBackgroundResource(R.color.md_yellow_500);
                 btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.color.md_white_1000);
                 break;
-            case "Cheonggyecheon":
+            case "청계천":
                 btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                 btnFoodTruck.setBackgroundResource(R.color.md_light_green_500);
                 btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.color.md_white_1000);
                 break;
-            case "CheonggyePlaza":
+            case "청계광장":
                 btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                 btnFoodTruck.setBackgroundResource(R.color.md_blue_400);
                 btnHandMade.setTextColor(Color.parseColor("#000000"));
@@ -97,7 +97,7 @@ public class FragmentMarket extends Fragment {
 
                 if (type == "foodTruck") {
                     switch (region) {
-                        case "Yeouido":
+                        case "여의도":
                             btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                             btnFoodTruck.setBackgroundResource(R.color.md_deep_orange_400);
                             btnHandMade.setTextColor(Color.parseColor("#000000"));
@@ -109,19 +109,19 @@ public class FragmentMarket extends Fragment {
                             btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.color.md_white_1000);
                             break;
-                        case "Banpo":
+                        case "반포":
                             btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.color.md_yellow_500);
                             btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.color.md_white_1000);
                             break;
-                        case "Cheonggyecheon":
+                        case "청계천":
                             btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.color.md_light_green_500);
                             btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.color.md_white_1000);
                             break;
-                        case "CheonggyePlaza":
+                        case "청계광장":
                             btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.color.md_blue_400);
                             btnHandMade.setTextColor(Color.parseColor("#000000"));
@@ -151,7 +151,7 @@ public class FragmentMarket extends Fragment {
 
                 if (type == "handMade") {
                     switch (region) {
-                        case "Yeouido":
+                        case "여의도":
                             btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.color.md_white_1000);
                             btnHandMade.setTextColor(Color.parseColor("#ffffff"));
@@ -163,19 +163,19 @@ public class FragmentMarket extends Fragment {
                             btnHandMade.setTextColor(Color.parseColor("#FFEB3B"));
                             btnHandMade.setBackgroundResource(R.color.md_deep_purple_400);
                             break;
-                        case "Banpo":
+                        case "반포":
                             btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.color.md_white_1000);
                             btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.color.md_yellow_500);
                             break;
-                        case "Cheonggyecheon":
+                        case "청계천":
                             btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.color.md_white_1000);
                             btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.color.md_light_green_500);
                             break;
-                        case "CheonggyePlaza":
+                        case "청계광장":
                             btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.color.md_white_1000);
                             btnHandMade.setTextColor(Color.parseColor("#000000"));

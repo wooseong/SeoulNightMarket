@@ -29,7 +29,7 @@ public class FragmentMenu extends Fragment {
         listView.setAdapter(adapter);
 
         adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.chickenfit), "치킨핏", 12000);
-        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.jayfresh), "제이프레시", 25000);
+        adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.pandagrill), "팬더그릴", 25000);
         adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), R.drawable.imsteak), "아임스테이크", 16000);
 
         return view;

@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY"
-            android:src="@drawable/banpo"/>
+            android:src="@drawable/bom"/>
 
         <TextView
             android:id="@+id/introductionText3"

@@ -1,20 +1,36 @@
 package seoulnightmarket.seoulnightmarket.fragment;
 
+import android.app.Dialog;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.RelativeSizeSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.DayViewDecorator;
+import com.prolificinteractive.materialcalendarview.DayViewFacade;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.InformationAdapter;
 
-public class FragmentInformation extends Fragment
-{
+public class FragmentInformation extends Fragment {
     private ArrayList<String> regionList = new ArrayList<>();
     private String[] region = {"청계천", "여의도", "DDP", "반포", "여의도", "DDP", "반포", "청계천", "반포", "여의도"};
 
@@ -43,6 +59,148 @@ public class FragmentInformation extends Fragment
         adapter.addItem("9회차", "09.04-09.24", region[8]);
         adapter.addItem("10회차", "09.25-10.22", region[9]);
 
+        Button btnDate = view.findViewById(R.id.btnDate);
+        btnDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final Dialog dialog = new Dialog(getActivity());
+                dialog.setContentView(R.layout.activity_date_dialog);
+
+                final MaterialCalendarView calendarView = dialog.findViewById(R.id.calendarView);
+                calendarView.addDecorators(new HolidayDecorator(), new FridayDecorator(), new SaturdayDecorator(), new OneDayDecorator());
+                calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
+                    @Override
+                    public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
+                        String day = String.valueOf(date.getDate()).substring(0, 3);
+
+                        switch (day) {
+                            case "Mon":
+                                day = "월";
+                                break;
+                            case "Tue":
+                                day = "화";
+                                break;
+                            case "Wed":
+                                day = "수";
+                                break;
+                            case "Thu":
+                                day = "목";
+                                break;
+                            case "Fri":
+                                day = "금";
+                                break;
+                            case "Sat":
+                                day = "토";
+                                break;
+                            case "Sun":
+                                day = "일";
+                                break;
+                            default:
+                                break;
+                        }
+
+                        if (day != "금" && day != "토") {
+                            Toast.makeText(getActivity(), "야시장 개장날이 아닙니다", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getActivity(), String.valueOf(date.getMonth() + 1) + "월 " + String.valueOf(date.getDay()) + "일 " + "(" + day + ")", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
+                        }
+                    }
+                });
+
+                dialog.show();
+            }
+        });
+
         return view;
+    }
+
+    public class HolidayDecorator implements DayViewDecorator {
+        private final Calendar calendar = Calendar.getInstance();
+
+        public HolidayDecorator() {
+
+        }
+
+        @Override
+        public boolean shouldDecorate(CalendarDay day) {
+            day.copyTo(calendar);
+            int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+
+            return (weekDay == Calendar.SUNDAY) || (weekDay == Calendar.MONDAY) || weekDay == Calendar.TUESDAY || weekDay == Calendar.WEDNESDAY || (weekDay == Calendar.THURSDAY);
+        }
+
+        @Override
+        public void decorate(DayViewFacade view) {
+            view.addSpan(new ForegroundColorSpan(Color.LTGRAY));
+        }
+    }
+
+    public class FridayDecorator implements DayViewDecorator { // 금요일
+        private final Calendar calendar = Calendar.getInstance();
+
+        public FridayDecorator() {
+
+        }
+
+        @Override
+        public boolean shouldDecorate(CalendarDay day) {
+            day.copyTo(calendar);
+            int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+            return weekDay == Calendar.FRIDAY;
+        }
+
+        @Override
+        public void decorate(DayViewFacade view) {
+            view.addSpan(new ForegroundColorSpan(Color.BLACK));
+            view.addSpan(new StyleSpan(Typeface.BOLD));
+            view.addSpan(new RelativeSizeSpan(1.4f));
+        }
+    }
+
+    public class SaturdayDecorator implements DayViewDecorator { // 토요일
+        private final Calendar calendar = Calendar.getInstance();
+
+        public SaturdayDecorator() {
+
+        }
+
+        @Override
+        public boolean shouldDecorate(CalendarDay day) {
+            day.copyTo(calendar);
+            int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+            return weekDay == Calendar.SATURDAY;
+        }
+
+        @Override
+        public void decorate(DayViewFacade view) {
+            view.addSpan(new ForegroundColorSpan(Color.BLACK));
+            view.addSpan(new StyleSpan(Typeface.BOLD));
+            view.addSpan(new RelativeSizeSpan(1.4f));
+        }
+    }
+
+    public class OneDayDecorator implements DayViewDecorator { // 오늘 날짜
+        private CalendarDay date;
+
+        public OneDayDecorator() {
+            date = CalendarDay.today();
+        }
+
+        @Override
+        public boolean shouldDecorate(CalendarDay day) {
+            return date != null && day.equals(date);
+        }
+
+        @Override
+        public void decorate(DayViewFacade view) {
+            view.addSpan(new StyleSpan(Typeface.BOLD));
+            view.addSpan(new RelativeSizeSpan(1.4f));
+            view.addSpan(new ForegroundColorSpan(Color.BLUE));
+        }
+
+        public void setDate(Date date) {
+            this.date = CalendarDay.from(date);
+        }
     }
 }

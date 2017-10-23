@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +68,7 @@ public class FragmentConcert extends Fragment {
                 dialog.setContentView(R.layout.activity_date_dialog);
 
                 final MaterialCalendarView calendarView = dialog.findViewById(R.id.calendarView);
-                calendarView.addDecorators(new FridayDecorator(), new SaturdayDecorator(), new OneDayDecorator());
+                calendarView.addDecorators(new HolidayDecorator(), new FridayDecorator(), new SaturdayDecorator(), new OneDayDecorator());
 
                 calendarView.setOnDateChangedListener(new OnDateSelectedListener() {
                     @Override
@@ -122,9 +121,6 @@ public class FragmentConcert extends Fragment {
                                 }
                             }
 
-                            Log.e("Test", selectedDate);
-                            Log.e("Test", serverDate);
-
                             textView.setText(selectedDate);
                             dialog.dismiss();
                         }
@@ -136,6 +132,27 @@ public class FragmentConcert extends Fragment {
         });
 
         return view;
+    }
+
+    public class HolidayDecorator implements DayViewDecorator {
+        private final Calendar calendar = Calendar.getInstance();
+
+        public HolidayDecorator() {
+
+        }
+
+        @Override
+        public boolean shouldDecorate(CalendarDay day) {
+            day.copyTo(calendar);
+            int weekDay = calendar.get(Calendar.DAY_OF_WEEK);
+
+            return (weekDay == Calendar.SUNDAY) || (weekDay == Calendar.MONDAY) || weekDay == Calendar.TUESDAY || weekDay == Calendar.WEDNESDAY || (weekDay == Calendar.THURSDAY);
+        }
+
+        @Override
+        public void decorate(DayViewFacade view) {
+            view.addSpan(new ForegroundColorSpan(Color.LTGRAY));
+        }
     }
 
     public class FridayDecorator implements DayViewDecorator { // 금요일
@@ -154,7 +171,9 @@ public class FragmentConcert extends Fragment {
 
         @Override
         public void decorate(DayViewFacade view) {
-            view.addSpan(new ForegroundColorSpan(Color.BLUE));
+            view.addSpan(new ForegroundColorSpan(Color.BLACK));
+            view.addSpan(new StyleSpan(Typeface.BOLD));
+            view.addSpan(new RelativeSizeSpan(1.4f));
         }
     }
 
@@ -174,7 +193,9 @@ public class FragmentConcert extends Fragment {
 
         @Override
         public void decorate(DayViewFacade view) {
-            view.addSpan(new ForegroundColorSpan(Color.BLUE));
+            view.addSpan(new ForegroundColorSpan(Color.BLACK));
+            view.addSpan(new StyleSpan(Typeface.BOLD));
+            view.addSpan(new RelativeSizeSpan(1.4f));
         }
     }
 
@@ -194,23 +215,11 @@ public class FragmentConcert extends Fragment {
         public void decorate(DayViewFacade view) {
             view.addSpan(new StyleSpan(Typeface.BOLD));
             view.addSpan(new RelativeSizeSpan(1.4f));
-            view.addSpan(new ForegroundColorSpan(Color.GREEN));
+            view.addSpan(new ForegroundColorSpan(Color.BLUE));
         }
 
         public void setDate(Date date) {
             this.date = CalendarDay.from(date);
         }
     }
-
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) { // 현재 보고있는 프레그먼트
-//        if (isVisibleToUser) {
-//            Log.e("Test", "보인다");
-//            // 보인다.
-//        } else {
-//            Log.e("Test", "안보인다");
-//            // 안보인다.
-//        }
-//        super.setUserVisibleHint(isVisibleToUser);
-//    }
 }
