@@ -35,8 +35,7 @@ import seoulnightmarket.seoulnightmarket.adapter.ConcertAdapter;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentConcert extends Fragment
-{
+public class FragmentConcert extends Fragment {
     public String uri;
     public String region;
     public ConcertAdapter concertAdapter;
@@ -57,20 +56,16 @@ public class FragmentConcert extends Fragment
 
     @Nullable
     @Override
-    public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState)
-    {
+    public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_concert, container, false);
 
         region = Singleton.getInstance().getRegion();
         region = HttpTask.getInstance().regionTranslate(region);
 
-        concertAdapter = new ConcertAdapter(view.getContext(), Singleton.getInstance().getPerformanceImageList(), Singleton.getInstance().getPerformanceNameList()); // 그리드뷰 어댑터 연결
         textView = view.findViewById(R.id.concertDate);
         gridView = view.findViewById(R.id.gridViewConcert);
-        gridView.setAdapter(concertAdapter);
 
         Button btnDate = view.findViewById(R.id.btnConcert);
-
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -241,8 +236,7 @@ public class FragmentConcert extends Fragment
         }
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         String type;
 
         HttpAsyncTask(String type) {
