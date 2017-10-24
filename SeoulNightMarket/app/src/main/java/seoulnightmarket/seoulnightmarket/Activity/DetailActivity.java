@@ -1,6 +1,5 @@
 package seoulnightmarket.seoulnightmarket.Activity;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -16,7 +15,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,15 +29,13 @@ import seoulnightmarket.seoulnightmarket.fragment.FragmentInformation;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentMenu;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
 
-public class DetailActivity extends AppCompatActivity
-{
+public class DetailActivity extends AppCompatActivity {
     private int count = 0;
     private TextView currentOrderNumber;
     private CoordinatorLayout coordinatorLayout;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         // Adding Toolbar to Main screen
@@ -126,11 +122,9 @@ public class DetailActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    public void btnOrder(View v)
-    {
+    public void btnOrder(View v) {
         // 번호표 뽑기 버튼 이벤트
-        if (count == 0 && Singleton.getInstance().getDuplicated() == false)
-        {
+        if (count == 0 && Singleton.getInstance().getDuplicated() == false) {
             count++;
             String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
                     .buildUpon()
@@ -139,16 +133,12 @@ public class DetailActivity extends AppCompatActivity
 
             TicketAsyncTask ticketAsyncTask = new TicketAsyncTask("번호표 보기");
             ticketAsyncTask.execute(uri);
-
-        }
-        else
-        {
+        } else {
             Toast.makeText(getApplicationContext(), "이미 번호표를 발급 받았습니다", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public class TicketAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class TicketAsyncTask extends AsyncTask<String, Void, String> {
         String type;
 
         TicketAsyncTask(String type) {
@@ -163,13 +153,12 @@ public class DetailActivity extends AppCompatActivity
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
             String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket/make")
                     .buildUpon()
-                    .appendQueryParameter("number", (Singleton.getInstance().getLastClient()+1)+"")
+                    .appendQueryParameter("number", (Singleton.getInstance().getLastClient() + 1) + "")
                     .appendQueryParameter("store", Singleton.getInstance().getNowStore())
                     .appendQueryParameter("place", Singleton.getInstance().getRegion())
                     .appendQueryParameter("phone", Singleton.getInstance().getNowLoginID())
@@ -181,8 +170,7 @@ public class DetailActivity extends AppCompatActivity
         }
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         String type;
 
         HttpAsyncTask(String type) {
@@ -197,10 +185,10 @@ public class DetailActivity extends AppCompatActivity
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            currentOrderNumber.setText((Singleton.getInstance().getLastClient()-Singleton.getInstance().getNowClient()+1)+"");
+            currentOrderNumber.setText((Singleton.getInstance().getLastClient() - Singleton.getInstance().getNowClient() + 1) + "");
+
             Toast.makeText(getApplicationContext(), "번호표 발급 완료", Toast.LENGTH_SHORT).show();
         }
     }

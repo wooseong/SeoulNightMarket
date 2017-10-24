@@ -9,8 +9,7 @@ import java.util.ArrayList;
  * Created by Yookmoonsu on 2017-09-17.
  */
 
-public class Singleton
-{
+public class Singleton {
     private int nowClient;
     private int lastClient;
     private String type;
@@ -56,11 +55,17 @@ public class Singleton
 
     private static Singleton instance = null;
 
-    public int getNowClient() { return nowClient;}
+    public int getNowClient() {
+        return nowClient;
+    }
 
-    public int getLastClient() { return lastClient; }
+    public int getLastClient() {
+        return lastClient;
+    }
 
-    public String getNowLoginID() { return nowLoginID; }
+    public String getNowLoginID() {
+        return nowLoginID;
+    }
 
     public String getNowCategory() {
         return nowCategory;
@@ -182,17 +187,25 @@ public class Singleton
         return storeDetialImageList;
     }
 
-    public ArrayList<String> getWaitStoreList() { return waitStoreList; }
+    public ArrayList<String> getWaitStoreList() {
+        return waitStoreList;
+    }
 
-    public ArrayList<Integer> getNowWaitList() { return nowWaitList; }
+    public ArrayList<Integer> getNowWaitList() {
+        return nowWaitList;
+    }
 
-    public ArrayList<Integer> getMyWaitList() { return myWaitList; }
+    public ArrayList<Integer> getMyWaitList() {
+        return myWaitList;
+    }
 
     public boolean getServerRequest() {
         return serverRequest;
     }
 
-    public boolean getDuplicated() { return duplicated; }
+    public boolean getDuplicated() {
+        return duplicated;
+    }
 
     public ImageView getStoreImageView() {
         return storeImageView;
@@ -210,9 +223,13 @@ public class Singleton
         return nowLogin;
     }
 
-    public void setNowClient(int nowClient) { this.nowClient = nowClient; }
+    public void setNowClient(int nowClient) {
+        this.nowClient = nowClient;
+    }
 
-    public void setLastClient(int lastClient) { this.lastClient = lastClient; }
+    public void setLastClient(int lastClient) {
+        this.lastClient = lastClient;
+    }
 
     public void setCourse(String course) {
         this.course = course;
@@ -258,7 +275,9 @@ public class Singleton
         this.outlineTitle = outlineTitle;
     }
 
-    public void setNowLoginID(String nowLoginID) { this.nowLoginID = nowLoginID; }
+    public void setNowLoginID(String nowLoginID) {
+        this.nowLoginID = nowLoginID;
+    }
 
     public void setOutlineSubtitle(String outlineSubtitle) {
         this.outlineSubtitle = outlineSubtitle;
@@ -300,7 +319,9 @@ public class Singleton
         this.storeImageView = storeImageVIew;
     }
 
-    public void setDuplicated(boolean duplicated) { this.duplicated = duplicated; }
+    public void setDuplicated(boolean duplicated) {
+        this.duplicated = duplicated;
+    }
 
     public void setStoreTextView(TextView storeTextVIew) {
         this.storeTextView = storeTextVIew;
@@ -322,16 +343,14 @@ public class Singleton
         this.nowLogin = nowLogin;
     }
 
-    public void initWaitList()
-    {
+    public void initWaitList() {
         nowWaitList.clear();
         myWaitList.clear();
         waitStoreList.clear();
         storeImageList.clear();
     }
 
-    public void initHandmadeStoreList()
-    {
+    public void initHandmadeStoreList() {
         storeNameList.clear();
         storeImageList.clear();
         storeCategoryList.clear();
@@ -360,20 +379,17 @@ public class Singleton
     }
 
 
-    public void addWaitList(int my, String store, String imageSource)
-    {
+    public void addWaitList(int my, String store, String imageSource) {
         myWaitList.add(my);
         waitStoreList.add(store);
         storeImageList.add(imageSource);
     }
 
-    public void addNowWaitList(int now)
-    {
+    public void addNowWaitList(int now) {
         nowWaitList.add(now);
     }
 
-    public void addFoodStoreList(String storeName, String imageSource)
-    {
+    public void addFoodStoreList(String storeName, String imageSource) {
         storeNameList.add(storeName);
         storeImageList.add(imageSource);
     }

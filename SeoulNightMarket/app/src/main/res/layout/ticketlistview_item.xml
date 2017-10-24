@@ -18,7 +18,7 @@
             <ImageView
                 android:id="@+id/orderImageView"
                 android:layout_width="match_parent"
-                android:layout_height="130dp" />
+                android:layout_height="120dp" />
 
             <TextView
                 android:id="@+id/orderMenu"

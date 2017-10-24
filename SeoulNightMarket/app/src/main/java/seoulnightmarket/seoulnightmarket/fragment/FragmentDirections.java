@@ -39,6 +39,7 @@ public class FragmentDirections extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.activity_fragment_directions, null);
+        region = Singleton.getInstance().getRegion();
 
         textDirection0 = view.findViewById(R.id.textDirection0);
         textDirection1 = view.findViewById(R.id.textDirection1);
@@ -48,17 +49,53 @@ public class FragmentDirections extends Fragment {
         textCar = view.findViewById(R.id.textCar);
         imageView = view.findViewById(R.id.imageViewDirection);
 
-        textDirection0.setText(R.string.textDirection0);
-        textDirection1.setText(R.string.textDirection1);
-        textAddress.setText(R.string.textAddress);
-        textBus.setText(R.string.textBus);
-        textSubway.setText(R.string.textSubway);
-        textCar.setText(R.string.textCar);
-        imageView.setImageResource(R.drawable.yyddir);
+        if (region.equals("여의도")) {
+            textDirection0.setText(R.string.textDirection0y);
+            textDirection1.setText(R.string.textDirection1y);
+            textAddress.setText(R.string.textAddressy);
+            textBus.setText(R.string.textBusy);
+            textSubway.setText(R.string.textSubwayy);
+            textCar.setText(R.string.textCary);
+            imageView.setImageResource(R.drawable.yyddir);
+        }
+        else if (region.equals("DDP")) {
+            textDirection0.setText(R.string.textDirection0d);
+            textDirection1.setText(R.string.textDirection1d);
+            textAddress.setText(R.string.textAddressd);
+            textBus.setText(R.string.textBusd);
+            textSubway.setText(R.string.textSubwayd);
+            textCar.setText(R.string.textCard);
+            imageView.setImageResource(R.drawable.ddpdir);
+        }
+        else if (region.equals("반포")) {
+            textDirection0.setText(R.string.textDirection0b);
+            textDirection1.setText(R.string.textDirection1b);
+            textAddress.setText(R.string.textAddressb);
+            textBus.setText(R.string.textBusb);
+            textSubway.setText(R.string.textSubwayb);
+            textCar.setText(R.string.textCarb);
+            imageView.setImageResource(R.drawable.bpdir);
+        }
+        else if (region.equals("청계천")) {
+            textDirection0.setText(R.string.textDirection0c);
+            textDirection1.setText(R.string.textDirection1c);
+            textAddress.setText(R.string.textAddressc);
+            textBus.setText(R.string.textBusc);
+            textSubway.setText(R.string.textSubwayc);
+            textCar.setText(R.string.textCarc);
+            imageView.setImageResource(R.drawable.cgcdir);
+        }
+        else if (region.equals("청계광장")) {
+            textDirection0.setText(R.string.textDirection0j);
+            textDirection1.setText(R.string.textDirection1j);
+            textAddress.setText(R.string.textAddressj);
+            textBus.setText(R.string.textBusj);
+            textSubway.setText(R.string.textSubwayj);
+            textCar.setText(R.string.textCarj);
+            imageView.setImageResource(R.drawable.cggjdir);
+        }
 
         // onCreate 후에 화면을 구성할때 호출
-        region = Singleton.getInstance().getRegion();
-
 //        uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/intro")
 //                .buildUpon()
 //                .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))

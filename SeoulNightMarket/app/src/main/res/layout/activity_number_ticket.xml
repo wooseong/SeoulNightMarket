@@ -13,6 +13,8 @@
         android:layout_marginTop="15dp"
         android:textAlignment="center"
         android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="@color/md_black_1000"
         android:text="내 예약 현황"/>
 
     <ListView
