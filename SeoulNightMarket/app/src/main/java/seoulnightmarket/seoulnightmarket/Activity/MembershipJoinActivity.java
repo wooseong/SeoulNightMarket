@@ -3,13 +3,20 @@ package seoulnightmarket.seoulnightmarket.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.adapter.MenuAdapter;
+import seoulnightmarket.seoulnightmarket.etc.HttpTask;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
+import seoulnightmarket.seoulnightmarket.fragment.FragmentMarket;
 
 public class MembershipJoinActivity extends AppCompatActivity {
     private EditText phonenumberText;
@@ -55,10 +62,42 @@ public class MembershipJoinActivity extends AppCompatActivity {
         else if (nickname.length() == 0) {
             Toast.makeText(getApplicationContext(), "닉네임을 입력하세요", Toast.LENGTH_SHORT).show();
         }
-        else {
-            startActivity(new Intent(MembershipJoinActivity.this, LoginActivity.class));
+        else
+        {
+            String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/signup")
+                    .buildUpon()
+                    .appendQueryParameter("phone", phonenumber)
+                    .appendQueryParameter("password", password)
+                    .appendQueryParameter("nickname", nickname)
+                    .build().toString();
 
-            Toast.makeText(getApplicationContext(), "회원가입 완료", Toast.LENGTH_SHORT).show();
+            HttpAsyncTask httpAsyncTask = new HttpAsyncTask("회원가입");
+            httpAsyncTask.execute(uri);
+        }
+    }
+
+    public class HttpAsyncTask extends AsyncTask<String, Void, String>
+    {
+        String type;
+
+        HttpAsyncTask(String type) {
+            this.type = type;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            //urls[0] 은 URL 주소
+            return HttpTask.getInstance().POST(urls[0], type);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+            super.onPostExecute(result);
+
+           Toast.makeText(getApplicationContext(), "회원가입 완료", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MembershipJoinActivity.this, LoginActivity.class));
         }
     }
 }

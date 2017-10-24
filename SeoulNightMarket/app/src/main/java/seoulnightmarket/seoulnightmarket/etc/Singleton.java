@@ -1,22 +1,15 @@
 package seoulnightmarket.seoulnightmarket.etc;
 
-import android.graphics.Bitmap;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.List;
-
-import seoulnightmarket.seoulnightmarket.data.ProductListViewItem;
 
 /**
  * Created by Yookmoonsu on 2017-09-17.
  */
 
-public class Singleton
-{
+public class Singleton {
     private String type;
     private String region;
     private String nowStore;
@@ -51,133 +44,296 @@ public class Singleton
     private TextView storeTextView;
     private boolean serverRequest = false;
     private static Singleton instance = null;
+    private boolean nowLogin = false;
 
-    public String getNowCategory() { return nowCategory; }
-    public String getNowStoreDetailImage() { return nowStoreDetailImage; }
-    public String getNowStore() { return nowStore; }
-    public String getMarketPlace() { return marketPlace;}
-    public String getMarketAddress() { return marketAddress;}
-    public String getBusWay() { return busWay;}
-    public String getSubwayWay() { return subwayWay;}
-    public String getCarWay() { return carWay;}
-    public String getLoadmapSource() { return loadmapSource;}
-    public String getOutlineSource() { return outlineSource;}
-    public String getFormSource() { return formSource;}
-    public String getOutlineTitle() { return outlineTitle;}
-    public String getOutlineSubtitle() { return outlineSubtitle;}
-    public String getOutlineDescribe() { return outlineDescribe;}
-    public String getFormTitle() { return formTitle;}
-    public String getFormSubtitle() { return formSubtitle;}
-    public String getFormDescribe() { return formDescribe;}
+    public String getNowCategory() {
+        return nowCategory;
+    }
+
+    public String getNowStoreDetailImage() {
+        return nowStoreDetailImage;
+    }
+
+    public String getNowStore() {
+        return nowStore;
+    }
+
+    public String getMarketPlace() {
+        return marketPlace;
+    }
+
+    public String getMarketAddress() {
+        return marketAddress;
+    }
+
+    public String getBusWay() {
+        return busWay;
+    }
+
+    public String getSubwayWay() {
+        return subwayWay;
+    }
+
+    public String getCarWay() {
+        return carWay;
+    }
+
+    public String getLoadmapSource() {
+        return loadmapSource;
+    }
+
+    public String getOutlineSource() {
+        return outlineSource;
+    }
+
+    public String getFormSource() {
+        return formSource;
+    }
+
+    public String getOutlineTitle() {
+        return outlineTitle;
+    }
+
+    public String getOutlineSubtitle() {
+        return outlineSubtitle;
+    }
+
+    public String getOutlineDescribe() {
+        return outlineDescribe;
+    }
+
+    public String getFormTitle() {
+        return formTitle;
+    }
+
+    public String getFormSubtitle() {
+        return formSubtitle;
+    }
+
+    public String getFormDescribe() {
+        return formDescribe;
+    }
+
     public String getType() {
         return type;
     }
-    public String getRegion() { return region; }
-    public String getNowStoreImage() { return nowStoreImage; }
-    public String getCourse() { return course; }
 
-    public ArrayList<String> getStoreNameList() { return storeNameList; }
-    public ArrayList<String> getStoreImageList() { return storeImageList; }
-    public ArrayList<String> getProductNameList() { return productNameList; }
-    public ArrayList<String> getProductImageList() { return productImageList; }
-    public ArrayList<String> getProductPriceList() { return productPriceList; }
-    public ArrayList<String> getPerformanceNameList() { return performanceNameList; }
-    public ArrayList<String> getPerformanceImageList() { return performanceImageList; }
-    public ArrayList<String> getStoreCategoryList() { return storeCategoryList; }
-    public ArrayList<String> getStoreDetialImageList() { return storeDetialImageList; }
-    public boolean getServerRequest() { return serverRequest; }
-    public ImageView getStoreImageView () { return storeImageView; }
-    public TextView getStoreTextView () { return storeTextView; }
+    public String getRegion() {
+        return region;
+    }
 
-    public void setCourse(String course) { this.course = course; }
-    public void setNowStore(String nowStore) { this.nowStore = nowStore; }
-    public void setMarketPlace(String marketPlace) { this.marketPlace = marketPlace;}
-    public void setMarketAddress(String marketAddress) { this.marketAddress = marketAddress;}
-    public void setBusWay(String busWay) { this.busWay = busWay;}
-    public void setSubwayWay(String subwayWay) { this.subwayWay = subwayWay;}
-    public void setCarWay(String carWay) { this.carWay = carWay;}
-    public void setLoadmapSource(String loadmapSource) { this.loadmapSource = loadmapSource;}
-    public void setOutlineSource(String outlineSource) { this.outlineSource =  outlineSource;}
-    public void setFormSource(String formSource) { this.formSource = formSource;}
-    public void setOutlineTitle(String outlineTitle) { this.outlineTitle = outlineTitle;}
-    public void setOutlineSubtitle(String outlineSubtitle) { this.outlineSubtitle = outlineSubtitle;}
-    public void setOutlineDescribe(String outlineDescribe) { this.outlineDescribe = outlineDescribe;}
-    public void setFormTitle(String formTitle) { this.formTitle = formTitle;}
-    public void setFormSubtitle(String formSubtitle) { this.formSubtitle = formSubtitle;}
-    public void setFormDescribe(String formDescribe) { this.formDescribe = formDescribe;}
-    public void setType(String type) { this.type = type; }
+    public String getNowStoreImage() {
+        return nowStoreImage;
+    }
+
+    public String getCourse() {
+        return course;
+    }
+
+    public ArrayList<String> getStoreNameList() {
+        return storeNameList;
+    }
+
+    public ArrayList<String> getStoreImageList() {
+        return storeImageList;
+    }
+
+    public ArrayList<String> getProductNameList() {
+        return productNameList;
+    }
+
+    public ArrayList<String> getProductImageList() {
+        return productImageList;
+    }
+
+    public ArrayList<String> getProductPriceList() {
+        return productPriceList;
+    }
+
+    public ArrayList<String> getPerformanceNameList() {
+        return performanceNameList;
+    }
+
+    public ArrayList<String> getPerformanceImageList() {
+        return performanceImageList;
+    }
+
+    public ArrayList<String> getStoreCategoryList() {
+        return storeCategoryList;
+    }
+
+    public ArrayList<String> getStoreDetialImageList() {
+        return storeDetialImageList;
+    }
+
+    public boolean getServerRequest() {
+        return serverRequest;
+    }
+
+    public ImageView getStoreImageView() {
+        return storeImageView;
+    }
+
+    public TextView getStoreTextView() {
+        return storeTextView;
+    }
+
+    public boolean getNowLogin() {
+        return nowLogin;
+    }
+
+    public void setCourse(String course) {
+        this.course = course;
+    }
+
+    public void setNowStore(String nowStore) {
+        this.nowStore = nowStore;
+    }
+
+    public void setMarketPlace(String marketPlace) {
+        this.marketPlace = marketPlace;
+    }
+
+    public void setMarketAddress(String marketAddress) {
+        this.marketAddress = marketAddress;
+    }
+
+    public void setBusWay(String busWay) {
+        this.busWay = busWay;
+    }
+
+    public void setSubwayWay(String subwayWay) {
+        this.subwayWay = subwayWay;
+    }
+
+    public void setCarWay(String carWay) {
+        this.carWay = carWay;
+    }
+
+    public void setLoadmapSource(String loadmapSource) {
+        this.loadmapSource = loadmapSource;
+    }
+
+    public void setOutlineSource(String outlineSource) {
+        this.outlineSource = outlineSource;
+    }
+
+    public void setFormSource(String formSource) {
+        this.formSource = formSource;
+    }
+
+    public void setOutlineTitle(String outlineTitle) {
+        this.outlineTitle = outlineTitle;
+    }
+
+    public void setOutlineSubtitle(String outlineSubtitle) {
+        this.outlineSubtitle = outlineSubtitle;
+    }
+
+    public void setOutlineDescribe(String outlineDescribe) {
+        this.outlineDescribe = outlineDescribe;
+    }
+
+    public void setFormTitle(String formTitle) {
+        this.formTitle = formTitle;
+    }
+
+    public void setFormSubtitle(String formSubtitle) {
+        this.formSubtitle = formSubtitle;
+    }
+
+    public void setFormDescribe(String formDescribe) {
+        this.formDescribe = formDescribe;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public void setRegion(String region) {
         this.region = region;
     }
-    public void setNowStoreImage(String nowStoreImage) { this.nowStoreImage = nowStoreImage; }
-    public void setServerRequest(Boolean serverRequest) { this.serverRequest = serverRequest; }
-    public void setStoreImageView(ImageView storeImageVIew) { this.storeImageView = storeImageVIew; }
-    public void setStoreTextView(TextView storeTextVIew) { this.storeTextView = storeTextVIew; }
-    public void setNowCategory(String nowCategory) { this.nowCategory = nowCategory; }
-    public void setNowStoreDetailImage(String nowStoreDetailImage) { this.nowStoreDetailImage = nowStoreDetailImage; }
 
-    public void initHandmadeStoreList()
-    {
+    public void setNowStoreImage(String nowStoreImage) {
+        this.nowStoreImage = nowStoreImage;
+    }
+
+    public void setServerRequest(Boolean serverRequest) {
+        this.serverRequest = serverRequest;
+    }
+
+    public void setStoreImageView(ImageView storeImageVIew) {
+        this.storeImageView = storeImageVIew;
+    }
+
+    public void setStoreTextView(TextView storeTextVIew) {
+        this.storeTextView = storeTextVIew;
+    }
+
+    public void setNowCategory(String nowCategory) {
+        this.nowCategory = nowCategory;
+    }
+
+    public void setNowStoreDetailImage(String nowStoreDetailImage) {
+        this.nowStoreDetailImage = nowStoreDetailImage;
+    }
+
+    public void setNowLogin(boolean nowLogin) {
+        this.nowLogin = nowLogin;
+    }
+
+    public void initHandmadeStoreList() {
         storeNameList.clear();
         storeImageList.clear();
         storeCategoryList.clear();
         storeDetialImageList.clear();
     }
 
-    public void initFoodStoreList()
-    {
+    public void initFoodStoreList() {
         storeNameList.clear();
         storeImageList.clear();
     }
 
-    public void initFoodList()
-    {
+    public void initFoodList() {
         productNameList.clear();
         productImageList.clear();
         productPriceList.clear();
     }
 
-    public void initProductList()
-    {
+    public void initProductList() {
         productNameList.clear();
         productPriceList.clear();
     }
 
-    public void initPerformanceList()
-    {
+    public void initPerformanceList() {
         performanceNameList.clear();
         performanceImageList.clear();
     }
 
-    public void addFoodStoreList(String storeName, String imageSource)
-    {
+    public void addFoodStoreList(String storeName, String imageSource) {
         storeNameList.add(storeName);
         storeImageList.add(imageSource);
     }
 
-    public void addHandmadeStoreList(String storeName, String imageSource, String category, String detailImageSource)
-    {
+    public void addHandmadeStoreList(String storeName, String imageSource, String category, String detailImageSource) {
         storeNameList.add(storeName);
         storeImageList.add(imageSource);
         storeCategoryList.add(category);
         storeDetialImageList.add(detailImageSource);
     }
 
-    public void addFoodList(String productName, String imageSource, String price)
-    {
+    public void addFoodList(String productName, String imageSource, String price) {
         productNameList.add(productName);
         productImageList.add(imageSource);
         productPriceList.add(price);
     }
 
-    public void addProductList(String productName, String price)
-    {
+    public void addProductList(String productName, String price) {
         productNameList.add(productName);
         productPriceList.add(price);
     }
 
-    public void addPerformanceList(String performanceName, String imageSource)
-    {
+    public void addPerformanceList(String performanceName, String imageSource) {
         performanceNameList.add(performanceName);
         performanceImageList.add(imageSource);
     }

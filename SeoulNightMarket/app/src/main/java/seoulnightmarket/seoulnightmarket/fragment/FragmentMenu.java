@@ -43,7 +43,6 @@ public class FragmentMenu extends Fragment {
         TextView textView = Singleton.getInstance().getStoreTextView();
         textView.setText(Singleton.getInstance().getNowStore());
 
-        Singleton.getInstance().setServerRequest(false);
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/food")
                 .buildUpon()
                 .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))

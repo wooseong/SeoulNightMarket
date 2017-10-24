@@ -45,7 +45,6 @@ public class FragmentMarket extends Fragment {
         region = Singleton.getInstance().getRegion();
 
         Singleton.getInstance().setType(type);
-        Singleton.getInstance().setServerRequest(false);
 
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/foodstore")
                 .buildUpon()
@@ -135,7 +134,6 @@ public class FragmentMarket extends Fragment {
                             break;
                     }
 
-                    Singleton.getInstance().setServerRequest(false);
                     uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/foodstore")
                             .buildUpon()
                             .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
@@ -189,7 +187,6 @@ public class FragmentMarket extends Fragment {
                             break;
                     }
 
-                    Singleton.getInstance().setServerRequest(false);
                     uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/handmadestore")
                             .buildUpon()
                             .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
