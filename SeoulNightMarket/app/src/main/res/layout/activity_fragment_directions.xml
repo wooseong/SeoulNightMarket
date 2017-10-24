@@ -19,6 +19,7 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
             android:text="오시는 길" />
 
         <TextView
@@ -35,6 +36,7 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
             android:text="주소" />
 
         <TextView
@@ -51,6 +53,7 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
             android:text="버스" />
 
         <TextView
@@ -67,6 +70,7 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
             android:text="지하철" />
 
         <TextView
@@ -83,21 +87,22 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:text="자동차"/>
+            android:textColor="@color/md_black_1000"
+            android:text="자동차" />
 
         <TextView
             android:id="@+id/textCar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
-            android:text=""/>
+            android:text="" />
 
         <ImageView
             android:id="@+id/imageViewDirection"
+            android:layout_marginTop="15dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            app:srcCompat="@drawable/bom" />
+            android:scaleType="fitXY" />
 
     </LinearLayout>
 

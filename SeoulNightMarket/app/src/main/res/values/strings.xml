@@ -5,17 +5,26 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="textView0">여의도 개요</string>
-    <string name="textView1">한강의 야경과 함께하는 하룻밤의 세계여행\n월드나이트마켓</string>
+    <string name="textView1">한강의 야경과 함께하는 하룻밤의\n세계여행\n월드나이트마켓</string>
     <string name="textView2">아름다운 한강의 야경과 세계 각국의 먹거리,\n특별한 핸드메이드 상품이 함께합니다.\n강변의 야경과 어울리는 버스킹 공연과 함께\n한국 전통 공연부터 아시아,\n유럽과 남미의 전통 공연으로\n한강에서 즐기는 세계여행을 선사합니다.\n오늘밤 한강에서 하룻밤의 세계여행을 떠나보세요!</string>
     <string name="textView3">여의도 구성</string>
     <string name="textView4">세계의 공연과 맛있는 먹거리\n한밤의 즐거운 피크닉</string>
-
-    <string name="textDirection0">여의도 구성</string>
-    <string name="textDirection1">여의도 구성</string>
-    <string name="textAddress">여의도 구성</string>
-    <string name="textBus">여의도 구성</string>
-    <string name="textSubway">여의도 구성</string>
-    <string name="textCar">여의도 구성</string>
+    <string name="listView0">플랫폼, 하룻밤의 세계여행을 시작하는 입구</string>
+    <string name="listView1">종합 안내소 겸 상황실입니다.\n운영본부와 의료지원 부스가 마련되어 있으니\n궁금한 점이 있거나 비상 및 응급 상황 발생 시\n플랫폼을 찾아주세요.\n</string>
+    <string name="listView2">먹 거리, 입으로 한 번, 눈으로 한 번 즐긴다!</string>
+    <string name="listView3">다채로운 세계 음식을 만날 수 있는\n푸드트럭존입니다.\n눈으로 한 번, 입으로 한 번 즐기는\n대한민국 대표 푸드트럭!\n</string>
+    <string name="listView4">살 거리, 세상에 하나뿐인 나를 위한 작품</string>
+    <string name="listView5">다양한 분야의 핸드메이드 작가들이 반짝이는\n아이디어와 솜씨로 여러분을 위한\n세상에 단 하나뿐인 작품을 준비했습니다.\n야시장의 감동을 영원히 간직하세요.\n</string>
+    <string name="listView6">볼 거리, 전 세계의 문화공연이 한자리에</string>
+    <string name="listView7">세계의 전통공연과 현대적 퍼포먼스, 버스킹 공연,\n게릴라 퍼포먼스 등 다양한 볼거리가\n시장의 밤을 장식합니다.\n간이무대에서 다채로운 공연을 즐겨보세요.\n</string>
+    <string name="listView8">쉴 거리, 강바람과 야경을 즐기는 공간</string>
+    <string name="listView9">한강의 야경과 함께 푸드트럭에서\n구매한 음식을 즐길 수 있는 공간입니다.\n강바람과 야경을 보며 서울의 밤을 즐기세요.\n</string>
+    <string name="textDirection0">여의도 오시는길</string>
+    <string name="textDirection1">여의도한강공원 물빛광장</string>
+    <string name="textAddress">서울시 영등포구 여의동로 330 여의도한강공원 물빛광장</string>
+    <string name="textBus">여의도공원(19-138) 정류장 하차\n261,262,461,753\n5534,5633,5713,6623\n7007-1</string>
+    <string name="textSubway">지하철 5호선 여의나루역 2번 출구에서 약 600m 이동</string>
+    <string name="textCar">마포대교 남단에서 우회전 진입\n올림픽대로 잠실 방면 이용 시 강변북로 이동 후\n마포대교 남단에서 우회전 진입\n올림픽대로 인천 방면 이용 시 한강철교를 지나\n63시티 앞 진입로 이용\n주차 공간이 매우 협소하니 가급적\n대중교통을 이용해주시기 바랍니다.</string>
 
     <string name="introduction">오늘 밤의 낭만이 시작되는 곳", "종합 안내소 겸 상황실입니다. 운영본부와 의료지원 부스가 마련되어 있으니 궁금한 점이 있거나 비상 및 응급 상황 발생시 인포센터를 찾아주세요</string>
     <string name="introduction1">한강에서 즐기는 로맨틱한 저녁 식사", "한강과 가장 가까운 특별한 식당

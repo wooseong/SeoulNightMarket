@@ -62,8 +62,12 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         TextView textViewRegion = (TextView) findViewById(R.id.textViewRegion);
         TextView textViewDate = (TextView) findViewById(R.id.textViewDate);
 
+        ImageView placePicutre = (ImageView) findViewById(R.id.image);
+//        Singleton.getInstance().setStoreImageView(placePicutre);
+
         switch (region) {
             case "여의도":
+                placePicutre.setImageResource(R.drawable.yydintro);
                 textViewRegion.setText("여의도 월드나이트마켓");
                 textViewDate.setText("매주 금토 18:00~23:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_orange_800));
@@ -116,9 +120,6 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
             default:
                 break;
         }
-
-        ImageView placePicutre = (ImageView) findViewById(R.id.image);
-        Singleton.getInstance().setStoreImageView(placePicutre);
 
         ActionBar supportActionBar = getSupportActionBar(); // Adding menu icon to Toolbar
         if (supportActionBar != null) {

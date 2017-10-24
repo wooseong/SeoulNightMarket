@@ -1,6 +1,5 @@
 package seoulnightmarket.seoulnightmarket.fragment;
 
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -49,16 +48,24 @@ public class FragmentDirections extends Fragment {
         textCar = view.findViewById(R.id.textCar);
         imageView = view.findViewById(R.id.imageViewDirection);
 
+        textDirection0.setText(R.string.textDirection0);
+        textDirection1.setText(R.string.textDirection1);
+        textAddress.setText(R.string.textAddress);
+        textBus.setText(R.string.textBus);
+        textSubway.setText(R.string.textSubway);
+        textCar.setText(R.string.textCar);
+        imageView.setImageResource(R.drawable.yyddir);
+
         // onCreate 후에 화면을 구성할때 호출
         region = Singleton.getInstance().getRegion();
 
-        uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/intro")
-                .buildUpon()
-                .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
-                .build().toString();
-
-        HttpAsyncTask httpAsyncTask = new HttpAsyncTask("오시는길");
-        httpAsyncTask.execute(uri);
+//        uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/intro")
+//                .buildUpon()
+//                .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))
+//                .build().toString();
+//
+//        HttpAsyncTask httpAsyncTask = new HttpAsyncTask("오시는길");
+//        httpAsyncTask.execute(uri);
 
         return view;
     }
