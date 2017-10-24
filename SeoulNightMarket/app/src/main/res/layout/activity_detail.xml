@@ -55,7 +55,7 @@
                 android:layout_gravity="center|bottom"
                 android:layout_marginBottom="60dp"
                 android:textColor="@color/md_black_1000"
-                android:text="현재 대기번호"/>
+                android:text="대기자 수"/>
 
             <TextView
                 android:id="@+id/currentOrderNumber"
@@ -64,8 +64,7 @@
                 android:layout_gravity="center|bottom"
                 android:layout_marginBottom="60dp"
                 android:layout_marginLeft="55dp"
-                android:textColor="@color/md_black_1000"
-                android:text="5"/>
+                android:textColor="@color/md_black_1000" />
 
             <Button
                 android:id="@+id/btn_ticket_make"

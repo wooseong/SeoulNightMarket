@@ -82,7 +82,9 @@ public class LoginActivity extends AppCompatActivity {
             super.onPostExecute(result);
 
             // 데이터베이스에 있는 회원 아이디와 비밀번호가 일치하면
-            if(Singleton.getInstance().getNowLogin()==true) {
+            if(Singleton.getInstance().getNowLogin()==true)
+            {
+                Singleton.getInstance().setNowLoginID(phoneNumber);
                 Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
 
 //            if () { // 판매자
@@ -93,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
 //                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
 //            }
 
-//                startActivity(new Intent(LoginActivity.this, SellerActivity.class));
-            startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
+     //           startActivity(new Intent(LoginActivity.this, SellerActivity.class));
+           startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
             }
             else
             {

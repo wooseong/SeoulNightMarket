@@ -1,6 +1,7 @@
 package seoulnightmarket.seoulnightmarket.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +19,8 @@ import seoulnightmarket.seoulnightmarket.data.TicketListViewItem;
  * Created by Yookmoonsu on 2017-09-19.
  */
 
-public class TicketAdapter extends BaseAdapter {
+public class TicketAdapter extends BaseAdapter
+{
     private ArrayList<TicketListViewItem> listViewItems = new ArrayList<>();
 
     public TicketAdapter() {
@@ -57,7 +59,7 @@ public class TicketAdapter extends BaseAdapter {
 
         TicketListViewItem listViewItem = listViewItems.get(position);
 
-        imageView.setImageDrawable(listViewItem.getOrderImage());
+        imageView.setImageBitmap(listViewItem.getOrderImage());
         textView0.setText(listViewItem.getOrderMenu());
         textView1.setText(Integer.toString(listViewItem.getCurrentNumber()));
         textView2.setText(Integer.toString(listViewItem.getMyOrderNumber()));
@@ -66,7 +68,7 @@ public class TicketAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void addItem(Drawable image, String menu, int currentNumber, int myOrderNumber, int waitingNumber) {
+    public void addItem(Bitmap image, String menu, int currentNumber, int myOrderNumber, int waitingNumber) {
         TicketListViewItem item = new TicketListViewItem();
 
         item.setOrderImage(image);

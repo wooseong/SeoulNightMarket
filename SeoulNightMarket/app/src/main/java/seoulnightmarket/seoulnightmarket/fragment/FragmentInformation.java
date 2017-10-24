@@ -233,7 +233,8 @@ public class FragmentInformation extends Fragment {
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String result)
+        {
             super.onPostExecute(result);
 
             String[] region = Singleton.getInstance().getCourse().split("/");
