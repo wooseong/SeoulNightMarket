@@ -136,6 +136,33 @@ public class HttpTask
                     if(posts.length()>0) { Singleton.getInstance().setNowLogin(true); }
                     else { Singleton.getInstance().setNowLogin(false); }
                     break;
+                case "번호표 보기" :
+                    int min = 99999;
+                    int max = 0;
+
+                    Singleton.getInstance().setDuplicated(false);
+
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        if(posts.optJSONObject(i).getInt("Number")>max)
+                        {
+                            max = posts.optJSONObject(i).getInt("Number");
+                        }
+
+                        if(posts.optJSONObject(i).getInt("Number")<min)
+                        {
+                            min = posts.optJSONObject(i).getInt("Number");
+                        }
+
+                        if(posts.optJSONObject(i).getString("Customer").equals(Singleton.getInstance().getNowLoginID()))
+                        {
+                            Singleton.getInstance().setDuplicated(true);
+                        }
+                    }
+
+                    Singleton.getInstance().setNowClient(min);
+                    Singleton.getInstance().setLastClient(max);
+                    break;
             }
 
         } catch (IOException e) {

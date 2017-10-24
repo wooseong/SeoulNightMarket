@@ -7,10 +7,12 @@ import android.widget.ListView;
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.TicketAdapter;
 
-public class NumberTicketActivity extends AppCompatActivity {
+public class NumberTicketActivity extends AppCompatActivity
+{
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_ticket);
 
@@ -22,4 +24,6 @@ public class NumberTicketActivity extends AppCompatActivity {
         adapter.addItem(getResources().getDrawable(R.drawable.imsteak), "아임스테이크", 10, 16, 6);
         adapter.addItem(getResources().getDrawable(R.drawable.pandagrill), "팬더그릴", 20, 30, 10);
     }
+
+
 }

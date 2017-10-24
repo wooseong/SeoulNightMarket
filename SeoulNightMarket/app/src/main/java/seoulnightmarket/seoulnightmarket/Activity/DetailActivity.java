@@ -1,5 +1,8 @@
 package seoulnightmarket.seoulnightmarket.Activity;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -22,13 +25,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentInformation;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentMenu;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
 
-public class DetailActivity extends AppCompatActivity {
-    private int orderNumber;
+public class DetailActivity extends AppCompatActivity
+{
     private int count = 0;
     private TextView currentOrderNumber;
     private CoordinatorLayout coordinatorLayout;
@@ -57,6 +61,7 @@ public class DetailActivity extends AppCompatActivity {
 
         TextView textView = (TextView) findViewById(R.id.store_name);
         Singleton.getInstance().setStoreTextView(textView);
+        Singleton.getInstance().setWaitTextView(currentOrderNumber);
 
         // Setting ViewPager for each Tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -124,15 +129,79 @@ public class DetailActivity extends AppCompatActivity {
     public void btnOrder(View v)
     {
         // 번호표 뽑기 버튼 이벤트
-        if (count == 0)
+        if (count == 0 && Singleton.getInstance().getDuplicated() == false)
         {
-            orderNumber = Integer.parseInt((String) currentOrderNumber.getText());
-            orderNumber++;
-            currentOrderNumber.setText(Integer.toString(orderNumber));
             count++;
+            String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
+                    .buildUpon()
+                    .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
+                    .build().toString();
+
+            TicketAsyncTask ticketAsyncTask = new TicketAsyncTask("번호표 보기");
+            ticketAsyncTask.execute(uri);
+
         }
-        else {
+        else
+        {
             Toast.makeText(getApplicationContext(), "이미 번호표를 발급 받았습니다", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public class TicketAsyncTask extends AsyncTask<String, Void, String>
+    {
+        String type;
+
+        TicketAsyncTask(String type) {
+            this.type = type;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            //urls[0] 은 URL 주소
+            return HttpTask.getInstance().GET(urls[0], type);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+            super.onPostExecute(result);
+
+            String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket/make")
+                    .buildUpon()
+                    .appendQueryParameter("number", (Singleton.getInstance().getLastClient()+1)+"")
+                    .appendQueryParameter("store", Singleton.getInstance().getNowStore())
+                    .appendQueryParameter("place", Singleton.getInstance().getRegion())
+                    .appendQueryParameter("phone", Singleton.getInstance().getNowLoginID())
+                    .appendQueryParameter("source", Singleton.getInstance().getNowStoreImage())
+                    .build().toString();
+
+            HttpAsyncTask httpAsyncTask = new HttpAsyncTask("번호표 발급");
+            httpAsyncTask.execute(uri);
+        }
+    }
+
+    public class HttpAsyncTask extends AsyncTask<String, Void, String>
+    {
+        String type;
+
+        HttpAsyncTask(String type) {
+            this.type = type;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            //urls[0] 은 URL 주소
+            return HttpTask.getInstance().POST(urls[0], type);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+            super.onPostExecute(result);
+            currentOrderNumber.setText((Singleton.getInstance().getLastClient()-Singleton.getInstance().getNowClient()+1)+"");
+            Toast.makeText(getApplicationContext(), "번호표 발급 완료", Toast.LENGTH_SHORT).show();
         }
     }
 }
