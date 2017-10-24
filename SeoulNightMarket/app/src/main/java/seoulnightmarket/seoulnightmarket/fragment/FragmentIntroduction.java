@@ -59,7 +59,6 @@ public class FragmentIntroduction extends Fragment {
         // onCreate 후에 화면을 구성할때 호출
         region = HttpTask.getInstance().regionTranslate(Singleton.getInstance().getRegion());
 
-        Singleton.getInstance().setServerRequest(false);
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/intro")
                 .buildUpon()
                 .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(region))

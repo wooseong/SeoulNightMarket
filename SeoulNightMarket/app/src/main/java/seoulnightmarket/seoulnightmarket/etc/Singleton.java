@@ -28,7 +28,6 @@ public class Singleton
     private String formTitle;
     private String formSubtitle;
     private String formDescribe;
-    private boolean serverRequest = false;
     private ArrayList<String> storeNameList = new ArrayList<String>();
     private ArrayList<String> storeImageList = new ArrayList<String>();
     private ArrayList<String> productNameList = new ArrayList<String>();
@@ -37,6 +36,7 @@ public class Singleton
     private ArrayList<String> performanceNameList = new ArrayList<String>();
     private ArrayList<String> performanceImageList = new ArrayList<String>();
     private static Singleton instance = null;
+    private boolean nowLogin = false;
 
     public String getNowStore() { return nowStore; }
     public String getMarketPlace() { return marketPlace;}
@@ -57,7 +57,6 @@ public class Singleton
         return type;
     }
     public String getRegion() { return region; }
-    public boolean getServerRequest() { return serverRequest; }
     public ArrayList<String> getStoreNameList() { return storeNameList; }
     public ArrayList<String> getStoreImageList() { return storeImageList; }
     public ArrayList<String> getProductNameList() { return productNameList; }
@@ -65,6 +64,7 @@ public class Singleton
     public ArrayList<String> getProductPriceList() { return productPriceList; }
     public ArrayList<String> getPerformanceNameList() { return performanceNameList; }
     public ArrayList<String> getPerformanceImageList() { return performanceImageList; }
+    public boolean getNowLogin() { return nowLogin; }
 
     public void setNowStore(String nowStore) { this.nowStore = nowStore; }
     public void setMarketPlace(String marketPlace) { this.marketPlace = marketPlace;}
@@ -87,7 +87,7 @@ public class Singleton
     public void setRegion(String region) {
         this.region = region;
     }
-    public void setServerRequest(Boolean serverRequest) { this.serverRequest = serverRequest; }
+    public void setNowLogin(boolean nowLogin) { this.nowLogin = nowLogin; }
 
     public void initStoreList()
     {

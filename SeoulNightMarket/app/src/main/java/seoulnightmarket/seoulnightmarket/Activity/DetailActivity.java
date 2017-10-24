@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,18 +55,13 @@ public class DetailActivity extends AppCompatActivity {
         // Setting ViewPager for each Tabs
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
+
         // Set Tabs inside Toolbar
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
+
         // Adding menu icon to Toolbar
         ActionBar supportActionBar = getSupportActionBar();
-//        if (supportActionBar != null) {
-//            VectorDrawableCompat indicator =
-//                    VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
-//            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.white, getTheme()));
-//            supportActionBar.setHomeAsUpIndicator(indicator);
-//            supportActionBar.setDisplayHomeAsUpEnabled(true);
-//        }
     }
 
     // Add Fragments to Tabs
@@ -119,8 +115,11 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void btnOrder(View v) { // 번호표 뽑기 버튼 이벤트
-        if (count == 0) {
+    public void btnOrder(View v)
+    {
+        // 번호표 뽑기 버튼 이벤트
+        if (count == 0)
+        {
             orderNumber = Integer.parseInt((String) currentOrderNumber.getText());
             orderNumber++;
             currentOrderNumber.setText(Integer.toString(orderNumber));

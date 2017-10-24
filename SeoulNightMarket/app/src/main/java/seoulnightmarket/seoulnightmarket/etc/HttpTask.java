@@ -21,22 +21,24 @@ import java.net.URLEncoder;
  * Created by cjw94 on 2017-10-22.
  */
 
-public class HttpTask {
+public class HttpTask
+{
     private static HttpTask instance = null;
     private Bitmap bitmap;
 
 
-    public static synchronized HttpTask getInstance() {
+    public static synchronized HttpTask getInstance()
+    {
         if (instance == null) {
             instance = new HttpTask();
         }
         return instance;
     }
 
-    public static String GET(String url, String type) {
+    public static String GET(String url, String type)
+    {
         InputStream is = null;
         String result = "";
-        int count;
 
         try {
             URL urlCon = new URL(url);
@@ -62,7 +64,6 @@ public class HttpTask {
 
             result = builder.toString();
 
-            Log.e("RESULT", result);
             reader.close();
             httpCon.disconnect();
 
@@ -106,11 +107,15 @@ public class HttpTask {
                     break;
                 case "음식":
                     Singleton.getInstance().initFoodList();
-                    Log.e("POSTS LENGTH", posts.length()+"");
                     for (int i = 0; i < posts.length(); i++)
                     {
                         Singleton.getInstance().addFoodList(posts.optJSONObject(i).getString("Food_Name"), posts.optJSONObject(i).getString("Image_source"), posts.optJSONObject(i).getString("Price"));
                     }
+                    break;
+                case "로그인" :
+                    Singleton.getInstance().setNowLogin(false);
+                    if(posts.length()>0) { Singleton.getInstance().setNowLogin(true); }
+                    else { Singleton.getInstance().setNowLogin(false); }
                     break;
             }
 
@@ -122,6 +127,51 @@ public class HttpTask {
 
         return result;
     }
+
+    public static String POST(String url, String type)
+    {
+        InputStream is = null;
+        String result = "";
+
+        try {
+            URL urlCon = new URL(url);
+            HttpURLConnection httpCon = (HttpURLConnection) urlCon.openConnection();
+
+            if (httpCon != null)
+            {
+                httpCon.setRequestMethod("POST");
+                httpCon.setRequestProperty("Accept-Charset", "UTF-8");
+                httpCon.setRequestProperty("Accept", "application/json");
+                httpCon.setRequestProperty("Context_Type", "application/x-www-form-urlencoded;cahrset=UTF-8");
+                httpCon.setDoInput(true);
+                httpCon.setDoOutput(true);
+            }
+
+            is = httpCon.getInputStream();
+
+            StringBuilder builder = new StringBuilder(); //문자열을 담기 위한 객체
+            BufferedReader reader = new BufferedReader(new InputStreamReader(httpCon.getInputStream(), "UTF-8")); //문자열 셋 세팅
+            String line = null;
+
+            while ((line = reader.readLine()) != null) {
+                builder.append(line + "\n");
+            }
+
+            result = builder.toString();
+
+            reader.close();
+            httpCon.disconnect();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
+        return result;
+    }
+
 
     public static String getURLEncode(String content) {
         try {
