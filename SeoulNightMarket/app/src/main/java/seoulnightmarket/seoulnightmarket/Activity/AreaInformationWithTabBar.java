@@ -2,6 +2,7 @@ package seoulnightmarket.seoulnightmarket.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -9,6 +10,7 @@ import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -17,8 +19,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,25 +48,77 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         region = Singleton.getInstance().getRegion();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.appbar);
 
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar); // Set Collapsing Toolbar layout to the screen
-        ImageView placePicutre = (ImageView) findViewById(R.id.image);
-        Singleton.getInstance().setStoreImageView(placePicutre);
+        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager); // Setting ViewPager for each Tabs
         setupViewPager(viewPager);
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs); // Set Tabs inside Toolbar
         tabs.setupWithViewPager(viewPager);
-        tabs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-            }
-        });
+        TextView textViewRegion = (TextView) findViewById(R.id.textViewRegion);
+        TextView textViewDate = (TextView) findViewById(R.id.textViewDate);
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); // Create Navigation drawer and inlfate layout
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
+        switch (region) {
+            case "여의도":
+                textViewRegion.setText("여의도 월드나이트마켓");
+                textViewDate.setText("매주 금토 18:00~23:00");
+                appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_orange_800));
+                textViewRegion.setTextColor(getResources().getColor(R.color.md_light_blue_800));
+                textViewDate.setTextColor(getResources().getColor(R.color.md_light_blue_800));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_light_blue_800));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_light_blue_800));
+                collapsingToolbarLayout.setContentScrimResource(R.color.md_orange_800);
+                break;
+            case "DDP":
+                textViewRegion.setText("DDP 청춘런웨이마켓");
+                textViewDate.setText("매주 금토 18:00~23:00");
+                appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_deep_purple_400));
+                textViewRegion.setTextColor(getResources().getColor(R.color.md_yellow_600));
+                textViewDate.setTextColor(getResources().getColor(R.color.md_yellow_600));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_yellow_600));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_yellow_600));
+                collapsingToolbarLayout.setContentScrimResource(R.color.md_deep_purple_400);
+                break;
+            case "반포":
+                textViewRegion.setText("반포 낭만달빛마켓");
+                textViewDate.setText("매주 금토 18:00~23:00");
+                appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_yellow_600));
+                textViewRegion.setTextColor(getResources().getColor(R.color.md_blue_900));
+                textViewDate.setTextColor(getResources().getColor(R.color.md_blue_900));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_blue_900));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_blue_900));
+                collapsingToolbarLayout.setContentScrimResource(R.color.md_yellow_600);
+                break;
+            case "청계천":
+                textViewRegion.setText("청계천 타임슬립마켓");
+                textViewDate.setText("매주 토 16:30~22:30 일 16:00~21:00");
+                appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_lime_500));
+                textViewRegion.setTextColor(getResources().getColor(R.color.md_deep_purple_700));
+                textViewDate.setTextColor(getResources().getColor(R.color.md_deep_purple_700));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_deep_purple_700));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_deep_purple_700));
+                collapsingToolbarLayout.setContentScrimResource(R.color.md_lime_500);
+                break;
+            case "청계광장":
+                textViewRegion.setText("청계광장");
+                textViewDate.setText("시즌별 금,토,일 18:00~23:00");
+                appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_cyan_800));
+                textViewRegion.setTextColor(getResources().getColor(R.color.md_white_1000));
+                textViewDate.setTextColor(getResources().getColor(R.color.md_white_1000));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_yellow_500));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_yellow_500));
+                collapsingToolbarLayout.setContentScrimResource(R.color.md_cyan_800);
+                break;
+            default:
+                break;
+        }
+
+        ImageView placePicutre = (ImageView) findViewById(R.id.image);
+        Singleton.getInstance().setStoreImageView(placePicutre);
 
         ActionBar supportActionBar = getSupportActionBar(); // Adding menu icon to Toolbar
         if (supportActionBar != null) {
@@ -74,6 +128,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); // Create Navigation drawer and inlfate layout
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) { // This method will trigger on item Click of navigation menu

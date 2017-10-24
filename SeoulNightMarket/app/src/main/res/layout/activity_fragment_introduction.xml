@@ -71,10 +71,11 @@
             android:id="@+id/introductionListView"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
-            android:layout_height="650dp" />
+            android:layout_height="match_parent" />
 
         <ImageView
             android:id="@+id/introductionFooterImage"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scaleType="fitXY" />
