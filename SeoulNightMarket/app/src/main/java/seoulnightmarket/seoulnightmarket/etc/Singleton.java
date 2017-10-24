@@ -35,6 +35,9 @@ public class Singleton
     private String nowCategory;
     private String nowStoreDetailImage;
     private String nowLoginID;
+    private ArrayList<Integer> nowWaitList = new ArrayList<Integer>();
+    private ArrayList<Integer> myWaitList = new ArrayList<Integer>();
+    private ArrayList<String> waitStoreList = new ArrayList<String>();
     private ArrayList<String> storeNameList = new ArrayList<String>();
     private ArrayList<String> storeImageList = new ArrayList<String>();
     private ArrayList<String> storeCategoryList = new ArrayList<String>();
@@ -179,6 +182,12 @@ public class Singleton
         return storeDetialImageList;
     }
 
+    public ArrayList<String> getWaitStoreList() { return waitStoreList; }
+
+    public ArrayList<Integer> getNowWaitList() { return nowWaitList; }
+
+    public ArrayList<Integer> getMyWaitList() { return myWaitList; }
+
     public boolean getServerRequest() {
         return serverRequest;
     }
@@ -313,7 +322,16 @@ public class Singleton
         this.nowLogin = nowLogin;
     }
 
-    public void initHandmadeStoreList() {
+    public void initWaitList()
+    {
+        nowWaitList.clear();
+        myWaitList.clear();
+        waitStoreList.clear();
+        storeImageList.clear();
+    }
+
+    public void initHandmadeStoreList()
+    {
         storeNameList.clear();
         storeImageList.clear();
         storeCategoryList.clear();
@@ -341,7 +359,21 @@ public class Singleton
         performanceImageList.clear();
     }
 
-    public void addFoodStoreList(String storeName, String imageSource) {
+
+    public void addWaitList(int my, String store, String imageSource)
+    {
+        myWaitList.add(my);
+        waitStoreList.add(store);
+        storeImageList.add(imageSource);
+    }
+
+    public void addNowWaitList(int now)
+    {
+        nowWaitList.add(now);
+    }
+
+    public void addFoodStoreList(String storeName, String imageSource)
+    {
         storeNameList.add(storeName);
         storeImageList.add(imageSource);
     }

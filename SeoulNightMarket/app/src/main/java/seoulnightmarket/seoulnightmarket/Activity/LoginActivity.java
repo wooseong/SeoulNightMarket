@@ -95,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
 //                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
 //            }
 
-//                startActivity(new Intent(LoginActivity.this, SellerActivity.class));
-            startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
+     //           startActivity(new Intent(LoginActivity.this, SellerActivity.class));
+           startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
             }
             else
             {

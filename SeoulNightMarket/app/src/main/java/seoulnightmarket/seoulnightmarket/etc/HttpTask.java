@@ -131,6 +131,12 @@ public class HttpTask
                         Singleton.getInstance().setCourse(posts.optJSONObject(i).getString("Place_Course"));
                     }
                     break;
+                case "예약현황" :
+                    Singleton.getInstance().initWaitList();
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        Singleton.getInstance().addWaitList(posts.optJSONObject(i).getInt("Number"), posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Store_Image"));
+                    }
                 case "로그인" :
                     Singleton.getInstance().setNowLogin(false);
                     if(posts.length()>0) { Singleton.getInstance().setNowLogin(true); }
@@ -162,6 +168,19 @@ public class HttpTask
 
                     Singleton.getInstance().setNowClient(min);
                     Singleton.getInstance().setLastClient(max);
+                    break;
+                case "현재 순서":
+                    int minimum = 99999;
+
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        if(posts.optJSONObject(i).getInt("Number")<minimum)
+                        {
+                            minimum = posts.optJSONObject(i).getInt("Number");
+                        }
+                    }
+
+                    Singleton.getInstance().addNowWaitList(minimum);
                     break;
             }
 

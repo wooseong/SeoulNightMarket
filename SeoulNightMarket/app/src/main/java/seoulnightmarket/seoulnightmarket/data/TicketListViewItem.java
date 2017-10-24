@@ -1,5 +1,6 @@
 package seoulnightmarket.seoulnightmarket.data;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 
 /**
@@ -7,7 +8,7 @@ import android.graphics.drawable.Drawable;
  */
 
 public class TicketListViewItem {
-    private Drawable orderImage;
+    private Bitmap orderImage;
     private String orderMenu;
     private int currentNumber;
     private int myOrderNumber;
@@ -17,7 +18,7 @@ public class TicketListViewItem {
 
     }
 
-    public Drawable getOrderImage() {
+    public Bitmap getOrderImage() {
         return orderImage;
     }
 
@@ -35,7 +36,7 @@ public class TicketListViewItem {
         return waitingNumber;
     }
 
-    public void setOrderImage(Drawable image) {
+    public void setOrderImage(Bitmap image) {
         orderImage = image;
     }
 
