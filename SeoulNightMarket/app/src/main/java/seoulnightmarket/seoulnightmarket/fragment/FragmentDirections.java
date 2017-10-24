@@ -27,6 +27,10 @@ public class FragmentDirections extends Fragment {
     TextView textCar;
     ImageView imageView;
 
+    public FragmentDirections() {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +50,7 @@ public class FragmentDirections extends Fragment {
         imageView = view.findViewById(R.id.imageViewDirection);
 
         // onCreate 후에 화면을 구성할때 호출
-        region = HttpTask.getInstance().regionTranslate(Singleton.getInstance().getRegion());
+        region = Singleton.getInstance().getRegion();
 
         Singleton.getInstance().setServerRequest(false);
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/intro")

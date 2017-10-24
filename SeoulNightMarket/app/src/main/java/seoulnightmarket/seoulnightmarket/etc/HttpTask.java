@@ -151,30 +151,6 @@ public class HttpTask {
         return null;
     }
 
-    public String regionTranslate(String region) {
-        String translated = "";
-
-        switch (region) {
-            case "Yeouido":
-                translated = "여의도";
-                break;
-            case "DDP":
-                translated = "DDP";
-                break;
-            case "Banpo":
-                translated = "반포";
-                break;
-            case "Cheonggyecheon":
-                translated = "청계천";
-                break;
-            case "CheonggyePlaza":
-                translated = "청계광장";
-                break;
-        }
-
-        return translated;
-    }
-
     public Bitmap translateBitmap(String url) {
         final String de = url;
 

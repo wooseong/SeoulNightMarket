@@ -31,6 +31,10 @@ public class FragmentReview extends Fragment {
     private int[] flags = {R.drawable.onestar, R.drawable.twostar, R.drawable.threestar, R.drawable.fourstar, R.drawable.fivestar};
     private int imageCount = 0;
 
+    public FragmentReview() {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

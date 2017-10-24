@@ -11,6 +11,10 @@ import seoulnightmarket.seoulnightmarket.R;
 
 public class FragmentConcertCheonggye extends Fragment {
 
+    public FragmentConcertCheonggye() {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

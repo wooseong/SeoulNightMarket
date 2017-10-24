@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.MenuAdapter;
@@ -23,6 +22,10 @@ public class FragmentMenu extends Fragment {
     private String uri;
     ListView listView;
     MenuAdapter adapter;
+
+    public FragmentMenu() {
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

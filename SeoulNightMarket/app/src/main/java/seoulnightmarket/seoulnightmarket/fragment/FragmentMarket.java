@@ -26,6 +26,10 @@ public class FragmentMarket extends Fragment {
     public MarketAdapter adapter;
     public ExpandableHeightGridView gridView;
 
+    public FragmentMarket() {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +43,6 @@ public class FragmentMarket extends Fragment {
         gridView.setExpanded(true);
 
         region = Singleton.getInstance().getRegion();
-        region = HttpTask.getInstance().regionTranslate(region);
 
         Singleton.getInstance().setType(type);
         Singleton.getInstance().setServerRequest(false);

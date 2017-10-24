@@ -70,7 +70,7 @@ public class MainAdapter extends BaseAdapter {
                 }
                 else if (position == 1){
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 시장 상세 화면으로 이동
-                    region = "Yeouido";
+                    region = "여의도";
                     Singleton.getInstance().setRegion(region);
                 }
                 else if (position == 2) {
@@ -80,16 +80,16 @@ public class MainAdapter extends BaseAdapter {
                 }
                 else if (position == 3) {
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                    region = "Banpo";
+                    region = "반포";
                     Singleton.getInstance().setRegion(region);
                 }
                 else if (position == 4){
-                    region = "Cheonggyecheon";
+                    region = "청계천";
                     Singleton.getInstance().setRegion(region);
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }
                 else if (position == 5) {
-                    region = "CheonggyePlaza";
+                    region = "청계광장";
                     Singleton.getInstance().setRegion(region);
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                 }

@@ -45,6 +45,7 @@
                 android:layout_marginBottom="60dp"
                 android:layout_marginLeft="10dp"
                 android:textColor="@color/md_black_1000"
+                android:textAlignment="center"
                 android:textSize="20dp"
                 android:text="깻잎두마리치킨"/>
 

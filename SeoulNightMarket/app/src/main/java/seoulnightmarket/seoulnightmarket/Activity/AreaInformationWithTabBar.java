@@ -1,5 +1,6 @@
 package seoulnightmarket.seoulnightmarket.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.NavigationView;
@@ -7,7 +8,7 @@ import android.support.design.widget.TabLayout;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -15,7 +16,9 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -44,17 +47,23 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         region = Singleton.getInstance().getRegion();
+        Log.e("Test", region);
 
         CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar); // Set Collapsing Toolbar layout to the screen
         ImageView placePicutre = (ImageView) findViewById(R.id.image);
         Singleton.getInstance().setStoreImageView(placePicutre);
-        placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.bom));
 
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager); // Setting ViewPager for each Tabs
         setupViewPager(viewPager);
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs); // Set Tabs inside Toolbar
         tabs.setupWithViewPager(viewPager);
+        tabs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); // Create Navigation drawer and inlfate layout
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -68,12 +77,15 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         }
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
-
             @Override
             public boolean onNavigationItemSelected(MenuItem menuItem) { // This method will trigger on item Click of navigation menu
                 menuItem.setChecked(true); // Set item in checked state
 
-                // TODO: handle navigation
+                String menuName = menuItem.getTitle().toString();
+                Singleton.getInstance().setRegion(menuName);
+
+                finish();
+                startActivity(new Intent(AreaInformationWithTabBar.this, AreaInformationWithTabBar.class));
 
                 mDrawerLayout.closeDrawers(); // Closing drawer on item click
 
@@ -89,11 +101,11 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         adapter.addFragment(new FragmentIntroduction(), "소개");
         adapter.addFragment(new FragmentMarket(), "야시장");
 
-        if (region.equals("Yeouido") || region.equals("DDP") || region.equals("Banpo")) {
+        if (region.equals("여의도") || region.equals("DDP") || region.equals("반포")) {
             adapter.addFragment(new FragmentConcert(), "공연");
-        } else if (region.equals("Cheonggyecheon")) {
+        } else if (region.equals("청계천")) {
             adapter.addFragment(new FragmentConcertCheonggye(), "공연");
-        } else if (region.equals("CheonggyePlaza")) {
+        } else if (region.equals("청계광장")) {
             adapter.addFragment(new FragmentConcertPlaza(), "공연");
         }
 
@@ -102,7 +114,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         viewPager.setAdapter(adapter);
     }
 
-    static class Adapter extends FragmentPagerAdapter {
+    static class Adapter extends FragmentStatePagerAdapter {
         private final List<Fragment> mFragmentList = new ArrayList<>();
         private final List<String> mFragmentTitleList = new ArrayList<>();
 

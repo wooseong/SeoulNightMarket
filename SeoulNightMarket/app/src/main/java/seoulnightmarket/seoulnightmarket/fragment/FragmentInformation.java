@@ -25,22 +25,23 @@ import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.InformationAdapter;
-import seoulnightmarket.seoulnightmarket.adapter.IntroductionAdapter;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentInformation extends Fragment
-{
+public class FragmentInformation extends Fragment {
     private View view;
     private ListView listView;
     private InformationAdapter adapter;
     private String uri;
+
+    public FragmentInformation() {
+
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,18 +55,15 @@ public class FragmentInformation extends Fragment
 
         listView = view.findViewById(R.id.informationlistview);
 
-        if(Singleton.getInstance().getType()=="foodTruck")
-        {
+        if (Singleton.getInstance().getType() == "foodTruck") {
             uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/foodstore/course")
                     .buildUpon()
                     .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
                     .build().toString();
-        }
-        else
-        {
+        } else {
             uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/handmadestore/course")
                     .buildUpon()
-                    .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(HttpTask.getInstance().regionTranslate(Singleton.getInstance().getRegion())))
+                    .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getRegion()))
                     .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
                     .build().toString();
         }
@@ -217,6 +215,7 @@ public class FragmentInformation extends Fragment
             this.date = CalendarDay.from(date);
         }
     }
+
     public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         int count;
         int beforeIndex;
@@ -234,8 +233,7 @@ public class FragmentInformation extends Fragment
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
             String[] region = Singleton.getInstance().getCourse().split("/");

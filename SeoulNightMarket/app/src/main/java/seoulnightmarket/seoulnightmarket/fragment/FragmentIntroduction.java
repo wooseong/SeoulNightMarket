@@ -35,6 +35,10 @@ public class FragmentIntroduction extends Fragment {
     ArrayList<String> adapterHead = new ArrayList<String>();
     ArrayList<String> adapterString = new ArrayList<String>();
 
+    public FragmentIntroduction() {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) { // Fragment가 생성될때 호출
         super.onCreate(savedInstanceState);
@@ -57,7 +61,7 @@ public class FragmentIntroduction extends Fragment {
         imageView1 = view.findViewById(R.id.introductionFooterImage);
 
         // onCreate 후에 화면을 구성할때 호출
-        region = HttpTask.getInstance().regionTranslate(Singleton.getInstance().getRegion());
+        region = Singleton.getInstance().getRegion();
 
         Singleton.getInstance().setServerRequest(false);
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/intro")

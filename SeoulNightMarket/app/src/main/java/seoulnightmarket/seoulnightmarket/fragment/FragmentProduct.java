@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,39 +12,38 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
 import seoulnightmarket.seoulnightmarket.R;
-import seoulnightmarket.seoulnightmarket.adapter.MenuAdapter;
 import seoulnightmarket.seoulnightmarket.adapter.ProductAdapter;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentProduct extends Fragment
-{
+public class FragmentProduct extends Fragment {
     ProductAdapter adapter;
     ListView listView;
     String uri;
 
+    public FragmentProduct() {
+
+    }
+
     @Override
-    public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    { // onCreate 후에 화면을 구성할때 호출
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
         View view = inflater.inflate(R.layout.activity_fragment_product, null);
         listView = view.findViewById(R.id.listViewProduct);
 
         ImageView imageView = Singleton.getInstance().getStoreImageView();
-        ImageView imageViewProduct = (ImageView)view.findViewById(R.id.imageViewProduct);
+        ImageView imageViewProduct = (ImageView) view.findViewById(R.id.imageViewProduct);
         imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getNowStoreImage()));
         imageViewProduct.setImageBitmap(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getNowStoreDetailImage()));
 
-        TextView storeTextView = (TextView)view.findViewById(R.id.handmade_store_textview);
-        TextView categoryTextView = (TextView)view.findViewById(R.id.handmade_category_textview);
+        TextView storeTextView = (TextView) view.findViewById(R.id.handmade_store_textview);
+        TextView categoryTextView = (TextView) view.findViewById(R.id.handmade_category_textview);
 
         storeTextView.setText(Singleton.getInstance().getNowStore());
         categoryTextView.setText(Singleton.getInstance().getNowCategory());
@@ -53,7 +51,7 @@ public class FragmentProduct extends Fragment
         Singleton.getInstance().setServerRequest(false);
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/handmade")
                 .buildUpon()
-                .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(HttpTask.getInstance().regionTranslate(Singleton.getInstance().getRegion())))
+                .appendQueryParameter("place", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getRegion()))
                 .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
                 .build().toString();
 

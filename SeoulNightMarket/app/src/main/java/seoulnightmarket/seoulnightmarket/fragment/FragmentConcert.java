@@ -46,6 +46,10 @@ public class FragmentConcert extends Fragment {
     private String selectedDate; // 텍스트 바꿀 날짜형식 10월 31일 (수)
     private String serverDate; // 서버에 쓸 날짜형식 09.17
 
+    public FragmentConcert() {
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +64,6 @@ public class FragmentConcert extends Fragment {
         View view = inflater.inflate(R.layout.activity_fragment_concert, container, false);
 
         region = Singleton.getInstance().getRegion();
-        region = HttpTask.getInstance().regionTranslate(region);
 
         textView = view.findViewById(R.id.concertDate);
         gridView = view.findViewById(R.id.gridViewConcert);
