@@ -16,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +31,7 @@ import java.util.Date;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.ConcertAdapter;
+import seoulnightmarket.seoulnightmarket.etc.ExpandableHeightGridView;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
@@ -39,7 +39,7 @@ public class FragmentConcert extends Fragment {
     public String uri;
     public String region;
     public ConcertAdapter concertAdapter;
-    public GridView gridView;
+    public ExpandableHeightGridView gridView;
     public TextView textView;
     public ArrayList<String> monthList;
     public ArrayList<String> dayList;
@@ -62,11 +62,11 @@ public class FragmentConcert extends Fragment {
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_concert, container, false);
-
         region = Singleton.getInstance().getRegion();
 
         textView = view.findViewById(R.id.concertDate);
         gridView = view.findViewById(R.id.gridViewConcert);
+        gridView.setExpanded(true);
 
         Button btnDate = view.findViewById(R.id.btnConcert);
         btnDate.setOnClickListener(new View.OnClickListener() {

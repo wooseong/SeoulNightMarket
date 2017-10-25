@@ -18,6 +18,7 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
             android:text="상시 공연안내" />
 
         <ImageView
@@ -35,6 +36,7 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
             android:text="8월 공연안내"/>
 
         <ImageView
@@ -52,6 +54,7 @@
             android:textAlignment="center"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
             android:text="9월 공연안내"/>
 
         <ImageView

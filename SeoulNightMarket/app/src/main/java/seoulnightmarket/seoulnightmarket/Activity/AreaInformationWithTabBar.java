@@ -100,6 +100,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_yellow_600);
                 break;
             case "청계천":
+                placePicutre.setImageResource(R.drawable.cgcintro);
                 textViewRegion.setText("청계천 타임슬립마켓");
                 textViewDate.setText("매주 토 16:30~22:30 일 16:00~21:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_lime_500));
@@ -110,6 +111,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_lime_500);
                 break;
             case "청계광장":
+                placePicutre.setImageResource(R.drawable.cggjintro);
                 textViewRegion.setText("청계광장");
                 textViewDate.setText("시즌별 금,토,일 18:00~23:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_cyan_800));

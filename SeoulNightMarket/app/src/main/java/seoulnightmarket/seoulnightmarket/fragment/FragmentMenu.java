@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -34,8 +35,7 @@ public class FragmentMenu extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
-    { // onCreate 후에 화면을 구성할때 호출
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
         View view = inflater.inflate(R.layout.activity_fragment_menu, null);
         listView = view.findViewById(R.id.listView);
         ImageView imageView = Singleton.getInstance().getStoreImageView();
@@ -84,19 +84,19 @@ public class FragmentMenu extends Fragment {
 
             adapter = new MenuAdapter();
 
-            for (int i = 0; i < Singleton.getInstance().getProductImageList().size(); i++)
-            {
+            for (int i = 0; i < Singleton.getInstance().getProductImageList().size(); i++) {
                 adapter.addItem(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getProductImageList().get(i)), Singleton.getInstance().getProductNameList().get(i), Singleton.getInstance().getProductPriceList().get(i));
             }
 
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
             listView.invalidateViews();
+
+            setListViewHeightBasedOnItems(listView);
         }
     }
 
-    public class TicketAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class TicketAsyncTask extends AsyncTask<String, Void, String> {
         String type;
 
         TicketAsyncTask(String type) {
@@ -111,12 +111,36 @@ public class FragmentMenu extends Fragment {
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
             TextView textView = Singleton.getInstance().getWaitTextView();
-            textView.setText((Singleton.getInstance().getLastClient()-Singleton.getInstance().getNowClient())+1+"");
+            textView.setText((Singleton.getInstance().getLastClient() - Singleton.getInstance().getNowClient()) + 1 + "");
         }
+    }
+
+    public void setListViewHeightBasedOnItems(ListView listView) { // 리스트뷰 높이 계산
+        // Get list adpter of listview;
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) return;
+
+        int numberOfItems = listAdapter.getCount();
+
+        // Get total height of all items.
+        int totalItemsHeight = 0;
+        for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
+            View item = listAdapter.getView(itemPos, null, listView);
+            item.measure(0, 0);
+            totalItemsHeight += item.getMeasuredHeight();
+        }
+
+        // Get total height of all item dividers.
+        int totalDividersHeight = listView.getDividerHeight() * (numberOfItems - 1);
+
+        // Set list height.
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalItemsHeight + totalDividersHeight;
+        listView.setLayoutParams(params);
+        listView.requestLayout();
     }
 }

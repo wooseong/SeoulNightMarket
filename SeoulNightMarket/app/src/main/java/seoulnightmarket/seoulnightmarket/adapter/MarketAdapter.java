@@ -2,7 +2,6 @@ package seoulnightmarket.seoulnightmarket.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,9 +57,6 @@ public class MarketAdapter extends BaseAdapter {
             holder.imageView = (ImageView) gridView.findViewById(R.id.imageViewMarket);
             holder.textView = (TextView) gridView.findViewById(R.id.textViewMarket);
             gridView.setTag(holder);
-
-//            imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(image.get(position)));
-//            textView.setText(text.get(position));
         }
 
         if (image.get(position) != null)

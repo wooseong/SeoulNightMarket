@@ -83,8 +83,7 @@ public class FragmentIntroduction extends Fragment {
             adapterString.add(getString(R.string.listView5y));
             adapterString.add(getString(R.string.listView7y));
             adapterString.add(getString(R.string.listView9y));
-        }
-        else if (region.equals("DDP")) {
+        } else if (region.equals("DDP")) {
             textView0.setText(R.string.textView0d);
             textView1.setText(R.string.textView1d);
             textView2.setText(R.string.textView2d);
@@ -98,14 +97,15 @@ public class FragmentIntroduction extends Fragment {
             adapterHead.add(getString(R.string.listView4d));
             adapterHead.add(getString(R.string.listView6d));
             adapterHead.add(getString(R.string.listView8d));
+            adapterHead.add(getString(R.string.listView10d));
 
             adapterString.add(getString(R.string.listView1d));
             adapterString.add(getString(R.string.listView3d));
             adapterString.add(getString(R.string.listView5d));
             adapterString.add(getString(R.string.listView7d));
             adapterString.add(getString(R.string.listView9d));
-        }
-        else if (region.equals("반포")) {
+            adapterString.add(getString(R.string.listView11d));
+        } else if (region.equals("반포")) {
             textView0.setText(R.string.textView0b);
             textView1.setText(R.string.textView1b);
             textView2.setText(R.string.textView2b);
@@ -118,15 +118,12 @@ public class FragmentIntroduction extends Fragment {
             adapterHead.add(getString(R.string.listView2b));
             adapterHead.add(getString(R.string.listView4b));
             adapterHead.add(getString(R.string.listView6b));
-            adapterHead.add(getString(R.string.listView8b));
 
             adapterString.add(getString(R.string.listView1b));
             adapterString.add(getString(R.string.listView3b));
             adapterString.add(getString(R.string.listView5b));
             adapterString.add(getString(R.string.listView7b));
-            adapterString.add(getString(R.string.listView9b));
-        }
-        else if (region.equals("청계천")) {
+        } else if (region.equals("청계천")) {
             textView0.setText(R.string.textView0c);
             textView1.setText(R.string.textView1c);
             textView2.setText(R.string.textView2c);
@@ -146,8 +143,7 @@ public class FragmentIntroduction extends Fragment {
             adapterString.add(getString(R.string.listView5c));
             adapterString.add(getString(R.string.listView7c));
             adapterString.add(getString(R.string.listView9c));
-        }
-        else if (region.equals("청계광장")) {
+        } else if (region.equals("청계광장")) {
             textView0.setText(R.string.textView0j);
             textView1.setText(R.string.textView1j);
             textView2.setText(R.string.textView2j);
@@ -176,6 +172,7 @@ public class FragmentIntroduction extends Fragment {
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
         listView.invalidateViews();
+
         setListViewHeightBasedOnItems(listView);
 
         // onCreate 후에 화면을 구성할때 호출

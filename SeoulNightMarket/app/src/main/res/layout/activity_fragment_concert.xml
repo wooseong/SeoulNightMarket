@@ -49,10 +49,10 @@
             android:textColor="@color/md_black_1000"
             android:text="달력에서 날짜를 선택하세요"/>
 
-        <GridView
+        <seoulnightmarket.seoulnightmarket.etc.ExpandableHeightGridView
             android:id="@+id/gridViewConcert"
-            android:layout_width="match_parent"
-            android:layout_height="480dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
@@ -61,7 +61,7 @@
             android:numColumns="2"
             android:stretchMode="columnWidth"
             android:gravity="center">
-        </GridView>
+        </seoulnightmarket.seoulnightmarket.etc.ExpandableHeightGridView>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
