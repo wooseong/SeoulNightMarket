@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/concert" />
+            app:srcCompat="@drawable/cgc_concert" />
 
         <TextView
             android:layout_marginTop="15dp"
@@ -43,9 +43,9 @@
             android:id="@+id/imageAugust"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="150dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/concert1"/>
+            app:srcCompat="@drawable/cgc_concert1"/>
 
         <TextView
             android:layout_marginTop="15dp"
@@ -61,9 +61,27 @@
             android:id="@+id/imageSeptember"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/concert2"/>
+            app:srcCompat="@drawable/cgc_concert2"/>
+
+        <TextView
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
+            android:text="10월 공연안내"/>
+
+        <ImageView
+            android:id="@+id/imageOctober"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/cgc_concert3"/>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

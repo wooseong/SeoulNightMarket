@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/plaza" />
+            app:srcCompat="@drawable/cggj_concert" />
 
         <TextView
             android:layout_marginTop="15dp"
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/plaza1" />
+            app:srcCompat="@drawable/cggj_concert1" />
 
         <TextView
             android:layout_marginTop="15dp"
@@ -78,9 +78,9 @@
             android:id="@+id/imagePlaza2"
             android:layout_marginTop="15dp"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="120dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/plaza2" />
+            app:srcCompat="@drawable/cggj_concert2" />
 
         <TextView
             android:layout_marginTop="15dp"
@@ -115,7 +115,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/plaza3" />
+            app:srcCompat="@drawable/cggj_concert3" />
 
         <TextView
             android:layout_marginTop="15dp"
@@ -151,7 +151,7 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"
             android:scaleType="fitXY"
-            app:srcCompat="@drawable/plaza4" />
+            app:srcCompat="@drawable/cggj_concert4" />
 
         <TextView
             android:layout_marginTop="15dp"

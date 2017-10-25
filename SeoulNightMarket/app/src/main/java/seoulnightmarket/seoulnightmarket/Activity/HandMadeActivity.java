@@ -1,12 +1,18 @@
 package seoulnightmarket.seoulnightmarket.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,46 +29,58 @@ import seoulnightmarket.seoulnightmarket.fragment.FragmentProduct;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
 
 public class HandMadeActivity extends AppCompatActivity {
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hand_made);
 
-        // Adding Toolbar to Main screen
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.handMadeToolbar); // Adding Toolbar to Main screen
         setSupportActionBar(toolbar);
-
-        //////////
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // Set Collapsing Toolbar layout to the screen
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        // Set title of Detail page
-        // collapsingToolbar.setTitle(getString(R.string.item_title));
-        //////////
-        ImageView placePicutre = (ImageView) findViewById(R.id.image);
-        Singleton.getInstance().setStoreImageView(placePicutre);
-        placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.bom));
 
-        // Setting ViewPager for each Tabs
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.handMadeDrawer);
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.handMade_collapsing_toolbar); // Set Collapsing Toolbar layout to the screen
+        collapsingToolbar.setTitle("도오오깨애애비이");
+
+        ImageView placePicutre = (ImageView) findViewById(R.id.handMadeImage);
+        Singleton.getInstance().setStoreImageView(placePicutre);
+
+        ViewPager viewPager = (ViewPager) findViewById(R.id.handMadeViewpager); // Setting ViewPager for each Tabs
         setupViewPager(viewPager);
-        // Set Tabs inside Toolbar
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+
+        TabLayout tabs = (TabLayout) findViewById(R.id.handMadeTabs); // Set Tabs inside Toolbar
         tabs.setupWithViewPager(viewPager);
-        // Adding menu icon to Toolbar
-        ActionBar supportActionBar = getSupportActionBar();
-//        if (supportActionBar != null) {
-//            VectorDrawableCompat indicator =
-//                    VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
-//            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.white, getTheme()));
-//            supportActionBar.setHomeAsUpIndicator(indicator);
-//            supportActionBar.setDisplayHomeAsUpEnabled(true);
-//        }
+
+        ActionBar supportActionBar = getSupportActionBar(); // Adding menu icon to Toolbar
+        if (supportActionBar != null) {
+            VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_orange_500, getTheme()));
+            supportActionBar.setHomeAsUpIndicator(indicator);
+            supportActionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.handMade_nav_view); // Create Navigation drawer and inlfate layout
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) { // This method will trigger on item Click of navigation menu
+                menuItem.setChecked(true); // Set item in checked state
+
+                String menuName = menuItem.getTitle().toString();
+                Singleton.getInstance().setRegion(menuName);
+
+                finish();
+                startActivity(new Intent(HandMadeActivity.this, AreaInformationWithTabBar.class));
+
+                mDrawerLayout.closeDrawers(); // Closing drawer on item click
+
+                return true;
+            }
+        });
     }
 
-    // Add Fragments to Tabs
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager(ViewPager viewPager) { // Add Fragments to Tabs
         HandMadeActivity.Adapter adapter = new Adapter(getSupportFragmentManager());
 
         adapter.addFragment(new FragmentProduct(), "상품");
@@ -107,7 +125,11 @@ public class HandMadeActivity extends AppCompatActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        //noinspection SimplifiableIfStatement
+
+        if (id == android.R.id.home) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
+
         return super.onOptionsItemSelected(item);
     }
 }
