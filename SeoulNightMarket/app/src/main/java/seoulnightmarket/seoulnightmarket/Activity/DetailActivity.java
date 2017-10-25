@@ -3,14 +3,12 @@ package seoulnightmarket.seoulnightmarket.Activity;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -32,47 +30,34 @@ import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
 public class DetailActivity extends AppCompatActivity {
     private int count = 0;
     private TextView currentOrderNumber;
-    private CoordinatorLayout coordinatorLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        // Adding Toolbar to Main screen
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.detailToolbar); // Adding Toolbar to Main screen
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         currentOrderNumber = (TextView) findViewById(R.id.currentOrderNumber);
-        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.main_content);
+        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.detailCoordinatorLayout);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        // Set Collapsing Toolbar layout to the screen
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        // Set title of Detail page
-        // collapsingToolbar.setTitle(getString(R.string.item_title));
-
-        ImageView placePicutre = (ImageView) findViewById(R.id.image);
+        ImageView placePicutre = (ImageView) findViewById(R.id.detailImage);
         Singleton.getInstance().setStoreImageView(placePicutre);
-        placePicutre.setImageDrawable(getResources().getDrawable(R.drawable.bom));
 
         TextView textView = (TextView) findViewById(R.id.store_name);
         Singleton.getInstance().setStoreTextView(textView);
         Singleton.getInstance().setWaitTextView(currentOrderNumber);
 
-        // Setting ViewPager for each Tabs
-        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.detailViewpager); // Setting ViewPager for each Tabs
         setupViewPager(viewPager);
 
-        // Set Tabs inside Toolbar
-        TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabs = (TabLayout) findViewById(R.id.detailTabs); // Set Tabs inside Toolbar
         tabs.setupWithViewPager(viewPager);
-
-        // Adding menu icon to Toolbar
-        ActionBar supportActionBar = getSupportActionBar();
     }
 
-    // Add Fragments to Tabs
-    private void setupViewPager(ViewPager viewPager) {
+    private void setupViewPager(ViewPager viewPager) { // Add Fragments to Tabs
         Adapter adapter = new Adapter(getSupportFragmentManager());
 
         adapter.addFragment(new FragmentMenu(), "메뉴");
@@ -118,12 +103,10 @@ public class DetailActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
-
         return super.onOptionsItemSelected(item);
     }
 
-    public void btnOrder(View v) {
-        // 번호표 뽑기 버튼 이벤트
+    public void btnOrder(View v) { // 번호표 뽑기 버튼 이벤트
         if (count == 0 && Singleton.getInstance().getDuplicated() == false) {
             count++;
             String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")

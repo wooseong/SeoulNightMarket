@@ -79,6 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                 Singleton.getInstance().setNowLoginID(phoneNumber);
                 Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
 
+                Singleton.getInstance().setLoginState(true); // 싱글톤에 로그인 성공 상태 저장
+
+                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
+            }
 //            if () { // 판매자
 //                startActivity(new Intent(LoginActivity.this, SellerActivity.class));
 //            }
@@ -86,10 +90,7 @@ public class LoginActivity extends AppCompatActivity {
 //            else if () { // 구매자
 //                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
 //            }
-
-                //           startActivity(new Intent(LoginActivity.this, SellerActivity.class));
-                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
-            } else {
+            else {
                 Toast.makeText(getApplicationContext(), "아이디와 패스워드를 다시 확인하세요", Toast.LENGTH_SHORT).show();
             }
         }

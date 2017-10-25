@@ -16,6 +16,7 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         EasySplashScreen config = new EasySplashScreen(SplashActivity.this)
                 .withFullScreen()
                 .withTargetActivity(MainActivity.class)
@@ -33,10 +34,8 @@ public class SplashActivity extends AppCompatActivity {
 //        config.getBeforeLogoTextView().setTextColor(Color.WHITE);
 //        config.getAfterLogoTextView().setTextColor(Color.WHITE);
 
-        //Set tto view
-        View view = config.create();
+        View view = config.create(); // Set to view
 
-        //Set view to content view
-        setContentView(view);
+        setContentView(view); // Set view to content view
     }
 }

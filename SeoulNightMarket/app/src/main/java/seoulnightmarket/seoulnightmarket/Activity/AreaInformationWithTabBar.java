@@ -63,19 +63,18 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         TextView textViewDate = (TextView) findViewById(R.id.textViewDate);
 
         ImageView placePicutre = (ImageView) findViewById(R.id.image);
-//        Singleton.getInstance().setStoreImageView(placePicutre);
 
         switch (region) {
             case "여의도":
                 placePicutre.setImageResource(R.drawable.yydintro);
                 textViewRegion.setText("여의도 월드나이트마켓");
                 textViewDate.setText("매주 금토 18:00~23:00");
-                appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_orange_800));
+                appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_deep_orange_400));
                 textViewRegion.setTextColor(getResources().getColor(R.color.md_light_blue_800));
                 textViewDate.setTextColor(getResources().getColor(R.color.md_light_blue_800));
                 tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_light_blue_800));
                 tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_light_blue_800));
-                collapsingToolbarLayout.setContentScrimResource(R.color.md_orange_800);
+                collapsingToolbarLayout.setContentScrimResource(R.color.md_deep_orange_400);
                 break;
             case "DDP":
                 placePicutre.setImageResource(R.drawable.ddpintro);

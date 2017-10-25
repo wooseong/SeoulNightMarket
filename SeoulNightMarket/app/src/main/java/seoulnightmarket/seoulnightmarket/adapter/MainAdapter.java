@@ -8,10 +8,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.Activity.AreaInformationWithTabBar;
 import seoulnightmarket.seoulnightmarket.Activity.LoginActivity;
 import seoulnightmarket.seoulnightmarket.Activity.NumberTicketActivity;
+import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
 /**
@@ -21,7 +21,7 @@ import seoulnightmarket.seoulnightmarket.etc.Singleton;
 public class MainAdapter extends BaseAdapter {
     private Context context;
     private int[] image;
-    private boolean login = false;
+    private boolean login;
     private String region;
 
     public MainAdapter(Context context, int[] image) {
@@ -60,6 +60,8 @@ public class MainAdapter extends BaseAdapter {
         gridView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                login = Singleton.getInstance().getLoginState(); // 로그인 상태 받아옴
+
                 if (position == 0) { // 로그인 버튼
                     if (!login) {
                         context.startActivity(new Intent(context, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 로그아웃 상태일때 로그인 화면으로 이동

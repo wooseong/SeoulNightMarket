@@ -52,6 +52,7 @@ public class Singleton {
     private boolean serverRequest = false;
     private boolean nowLogin = false;
     private boolean duplicated = false;
+    private boolean loginState = false;
 
     private static Singleton instance = null;
 
@@ -221,6 +222,14 @@ public class Singleton {
 
     public boolean getNowLogin() {
         return nowLogin;
+    }
+
+    public boolean getLoginState() {
+        return loginState;
+    }
+
+    public void setLoginState(boolean loginState) {
+        this.loginState = loginState;
     }
 
     public void setNowClient(int nowClient) {

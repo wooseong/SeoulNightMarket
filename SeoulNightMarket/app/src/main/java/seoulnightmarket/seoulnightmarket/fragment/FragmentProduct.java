@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -38,12 +39,12 @@ public class FragmentProduct extends Fragment {
         listView = view.findViewById(R.id.listViewProduct);
 
         ImageView imageView = Singleton.getInstance().getStoreImageView();
-        ImageView imageViewProduct = (ImageView) view.findViewById(R.id.imageViewProduct);
+        ImageView imageViewProduct = view.findViewById(R.id.imageViewProduct);
         imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getNowStoreImage()));
         imageViewProduct.setImageBitmap(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getNowStoreDetailImage()));
 
-        TextView storeTextView = (TextView) view.findViewById(R.id.handmade_store_textview);
-        TextView categoryTextView = (TextView) view.findViewById(R.id.handmade_category_textview);
+        TextView storeTextView = view.findViewById(R.id.handmade_store_textview);
+        TextView categoryTextView = view.findViewById(R.id.handmade_category_textview);
 
         storeTextView.setText(Singleton.getInstance().getNowStore());
         categoryTextView.setText(Singleton.getInstance().getNowCategory());
@@ -89,5 +90,30 @@ public class FragmentProduct extends Fragment {
             adapter.notifyDataSetChanged();
             listView.invalidateViews();
         }
+    }
+
+    public void setListViewHeightBasedOnItems(ListView listView) { // 리스트뷰 높이 계산
+        // Get list adpter of listview;
+        ListAdapter listAdapter = listView.getAdapter();
+        if (listAdapter == null) return;
+
+        int numberOfItems = listAdapter.getCount();
+
+        // Get total height of all items.
+        int totalItemsHeight = 0;
+        for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
+            View item = listAdapter.getView(itemPos, null, listView);
+            item.measure(0, 0);
+            totalItemsHeight += item.getMeasuredHeight();
+        }
+
+        // Get total height of all item dividers.
+        int totalDividersHeight = listView.getDividerHeight() * (numberOfItems - 1);
+
+        // Set list height.
+        ViewGroup.LayoutParams params = listView.getLayoutParams();
+        params.height = totalItemsHeight + totalDividersHeight;
+        listView.setLayoutParams(params);
+        listView.requestLayout();
     }
 }

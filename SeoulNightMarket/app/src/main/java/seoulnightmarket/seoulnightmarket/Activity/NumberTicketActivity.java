@@ -90,6 +90,7 @@ public class NumberTicketActivity extends AppCompatActivity {
                     adapter.addItem(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getStoreImageList().get(j)), Singleton.getInstance().getWaitStoreList().get(j), Singleton.getInstance().getNowWaitList().get(j),
                             Singleton.getInstance().getMyWaitList().get(j), Singleton.getInstance().getMyWaitList().get(j) - Singleton.getInstance().getNowWaitList().get(j));
                 }
+
                 listView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 listView.invalidateViews();

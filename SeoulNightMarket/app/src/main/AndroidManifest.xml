@@ -40,10 +40,7 @@
 
         <activity
             android:name=".Activity.DetailActivity"
-            android:parentActivityName=".Activity.AreaInformationWithTabBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.AreaInformationWithTabBar" />
+            android:theme="@style/TabBarTheme">
         </activity>
         <activity android:name=".Activity.NumberTicketActivity" />
         <activity android:name=".Activity.LoginActivity" />
@@ -54,6 +51,10 @@
         <fragment android:name=".fragment.FragmentConcertPlaza" />
 
         <activity android:name=".Activity.SellerActivity" />
+        <service android:name=".etc.TaskService"
+            android:stopWithTask="false">
+        </service>
+
     </application>
 
 </manifest>
