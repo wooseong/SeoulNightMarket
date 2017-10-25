@@ -127,9 +127,8 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         ActionBar supportActionBar = getSupportActionBar(); // Adding menu icon to Toolbar
         if (supportActionBar != null) {
             VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme()); // 드로월 모양
-            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.white, getTheme())); // 드로월 색깔
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_white_1000, getTheme())); // 드로월 색깔
             supportActionBar.setHomeAsUpIndicator(indicator);
-            supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); // Create Navigation drawer and inlfate layout

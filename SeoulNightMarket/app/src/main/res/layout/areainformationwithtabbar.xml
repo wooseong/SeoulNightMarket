@@ -90,6 +90,7 @@
                     app:tabSelectedTextColor="@color/md_yellow_500"
                     app:tabTextColor="@color/md_white_1000" />
             </android.support.design.widget.CollapsingToolbarLayout>
+
         </android.support.design.widget.AppBarLayout>
 
     </android.support.design.widget.CoordinatorLayout>
@@ -104,4 +105,5 @@
         app:headerLayout="@layout/navheader"
         app:itemTextColor="@color/md_black_1000"
         app:menu="@menu/menu_navigation" />
+
 </android.support.v4.widget.DrawerLayout>

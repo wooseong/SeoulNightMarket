@@ -1,14 +1,21 @@
 package seoulnightmarket.seoulnightmarket.Activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.res.ResourcesCompat;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -30,6 +37,7 @@ import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
 public class DetailActivity extends AppCompatActivity {
     private int count = 0;
     private TextView currentOrderNumber;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +49,7 @@ public class DetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         currentOrderNumber = (TextView) findViewById(R.id.currentOrderNumber);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.detailDrawer);
         CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.detailCoordinatorLayout);
 
         ImageView placePicutre = (ImageView) findViewById(R.id.detailImage);
@@ -55,6 +64,31 @@ public class DetailActivity extends AppCompatActivity {
 
         TabLayout tabs = (TabLayout) findViewById(R.id.detailTabs); // Set Tabs inside Toolbar
         tabs.setupWithViewPager(viewPager);
+
+        ActionBar supportActionBar = getSupportActionBar(); // Adding menu icon to Toolbar
+        if (supportActionBar != null) {
+            VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme()); // 드로월 모양
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_orange_500, getTheme())); // 드로월 색깔
+            supportActionBar.setHomeAsUpIndicator(indicator);
+        }
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.detail_nav_view); // Create Navigation drawer and inlfate layout
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) { // This method will trigger on item Click of navigation menu
+                menuItem.setChecked(true); // Set item in checked state
+
+                String menuName = menuItem.getTitle().toString();
+                Singleton.getInstance().setRegion(menuName);
+
+                finish();
+                startActivity(new Intent(DetailActivity.this, AreaInformationWithTabBar.class));
+
+                mDrawerLayout.closeDrawers(); // Closing drawer on item click
+
+                return true;
+            }
+        });
     }
 
     private void setupViewPager(ViewPager viewPager) { // Add Fragments to Tabs
@@ -103,6 +137,10 @@ public class DetailActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         //noinspection SimplifiableIfStatement
+
+        if (id == android.R.id.home) {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -170,8 +208,8 @@ public class DetailActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            currentOrderNumber.setText((Singleton.getInstance().getLastClient() - Singleton.getInstance().getNowClient() + 1) + "");
 
+            currentOrderNumber.setText((Singleton.getInstance().getLastClient() - Singleton.getInstance().getNowClient() + 1) + "");
             Toast.makeText(getApplicationContext(), "번호표 발급 완료", Toast.LENGTH_SHORT).show();
         }
     }

@@ -8,11 +8,14 @@
     android:background="@drawable/background"
     tools:context="seoulnightmarket.seoulnightmarket.Activity.MainActivity">
 
-    <!--<ImageView-->
-        <!--android:id="@+id/imageViewInitial"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="160dp"-->
-        <!--android:background="@drawable/animation"/>-->
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/mainToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="top"
+        app:titleTextColor="@color/md_white_1000"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <GridView
         android:id="@+id/gridViewInitial"
