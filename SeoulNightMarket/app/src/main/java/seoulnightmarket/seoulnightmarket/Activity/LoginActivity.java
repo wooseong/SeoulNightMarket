@@ -81,7 +81,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 Singleton.getInstance().setLoginState(true); // 싱글톤에 로그인 성공 상태 저장
 
-                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
+                startActivity(new Intent(LoginActivity.this, SellerActivity.class));
             }
 //            if () { // 판매자
 //                startActivity(new Intent(LoginActivity.this, SellerActivity.class));

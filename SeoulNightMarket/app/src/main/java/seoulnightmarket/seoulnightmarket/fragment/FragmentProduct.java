@@ -89,6 +89,8 @@ public class FragmentProduct extends Fragment {
             listView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
             listView.invalidateViews();
+
+            setListViewHeightBasedOnItems(listView);
         }
     }
 
