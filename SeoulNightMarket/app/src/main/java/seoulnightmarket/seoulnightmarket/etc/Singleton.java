@@ -12,6 +12,7 @@ import java.util.ArrayList;
 public class Singleton {
     private int nowClient;
     private int lastClient;
+    private int waitCount;
     private String type;
     private String region;
     private String nowStore;
@@ -34,6 +35,7 @@ public class Singleton {
     private String nowCategory;
     private String nowStoreDetailImage;
     private String nowLoginID;
+    private String nowSeller;
     private ArrayList<Integer> nowWaitList = new ArrayList<Integer>();
     private ArrayList<Integer> myWaitList = new ArrayList<Integer>();
     private ArrayList<String> waitStoreList = new ArrayList<String>();
@@ -56,6 +58,8 @@ public class Singleton {
 
     private static Singleton instance = null;
 
+    public int getWaitCount() {return waitCount;}
+
     public int getNowClient() {
         return nowClient;
     }
@@ -63,6 +67,8 @@ public class Singleton {
     public int getLastClient() {
         return lastClient;
     }
+
+    public String getNowSeller() { return nowSeller; }
 
     public String getNowLoginID() {
         return nowLoginID;
@@ -232,6 +238,8 @@ public class Singleton {
         this.loginState = loginState;
     }
 
+    public void setWaitCount (int waitCount) { this.waitCount = waitCount; }
+
     public void setNowClient(int nowClient) {
         this.nowClient = nowClient;
     }
@@ -243,6 +251,8 @@ public class Singleton {
     public void setCourse(String course) {
         this.course = course;
     }
+
+    public void setNowSeller(String nowSeller) { this.nowSeller = nowSeller; }
 
     public void setNowStore(String nowStore) {
         this.nowStore = nowStore;

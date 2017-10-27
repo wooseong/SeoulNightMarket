@@ -17,7 +17,8 @@ public class NumberTicketActivity extends AppCompatActivity {
     ListView listView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_ticket);
 

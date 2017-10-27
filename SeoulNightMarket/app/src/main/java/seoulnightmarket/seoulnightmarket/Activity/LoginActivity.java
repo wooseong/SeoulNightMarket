@@ -76,21 +76,15 @@ public class LoginActivity extends AppCompatActivity {
 
             // 데이터베이스에 있는 회원 아이디와 비밀번호가 일치하면
             if (Singleton.getInstance().getNowLogin() == true) {
-                Singleton.getInstance().setNowLoginID(phoneNumber);
                 Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
 
-                Singleton.getInstance().setLoginState(true); // 싱글톤에 로그인 성공 상태 저장
-
-                startActivity(new Intent(LoginActivity.this, SellerActivity.class));
-            }
-//            if () { // 판매자
-//                startActivity(new Intent(LoginActivity.this, SellerActivity.class));
-//            }
-//
-//            else if () { // 구매자
-//                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
-//            }
-            else {
+                if (phoneNumber.contains("Admin")) { // 판매자
+                    startActivity(new Intent(LoginActivity.this, SellerActivity.class));
+                } else { // 구매자
+                    Singleton.getInstance().setNowLoginID(phoneNumber);
+                    startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
+                }
+            } else {
                 Toast.makeText(getApplicationContext(), "아이디와 패스워드를 다시 확인하세요", Toast.LENGTH_SHORT).show();
             }
         }

@@ -26,7 +26,6 @@ public class HttpTask
     private static HttpTask instance = null;
     private Bitmap bitmap;
 
-
     public static synchronized HttpTask getInstance()
     {
         if (instance == null) {
@@ -39,8 +38,10 @@ public class HttpTask
     {
         InputStream is = null;
         String result = "";
+        int minimum;
 
-        try {
+        try
+        {
             URL urlCon = new URL(url);
             HttpURLConnection httpCon = (HttpURLConnection) urlCon.openConnection();
 
@@ -139,7 +140,11 @@ public class HttpTask
                     }
                 case "로그인" :
                     Singleton.getInstance().setNowLogin(false);
-                    if(posts.length()>0) { Singleton.getInstance().setNowLogin(true); }
+                    if(posts.length()>0)
+                    {
+                        Singleton.getInstance().setNowLogin(true);
+                        Singleton.getInstance().setNowSeller(posts.optJSONObject(0).getString("Nickname"));
+                    }
                     else { Singleton.getInstance().setNowLogin(false); }
                     break;
                 case "번호표 보기" :
@@ -147,30 +152,31 @@ public class HttpTask
                     int max = 0;
 
                     Singleton.getInstance().setDuplicated(false);
+                    Singleton.getInstance().setWaitCount(posts.length());
 
                     for (int i = 0; i < posts.length(); i++)
                     {
-                        if(posts.optJSONObject(i).getInt("Number")>max)
-                        {
+                        if (posts.optJSONObject(i).getInt("Number") > max) {
                             max = posts.optJSONObject(i).getInt("Number");
                         }
 
-                        if(posts.optJSONObject(i).getInt("Number")<min)
-                        {
+                        if (posts.optJSONObject(i).getInt("Number") < min) {
                             min = posts.optJSONObject(i).getInt("Number");
                         }
 
-                        if(posts.optJSONObject(i).getString("Customer").equals(Singleton.getInstance().getNowLoginID()))
-                        {
-                            Singleton.getInstance().setDuplicated(true);
+                        if (posts.optJSONObject(i).getString("Customer").equals(Singleton.getInstance().getNowLoginID())) {
+                        Singleton.getInstance().setDuplicated(true);
                         }
-                    }
+                     }
 
-                    Singleton.getInstance().setNowClient(min);
-                    Singleton.getInstance().setLastClient(max);
+                     if(min==99999) { min = 0; }
+                     Singleton.getInstance().setNowClient(min);
+                     Singleton.getInstance().setLastClient(max);
+                    break;
+                case "번호표 호출" :
                     break;
                 case "현재 순서":
-                    int minimum = 99999;
+                    minimum = 99999;
 
                     for (int i = 0; i < posts.length(); i++)
                     {

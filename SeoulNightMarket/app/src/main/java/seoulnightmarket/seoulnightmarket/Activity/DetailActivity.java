@@ -144,8 +144,10 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void btnOrder(View v) { // 번호표 뽑기 버튼 이벤트
-        if (count == 0 && Singleton.getInstance().getDuplicated() == false) {
+    public void btnOrder(View v) {
+        // 번호표 뽑기 버튼 이벤트
+        if (count == 0 && Singleton.getInstance().getDuplicated() == false)
+        {
             count++;
             String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
                     .buildUpon()
