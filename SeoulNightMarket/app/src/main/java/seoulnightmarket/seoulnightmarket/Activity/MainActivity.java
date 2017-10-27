@@ -11,7 +11,7 @@ import seoulnightmarket.seoulnightmarket.adapter.MainAdapter;
 import seoulnightmarket.seoulnightmarket.etc.TaskService;
 
 public class MainActivity extends AppCompatActivity {
-    public int[] nightMarket = {R.drawable.order, R.drawable.yyd_main, R.drawable.ddp, R.drawable.bp, R.drawable.cgc, R.drawable.cggj};
+    public int[] nightMarket = {R.drawable.login, R.drawable.yyd_white, R.drawable.ddp_white, R.drawable.bp_white, R.drawable.cgc_white, R.drawable.cggj_white};
     public GridView gridView;
 
     @Override
