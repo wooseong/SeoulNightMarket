@@ -3,7 +3,6 @@ package seoulnightmarket.seoulnightmarket.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
@@ -17,6 +16,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -36,24 +37,23 @@ public class HandMadeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hand_made);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.handMadeToolbar); // Adding Toolbar to Main screen
+        Toolbar toolbar = (Toolbar) findViewById(R.id.handMadeToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.handMadeDrawer);
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.handMade_collapsing_toolbar); // Set Collapsing Toolbar layout to the screen
-        collapsingToolbar.setTitle("도오오깨애애비이");
+        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.handMade_collapsing_toolbar);
 
         ImageView placePicutre = (ImageView) findViewById(R.id.handMadeImage);
         Singleton.getInstance().setStoreImageView(placePicutre);
 
-        ViewPager viewPager = (ViewPager) findViewById(R.id.handMadeViewpager); // Setting ViewPager for each Tabs
+        ViewPager viewPager = (ViewPager) findViewById(R.id.handMadeViewpager);
         setupViewPager(viewPager);
 
-        TabLayout tabs = (TabLayout) findViewById(R.id.handMadeTabs); // Set Tabs inside Toolbar
+        TabLayout tabs = (TabLayout) findViewById(R.id.handMadeTabs);
         tabs.setupWithViewPager(viewPager);
 
-        ActionBar supportActionBar = getSupportActionBar(); // Adding menu icon to Toolbar
+        ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
             indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_orange_500, getTheme()));
@@ -61,23 +61,93 @@ public class HandMadeActivity extends AppCompatActivity {
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.handMade_nav_view); // Create Navigation drawer and inlfate layout
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
+        final Button btnyyd = (Button) findViewById(R.id.btnyyd);
+        btnyyd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) { // This method will trigger on item Click of navigation menu
-                menuItem.setChecked(true); // Set item in checked state
+            public void onClick(View view) {
+                String marketName = btnyyd.getText().toString();
+                Singleton.getInstance().setRegion(marketName);
 
-                String menuName = menuItem.getTitle().toString();
-                Singleton.getInstance().setRegion(menuName);
-
-                finish();
                 startActivity(new Intent(HandMadeActivity.this, AreaInformationWithTabBar.class));
+                finish();
 
-                mDrawerLayout.closeDrawers(); // Closing drawer on item click
-
-                return true;
+                mDrawerLayout.closeDrawers();
             }
         });
+
+        final Button btnddp = (Button) findViewById(R.id.btnddp);
+        btnddp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String marketName = btnddp.getText().toString();
+                Singleton.getInstance().setRegion(marketName);
+
+                startActivity(new Intent(HandMadeActivity.this, AreaInformationWithTabBar.class));
+                finish();
+
+                mDrawerLayout.closeDrawers();
+            }
+        });
+
+        final Button btnbp = (Button) findViewById(R.id.btnbp);
+        btnbp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String marketName = btnbp.getText().toString();
+                Singleton.getInstance().setRegion(marketName);
+
+                startActivity(new Intent(HandMadeActivity.this, AreaInformationWithTabBar.class));
+                finish();
+
+                mDrawerLayout.closeDrawers();
+            }
+        });
+
+        final Button btncgc = (Button) findViewById(R.id.btncgc);
+        btncgc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String marketName = btncgc.getText().toString();
+                Singleton.getInstance().setRegion(marketName);
+
+                startActivity(new Intent(HandMadeActivity.this, AreaInformationWithTabBar.class));
+                finish();
+
+                mDrawerLayout.closeDrawers();
+            }
+        });
+
+        final Button btncggj = (Button) findViewById(R.id.btncggj);
+        btncggj.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String marketName = btncggj.getText().toString();
+                Singleton.getInstance().setRegion(marketName);
+
+                startActivity(new Intent(HandMadeActivity.this, AreaInformationWithTabBar.class));
+                finish();
+
+                mDrawerLayout.closeDrawers();
+            }
+        });
+
+//        NavigationView navigationView = (NavigationView) findViewById(R.id.handMade_nav_view); // Create Navigation drawer and inlfate layout
+//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
+//            @Override
+//            public boolean onNavigationItemSelected(MenuItem menuItem) { // This method will trigger on item Click of navigation menu
+//                menuItem.setChecked(true); // Set item in checked state
+//
+//                String menuName = menuItem.getTitle().toString();
+//                Singleton.getInstance().setRegion(menuName);
+//
+//                finish();
+//                startActivity(new Intent(HandMadeActivity.this, AreaInformationWithTabBar.class));
+//
+//                mDrawerLayout.closeDrawers(); // Closing drawer on item click
+//
+//                return true;
+//            }
+//        });
     }
 
     private void setupViewPager(ViewPager viewPager) { // Add Fragments to Tabs
@@ -121,9 +191,6 @@ public class HandMadeActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
