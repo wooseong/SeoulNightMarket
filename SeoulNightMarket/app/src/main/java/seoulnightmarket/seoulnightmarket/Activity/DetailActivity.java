@@ -124,7 +124,8 @@ public class DetailActivity extends AppCompatActivity {
 
     public void btnOrder(View v) {
         // 번호표 뽑기 버튼 이벤트
-        if (count == 0 && Singleton.getInstance().getDuplicated() == false) {
+        if (count == 0 && Singleton.getInstance().getDuplicated() == false)
+        {
             count++;
             String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
                     .buildUpon()
@@ -187,7 +188,7 @@ public class DetailActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
-            currentOrderNumber.setText((Singleton.getInstance().getLastClient() - Singleton.getInstance().getNowClient() + 1) + "");
+            currentOrderNumber.setText(Singleton.getInstance().getWaitCount() + "");
 
             Toast.makeText(getApplicationContext(), "번호표 발급 완료", Toast.LENGTH_SHORT).show();
         }

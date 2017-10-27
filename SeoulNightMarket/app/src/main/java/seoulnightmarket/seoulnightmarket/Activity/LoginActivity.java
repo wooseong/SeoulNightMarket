@@ -38,9 +38,12 @@ public class LoginActivity extends AppCompatActivity {
         phoneNumber = idText.getText().toString();
         password = passwordText.getText().toString(); // 입력한 텍스트 가져옴
 
-        if (phoneNumber.length() == 0 || password.length() == 0) {
+        if (phoneNumber.length() == 0 || password.length() == 0)
+        {
             Toast.makeText(getApplicationContext(), "아이디와 패스워드를 다시 확인하세요", Toast.LENGTH_SHORT).show();
-        } else {
+        }
+        else
+        {
             String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/login")
                     .buildUpon()
                     .appendQueryParameter("id", phoneNumber)
@@ -71,25 +74,27 @@ public class LoginActivity extends AppCompatActivity {
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String result)
+        {
             super.onPostExecute(result);
 
             // 데이터베이스에 있는 회원 아이디와 비밀번호가 일치하면
-            if (Singleton.getInstance().getNowLogin() == true) {
-                Singleton.getInstance().setNowLoginID(phoneNumber);
+            if (Singleton.getInstance().getNowLogin() == true)
+            {
                 Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
 
-//            if () { // 판매자
-//                startActivity(new Intent(LoginActivity.this, SellerActivity.class));
-//            }
-//
-//            else if () { // 구매자
-//                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
-//            }
-
-                //           startActivity(new Intent(LoginActivity.this, SellerActivity.class));
-                startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
-            } else {
+                   if(phoneNumber.contains("Admin"))
+                   { // 판매자
+                       startActivity(new Intent(LoginActivity.this, SellerActivity.class));
+                   }
+                   else
+                   { // 구매자
+                       Singleton.getInstance().setNowLoginID(phoneNumber);
+                       startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
+                   }
+            }
+            else
+            {
                 Toast.makeText(getApplicationContext(), "아이디와 패스워드를 다시 확인하세요", Toast.LENGTH_SHORT).show();
             }
         }

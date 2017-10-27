@@ -20,7 +20,6 @@
             android:layout_height="40dp"
             android:textColorHint="@color/md_white_1000"
             android:textColor="@color/md_white_1000"
-            android:inputType="number"
             android:maxLength="11"
             android:hint="PhoneNumber"
             android:layout_gravity="center" />

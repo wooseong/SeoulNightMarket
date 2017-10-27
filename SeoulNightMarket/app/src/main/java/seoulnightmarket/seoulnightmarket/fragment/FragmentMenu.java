@@ -116,7 +116,7 @@ public class FragmentMenu extends Fragment {
             super.onPostExecute(result);
 
             TextView textView = Singleton.getInstance().getWaitTextView();
-            textView.setText((Singleton.getInstance().getLastClient()-Singleton.getInstance().getNowClient())+1+"");
+            textView.setText(Singleton.getInstance().getWaitCount()+"");
         }
     }
 }
