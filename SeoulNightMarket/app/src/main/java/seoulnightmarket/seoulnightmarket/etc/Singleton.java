@@ -13,6 +13,7 @@ public class Singleton {
     private int nowClient;
     private int lastClient;
     private int waitCount;
+    private String SMSReceiver;
     private String type;
     private String region;
     private String nowStore;
@@ -67,6 +68,8 @@ public class Singleton {
     public int getLastClient() {
         return lastClient;
     }
+
+    public String getSMSReceiver() { return SMSReceiver; }
 
     public String getNowSeller() { return nowSeller; }
 
@@ -237,6 +240,7 @@ public class Singleton {
     public void setLoginState(boolean loginState) {
         this.loginState = loginState;
     }
+    public void setSMSReceiver(String SMSReceiver) { this.SMSReceiver = SMSReceiver; }
 
     public void setWaitCount (int waitCount) { this.waitCount = waitCount; }
 
