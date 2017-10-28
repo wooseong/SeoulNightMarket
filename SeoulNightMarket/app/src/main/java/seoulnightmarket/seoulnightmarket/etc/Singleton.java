@@ -39,6 +39,10 @@ public class Singleton {
     private String nowSeller;
     private ArrayList<Integer> nowWaitList = new ArrayList<Integer>();
     private ArrayList<Integer> myWaitList = new ArrayList<Integer>();
+    private ArrayList<Integer> starScoreList = new ArrayList<Integer>();
+    private ArrayList<String> nickmameList = new ArrayList<String>();
+    private ArrayList<String> dateList = new ArrayList<String>();
+    private ArrayList<String> describeList = new ArrayList<String>();
     private ArrayList<String> waitStoreList = new ArrayList<String>();
     private ArrayList<String> storeNameList = new ArrayList<String>();
     private ArrayList<String> storeImageList = new ArrayList<String>();
@@ -160,6 +164,16 @@ public class Singleton {
     public String getCourse() {
         return course;
     }
+
+    public ArrayList<Integer> getStarScoreList() {
+        return starScoreList;
+    }
+
+    public ArrayList<String> getDescribeList() { return describeList;}
+
+    public ArrayList<String> getDateList() { return dateList; }
+
+    public ArrayList<String> getNicknameList() { return nickmameList; }
 
     public ArrayList<String> getStoreNameList() {
         return storeNameList;
@@ -366,6 +380,14 @@ public class Singleton {
         this.nowLogin = nowLogin;
     }
 
+    public void initReviewList()
+    {
+        starScoreList.clear();
+        nickmameList.clear();
+        dateList.clear();
+        describeList.clear();
+    }
+
     public void initWaitList() {
         nowWaitList.clear();
         myWaitList.clear();
@@ -422,6 +444,14 @@ public class Singleton {
         storeImageList.add(imageSource);
         storeCategoryList.add(category);
         storeDetialImageList.add(detailImageSource);
+    }
+
+    public void addReviewList(int starScore, String nickname, String date, String describe)
+    {
+        starScoreList.add(starScore);
+        nickmameList.add(nickname);
+        dateList.add(date);
+        describeList.add(describe);
     }
 
     public void addFoodList(String productName, String imageSource, String price) {

@@ -1,5 +1,7 @@
 package seoulnightmarket.seoulnightmarket.fragment;
 
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -19,17 +22,22 @@ import java.util.Date;
 import java.util.Locale;
 
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
 import seoulnightmarket.seoulnightmarket.adapter.ReviewAdapter;
 import seoulnightmarket.seoulnightmarket.adapter.ReviewSpinnerAdapter;
+import seoulnightmarket.seoulnightmarket.etc.HttpTask;
+import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentReview extends Fragment {
-    private String[] nickName = {"내이름은 효스완스", "감태균입니다"}; // 서버에서 닉네임과 리뷰 쓴 날짜 리뷰 내용 받아옴
-    private String[] review = {"치킨이 정말 끝내줘요", "나는 엔샵 귀염둥이"};
-    private String[] reviewDate = {};
+public class FragmentReview extends Fragment
+{
     private String today;
     private int[] users = {R.drawable.boy, R.drawable.girl, R.drawable.man};
     private int[] flags = {R.drawable.onestar, R.drawable.twostar, R.drawable.threestar, R.drawable.fourstar, R.drawable.fivestar};
     private int imageCount = 0;
+    private int starScore = 3;
+    private ListView listView;
+    private String uri;
+    private String url;
 
     public FragmentReview() {
 
@@ -45,23 +53,11 @@ public class FragmentReview extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    { // onCreate 후에 화면을 구성할때 호출
         View view = inflater.inflate(R.layout.activity_fragment_review, container, false);
 
-        ReviewAdapter adapter = new ReviewAdapter();
-        ListView listView = view.findViewById(R.id.reviewListView);
-        listView.setAdapter(adapter);
-
-        for (int i = 0; i < nickName.length; i++) {
-            if (imageCount < 3) {
-                adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), users[imageCount]), nickName[i],
-                        ContextCompat.getDrawable(getActivity().getApplicationContext(), flags[i]), today, review[i]);
-                imageCount++;
-            }
-            if (imageCount == 3) {
-                imageCount = 0;
-            }
-        }
+        listView = view.findViewById(R.id.reviewListView);
 
         final EditText editText = view.findViewById(R.id.editText);
         final Spinner spinnerStar = view.findViewById(R.id.spinnerStar);
@@ -69,11 +65,21 @@ public class FragmentReview extends Fragment {
         ReviewSpinnerAdapter reviewSpinnerAdapter = new ReviewSpinnerAdapter(getActivity(), flags);
         spinnerStar.setAdapter(reviewSpinnerAdapter);
 
-        spinnerStar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/review")
+                .buildUpon()
+                .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getType()))
+                .build().toString();
+
+        HttpAsyncTask httpAsyncTask = new HttpAsyncTask("리뷰");
+        httpAsyncTask.execute(uri);
+
+        spinnerStar.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
+        {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id)
+            {
                 spinnerStar.setBackground(null);
-//                Toast.makeText(getActivity(), String.valueOf(position), Toast.LENGTH_SHORT).show();
+                starScore = position+1;
             }
 
             @Override
@@ -86,11 +92,89 @@ public class FragmentReview extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() { // 리뷰 남기기 버튼
             @Override
             public void onClick(View view) {
+
+                url = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/review/make")
+                        .buildUpon()
+                        .appendQueryParameter("phone", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowLoginID()))
+                        .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getType()))
+                        .appendQueryParameter("score", HttpTask.getInstance().getURLEncode(starScore+""))
+                        .appendQueryParameter("describe", HttpTask.getInstance().getURLEncode(editText.getText().toString()))
+                        .appendQueryParameter("nickname", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowSeller()))
+                        .appendQueryParameter("date", HttpTask.getInstance().getURLEncode(today))
+                        .build().toString();
+
+                ReviewAsyncTask reviewAsyncTask = new ReviewAsyncTask("리뷰 등록");
+                reviewAsyncTask.execute(url);
+
                 Toast.makeText(getActivity(), editText.getText().toString(), Toast.LENGTH_SHORT).show();
                 // 닉네임, 날짜, 평점, 리뷰 서버에 전송
             }
         });
 
         return view;
+    }
+
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
+        String type;
+
+        HttpAsyncTask(String type) {
+            this.type = type;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            //urls[0] 은 URL 주소
+            return HttpTask.getInstance().GET(urls[0], type);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+            super.onPostExecute(result);
+
+            ReviewAdapter adapter = new ReviewAdapter();
+
+            for (int i = 0; i < Singleton.getInstance().getNicknameList().size(); i++)
+            {
+                if (imageCount < 3) {
+                    adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), users[imageCount]), Singleton.getInstance().getNicknameList().get(i),
+                            ContextCompat.getDrawable(getActivity().getApplicationContext(), flags[Singleton.getInstance().getStarScoreList().get(i)-1]), Singleton.getInstance().getDateList().get(i), Singleton.getInstance().getDescribeList().get(i));
+                    imageCount++;
+                }
+                if (imageCount == 3) {
+                    imageCount = 0;
+                }
+            }
+
+            listView.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+            listView.invalidateViews();
+        }
+    }
+
+    public class ReviewAsyncTask extends AsyncTask<String, Void, String>
+    {
+        String type;
+
+        ReviewAsyncTask(String type) {
+            this.type = type;
+        }
+
+        @Override
+        protected String doInBackground(String... urls) {
+            //urls[0] 은 URL 주소
+            return HttpTask.getInstance().POST(urls[0], type);
+        }
+        // onPostExecute displays the results of the AsyncTask.
+
+        @Override
+        protected void onPostExecute(String result)
+        {
+            Toast.makeText(getActivity(), "리뷰가 정상적으로 등록되었습니다.", Toast.LENGTH_SHORT).show();
+            super.onPostExecute(result);
+            HttpAsyncTask httpAsyncTask = new HttpAsyncTask("리뷰");
+            httpAsyncTask.execute(uri);
+        }
     }
 }

@@ -1,14 +1,17 @@
 package seoulnightmarket.seoulnightmarket.Activity;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -49,6 +52,11 @@ public class SellerActivity extends AppCompatActivity
         created = false;
         TicketAsyncTask ticketAsyncTask = new TicketAsyncTask("번호표 보기");
         ticketAsyncTask.execute(uri);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED)
+        {
+             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
+         }
 
     }
 
