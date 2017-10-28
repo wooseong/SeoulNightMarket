@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="seoulnightmarket.seoulnightmarket">
 
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -43,22 +43,18 @@
 
         <activity
             android:name=".Activity.DetailActivity"
-            android:theme="@style/TabBarTheme">
-        </activity>
+            android:theme="@style/TabBarTheme"></activity>
         <activity android:name=".Activity.NumberTicketActivity" />
         <activity android:name=".Activity.LoginActivity" />
         <activity android:name=".Activity.MembershipJoinActivity" />
         <activity
             android:name=".Activity.HandMadeActivity"
-            android:theme="@style/TabBarTheme"/>
+            android:theme="@style/TabBarTheme" />
 
         <fragment android:name=".fragment.FragmentConcertCheonggye" />
         <fragment android:name=".fragment.FragmentConcertPlaza" />
 
         <activity android:name=".Activity.SellerActivity" />
-        <service android:name=".etc.TaskService"
-            android:stopWithTask="false">
-        </service>
 
     </application>
 

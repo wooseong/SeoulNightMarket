@@ -2,6 +2,7 @@ package seoulnightmarket.seoulnightmarket.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,21 +19,64 @@ import seoulnightmarket.seoulnightmarket.data.TicketListViewItem;
  * Created by Yookmoonsu on 2017-09-19.
  */
 
-public class TicketAdapter extends BaseAdapter {
+public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder>
+{
     private ArrayList<TicketListViewItem> listViewItems = new ArrayList<>();
 
     public TicketAdapter() {
 
     }
 
-    @Override
-    public int getCount() {
-        return listViewItems.size();
+    public static class ViewHolder extends RecyclerView.ViewHolder
+    {
+        public ImageView imageView;
+        public TextView textView0;
+        public TextView textView1;
+        public TextView textView2;
+        public TextView textView3;
+        public TicketListViewItem listViewItem;
+
+        public ViewHolder(View view)
+        {
+            super(view);
+            imageView = (ImageView)view.findViewById(R.id.orderImageView);
+            textView0 = (TextView)view.findViewById(R.id.orderMenu);
+            textView1 = (TextView)view.findViewById(R.id.currentNumber);
+            textView2 = (TextView)view.findViewById(R.id.myOrderNumber);
+            textView3 = (TextView)view.findViewById(R.id.waitingNumber);
+        }
     }
 
     @Override
-    public Object getItem(int position) {
-        return listViewItems.get(position);
+    public TicketAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                   int viewType)
+    {
+        // create a new view
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_cardview, null);
+
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position)
+    {
+        // - get element from your dataset at this position
+        // - replace the contents of the view with that element
+        holder.listViewItem = listViewItems.get(position);
+        holder.imageView.setImageBitmap(holder.listViewItem.getOrderImage());
+        holder.textView0.setText(holder.listViewItem.getOrderMenu());
+        holder.textView1.setText(Integer.toString(holder.listViewItem.getCurrentNumber()));
+        holder.textView2.setText(Integer.toString(holder.listViewItem.getMyOrderNumber()));
+        holder.textView3.setText(Integer.toString(holder.listViewItem.getWaitingNumber()));
+    }
+
+    // Return the size of your dataset (invoked by the layout manager)
+    @Override
+    public int getItemCount()
+    {
+        return listViewItems.size();
     }
 
     @Override
@@ -40,33 +84,8 @@ public class TicketAdapter extends BaseAdapter {
         return position;
     }
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final Context context = parent.getContext();
-
-        if (convertView == null) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.ticketlistview_item, parent, false);
-        }
-
-        ImageView imageView = convertView.findViewById(R.id.orderImageView);
-        TextView textView0 = convertView.findViewById(R.id.orderMenu);
-        TextView textView1 = convertView.findViewById(R.id.currentNumber);
-        TextView textView2 = convertView.findViewById(R.id.myOrderNumber);
-        TextView textView3 = convertView.findViewById(R.id.waitingNumber);
-
-        TicketListViewItem listViewItem = listViewItems.get(position);
-
-        imageView.setImageBitmap(listViewItem.getOrderImage());
-        textView0.setText(listViewItem.getOrderMenu());
-        textView1.setText(Integer.toString(listViewItem.getCurrentNumber()));
-        textView2.setText(Integer.toString(listViewItem.getMyOrderNumber()));
-        textView3.setText(Integer.toString(listViewItem.getWaitingNumber()));
-
-        return convertView;
-    }
-
-    public void addItem(Bitmap image, String menu, int currentNumber, int myOrderNumber, int waitingNumber) {
+    public void addItem(Bitmap image, String menu, int currentNumber, int myOrderNumber, int waitingNumber)
+    {
         TicketListViewItem item = new TicketListViewItem();
 
         item.setOrderImage(image);
