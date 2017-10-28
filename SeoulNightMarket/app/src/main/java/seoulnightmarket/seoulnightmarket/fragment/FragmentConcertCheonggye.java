@@ -24,7 +24,7 @@ public class FragmentConcertCheonggye extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_concert_cheonggye, container, false);
-                
+
         return view;
     }
 }

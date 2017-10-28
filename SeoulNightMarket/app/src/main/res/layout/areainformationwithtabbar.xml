@@ -110,7 +110,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@color/md_light_blue_900">
+            android:background="@drawable/background_main">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -128,7 +128,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ddp_nav"/>
+                    android:src="@drawable/yyd_nav"/>
 
                 <Button
                     android:id="@+id/btnyyd"
@@ -184,7 +184,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ddp_nav"/>
+                    android:src="@drawable/bp_nav"/>
 
                 <Button
                     android:id="@+id/btnbp"
@@ -212,7 +212,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ddp_nav"/>
+                    android:src="@drawable/cgc_nav"/>
 
                 <Button
                     android:id="@+id/btncgc"
@@ -240,7 +240,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:scaleType="fitXY"
-                    android:src="@drawable/ddp_nav"/>
+                    android:src="@drawable/cggj_nav"/>
 
                 <Button
                     android:id="@+id/btncggj"

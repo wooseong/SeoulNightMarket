@@ -19,6 +19,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,7 +37,6 @@ import seoulnightmarket.seoulnightmarket.fragment.FragmentMenu;
 import seoulnightmarket.seoulnightmarket.fragment.FragmentReview;
 
 public class DetailActivity extends AppCompatActivity {
-    private int count = 0;
     private TextView currentOrderNumber;
     private DrawerLayout mDrawerLayout;
 
@@ -160,6 +161,11 @@ public class DetailActivity extends AppCompatActivity {
 //                return true;
 //            }
 //        });
+
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getResources().getColor(R.color.md_black_1000));
     }
 
     private void setupViewPager(ViewPager viewPager) { // Add Fragments to Tabs
@@ -213,9 +219,8 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void btnOrder(View v) { // 번호표 뽑기 버튼 이벤트
-        if (Singleton.getInstance().getLoginState()) {
-            if (count == 0 && Singleton.getInstance().getDuplicated() == false) {
-                count++;
+        if (Singleton.getInstance().getNowLogin()) {
+            if (Singleton.getInstance().getDuplicated() == false) {
                 String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
                         .buildUpon()
                         .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
@@ -226,8 +231,7 @@ public class DetailActivity extends AppCompatActivity {
             } else {
                 Toast.makeText(getApplicationContext(), "이미 번호표를 발급 받았습니다", Toast.LENGTH_SHORT).show();
             }
-        }
-        else {
+        } else {
             Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_SHORT).show();
 
             startActivity(new Intent(DetailActivity.this, LoginActivity.class));

@@ -31,6 +31,7 @@
             android:textColorHint="@color/md_white_1000"
             android:textColor="@color/md_white_1000"
             android:maxLength="12"
+            android:inputType="textPassword"
             android:hint="Password"
             android:layout_gravity="center" />
 

@@ -39,7 +39,7 @@
 
             <ImageView
                 android:id="@+id/imageViewProduct"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_width="200dp"
                 android:layout_height="150dp"
                 android:layout_gravity="center"
@@ -48,9 +48,10 @@
 
         <ListView
             android:id="@+id/listViewProduct"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="30dp">
         </ListView>
     </LinearLayout>
 

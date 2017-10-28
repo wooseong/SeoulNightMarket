@@ -16,8 +16,7 @@ import seoulnightmarket.seoulnightmarket.data.ProductListViewItem;
  * Created by Yookmoonsu on 2017-09-17.
  */
 
-public class ProductAdapter extends BaseAdapter
-{
+public class ProductAdapter extends BaseAdapter {
     private ArrayList<ProductListViewItem> listViewItems = new ArrayList<>();
 
     public ProductAdapter() {
@@ -40,12 +39,10 @@ public class ProductAdapter extends BaseAdapter
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         final Context context = parent.getContext();
 
-        if (convertView == null)
-        {
+        if (convertView == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = inflater.inflate(R.layout.productlistview_item, parent, false);
         }

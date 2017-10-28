@@ -21,27 +21,23 @@ import java.net.URLEncoder;
  * Created by cjw94 on 2017-10-22.
  */
 
-public class HttpTask
-{
+public class HttpTask {
     private static HttpTask instance = null;
     private Bitmap bitmap;
 
-    public static synchronized HttpTask getInstance()
-    {
+    public static synchronized HttpTask getInstance() {
         if (instance == null) {
             instance = new HttpTask();
         }
         return instance;
     }
 
-    public static String GET(String url, String type)
-    {
+    public static String GET(String url, String type) {
         InputStream is = null;
         String result = "";
         int minimum;
 
-        try
-        {
+        try {
             URL urlCon = new URL(url);
             HttpURLConnection httpCon = (HttpURLConnection) urlCon.openConnection();
 
@@ -114,82 +110,75 @@ public class HttpTask
                     break;
                 case "음식":
                     Singleton.getInstance().initFoodList();
-                    for (int i = 0; i < posts.length(); i++)
-                    {
+                    for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().addFoodList(posts.optJSONObject(i).getString("Food_Name"), posts.optJSONObject(i).getString("Image_source"), posts.optJSONObject(i).getString("Price"));
                     }
                     break;
                 case "핸드메이드":
                     Singleton.getInstance().initProductList();
-                    for (int i = 0; i < posts.length(); i++)
-                    {
+                    for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().addProductList(posts.optJSONObject(i).getString("Handmade_Name"), posts.optJSONObject(i).getString("Price"));
                     }
                     break;
                 case "순환일정":
-                    for (int i = 0; i < posts.length(); i++)
-                    {
+                    for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().setCourse(posts.optJSONObject(i).getString("Place_Course"));
                     }
                     break;
-                case "예약현황" :
+                case "예약현황":
                     Singleton.getInstance().initWaitList();
-                    for (int i = 0; i < posts.length(); i++)
-                    {
+                    for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().addWaitList(posts.optJSONObject(i).getInt("Number"), posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Store_Image"));
                     }
-                case "로그인" :
+                case "로그인":
                     Singleton.getInstance().setNowLogin(false);
-                    if(posts.length()>0)
-                    {
+                    if (posts.length() > 0) {
                         Singleton.getInstance().setNowLogin(true);
                         Singleton.getInstance().setNowSeller(posts.optJSONObject(0).getString("Nickname"));
+                    } else {
+                        Singleton.getInstance().setNowLogin(false);
                     }
-                    else { Singleton.getInstance().setNowLogin(false); }
                     break;
-                case "번호표 보기" :
+                case "번호표 보기":
                     int min = 99999;
                     int max = 0;
 
                     Singleton.getInstance().setDuplicated(false);
                     Singleton.getInstance().setWaitCount(posts.length());
 
-                    Log.e("LENGTH", posts.length()+"");
+                    Log.e("LENGTH", posts.length() + "");
 
-                    for (int i = 0; i < posts.length(); i++)
-                    {
+                    for (int i = 0; i < posts.length(); i++) {
                         if (posts.optJSONObject(i).getInt("Number") > max) {
                             max = posts.optJSONObject(i).getInt("Number");
                         }
 
-                        if (posts.optJSONObject(i).getInt("Number") < min)
-                        {
+                        if (posts.optJSONObject(i).getInt("Number") < min) {
                             min = posts.optJSONObject(i).getInt("Number");
                         }
 
                         if (posts.optJSONObject(i).getString("Customer").equals(Singleton.getInstance().getNowLoginID())) {
-                        Singleton.getInstance().setDuplicated(true);
+                            Singleton.getInstance().setDuplicated(true);
                         }
-                     }
+                    }
 
-                     if(posts.length()>4)
-                     {
-                         Singleton.getInstance().setSMSReceiver(posts.optJSONObject(4).getString("Customer"));
-                     }
+                    if (posts.length() > 4) {
+                        Singleton.getInstance().setSMSReceiver(posts.optJSONObject(4).getString("Customer"));
+                    }
 
-                     if(min==99999) { min = 0; }
-                     Singleton.getInstance().setNowClient(min);
-                     Singleton.getInstance().setLastClient(max);
+                    if (min == 99999) {
+                        min = 0;
+                    }
+                    Singleton.getInstance().setNowClient(min);
+                    Singleton.getInstance().setLastClient(max);
                     break;
-                case "번호표 호출" :
+                case "번호표 호출":
                     break;
                 case "현재 순서":
                     minimum = 99999;
 
-                    for (int i = 0; i < posts.length(); i++)
-                    {
-                        if(posts.optJSONObject(i).getInt("Number")<minimum)
-                        {
+                    for (int i = 0; i < posts.length(); i++) {
+                        if (posts.optJSONObject(i).getInt("Number") < minimum) {
                             minimum = posts.optJSONObject(i).getInt("Number");
                         }
                     }
@@ -207,8 +196,7 @@ public class HttpTask
         return result;
     }
 
-    public static String POST(String url, String type)
-    {
+    public static String POST(String url, String type) {
         InputStream is = null;
         String result = "";
 
@@ -216,8 +204,7 @@ public class HttpTask
             URL urlCon = new URL(url);
             HttpURLConnection httpCon = (HttpURLConnection) urlCon.openConnection();
 
-            if (httpCon != null)
-            {
+            if (httpCon != null) {
                 httpCon.setRequestMethod("POST");
                 httpCon.setRequestProperty("Accept-Charset", "UTF-8");
                 httpCon.setRequestProperty("Accept", "application/json");

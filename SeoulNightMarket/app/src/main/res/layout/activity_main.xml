@@ -6,14 +6,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainDrawer"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@drawable/background_main"
+        android:fitsSystemWindows="true"
         tools:context="seoulnightmarket.seoulnightmarket.Activity.MainActivity">
 
         <android.support.v7.widget.Toolbar
@@ -36,9 +36,10 @@
 
         <GridView
             android:id="@+id/gridViewInitial"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:numColumns="auto_fit"
+            android:numColumns="2"
             android:stretchMode="columnWidth"
             android:gravity="center">
         </GridView>
@@ -60,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@color/md_light_blue_900">
+            android:background="@drawable/background_main">
 
             <LinearLayout
                 android:layout_width="match_parent"

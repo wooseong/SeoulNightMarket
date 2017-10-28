@@ -55,11 +55,12 @@ public class Singleton {
     private boolean serverRequest = false;
     private boolean nowLogin = false;
     private boolean duplicated = false;
-    private boolean loginState = false;
 
     private static Singleton instance = null;
 
-    public int getWaitCount() {return waitCount;}
+    public int getWaitCount() {
+        return waitCount;
+    }
 
     public int getNowClient() {
         return nowClient;
@@ -69,9 +70,13 @@ public class Singleton {
         return lastClient;
     }
 
-    public String getSMSReceiver() { return SMSReceiver; }
+    public String getSMSReceiver() {
+        return SMSReceiver;
+    }
 
-    public String getNowSeller() { return nowSeller; }
+    public String getNowSeller() {
+        return nowSeller;
+    }
 
     public String getNowLoginID() {
         return nowLoginID;
@@ -209,10 +214,6 @@ public class Singleton {
         return myWaitList;
     }
 
-    public boolean getServerRequest() {
-        return serverRequest;
-    }
-
     public boolean getDuplicated() {
         return duplicated;
     }
@@ -233,16 +234,13 @@ public class Singleton {
         return nowLogin;
     }
 
-    public boolean getLoginState() {
-        return loginState;
+    public void setSMSReceiver(String SMSReceiver) {
+        this.SMSReceiver = SMSReceiver;
     }
 
-    public void setLoginState(boolean loginState) {
-        this.loginState = loginState;
+    public void setWaitCount(int waitCount) {
+        this.waitCount = waitCount;
     }
-    public void setSMSReceiver(String SMSReceiver) { this.SMSReceiver = SMSReceiver; }
-
-    public void setWaitCount (int waitCount) { this.waitCount = waitCount; }
 
     public void setNowClient(int nowClient) {
         this.nowClient = nowClient;
@@ -256,7 +254,9 @@ public class Singleton {
         this.course = course;
     }
 
-    public void setNowSeller(String nowSeller) { this.nowSeller = nowSeller; }
+    public void setNowSeller(String nowSeller) {
+        this.nowSeller = nowSeller;
+    }
 
     public void setNowStore(String nowStore) {
         this.nowStore = nowStore;

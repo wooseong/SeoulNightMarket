@@ -59,8 +59,7 @@ public class MarketAdapter extends BaseAdapter {
             gridView.setTag(holder);
         }
 
-        if (image.get(position) != null)
-        {
+        if (image.get(position) != null) {
             CustomViewHolder holder = (CustomViewHolder) gridView.getTag();
             holder.imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(image.get(position)));
             holder.textView.setText(text.get(position));
@@ -77,12 +76,9 @@ public class MarketAdapter extends BaseAdapter {
 
                 type = Singleton.getInstance().getType();
 
-                if (type == "foodTruck")
-                {
+                if (type == "foodTruck") {
                     context.startActivity(new Intent(context, DetailActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동
-                }
-                else if (type == "handMade")
-                {
+                } else if (type == "handMade") {
                     Singleton.getInstance().setNowCategory(Singleton.getInstance().getStoreCategoryList().get(position));
                     Singleton.getInstance().setNowStoreDetailImage(Singleton.getInstance().getStoreDetialImageList().get(position));
                     context.startActivity(new Intent(context, HandMadeActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 메뉴 상세 화면으로 이동

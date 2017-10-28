@@ -30,7 +30,9 @@ public class MainAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getCount() { return image.length; } // 그리드뷰에 출력할 목록 갯수
+    public int getCount() {
+        return image.length;
+    } // 그리드뷰에 출력할 목록 갯수
 
     @Override
     public Object getItem(int position) {
@@ -60,37 +62,31 @@ public class MainAdapter extends BaseAdapter {
         gridView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                login = Singleton.getInstance().getLoginState(); // 로그인 상태 받아옴
+                login = Singleton.getInstance().getNowLogin(); // 로그인 상태 받아옴
 
                 if (position == 0) { // 로그인 버튼
                     if (!login) {
                         context.startActivity(new Intent(context, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 로그아웃 상태일때 로그인 화면으로 이동
-                    }
-                    else if (login) {
+                    } else if (login) {
                         context.startActivity(new Intent(context, NumberTicketActivity.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 로그인 상태일때 번호표 화면으로 이동
                     }
-                }
-                else if (position == 1){
+                } else if (position == 1) {
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)); // 클릭한 시장 상세 화면으로 이동
                     region = "여의도";
                     Singleton.getInstance().setRegion(region);
-                }
-                else if (position == 2) {
+                } else if (position == 2) {
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                     region = "DDP";
                     Singleton.getInstance().setRegion(region);
-                }
-                else if (position == 3) {
+                } else if (position == 3) {
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
                     region = "반포";
                     Singleton.getInstance().setRegion(region);
-                }
-                else if (position == 4){
+                } else if (position == 4) {
                     region = "청계천";
                     Singleton.getInstance().setRegion(region);
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-                }
-                else if (position == 5) {
+                } else if (position == 5) {
                     region = "청계광장";
                     Singleton.getInstance().setRegion(region);
                     context.startActivity(new Intent(context, AreaInformationWithTabBar.class).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));

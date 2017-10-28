@@ -57,8 +57,7 @@ public class FragmentDirections extends Fragment {
             textSubway.setText(R.string.textSubwayy);
             textCar.setText(R.string.textCary);
             imageView.setImageResource(R.drawable.yyddir);
-        }
-        else if (region.equals("DDP")) {
+        } else if (region.equals("DDP")) {
             textDirection0.setText(R.string.textDirection0d);
             textDirection1.setText(R.string.textDirection1d);
             textAddress.setText(R.string.textAddressd);
@@ -66,8 +65,7 @@ public class FragmentDirections extends Fragment {
             textSubway.setText(R.string.textSubwayd);
             textCar.setText(R.string.textCard);
             imageView.setImageResource(R.drawable.ddpdir);
-        }
-        else if (region.equals("반포")) {
+        } else if (region.equals("반포")) {
             textDirection0.setText(R.string.textDirection0b);
             textDirection1.setText(R.string.textDirection1b);
             textAddress.setText(R.string.textAddressb);
@@ -75,8 +73,7 @@ public class FragmentDirections extends Fragment {
             textSubway.setText(R.string.textSubwayb);
             textCar.setText(R.string.textCarb);
             imageView.setImageResource(R.drawable.bpdir);
-        }
-        else if (region.equals("청계천")) {
+        } else if (region.equals("청계천")) {
             textDirection0.setText(R.string.textDirection0c);
             textDirection1.setText(R.string.textDirection1c);
             textAddress.setText(R.string.textAddressc);
@@ -84,8 +81,7 @@ public class FragmentDirections extends Fragment {
             textSubway.setText(R.string.textSubwayc);
             textCar.setText(R.string.textCarc);
             imageView.setImageResource(R.drawable.cgcdir);
-        }
-        else if (region.equals("청계광장")) {
+        } else if (region.equals("청계광장")) {
             textDirection0.setText(R.string.textDirection0j);
             textDirection1.setText(R.string.textDirection1j);
             textAddress.setText(R.string.textAddressj);

@@ -44,8 +44,7 @@ public class ConcertAdapter extends BaseAdapter {
     } // 아이템의 아이디
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent)
-    {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View gridView;
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 

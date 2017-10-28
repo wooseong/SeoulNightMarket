@@ -1,7 +1,6 @@
 package seoulnightmarket.seoulnightmarket.data;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 
 /**
  * Created by Yookmoonsu on 2017-09-19.
@@ -22,7 +21,9 @@ public class TicketListViewItem {
         return orderImage;
     }
 
-    public String getOrderMenu() { return orderMenu; }
+    public String getOrderMenu() {
+        return orderMenu;
+    }
 
     public int getCurrentNumber() {
         return currentNumber;
@@ -40,7 +41,9 @@ public class TicketListViewItem {
         orderImage = image;
     }
 
-    public void setOrderMenu(String menu) { orderMenu = menu; }
+    public void setOrderMenu(String menu) {
+        orderMenu = menu;
+    }
 
     public void setCurrentNumber(int number) {
         currentNumber = number;

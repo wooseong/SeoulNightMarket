@@ -33,8 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         passwordText.getBackground().setColorFilter(Color.parseColor("#ffffff"), PorterDuff.Mode.ADD.SRC_ATOP);
     }
 
-    public void btnLogin(View v) {
-        // 로그인 버튼
+    public void btnLogin(View v) { // 로그인 버튼
         phoneNumber = idText.getText().toString();
         password = passwordText.getText().toString(); // 입력한 텍스트 가져옴
 

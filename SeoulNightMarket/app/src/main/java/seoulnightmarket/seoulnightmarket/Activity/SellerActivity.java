@@ -21,8 +21,7 @@ import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class SellerActivity extends AppCompatActivity
-{
+public class SellerActivity extends AppCompatActivity {
     String uri;
     String message;
     TextView foodTruckName;
@@ -31,8 +30,7 @@ public class SellerActivity extends AppCompatActivity
     boolean created;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller);
 
@@ -52,21 +50,16 @@ public class SellerActivity extends AppCompatActivity
 
     }
 
-    public void btnTicketCall(View v)
-    {
-        if (Singleton.getInstance().getWaitCount() > 0)
-        {
+    public void btnTicketCall(View v) {
+        if (Singleton.getInstance().getWaitCount() > 0) {
             TicketAsyncTask ticketAsyncTask = new TicketAsyncTask("번호표 보기");
             ticketAsyncTask.execute(uri);
-        }
-        else
-        {
+        } else {
             Toast.makeText(getApplicationContext(), "현재 대기중인 손님이 없습니다", Toast.LENGTH_SHORT).show();
         }
     }
 
-    public class TicketAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class TicketAsyncTask extends AsyncTask<String, Void, String> {
         String type;
 
         TicketAsyncTask(String type) {
@@ -82,30 +75,25 @@ public class SellerActivity extends AppCompatActivity
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            if (created == true)
-            {
-                if(Singleton.getInstance().getWaitCount()>=5)
-                {
+            if (created == true) {
+                if (Singleton.getInstance().getWaitCount() >= 5) {
                     message = "[ " + Singleton.getInstance().getNowSeller() + " 푸드트럭 ] \n손님 앞에 대기자가 5명 남았습니다. 푸드트럭 앞으로 와주세요 :)";
                     Log.e("RECEIVER", Singleton.getInstance().getSMSReceiver());
                     sendSMS(Singleton.getInstance().getSMSReceiver(), message);
                 }
 
                 String url = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket/call")
-                       .buildUpon()
+                        .buildUpon()
                         .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowSeller()))
                         .appendQueryParameter("number", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowClient() + ""))
                         .build().toString();
 
                 HttpAsyncTask httpAsyncTask = new HttpAsyncTask("번호표 호출");
                 httpAsyncTask.execute(url);
-            }
-            else
-            {
+            } else {
                 foodTruckName.setText(Singleton.getInstance().getNowSeller());
                 btnOrder.setText(Singleton.getInstance().getNowClient() + "");
                 waitNumber.setText(Singleton.getInstance().getWaitCount() + "");
@@ -114,8 +102,7 @@ public class SellerActivity extends AppCompatActivity
         }
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         String type;
 
         HttpAsyncTask(String type) {
@@ -130,15 +117,16 @@ public class SellerActivity extends AppCompatActivity
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            if (Singleton.getInstance().getWaitCount() > 0)
-            {
+            if (Singleton.getInstance().getWaitCount() > 0) {
                 Singleton.getInstance().setWaitCount(Singleton.getInstance().getWaitCount() - 1);
-                if(Singleton.getInstance().getWaitCount()==0) { Singleton.getInstance().setNowClient(0); }
-                else { Singleton.getInstance().setNowClient(Singleton.getInstance().getNowClient()+1); }
+                if (Singleton.getInstance().getWaitCount() == 0) {
+                    Singleton.getInstance().setNowClient(0);
+                } else {
+                    Singleton.getInstance().setNowClient(Singleton.getInstance().getNowClient() + 1);
+                }
             }
 
             foodTruckName.setText(Singleton.getInstance().getNowSeller());
@@ -154,12 +142,9 @@ public class SellerActivity extends AppCompatActivity
         final PendingIntent sentPI = PendingIntent.getBroadcast(this, 0, new Intent(SENT), 0);
         final PendingIntent deliveredPI = PendingIntent.getBroadcast(this, 0, new Intent(DELIVERED), 0);
 
-        registerReceiver(new BroadcastReceiver()
-        {
-            public void onReceive(Context arg0, Intent arg1)
-            {
-                switch (getResultCode())
-                {
+        registerReceiver(new BroadcastReceiver() {
+            public void onReceive(Context arg0, Intent arg1) {
+                switch (getResultCode()) {
                     case Activity.RESULT_OK:
                         Toast.makeText(getBaseContext(), "SMS sent", Toast.LENGTH_SHORT).show();
                         break;

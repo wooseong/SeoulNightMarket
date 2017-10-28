@@ -17,7 +17,6 @@ import android.widget.GridView;
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.MainAdapter;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
-import seoulnightmarket.seoulnightmarket.etc.TaskService;
 
 public class MainActivity extends AppCompatActivity {
     public int[] nightMarket = {R.drawable.order_main, R.drawable.yyd_main, R.drawable.ddp_main, R.drawable.banpo_main, R.drawable.cgc_main, R.drawable.cggj_main};
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        startService(new Intent(this, TaskService.class)); // 앱 실행되는중
+//        startService(new Intent(this, TaskService.class)); // 앱 실행되는중
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);

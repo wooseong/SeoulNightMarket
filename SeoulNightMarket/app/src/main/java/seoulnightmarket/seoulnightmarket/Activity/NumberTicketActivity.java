@@ -4,6 +4,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ListView;
 
 import seoulnightmarket.seoulnightmarket.R;
@@ -17,8 +19,7 @@ public class NumberTicketActivity extends AppCompatActivity {
     ListView listView;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_ticket);
 
@@ -32,6 +33,10 @@ public class NumberTicketActivity extends AppCompatActivity {
         TicketAsyncTask ticketAsyncTask = new TicketAsyncTask("예약현황");
         ticketAsyncTask.execute(uri);
 
+        Window window = getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(getResources().getColor(R.color.md_black_1000));
     }
 
     public class TicketAsyncTask extends AsyncTask<String, Void, String> {
@@ -98,4 +103,6 @@ public class NumberTicketActivity extends AppCompatActivity {
             }
         }
     }
+
+    
 }

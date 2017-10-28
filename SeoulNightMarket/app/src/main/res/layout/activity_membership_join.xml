@@ -32,6 +32,7 @@
             android:textColor="@color/md_white_1000"
             android:textColorHint="@color/md_white_1000"
             android:inputType="number"
+            android:maxLength="11"
             android:hint="-없이 입력"/>
     </LinearLayout>
 
@@ -55,6 +56,8 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="40dp"
             android:layout_weight="1"
+            android:maxLength="12"
+            android:inputType="textPassword"
             android:textColor="@color/md_white_1000"
             android:textColorHint="@color/md_white_1000"
             android:hint="문자 또는 숫자"/>
@@ -80,6 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginRight="40dp"
+            android:maxLength="12"
+            android:inputType="textPassword"
             android:textColor="@color/md_white_1000"
             android:textColorHint="@color/md_white_1000"
             android:hint="비밀번호 재확인"/>
@@ -105,6 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginRight="40dp"
+            android:inputType="text"
+            android:maxLength="12"
             android:textColorHint="@color/md_white_1000"
             android:textColor="@color/md_white_1000"
             android:hint="영어 또는 한글"/>

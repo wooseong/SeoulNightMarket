@@ -2,7 +2,6 @@ package seoulnightmarket.seoulnightmarket.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,8 +18,7 @@ import seoulnightmarket.seoulnightmarket.data.MenuListViewItem;
  * Created by Yookmoonsu on 2017-09-16.
  */
 
-public class MenuAdapter extends BaseAdapter
-{
+public class MenuAdapter extends BaseAdapter {
     private ArrayList<MenuListViewItem> listViewItemList = new ArrayList<>(); // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
 
     public MenuAdapter() { // 생성자

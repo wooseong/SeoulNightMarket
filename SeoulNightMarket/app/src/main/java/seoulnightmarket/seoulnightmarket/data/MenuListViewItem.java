@@ -1,7 +1,6 @@
 package seoulnightmarket.seoulnightmarket.data;
 
 import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
 
 /**
  * Created by Yookmoonsu on 2017-09-16.
