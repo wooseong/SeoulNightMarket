@@ -30,6 +30,7 @@
         android:textSize="150dp"
         android:textStyle="bold"
         android:textColor="@color/md_black_1000"
+        android:onClick="btnTicketCall"
         android:background="@layout/order_round_shape"/>
 
     <LinearLayout

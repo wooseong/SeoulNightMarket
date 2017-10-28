@@ -154,19 +154,27 @@ public class HttpTask
                     Singleton.getInstance().setDuplicated(false);
                     Singleton.getInstance().setWaitCount(posts.length());
 
+                    Log.e("LENGTH", posts.length()+"");
+
                     for (int i = 0; i < posts.length(); i++)
                     {
                         if (posts.optJSONObject(i).getInt("Number") > max) {
                             max = posts.optJSONObject(i).getInt("Number");
                         }
 
-                        if (posts.optJSONObject(i).getInt("Number") < min) {
+                        if (posts.optJSONObject(i).getInt("Number") < min)
+                        {
                             min = posts.optJSONObject(i).getInt("Number");
                         }
 
                         if (posts.optJSONObject(i).getString("Customer").equals(Singleton.getInstance().getNowLoginID())) {
                         Singleton.getInstance().setDuplicated(true);
                         }
+                     }
+
+                     if(posts.length()>4)
+                     {
+                         Singleton.getInstance().setSMSReceiver(posts.optJSONObject(4).getString("Customer"));
                      }
 
                      if(min==99999) { min = 0; }
