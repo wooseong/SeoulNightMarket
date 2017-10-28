@@ -26,57 +26,146 @@
             android:textSize="30dp"/>
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:id="@+id/foodtruckname"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:text=""
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:textColor="@color/md_white_1000"
-        android:textAlignment="center"/>
-
-    <Button
-        android:id="@+id/ordernumber"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:text="1"
-        android:textSize="150dp"
-        android:textStyle="bold"
-        android:textColor="@color/md_black_1000"
-        android:onClick="btnTicketCall"
-        android:background="@layout/order_round_shape"/>
-
-    <LinearLayout
-        android:layout_marginTop="30dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="1"
-        android:orientation="horizontal">
+        android:layout_height="182dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/layout_top">
 
         <TextView
-            android:layout_width="140dp"
+            android:id="@+id/foodtruckname"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="20dp"
+            android:text="푸드트럭 이름"
+            android:textColor="@color/md_white_1000"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="대기 인원수"
+            android:textColor="@color/md_white_1000"
+            android:textSize="20dp"
             android:textStyle="bold"
-            android:textAlignment="center"
-            android:textSize="25dp"
-            android:textColor="@color/md_white_1000"/>
+            android:layout_below="@+id/foodtruckname"
+            android:layout_alignStart="@+id/foodtruckname"
+            android:layout_marginTop="16dp" />
 
         <TextView
             android:id="@+id/waitnumber"
-            android:layout_width="30dp"
+            android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text=""
-            android:textSize="25dp"
+            android:layout_marginEnd="15dp"
+            android:text="0"
             android:textAlignment="center"
+            android:textColor="@color/md_white_1000"
+            android:textSize="40dp"
             android:textStyle="bold"
-            android:textColor="@color/md_white_1000"/>
+            android:layout_alignBaseline="@+id/textView2"
+            android:layout_alignBottom="@+id/textView2"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/layout_bottom"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:text="현재 대기 번호"
+            android:textColor="#030e2e"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textViewNow"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="230dp"
+            android:text="0"
+            android:textColor="@color/md_black_1000"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            android:layout_above="@+id/nickName"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="43dp" />
+
+        <TextView
+            android:id="@+id/nickName"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignStart="@+id/textView3"
+            android:layout_centerVertical="true"
+            android:text="현재 호출하실 고객은 "
+            android:textColor="@color/md_black_1000"
+            android:textSize="15dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/callNickName"
+            android:layout_width="130dp"
+            android:layout_height="45dp"
+            android:gravity="right"
+            android:text="TG"
+            android:textAlignment="center"
+            android:textColor="@color/md_red_200"
+            android:textSize="20dp"
+            android:layout_below="@+id/nickName"
+            android:layout_alignStart="@+id/nickName" />
+
+        <TextView
+            android:id="@+id/nickName2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text=" 님 입니다."
+            android:textColor="@color/md_black_1000"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:layout_marginStart="30dp"
+            android:layout_alignBottom="@+id/callNickName"
+            android:layout_toEndOf="@+id/callNickName" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_weight="0.42">
+
+        <Button
+            android:id="@+id/ordernumber"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@drawable/order_round_shape"
+            android:onClick="btnTicketCall"
+            android:text="호출"
+            android:textColor="@color/md_black_1000"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

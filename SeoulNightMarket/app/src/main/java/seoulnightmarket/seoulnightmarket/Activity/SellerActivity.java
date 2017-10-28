@@ -19,7 +19,6 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,8 +30,8 @@ public class SellerActivity extends AppCompatActivity {
     String uri;
     String message;
     TextView foodTruckName;
-    Button btnOrder;
     TextView waitNumber;
+    TextView textViewNow;
     boolean created;
 
     @Override
@@ -45,10 +44,9 @@ public class SellerActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        // 판매자가 로그인 했을 시 서버에서 푸드트럭의 이름과 대기 번호를 받아옴
         foodTruckName = (TextView) findViewById(R.id.foodtruckname);
-        btnOrder = (Button) findViewById(R.id.ordernumber);
         waitNumber = (TextView) findViewById(R.id.waitnumber);
+        textViewNow = (TextView) findViewById(R.id.textViewNow);
 
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
                 .buildUpon()
@@ -65,8 +63,6 @@ public class SellerActivity extends AppCompatActivity {
 
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
-//            VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_arrow_back_black_24dp, getTheme()); // 드로월 모양
-//            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_white_1000, getTheme())); // 드로월 색깔
             supportActionBar.setHomeAsUpIndicator(R.drawable.logout); // 드로어 이미지 설정
         }
     }
@@ -102,7 +98,6 @@ public class SellerActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... urls) {
-
             //urls[0] 은 URL 주소
             return HttpTask.getInstance().GET(urls[0], type);
         }
@@ -129,7 +124,7 @@ public class SellerActivity extends AppCompatActivity {
                 httpAsyncTask.execute(url);
             } else {
                 foodTruckName.setText(Singleton.getInstance().getNowSeller());
-                btnOrder.setText(Singleton.getInstance().getNowClient() + "");
+                textViewNow.setText(Singleton.getInstance().getNowClient() + "");
                 waitNumber.setText(Singleton.getInstance().getWaitCount() + "");
                 created = true;
             }
@@ -164,7 +159,7 @@ public class SellerActivity extends AppCompatActivity {
             }
 
             foodTruckName.setText(Singleton.getInstance().getNowSeller());
-            btnOrder.setText(Singleton.getInstance().getNowClient() + "");
+            textViewNow.setText(Singleton.getInstance().getNowClient() + "");
             waitNumber.setText(Singleton.getInstance().getWaitCount() + "");
         }
     }

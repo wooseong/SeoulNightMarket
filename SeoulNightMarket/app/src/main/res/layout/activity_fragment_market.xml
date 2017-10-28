@@ -19,24 +19,27 @@
 
             <Button
                 android:id="@+id/foodTruck"
+                android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="푸드트럭"
                 android:textStyle="bold"
                 android:textColor="@color/white"
-                android:background="@color/md_deep_orange_400"
+                android:background="@drawable/btn_radius"
                 android:onClick="foodTruck"/>
 
             <Button
                 android:id="@+id/handMade"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="핸드메이드"
                 android:textStyle="bold"
                 android:textColor="@color/md_black_1000"
-                android:background="@color/md_white_1000"
+                android:background="@drawable/btn_handmade"
                 android:onClick="handMade"/>
         </LinearLayout>
 

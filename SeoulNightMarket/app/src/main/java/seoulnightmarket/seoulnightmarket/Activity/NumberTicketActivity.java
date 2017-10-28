@@ -18,16 +18,14 @@ import seoulnightmarket.seoulnightmarket.adapter.TicketAdapter;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class NumberTicketActivity extends AppCompatActivity
-{
+public class NumberTicketActivity extends AppCompatActivity {
     int count = 0;
     private RecyclerView recyclerView;
     private TicketAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_ticket);
 
@@ -121,16 +119,14 @@ public class NumberTicketActivity extends AppCompatActivity
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result)
-        {
+        protected void onPostExecute(String result) {
             super.onPostExecute(result);
             count++;
 
             if (count == Singleton.getInstance().getWaitStoreList().size()) {
 
                 adapter = new TicketAdapter();
-                for (int j = 0; j < Singleton.getInstance().getWaitStoreList().size(); j++)
-                {
+                for (int j = 0; j < Singleton.getInstance().getWaitStoreList().size(); j++) {
                     adapter.addItem(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getStoreImageList().get(j)), Singleton.getInstance().getWaitStoreList().get(j), Singleton.getInstance().getNowWaitList().get(j),
                             Singleton.getInstance().getMyWaitList().get(j), Singleton.getInstance().getMyWaitList().get(j) - Singleton.getInstance().getNowWaitList().get(j));
                 }
