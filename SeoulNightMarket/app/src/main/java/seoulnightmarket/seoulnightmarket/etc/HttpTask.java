@@ -130,7 +130,15 @@ public class HttpTask {
                     for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().addWaitList(posts.optJSONObject(i).getInt("Number"), posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Store_Image"));
                     }
-                case "로그인":
+                    break;
+                case "리뷰" :
+                    Singleton.getInstance().initReviewList();
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        Singleton.getInstance().addReviewList(posts.optJSONObject(i).getInt("Star_Score"), posts.optJSONObject(i).getString("Nickname"), posts.optJSONObject(i).getString("Day"), posts.optJSONObject(i).getString("Client_Comment"));
+                    }
+                    break;
+                case "로그인" :
                     Singleton.getInstance().setNowLogin(false);
                     if (posts.length() > 0) {
                         Singleton.getInstance().setNowLogin(true);

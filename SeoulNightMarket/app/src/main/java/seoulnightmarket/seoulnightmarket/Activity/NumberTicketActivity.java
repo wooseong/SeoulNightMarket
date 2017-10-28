@@ -103,6 +103,4 @@ public class NumberTicketActivity extends AppCompatActivity {
             }
         }
     }
-
-    
 }

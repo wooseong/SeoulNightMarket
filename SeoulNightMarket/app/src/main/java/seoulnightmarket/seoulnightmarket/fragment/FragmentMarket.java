@@ -201,7 +201,8 @@ public class FragmentMarket extends Fragment {
         return view;
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
+    public class HttpAsyncTask extends AsyncTask<String, Void, String>
+    {
         String type;
 
         HttpAsyncTask(String type) {
