@@ -4,14 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/ticketToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="top"
+        app:titleTextColor="@color/md_white_1000"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="번호표 목록"
+            android:textColor="@color/md_white_1000"
+            android:textSize="20dp"/>
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v7.widget.RecyclerView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/ticket_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_main"
         android:scrollbars="vertical">
     </android.support.v7.widget.RecyclerView>
 

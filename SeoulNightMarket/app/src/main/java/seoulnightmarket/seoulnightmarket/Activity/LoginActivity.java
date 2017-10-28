@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                     if (Singleton.getInstance().getBtnOrder()) {
                         startActivity(new Intent(LoginActivity.this, DetailActivity.class));
                     } else {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                        startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
                     }
                     finish();
                 }
