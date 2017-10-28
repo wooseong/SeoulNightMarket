@@ -20,7 +20,7 @@ import seoulnightmarket.seoulnightmarket.etc.Singleton;
 import seoulnightmarket.seoulnightmarket.etc.TaskService;
 
 public class MainActivity extends AppCompatActivity {
-    public int[] nightMarket = {R.drawable.login, R.drawable.yyd_white, R.drawable.ddp_white, R.drawable.bp_white, R.drawable.cgc_white, R.drawable.cggj_white};
+    public int[] nightMarket = {R.drawable.order_main, R.drawable.yyd_main, R.drawable.ddp_main, R.drawable.banpo_main, R.drawable.cgc_main, R.drawable.cggj_main};
     public GridView gridView;
     private DrawerLayout mDrawerLayout;
 

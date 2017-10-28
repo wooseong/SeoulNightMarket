@@ -213,17 +213,25 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void btnOrder(View v) { // 번호표 뽑기 버튼 이벤트
-        if (count == 0 && Singleton.getInstance().getDuplicated() == false) {
-            count++;
-            String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
-                    .buildUpon()
-                    .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
-                    .build().toString();
+        if (Singleton.getInstance().getLoginState()) {
+            if (count == 0 && Singleton.getInstance().getDuplicated() == false) {
+                count++;
+                String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
+                        .buildUpon()
+                        .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
+                        .build().toString();
 
-            TicketAsyncTask ticketAsyncTask = new TicketAsyncTask("번호표 보기");
-            ticketAsyncTask.execute(uri);
-        } else {
-            Toast.makeText(getApplicationContext(), "이미 번호표를 발급 받았습니다", Toast.LENGTH_SHORT).show();
+                TicketAsyncTask ticketAsyncTask = new TicketAsyncTask("번호표 보기");
+                ticketAsyncTask.execute(uri);
+            } else {
+                Toast.makeText(getApplicationContext(), "이미 번호표를 발급 받았습니다", Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_SHORT).show();
+
+            startActivity(new Intent(DetailActivity.this, LoginActivity.class));
+            finish();
         }
     }
 

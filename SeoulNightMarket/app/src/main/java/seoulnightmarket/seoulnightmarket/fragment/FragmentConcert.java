@@ -15,7 +15,6 @@ import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,6 +28,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import at.markushi.ui.CircleButton;
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.ConcertAdapter;
 import seoulnightmarket.seoulnightmarket.etc.ExpandableHeightGridView;
@@ -68,7 +68,7 @@ public class FragmentConcert extends Fragment {
         gridView = view.findViewById(R.id.gridViewConcert);
         gridView.setExpanded(true);
 
-        Button btnDate = view.findViewById(R.id.btnConcert);
+        CircleButton btnDate = view.findViewById(R.id.btnConcert);
         btnDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

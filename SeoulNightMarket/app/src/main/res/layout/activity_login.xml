@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background"
     tools:context="seoulnightmarket.seoulnightmarket.Activity.LoginActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/background_main"
+        android:gravity="center">
 
         <EditText
             android:id="@+id/phoneNumberText"
@@ -30,6 +30,7 @@
             android:layout_height="40dp"
             android:textColorHint="@color/md_white_1000"
             android:textColor="@color/md_white_1000"
+            android:maxLength="12"
             android:hint="Password"
             android:layout_gravity="center" />
 
