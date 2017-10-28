@@ -144,6 +144,21 @@ public class DetailActivity extends AppCompatActivity {
             }
         });
 
+        Button btnMyReserve = (Button) findViewById(R.id.btnMyReserve);
+        btnMyReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Singleton.getInstance().getNowLogin()) {
+                    startActivity(new Intent(DetailActivity.this, NumberTicketActivity.class));
+                } else if (!Singleton.getInstance().getNowLogin()) {
+                    startActivity(new Intent(DetailActivity.this, LoginActivity.class));
+                }
+
+                finish();
+                mDrawerLayout.closeDrawers();
+            }
+        });
+
 //        NavigationView navigationView = (NavigationView) findViewById(R.id.detail_nav_view); // Create Navigation drawer and inlfate layout
 //        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
 //            @Override

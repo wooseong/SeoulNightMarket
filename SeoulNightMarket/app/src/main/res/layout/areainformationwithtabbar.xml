@@ -86,6 +86,9 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:onClick="btnTab"
+                    app:tabIndicatorHeight="4dp"
+                    app:tabPaddingStart="0dp"
+                    app:tabPaddingEnd="0dp"
                     app:tabIndicatorColor="@color/md_yellow_500"
                     app:tabSelectedTextColor="@color/md_yellow_500"
                     app:tabTextColor="@color/md_white_1000" />
@@ -268,7 +271,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:scaleType="fitXY"
-                    android:src="@drawable/cggj_nav"/>
+                    android:src="@drawable/myreserve"/>
 
                 <Button
                     android:id="@+id/btnMyReserve"

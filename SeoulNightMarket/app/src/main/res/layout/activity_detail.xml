@@ -294,7 +294,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:scaleType="fitXY"
-                    android:src="@drawable/cggj_nav"/>
+                    android:src="@drawable/myreserve"/>
 
                 <Button
                     android:id="@+id/btnMyReserve"

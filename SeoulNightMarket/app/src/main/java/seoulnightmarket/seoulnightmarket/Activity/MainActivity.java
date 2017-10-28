@@ -114,6 +114,21 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button btnMyReserve = (Button) findViewById(R.id.btnMyReserve);
+        btnMyReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Singleton.getInstance().getNowLogin()) {
+                    startActivity(new Intent(MainActivity.this, NumberTicketActivity.class));
+                } else if (!Singleton.getInstance().getNowLogin()) {
+                    startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                }
+
+                finish();
+                mDrawerLayout.closeDrawers();
+            }
+        });
+
         MainAdapter mainAdapter = new MainAdapter(getApplicationContext(), nightMarket); // 그리드뷰에 어댑터 연결
         gridView = (GridView) findViewById(R.id.gridViewInitial);
         gridView.setAdapter(mainAdapter);

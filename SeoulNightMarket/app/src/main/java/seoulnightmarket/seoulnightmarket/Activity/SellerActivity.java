@@ -12,9 +12,12 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -37,6 +40,11 @@ public class SellerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.sellerToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
         // 판매자가 로그인 했을 시 서버에서 푸드트럭의 이름과 대기 번호를 받아옴
         foodTruckName = (TextView) findViewById(R.id.foodtruckname);
         btnOrder = (Button) findViewById(R.id.ordernumber);
@@ -51,11 +59,29 @@ public class SellerActivity extends AppCompatActivity {
         TicketAsyncTask ticketAsyncTask = new TicketAsyncTask("번호표 보기");
         ticketAsyncTask.execute(uri);
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED)
-        {
-             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
-         }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
+        }
 
+        ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+//            VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_arrow_back_black_24dp, getTheme()); // 드로월 모양
+//            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_white_1000, getTheme())); // 드로월 색깔
+            supportActionBar.setHomeAsUpIndicator(R.drawable.logout); // 드로어 이미지 설정
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            Singleton.getInstance().setNowLogin(false);
+            startActivity(new Intent(SellerActivity.this, MainActivity.class));
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void btnTicketCall(View v) {

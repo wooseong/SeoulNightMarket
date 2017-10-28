@@ -133,6 +133,21 @@ public class HandMadeActivity extends AppCompatActivity {
             }
         });
 
+        Button btnMyReserve = (Button) findViewById(R.id.btnMyReserve);
+        btnMyReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Singleton.getInstance().getNowLogin()) {
+                    startActivity(new Intent(HandMadeActivity.this, NumberTicketActivity.class));
+                } else if (!Singleton.getInstance().getNowLogin()) {
+                    startActivity(new Intent(HandMadeActivity.this, LoginActivity.class));
+                }
+
+                finish();
+                mDrawerLayout.closeDrawers();
+            }
+        });
+
 //        NavigationView navigationView = (NavigationView) findViewById(R.id.handMade_nav_view); // Create Navigation drawer and inlfate layout
 //        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
 //            @Override

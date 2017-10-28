@@ -17,12 +17,14 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -62,8 +64,18 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs); // 탭바에 뷰페이거 설정
         tabs.setupWithViewPager(viewPager);
-        TabLayout.Tab tab = tabs.getTabAt(1);
-        tab.select();
+        TabLayout.Tab tabDefault = tabs.getTabAt(1);
+        tabDefault.select();
+
+        for (int i = 0; i < tabs.getTabCount(); i++) {
+            TabLayout.Tab tab = tabs.getTabAt(i);
+            RelativeLayout relativeLayout = (RelativeLayout) LayoutInflater.from(this).inflate(R.layout.tab_layout, tabs, false);
+
+            TextView tabTextView = (TextView) relativeLayout.findViewById(R.id.tab_title);
+            tabTextView.setText(tab.getText());
+            tab.setCustomView(relativeLayout);
+            tab.select();
+        }
 
         TextView textViewRegion = (TextView) findViewById(R.id.textViewRegion);
         TextView textViewDate = (TextView) findViewById(R.id.textViewDate);
