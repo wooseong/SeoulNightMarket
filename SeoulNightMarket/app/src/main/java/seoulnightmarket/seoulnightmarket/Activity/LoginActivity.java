@@ -79,9 +79,16 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (phoneNumber.contains("Admin")) { // 판매자
                     startActivity(new Intent(LoginActivity.this, SellerActivity.class));
+                    finish();
                 } else { // 구매자
                     Singleton.getInstance().setNowLoginID(phoneNumber);
-                    startActivity(new Intent(LoginActivity.this, NumberTicketActivity.class));
+
+                    if (Singleton.getInstance().getBtnOrder()) {
+                        startActivity(new Intent(LoginActivity.this, DetailActivity.class));
+                    } else {
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    }
+                    finish();
                 }
             } else {
                 Toast.makeText(getApplicationContext(), "아이디와 패스워드를 다시 확인하세요", Toast.LENGTH_SHORT).show();

@@ -232,6 +232,34 @@
                 android:background="@color/md_white_1000">
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/cggj_nav"/>
+
+                <Button
+                    android:id="@+id/btnMyReserve"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="#00ff0000"
+                    android:textColor="@color/md_white_1000"
+                    android:text="내 번호표 현황"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/md_white_1000">
+            </LinearLayout>
+
         </LinearLayout>
 
     </android.support.design.widget.NavigationView>

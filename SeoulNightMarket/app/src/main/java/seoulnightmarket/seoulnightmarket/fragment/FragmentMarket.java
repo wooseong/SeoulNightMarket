@@ -39,6 +39,10 @@ public class FragmentMarket extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_fragment_market, container, false);
+
+        final Button btnFoodTruck = view.findViewById(R.id.foodTruck);
+        final Button btnHandMade = view.findViewById(R.id.handMade);
+
         gridView = view.findViewById(R.id.gridView);
         gridView.setExpanded(true);
 
@@ -53,9 +57,6 @@ public class FragmentMarket extends Fragment {
 
         HttpAsyncTask httpAsyncTask = new HttpAsyncTask("푸드트럭");
         httpAsyncTask.execute(uri);
-
-        final Button btnFoodTruck = view.findViewById(R.id.foodTruck);
-        final Button btnHandMade = view.findViewById(R.id.handMade);
 
         switch (region) {
             case "여의도":

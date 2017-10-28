@@ -62,6 +62,8 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
 
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs); // 탭바에 뷰페이거 설정
         tabs.setupWithViewPager(viewPager);
+        TabLayout.Tab tab = tabs.getTabAt(1);
+        tab.select();
 
         TextView textViewRegion = (TextView) findViewById(R.id.textViewRegion);
         TextView textViewDate = (TextView) findViewById(R.id.textViewDate);
@@ -201,6 +203,21 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
                 startActivity(new Intent(AreaInformationWithTabBar.this, AreaInformationWithTabBar.class));
                 finish();
 
+                mDrawerLayout.closeDrawers();
+            }
+        });
+
+        Button btnMyReserve = (Button) findViewById(R.id.btnMyReserve);
+        btnMyReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Singleton.getInstance().getNowLogin()) {
+                    startActivity(new Intent(AreaInformationWithTabBar.this, NumberTicketActivity.class));
+                } else if (!Singleton.getInstance().getNowLogin()) {
+                    startActivity(new Intent(AreaInformationWithTabBar.this, LoginActivity.class));
+                }
+
+                finish();
                 mDrawerLayout.closeDrawers();
             }
         });

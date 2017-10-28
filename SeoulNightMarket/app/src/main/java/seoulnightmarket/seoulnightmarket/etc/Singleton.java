@@ -56,9 +56,9 @@ public class Singleton {
     private ImageView storeImageView;
     private TextView storeTextView;
     private TextView waitTextView;
-    private boolean serverRequest = false;
     private boolean nowLogin = false;
     private boolean duplicated = false;
+    private boolean btnOrder = false;
 
     private static Singleton instance = null;
 
@@ -248,6 +248,14 @@ public class Singleton {
         return nowLogin;
     }
 
+    public boolean getBtnOrder() {
+        return btnOrder;
+    }
+
+    public void setBtnOrder(boolean order) {
+        this.btnOrder = order;
+    }
+
     public void setSMSReceiver(String SMSReceiver) {
         this.SMSReceiver = SMSReceiver;
     }
@@ -346,10 +354,6 @@ public class Singleton {
 
     public void setNowStoreImage(String nowStoreImage) {
         this.nowStoreImage = nowStoreImage;
-    }
-
-    public void setServerRequest(Boolean serverRequest) {
-        this.serverRequest = serverRequest;
     }
 
     public void setStoreImageView(ImageView storeImageVIew) {

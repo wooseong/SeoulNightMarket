@@ -10,7 +10,6 @@
         android:layout_height="150dp"
         android:layout_marginTop="5dp"
         android:layout_gravity="center"
-        android:src="@drawable/chickenfit"
         android:scaleType="fitXY"/>
 
     <TextView
@@ -22,6 +21,6 @@
         android:textColor="@color/md_black_1000"
         android:textSize="18dp"
         android:textStyle="bold"
-        android:text="치킨핏"/>
+        android:text=""/>
 
 </LinearLayout>

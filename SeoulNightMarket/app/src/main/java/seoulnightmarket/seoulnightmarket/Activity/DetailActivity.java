@@ -219,6 +219,8 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     public void btnOrder(View v) { // 번호표 뽑기 버튼 이벤트
+        Singleton.getInstance().setBtnOrder(true);
+
         if (Singleton.getInstance().getNowLogin()) {
             if (Singleton.getInstance().getDuplicated() == false) {
                 String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
