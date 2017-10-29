@@ -155,8 +155,10 @@ public class HttpTask {
 
                     Log.e("LENGTH", posts.length() + "");
 
-                    for (int i = 0; i < posts.length(); i++) {
-                        if (posts.optJSONObject(i).getInt("Number") > max) {
+                    for (int i = 0; i < posts.length(); i++)
+                    {
+                        if (posts.optJSONObject(i).getInt("Number") > max)
+                        {
                             max = posts.optJSONObject(i).getInt("Number");
                         }
 
