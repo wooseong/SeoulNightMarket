@@ -9,22 +9,32 @@
     android:fitsSystemWindows="true"
     tools:context="seoulnightmarket.seoulnightmarket.Activity.SellerActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/sellerToolbar"
+    <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="top"
-        app:layout_collapseMode="pin"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <TextView
+        <Button
+            android:layout_marginLeft="5dp"
+            android:id="@+id/btnLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="도깨비야"
+            android:text="Log out"
+            android:textColor="#FFEB3B"
+            android:background="#00ff0000"/>
+
+        <TextView
+            android:layout_marginRight="90dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textColor="@color/md_white_1000"
-            android:textSize="30dp"/>
-    </android.support.v7.widget.Toolbar>
+            android:textAlignment="center"
+            android:text="번호표 현황"
+            android:textStyle="bold"
+            android:textSize="23dp"/>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -41,7 +51,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="15dp"
             android:layout_marginStart="20dp"
-            android:text="푸드트럭 이름"
+            android:text=""
             android:textColor="@color/md_white_1000"
             android:textSize="30dp"
             android:textStyle="bold" />
@@ -73,7 +83,6 @@
             android:layout_alignBottom="@+id/textView2"
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
-
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -122,10 +131,10 @@
 
         <TextView
             android:id="@+id/callNickName"
-            android:layout_width="130dp"
+            android:layout_width="100dp"
             android:layout_height="45dp"
             android:gravity="right"
-            android:text="TG"
+            android:text=""
             android:textAlignment="center"
             android:textColor="@color/md_red_200"
             android:textSize="20dp"
@@ -136,14 +145,13 @@
             android:id="@+id/nickName2"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
-            android:text=" 님 입니다."
+            android:text="님 입니다."
             android:textColor="@color/md_black_1000"
             android:textSize="15dp"
             android:textStyle="bold"
-            android:layout_marginStart="30dp"
+            android:layout_alignBaseline="@+id/callNickName"
             android:layout_alignBottom="@+id/callNickName"
             android:layout_toEndOf="@+id/callNickName" />
-
     </RelativeLayout>
 
     <LinearLayout
@@ -166,7 +174,6 @@
             android:textColor="@color/md_black_1000"
             android:textSize="20dp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
 </LinearLayout>

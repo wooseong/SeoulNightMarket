@@ -12,13 +12,11 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +30,7 @@ public class SellerActivity extends AppCompatActivity {
     TextView foodTruckName;
     TextView waitNumber;
     TextView textViewNow;
+    TextView nickNameText;
     boolean created;
 
     @Override
@@ -39,14 +38,10 @@ public class SellerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.sellerToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         foodTruckName = (TextView) findViewById(R.id.foodtruckname);
         waitNumber = (TextView) findViewById(R.id.waitnumber);
         textViewNow = (TextView) findViewById(R.id.textViewNow);
+        nickNameText = (TextView) findViewById(R.id.callNickName);
 
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
                 .buildUpon()
@@ -61,23 +56,15 @@ public class SellerActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
         }
 
-        ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
-            supportActionBar.setHomeAsUpIndicator(R.drawable.logout); // 드로어 이미지 설정
-        }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            Singleton.getInstance().setNowLogin(false);
-            startActivity(new Intent(SellerActivity.this, MainActivity.class));
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
+        Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Singleton.getInstance().setNowLogin(false);
+                startActivity(new Intent(SellerActivity.this, MainActivity.class));
+                finish();
+            }
+        });
     }
 
     public void btnTicketCall(View v) {
@@ -126,6 +113,7 @@ public class SellerActivity extends AppCompatActivity {
                 foodTruckName.setText(Singleton.getInstance().getNowSeller());
                 textViewNow.setText(Singleton.getInstance().getNowClient() + "");
                 waitNumber.setText(Singleton.getInstance().getWaitCount() + "");
+                nickNameText.setText(Singleton.getInstance().getNowCallNickName());
                 created = true;
             }
         }
@@ -161,6 +149,7 @@ public class SellerActivity extends AppCompatActivity {
             foodTruckName.setText(Singleton.getInstance().getNowSeller());
             textViewNow.setText(Singleton.getInstance().getNowClient() + "");
             waitNumber.setText(Singleton.getInstance().getWaitCount() + "");
+            nickNameText.setText(Singleton.getInstance().getNowCallNickName());
         }
     }
 

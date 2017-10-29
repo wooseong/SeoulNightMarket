@@ -2,6 +2,7 @@ package seoulnightmarket.seoulnightmarket.adapter;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,58 +13,76 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import seoulnightmarket.seoulnightmarket.R;
+import seoulnightmarket.seoulnightmarket.data.MenuListViewItem;
 import seoulnightmarket.seoulnightmarket.data.ReviewListViewItem;
 
 /**
  * Created by Yookmoonsu on 2017-09-16.
  */
 
-public class ReviewAdapter extends BaseAdapter {
+public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder> {
     private ArrayList<ReviewListViewItem> listViewItems = new ArrayList<>();
 
     public ReviewAdapter() {
 
     }
 
+    public static class ViewHolder extends RecyclerView.ViewHolder
+    {
+        public ImageView imageView;
+        public TextView textView;
+        public ImageView imageView1;
+        public TextView textView1;
+        public TextView textView2;
+        public ReviewListViewItem listViewItem;
+
+        public ViewHolder(View view)
+        {
+            super(view);
+            imageView = view.findViewById(R.id.imageprofile);
+            textView = view.findViewById(R.id.textnickname);
+            imageView1 = view.findViewById(R.id.imagestar);
+            textView1 = view.findViewById(R.id.textdate);
+            textView2 = view.findViewById(R.id.textreview);
+        }
+    }
+
     @Override
-    public int getCount() {
+    public ReviewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                     int viewType)
+    {
+        // create a new view
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.reviewlistview_item, null);
+
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
+    }
+
+    @Override
+    public void onBindViewHolder(ReviewAdapter.ViewHolder holder, int position)
+    {
+        // - get element from your dataset at this position
+        // - replace the contents of the view with that element
+        holder.listViewItem = listViewItems.get(position); // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
+        holder.imageView.setImageDrawable(holder.listViewItem.getUserImage());
+        holder.textView.setText(holder.listViewItem.getUserName()); // 아이템 내 각 위젯에 데이터 반영
+        holder.imageView1.setImageDrawable(holder.listViewItem.getStarImage());
+        holder.textView1.setText(holder.listViewItem.getReviewDate());
+        holder.textView2.setText(holder.listViewItem.getReview());
+    }
+
+
+    // Return the size of your dataset (invoked by the layout manager)
+    @Override
+    public int getItemCount()
+    {
         return listViewItems.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return listViewItems.get(position);
-    }
-
-    @Override
-    public long getItemId(int position) {
+    public long getItemId(int position) { // 지정한 위치(position)에 있는 데이터와 관계된 아이템(row)의 ID를 리턴
         return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        final Context context = parent.getContext();
-
-        if (convertView == null) { // listview_item Layout을 inflate하여 convertView 참조 획득
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.reviewlistview_item, parent, false);
-        }
-
-        ImageView imageView = convertView.findViewById(R.id.imageprofile);
-        TextView textView = convertView.findViewById(R.id.textnickname); // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        ImageView imageView1 = convertView.findViewById(R.id.imagestar);
-        TextView textView1 = convertView.findViewById(R.id.textdate);
-        TextView textView2 = convertView.findViewById(R.id.textreview);
-
-        ReviewListViewItem listViewItem = listViewItems.get(position); // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-
-        imageView.setImageDrawable(listViewItem.getUserImage());
-        textView.setText(listViewItem.getUserName()); // 아이템 내 각 위젯에 데이터 반영
-        imageView1.setImageDrawable(listViewItem.getStarImage());
-        textView1.setText(listViewItem.getReviewDate());
-        textView2.setText(listViewItem.getReview());
-
-        return convertView;
     }
 
     public void addItem(Drawable user, String name, Drawable star, String date, String review) { // 아이템 데이터 추가를 위한 함수

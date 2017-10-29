@@ -131,14 +131,13 @@ public class HttpTask {
                         Singleton.getInstance().addWaitList(posts.optJSONObject(i).getInt("Number"), posts.optJSONObject(i).getString("Store_Name"), posts.optJSONObject(i).getString("Store_Image"));
                     }
                     break;
-                case "리뷰" :
+                case "리뷰":
                     Singleton.getInstance().initReviewList();
-                    for (int i = 0; i < posts.length(); i++)
-                    {
+                    for (int i = 0; i < posts.length(); i++) {
                         Singleton.getInstance().addReviewList(posts.optJSONObject(i).getInt("Star_Score"), posts.optJSONObject(i).getString("Nickname"), posts.optJSONObject(i).getString("Day"), posts.optJSONObject(i).getString("Client_Comment"));
                     }
                     break;
-                case "로그인" :
+                case "로그인":
                     Singleton.getInstance().setNowLogin(false);
                     if (posts.length() > 0) {
                         Singleton.getInstance().setNowLogin(true);
@@ -165,6 +164,7 @@ public class HttpTask {
 
                         if (posts.optJSONObject(i).getInt("Number") < min) {
                             min = posts.optJSONObject(i).getInt("Number");
+                            Singleton.getInstance().setNowCallNickName(posts.optJSONObject(i).getString("Customer").substring(7, 11));
                         }
 
                         if (posts.optJSONObject(i).getString("Customer").equals(Singleton.getInstance().getNowLoginID())) {

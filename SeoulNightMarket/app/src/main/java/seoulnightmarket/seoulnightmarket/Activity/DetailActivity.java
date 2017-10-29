@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
@@ -48,11 +47,9 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detailToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         currentOrderNumber = (TextView) findViewById(R.id.currentOrderNumber);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.detailDrawer);
-        CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id.detailCoordinatorLayout);
 
         ImageView placePicutre = (ImageView) findViewById(R.id.detailImage);
         Singleton.getInstance().setStoreImageView(placePicutre);
@@ -158,24 +155,6 @@ public class DetailActivity extends AppCompatActivity {
                 mDrawerLayout.closeDrawers();
             }
         });
-
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.detail_nav_view); // Create Navigation drawer and inlfate layout
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
-//            @Override
-//            public boolean onNavigationItemSelected(MenuItem menuItem) { // This method will trigger on item Click of navigation menu
-//                menuItem.setChecked(true); // Set item in checked state
-//
-//                String menuName = menuItem.getTitle().toString();
-//                Singleton.getInstance().setRegion(menuName);
-//
-//                finish();
-//                startActivity(new Intent(DetailActivity.this, AreaInformationWithTabBar.class));
-//
-//                mDrawerLayout.closeDrawers(); // Closing drawer on item click
-//
-//                return true;
-//            }
-//        });
 
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

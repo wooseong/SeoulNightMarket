@@ -49,7 +49,6 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); // 화면에 툴바 추가
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         region = Singleton.getInstance().getRegion();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -221,24 +220,6 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
                 mDrawerLayout.closeDrawers();
             }
         });
-
-//        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view); // Create Navigation drawer and inlfate layout
-//        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() { // Set behavior of Navigation drawer
-//            @Override
-//            public boolean onNavigationItemSelected(MenuItem menuItem) { // This method will trigger on item Click of navigation menu
-//                menuItem.setChecked(true); // Set item in checked state
-//
-//                String menuName = menuItem.getTitle().toString();
-//                Singleton.getInstance().setRegion(menuName);
-//
-//                finish();
-//                startActivity(new Intent(AreaInformationWithTabBar.this, AreaInformationWithTabBar.class));
-//
-//                mDrawerLayout.closeDrawers(); // Closing drawer on item click
-//
-//                return true;
-//            }
-//        });
 
         Window window = getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);

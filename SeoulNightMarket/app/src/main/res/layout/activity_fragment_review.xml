@@ -12,16 +12,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ListView
-            android:id="@+id/reviewListView"
-            android:layout_marginTop="10dp"
+        <android.support.v7.widget.RecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/review_recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="460dp">
-        </ListView>
+            android:layout_height="match_parent"
+            android:scrollbars="vertical">
+        </android.support.v7.widget.RecyclerView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="bottom"
             android:orientation="horizontal">
 
             <Spinner
@@ -46,7 +48,6 @@
                 android:onClick="btnSubmit"
                 android:text="전송"/>
         </LinearLayout>
-
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

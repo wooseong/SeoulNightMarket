@@ -5,6 +5,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +19,17 @@ import android.widget.TextView;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.MenuAdapter;
+import seoulnightmarket.seoulnightmarket.adapter.TicketAdapter;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
 import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
-public class FragmentMenu extends Fragment {
+public class FragmentMenu extends Fragment
+{
     private String uri;
-    ListView listView;
-    MenuAdapter adapter;
+    private RecyclerView recyclerView;
+    private MenuAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+
 
     public FragmentMenu() {
 
@@ -35,9 +42,18 @@ public class FragmentMenu extends Fragment {
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    {
+        // onCreate 후에 화면을 구성할때 호출
         View view = inflater.inflate(R.layout.activity_fragment_menu, null);
-        listView = view.findViewById(R.id.listView);
+        final FragmentActivity fragment = getActivity();
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.menu_recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(fragment);
+        recyclerView.setLayoutManager(layoutManager);
+
         ImageView imageView = Singleton.getInstance().getStoreImageView();
         imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getNowStoreImage()));
 
@@ -88,11 +104,9 @@ public class FragmentMenu extends Fragment {
                 adapter.addItem(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getProductImageList().get(i)), Singleton.getInstance().getProductNameList().get(i), Singleton.getInstance().getProductPriceList().get(i));
             }
 
-            listView.setAdapter(adapter);
+            recyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-            listView.invalidateViews();
-
-            setListViewHeightBasedOnItems(listView);
+            recyclerView.invalidate();
         }
     }
 
@@ -120,28 +134,4 @@ public class FragmentMenu extends Fragment {
         }
     }
 
-    public void setListViewHeightBasedOnItems(ListView listView) { // 리스트뷰 높이 계산
-        // Get list adpter of listview;
-        ListAdapter listAdapter = listView.getAdapter();
-        if (listAdapter == null) return;
-
-        int numberOfItems = listAdapter.getCount();
-
-        // Get total height of all items.
-        int totalItemsHeight = 0;
-        for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
-            View item = listAdapter.getView(itemPos, null, listView);
-            item.measure(0, 0);
-            totalItemsHeight += item.getMeasuredHeight();
-        }
-
-        // Get total height of all item dividers.
-        int totalDividersHeight = listView.getDividerHeight() * (numberOfItems - 1);
-
-        // Set list height.
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalItemsHeight + totalDividersHeight;
-        listView.setLayoutParams(params);
-        listView.requestLayout();
-    }
 }
