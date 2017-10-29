@@ -2,6 +2,7 @@ package seoulnightmarket.seoulnightmarket.adapter;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,53 +14,69 @@ import java.util.ArrayList;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.data.MenuListViewItem;
+import seoulnightmarket.seoulnightmarket.data.TicketListViewItem;
 
 /**
  * Created by Yookmoonsu on 2017-09-16.
  */
 
-public class MenuAdapter extends BaseAdapter {
+public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>
+{
     private ArrayList<MenuListViewItem> listViewItemList = new ArrayList<>(); // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
 
     public MenuAdapter() { // 생성자
 
     }
 
-    @Override
-    public int getCount() { // Adapter에 사용되는 데이터의 갯수
-        return listViewItemList.size();
+    public static class ViewHolder extends RecyclerView.ViewHolder
+    {
+        public ImageView imageView;
+        public TextView textView0;
+        public TextView textView1;
+        public MenuListViewItem listViewItem;
+
+        public ViewHolder(View view)
+        {
+            super(view);
+            imageView = (ImageView)view.findViewById(R.id.menuImage);
+            textView0 = (TextView)view.findViewById(R.id.menuName);
+            textView1 = (TextView)view.findViewById(R.id.menuPrice);
+        }
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) { // position에 위치한 데이터를 화면에 출력하는데 사용될 View를 리턴
-        final Context context = parent.getContext();
+    public MenuAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
+                                                       int viewType)
+    {
+        // create a new view
+        View v = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.menulistview_item, null);
 
-        if (convertView == null) { // listview_item Layout을 inflate하여 convertView 참조 획득
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = inflater.inflate(R.layout.menulistview_item, parent, false);
-        }
+        ViewHolder vh = new ViewHolder(v);
+        return vh;
+    }
 
-        ImageView imageView = convertView.findViewById(R.id.menuImage); // 화면에 표시될 View(Layout이 inflate된)으로부터 위젯에 대한 참조 획득
-        TextView textView = convertView.findViewById(R.id.menuName);
-        TextView textView1 = convertView.findViewById(R.id.menuPrice);
+    @Override
+    public void onBindViewHolder(MenuAdapter.ViewHolder holder, int position)
+    {
+        // - get element from your dataset at this position
+        // - replace the contents of the view with that element
+        holder.listViewItem = listViewItemList.get(position);
+        holder.imageView.setImageBitmap(holder.listViewItem.getMenuImage()); // 아이템 내 각 위젯에 데이터 반영
+        holder.textView0.setText(holder.listViewItem.getMenuName());
+        holder.textView1.setText(String.valueOf(holder.listViewItem.getMenuPrice()));
+    }
 
-        MenuListViewItem listViewItem = listViewItemList.get(position); // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
-
-        imageView.setImageBitmap(listViewItem.getMenuImage()); // 아이템 내 각 위젯에 데이터 반영
-        textView.setText(listViewItem.getMenuName());
-        textView1.setText(String.valueOf(listViewItem.getMenuPrice()));
-
-        return convertView;
+    // Return the size of your dataset (invoked by the layout manager)
+    @Override
+    public int getItemCount()
+    {
+        return listViewItemList.size();
     }
 
     @Override
     public long getItemId(int position) { // 지정한 위치(position)에 있는 데이터와 관계된 아이템(row)의 ID를 리턴
         return position;
-    }
-
-    @Override
-    public Object getItem(int position) { // 지정한 위치(position)에 있는 데이터 리턴
-        return listViewItemList.get(position);
     }
 
     public void addItem(Bitmap image, String name, String price) { // 아이템 데이터 추가를 위한 함수
