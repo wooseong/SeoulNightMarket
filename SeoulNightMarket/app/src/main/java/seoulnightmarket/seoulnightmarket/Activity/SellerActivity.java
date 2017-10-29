@@ -15,8 +15,8 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.SmsManager;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,20 +54,15 @@ public class SellerActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
         }
 
-
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-
-        if (id == android.R.id.home) {
-            Singleton.getInstance().setNowLogin(false);
-            startActivity(new Intent(SellerActivity.this, MainActivity.class));
-            finish();
-        }
-
-        return super.onOptionsItemSelected(item);
+        Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Singleton.getInstance().setNowLogin(false);
+                startActivity(new Intent(SellerActivity.this, MainActivity.class));
+                finish();
+            }
+        });
     }
 
     public void btnTicketCall(View v) {
