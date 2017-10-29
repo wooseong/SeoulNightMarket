@@ -157,12 +157,15 @@ public class HttpTask {
                     Log.e("LENGTH", posts.length() + "");
 
                     for (int i = 0; i < posts.length(); i++) {
-                        if (posts.optJSONObject(i).getInt("Number") > max) {
+                        if (posts.optJSONObject(i).getInt("Number") > max)
+                        {
                             max = posts.optJSONObject(i).getInt("Number");
                         }
 
-                        if (posts.optJSONObject(i).getInt("Number") < min) {
+                        if (posts.optJSONObject(i).getInt("Number") < min)
+                        {
                             min = posts.optJSONObject(i).getInt("Number");
+                            Singleton.getInstance().setNowCallNickName(posts.optJSONObject(i).getString("Customer").substring(7,11));
                         }
 
                         if (posts.optJSONObject(i).getString("Customer").equals(Singleton.getInstance().getNowLoginID())) {

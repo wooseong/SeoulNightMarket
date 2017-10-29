@@ -32,6 +32,7 @@ public class SellerActivity extends AppCompatActivity {
     TextView foodTruckName;
     TextView waitNumber;
     TextView textViewNow;
+    TextView nickNameText;
     boolean created;
 
     @Override
@@ -47,6 +48,7 @@ public class SellerActivity extends AppCompatActivity {
         foodTruckName = (TextView) findViewById(R.id.foodtruckname);
         waitNumber = (TextView) findViewById(R.id.waitnumber);
         textViewNow = (TextView) findViewById(R.id.textViewNow);
+        nickNameText = (TextView) findViewById(R.id.callNickName);
 
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
                 .buildUpon()
@@ -122,10 +124,13 @@ public class SellerActivity extends AppCompatActivity {
 
                 HttpAsyncTask httpAsyncTask = new HttpAsyncTask("번호표 호출");
                 httpAsyncTask.execute(url);
-            } else {
+            }
+            else
+            {
                 foodTruckName.setText(Singleton.getInstance().getNowSeller());
                 textViewNow.setText(Singleton.getInstance().getNowClient() + "");
                 waitNumber.setText(Singleton.getInstance().getWaitCount() + "");
+                nickNameText.setText(Singleton.getInstance().getNowCallNickName());
                 created = true;
             }
         }
@@ -161,6 +166,7 @@ public class SellerActivity extends AppCompatActivity {
             foodTruckName.setText(Singleton.getInstance().getNowSeller());
             textViewNow.setText(Singleton.getInstance().getNowClient() + "");
             waitNumber.setText(Singleton.getInstance().getWaitCount() + "");
+            nickNameText.setText(Singleton.getInstance().getNowCallNickName());
         }
     }
 
