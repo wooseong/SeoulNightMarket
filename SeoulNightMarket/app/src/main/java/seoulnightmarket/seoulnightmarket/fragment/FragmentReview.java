@@ -6,15 +6,16 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListAdapter;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -35,9 +36,11 @@ public class FragmentReview extends Fragment {
     private int[] flags = {R.drawable.onestar, R.drawable.twostar, R.drawable.threestar, R.drawable.fourstar, R.drawable.fivestar};
     private int imageCount = 0;
     private int starScore = 3;
-    private ListView listView;
     private String uri;
     private String url;
+    private RecyclerView recyclerView;
+    private ReviewAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     public FragmentReview() {
 
@@ -56,7 +59,13 @@ public class FragmentReview extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) { // onCreate 후에 화면을 구성할때 호출
         View view = inflater.inflate(R.layout.activity_fragment_review, container, false);
 
-        listView = view.findViewById(R.id.reviewListView);
+        final FragmentActivity fragment = getActivity();
+
+        recyclerView = view.findViewById(R.id.review_recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(fragment);
+        recyclerView.setLayoutManager(layoutManager);
 
         final EditText editText = view.findViewById(R.id.editText);
         final Spinner spinnerStar = view.findViewById(R.id.spinnerStar);
@@ -133,7 +142,7 @@ public class FragmentReview extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            ReviewAdapter adapter = new ReviewAdapter();
+            adapter = new ReviewAdapter();
 
             for (int i = 0; i < Singleton.getInstance().getNicknameList().size(); i++) {
                 if (imageCount < 3) {
@@ -146,11 +155,10 @@ public class FragmentReview extends Fragment {
                 }
             }
 
-            listView.setAdapter(adapter);
+            recyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-            listView.invalidateViews();
 
-            setListViewHeightBasedOnItems(listView);
+            recyclerView.invalidate();
         }
     }
 
@@ -175,27 +183,5 @@ public class FragmentReview extends Fragment {
             HttpAsyncTask httpAsyncTask = new HttpAsyncTask("리뷰");
             httpAsyncTask.execute(uri);
         }
-    }
-
-    public void setListViewHeightBasedOnItems(ListView listView) { // 리스트뷰 높이 계산
-        ListAdapter listAdapter = listView.getAdapter();
-
-        if (listAdapter == null) return;
-
-        int numberOfItems = listAdapter.getCount();
-
-        int totalItemsHeight = 0;
-        for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
-            View item = listAdapter.getView(itemPos, null, listView);
-            item.measure(0, 0);
-            totalItemsHeight += item.getMeasuredHeight();
-        }
-
-        int totalDividersHeight = listView.getDividerHeight() * (numberOfItems - 1);
-
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalItemsHeight + totalDividersHeight;
-        listView.setLayoutParams(params);
-        listView.requestLayout();
     }
 }
