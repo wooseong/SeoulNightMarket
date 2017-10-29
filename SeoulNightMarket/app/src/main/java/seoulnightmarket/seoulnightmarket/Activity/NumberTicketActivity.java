@@ -24,7 +24,8 @@ public class NumberTicketActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_number_ticket);
 
