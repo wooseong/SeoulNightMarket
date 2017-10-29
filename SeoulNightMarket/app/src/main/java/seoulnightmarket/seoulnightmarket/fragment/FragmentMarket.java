@@ -61,9 +61,9 @@ public class FragmentMarket extends Fragment {
         switch (region) {
             case "여의도":
                 btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
-                btnFoodTruck.setBackgroundResource(R.color.md_deep_orange_A700);
+                btnFoodTruck.setBackgroundResource(R.drawable.btn_yyd_foodtruck);
                 btnHandMade.setTextColor(Color.parseColor("#000000"));
-                btnHandMade.setBackgroundResource(R.color.md_white_1000);
+                btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                 break;
             case "DDP":
                 btnFoodTruck.setTextColor(Color.parseColor("#FFEB3B"));

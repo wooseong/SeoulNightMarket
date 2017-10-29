@@ -12,9 +12,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.MenuItem;
@@ -39,11 +37,6 @@ public class SellerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.sellerToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         foodTruckName = (TextView) findViewById(R.id.foodtruckname);
         waitNumber = (TextView) findViewById(R.id.waitnumber);
         textViewNow = (TextView) findViewById(R.id.textViewNow);
@@ -61,10 +54,7 @@ public class SellerActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
         }
 
-        ActionBar supportActionBar = getSupportActionBar();
-        if (supportActionBar != null) {
-            supportActionBar.setHomeAsUpIndicator(R.drawable.logout); // 드로어 이미지 설정
-        }
+
     }
 
     @Override

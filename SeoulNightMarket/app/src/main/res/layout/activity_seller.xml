@@ -9,24 +9,29 @@
     android:fitsSystemWindows="true"
     tools:context="seoulnightmarket.seoulnightmarket.Activity.SellerActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/sellerToolbar"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_gravity="top"
-        app:layout_collapseMode="pin"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="도깨비야"
-            android:textColor="@color/md_white_1000"
-            android:textSize="30dp"/>
-    </android.support.v7.widget.Toolbar>
+        <Button
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_weight="5"
+            android:background="@drawable/logout"/>
+
+        <ImageView
+            android:layout_marginRight="45dp"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:src="@drawable/splashword"/>
+    </LinearLayout>
 
     <RelativeLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="182dp"
         android:layout_gravity="center_horizontal"
