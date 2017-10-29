@@ -75,7 +75,9 @@ public class Singleton {
         return lastClient;
     }
 
-    public String getNowCallNickName() { return nowCallNickName; }
+    public String getNowCallNickName() {
+        return nowCallNickName;
+    }
 
     public String getSMSReceiver() {
         return SMSReceiver;
@@ -177,11 +179,17 @@ public class Singleton {
         return starScoreList;
     }
 
-    public ArrayList<String> getDescribeList() { return describeList;}
+    public ArrayList<String> getDescribeList() {
+        return describeList;
+    }
 
-    public ArrayList<String> getDateList() { return dateList; }
+    public ArrayList<String> getDateList() {
+        return dateList;
+    }
 
-    public ArrayList<String> getNicknameList() { return nickmameList; }
+    public ArrayList<String> getNicknameList() {
+        return nickmameList;
+    }
 
     public ArrayList<String> getStoreNameList() {
         return storeNameList;
@@ -255,7 +263,9 @@ public class Singleton {
         return btnOrder;
     }
 
-    public void setNowCallNickName(String nowCallNickName) { this.nowCallNickName = nowCallNickName; }
+    public void setNowCallNickName(String nowCallNickName) {
+        this.nowCallNickName = nowCallNickName;
+    }
 
     public void setBtnOrder(boolean order) {
         this.btnOrder = order;
@@ -389,8 +399,7 @@ public class Singleton {
         this.nowLogin = nowLogin;
     }
 
-    public void initReviewList()
-    {
+    public void initReviewList() {
         starScoreList.clear();
         nickmameList.clear();
         dateList.clear();
@@ -455,8 +464,7 @@ public class Singleton {
         storeDetialImageList.add(detailImageSource);
     }
 
-    public void addReviewList(int starScore, String nickname, String date, String describe)
-    {
+    public void addReviewList(int starScore, String nickname, String date, String describe) {
         starScoreList.add(starScore);
         nickmameList.add(nickname);
         dateList.add(date);
