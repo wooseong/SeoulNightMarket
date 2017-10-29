@@ -1,5 +1,6 @@
 package seoulnightmarket.seoulnightmarket.fragment;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import seoulnightmarket.seoulnightmarket.Activity.LoginActivity;
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.ReviewAdapter;
 import seoulnightmarket.seoulnightmarket.adapter.ReviewSpinnerAdapter;
@@ -87,22 +89,26 @@ public class FragmentReview extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() { // 리뷰 남기기 버튼
             @Override
             public void onClick(View view) {
+                if (Singleton.getInstance().getNowLogin()) {
+                    url = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/review/make")
+                            .buildUpon()
+                            .appendQueryParameter("phone", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowLoginID()))
+                            .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getType()))
+                            .appendQueryParameter("score", HttpTask.getInstance().getURLEncode(starScore + ""))
+                            .appendQueryParameter("describe", HttpTask.getInstance().getURLEncode(editText.getText().toString()))
+                            .appendQueryParameter("nickname", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowSeller()))
+                            .appendQueryParameter("date", HttpTask.getInstance().getURLEncode(today))
+                            .build().toString();
 
-                url = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/review/make")
-                        .buildUpon()
-                        .appendQueryParameter("phone", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowLoginID()))
-                        .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getType()))
-                        .appendQueryParameter("score", HttpTask.getInstance().getURLEncode(starScore + ""))
-                        .appendQueryParameter("describe", HttpTask.getInstance().getURLEncode(editText.getText().toString()))
-                        .appendQueryParameter("nickname", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowSeller()))
-                        .appendQueryParameter("date", HttpTask.getInstance().getURLEncode(today))
-                        .build().toString();
+                    ReviewAsyncTask reviewAsyncTask = new ReviewAsyncTask("리뷰 등록"); // 닉네임, 날짜, 평점, 리뷰 서버에 전송
+                    reviewAsyncTask.execute(url);
 
-                ReviewAsyncTask reviewAsyncTask = new ReviewAsyncTask("리뷰 등록");
-                reviewAsyncTask.execute(url);
-
-                Toast.makeText(getActivity(), editText.getText().toString(), Toast.LENGTH_SHORT).show();
-                // 닉네임, 날짜, 평점, 리뷰 서버에 전송
+                    Toast.makeText(getActivity(), "등록 되었습니다", Toast.LENGTH_SHORT).show();
+                } else {
+                    Intent intent = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
             }
         });
 

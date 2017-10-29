@@ -109,9 +109,7 @@ public class SellerActivity extends AppCompatActivity {
 
                 HttpAsyncTask httpAsyncTask = new HttpAsyncTask("번호표 호출");
                 httpAsyncTask.execute(url);
-            }
-            else
-            {
+            } else {
                 foodTruckName.setText(Singleton.getInstance().getNowSeller());
                 textViewNow.setText(Singleton.getInstance().getNowClient() + "");
                 waitNumber.setText(Singleton.getInstance().getWaitCount() + "");
