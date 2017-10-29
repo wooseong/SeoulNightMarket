@@ -84,7 +84,6 @@
             android:layout_alignParentEnd="true" />
     </RelativeLayout>
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
@@ -132,7 +131,7 @@
 
         <TextView
             android:id="@+id/callNickName"
-            android:layout_width="130dp"
+            android:layout_width="100dp"
             android:layout_height="45dp"
             android:gravity="right"
             android:text=""
@@ -150,10 +149,9 @@
             android:textColor="@color/md_black_1000"
             android:textSize="15dp"
             android:textStyle="bold"
-            android:layout_marginStart="30dp"
+            android:layout_alignBaseline="@+id/callNickName"
             android:layout_alignBottom="@+id/callNickName"
             android:layout_toEndOf="@+id/callNickName" />
-
     </RelativeLayout>
 
     <LinearLayout
@@ -176,7 +174,6 @@
             android:textColor="@color/md_black_1000"
             android:textSize="20dp"
             android:textStyle="bold" />
-
     </LinearLayout>
 
 </LinearLayout>

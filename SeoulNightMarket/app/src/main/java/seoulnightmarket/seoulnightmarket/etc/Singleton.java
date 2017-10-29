@@ -37,6 +37,7 @@ public class Singleton {
     private String nowStoreDetailImage;
     private String nowLoginID;
     private String nowSeller;
+    private String nowCallNickName;
     private ArrayList<Integer> nowWaitList = new ArrayList<Integer>();
     private ArrayList<Integer> myWaitList = new ArrayList<Integer>();
     private ArrayList<Integer> starScoreList = new ArrayList<Integer>();
@@ -73,6 +74,8 @@ public class Singleton {
     public int getLastClient() {
         return lastClient;
     }
+
+    public String getNowCallNickName() { return nowCallNickName; }
 
     public String getSMSReceiver() {
         return SMSReceiver;
@@ -251,6 +254,8 @@ public class Singleton {
     public boolean getBtnOrder() {
         return btnOrder;
     }
+
+    public void setNowCallNickName(String nowCallNickName) { this.nowCallNickName = nowCallNickName; }
 
     public void setBtnOrder(boolean order) {
         this.btnOrder = order;
