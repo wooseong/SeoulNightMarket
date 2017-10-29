@@ -44,7 +44,7 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
+        Singleton.getInstance().setDuplicated(false);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detailToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -237,7 +237,8 @@ public class DetailActivity extends AppCompatActivity {
         Singleton.getInstance().setBtnOrder(true);
 
         if (Singleton.getInstance().getNowLogin()) {
-            if (Singleton.getInstance().getDuplicated() == false) {
+            if (Singleton.getInstance().getDuplicated() == false)
+            {
                 String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
                         .buildUpon()
                         .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowStore()))
@@ -271,20 +272,25 @@ public class DetailActivity extends AppCompatActivity {
         // onPostExecute displays the results of the AsyncTask.
 
         @Override
-        protected void onPostExecute(String result) {
+        protected void onPostExecute(String result)
+        {
             super.onPostExecute(result);
 
-            String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket/make")
-                    .buildUpon()
-                    .appendQueryParameter("number", (Singleton.getInstance().getLastClient() + 1) + "")
-                    .appendQueryParameter("store", Singleton.getInstance().getNowStore())
-                    .appendQueryParameter("place", Singleton.getInstance().getRegion())
-                    .appendQueryParameter("phone", Singleton.getInstance().getNowLoginID())
-                    .appendQueryParameter("source", Singleton.getInstance().getNowStoreImage())
-                    .build().toString();
+            if (Singleton.getInstance().getDuplicated() == false) {
+                String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket/make")
+                        .buildUpon()
+                        .appendQueryParameter("number", (Singleton.getInstance().getLastClient() + 1) + "")
+                        .appendQueryParameter("store", Singleton.getInstance().getNowStore())
+                        .appendQueryParameter("place", Singleton.getInstance().getRegion())
+                        .appendQueryParameter("phone", Singleton.getInstance().getNowLoginID())
+                        .appendQueryParameter("source", Singleton.getInstance().getNowStoreImage())
+                        .build().toString();
 
-            HttpAsyncTask httpAsyncTask = new HttpAsyncTask("번호표 발급");
-            httpAsyncTask.execute(uri);
+                HttpAsyncTask httpAsyncTask = new HttpAsyncTask("번호표 발급");
+                httpAsyncTask.execute(uri);
+            }else {
+                Toast.makeText(getApplicationContext(), "이미 번호표를 발급 받았습니다", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
