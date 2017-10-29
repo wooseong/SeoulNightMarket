@@ -1,19 +1,16 @@
 package seoulnightmarket.seoulnightmarket.adapter;
 
-import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import seoulnightmarket.seoulnightmarket.R;
-import seoulnightmarket.seoulnightmarket.data.MenuListViewItem;
 import seoulnightmarket.seoulnightmarket.data.ReviewListViewItem;
 
 /**
@@ -27,8 +24,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder
-    {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageView;
         public TextView textView;
         public ImageView imageView1;
@@ -36,8 +32,7 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         public TextView textView2;
         public ReviewListViewItem listViewItem;
 
-        public ViewHolder(View view)
-        {
+        public ViewHolder(View view) {
             super(view);
             imageView = view.findViewById(R.id.imageprofile);
             textView = view.findViewById(R.id.textnickname);
@@ -48,20 +43,16 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
     }
 
     @Override
-    public ReviewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                     int viewType)
-    {
+    public ReviewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
-        View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.reviewlistview_item, null);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.reviewlistview_item, null);
 
         ViewHolder vh = new ViewHolder(v);
         return vh;
     }
 
     @Override
-    public void onBindViewHolder(ReviewAdapter.ViewHolder holder, int position)
-    {
+    public void onBindViewHolder(ReviewAdapter.ViewHolder holder, int position) {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.listViewItem = listViewItems.get(position); // Data Set(listViewItemList)에서 position에 위치한 데이터 참조 획득
@@ -72,11 +63,9 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
         holder.textView2.setText(holder.listViewItem.getReview());
     }
 
-
     // Return the size of your dataset (invoked by the layout manager)
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
         return listViewItems.size();
     }
 
