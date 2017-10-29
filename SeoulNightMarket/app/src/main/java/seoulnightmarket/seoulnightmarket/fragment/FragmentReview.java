@@ -5,7 +5,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,7 @@ import java.util.Locale;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.MarketAdapter;
+import seoulnightmarket.seoulnightmarket.adapter.MenuAdapter;
 import seoulnightmarket.seoulnightmarket.adapter.ReviewAdapter;
 import seoulnightmarket.seoulnightmarket.adapter.ReviewSpinnerAdapter;
 import seoulnightmarket.seoulnightmarket.etc.HttpTask;
@@ -38,6 +42,9 @@ public class FragmentReview extends Fragment
     private ListView listView;
     private String uri;
     private String url;
+    private RecyclerView recyclerView;
+    private ReviewAdapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     public FragmentReview() {
 
@@ -57,7 +64,13 @@ public class FragmentReview extends Fragment
     { // onCreate 후에 화면을 구성할때 호출
         View view = inflater.inflate(R.layout.activity_fragment_review, container, false);
 
-        listView = view.findViewById(R.id.reviewListView);
+        final FragmentActivity fragment = getActivity();
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.review_recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(fragment);
+        recyclerView.setLayoutManager(layoutManager);
 
         final EditText editText = view.findViewById(R.id.editText);
         final Spinner spinnerStar = view.findViewById(R.id.spinnerStar);
@@ -133,7 +146,7 @@ public class FragmentReview extends Fragment
         {
             super.onPostExecute(result);
 
-            ReviewAdapter adapter = new ReviewAdapter();
+            adapter = new ReviewAdapter();
 
             for (int i = 0; i < Singleton.getInstance().getNicknameList().size(); i++)
             {
@@ -147,9 +160,9 @@ public class FragmentReview extends Fragment
                 }
             }
 
-            listView.setAdapter(adapter);
+            recyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-            listView.invalidateViews();
+            recyclerView.invalidate();
         }
     }
 
