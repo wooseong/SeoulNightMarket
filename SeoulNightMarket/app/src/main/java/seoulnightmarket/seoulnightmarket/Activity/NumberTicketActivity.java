@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import seoulnightmarket.seoulnightmarket.R;
@@ -46,11 +47,20 @@ public class NumberTicketActivity extends AppCompatActivity {
         TicketAsyncTask ticketAsyncTask = new TicketAsyncTask("예약현황");
         ticketAsyncTask.execute(uri);
 
-        Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        Button btnLogout = (Button) findViewById(R.id.btnLogoutNumberTicket);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Singleton.getInstance().setNowLogin(false);
+                startActivity(new Intent(NumberTicketActivity.this, MainActivity.class));
+                finish();
+            }
+        });
+        ImageButton btnBackNumberTicket = (ImageButton) findViewById(R.id.btnBackNumberTicket);
+        btnBackNumberTicket.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Singleton.getInstance().setNowLogin(false); 
                 startActivity(new Intent(NumberTicketActivity.this, MainActivity.class));
                 finish();
             }

@@ -17,6 +17,7 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -56,11 +57,20 @@ public class SellerActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{android.Manifest.permission.SEND_SMS}, 1);
         }
 
-        Button btnLogout = (Button) findViewById(R.id.btnLogout);
+        Button btnLogout = (Button) findViewById(R.id.btnLogoutSeller);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Singleton.getInstance().setNowLogin(false);
+                startActivity(new Intent(SellerActivity.this, MainActivity.class));
+                finish();
+            }
+        });
+        ImageButton btnBackSeller = (ImageButton) findViewById(R.id.btnBackSeller);
+        btnBackSeller.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Singleton.getInstance().setNowLogin(true);
                 startActivity(new Intent(SellerActivity.this, MainActivity.class));
                 finish();
             }
