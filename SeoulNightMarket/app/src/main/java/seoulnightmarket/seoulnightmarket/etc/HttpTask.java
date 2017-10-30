@@ -248,7 +248,6 @@ public class HttpTask {
         return result;
     }
 
-
     public static String getURLEncode(String content) {
         try {
             return URLEncoder.encode(content, "utf-8");   // UTF-8
