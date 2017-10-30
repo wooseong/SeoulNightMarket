@@ -70,7 +70,7 @@ public class SellerActivity extends AppCompatActivity {
         btnBackSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Singleton.getInstance().setNowLogin(true);
+                Singleton.getInstance().setNowLogin(false);
                 startActivity(new Intent(SellerActivity.this, MainActivity.class));
                 finish();
             }

@@ -60,7 +60,7 @@ public class NumberTicketActivity extends AppCompatActivity {
         btnBackNumberTicket.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Singleton.getInstance().setNowLogin(false); 
+                Singleton.getInstance().setNowLogin(true);
                 startActivity(new Intent(NumberTicketActivity.this, MainActivity.class));
                 finish();
             }
