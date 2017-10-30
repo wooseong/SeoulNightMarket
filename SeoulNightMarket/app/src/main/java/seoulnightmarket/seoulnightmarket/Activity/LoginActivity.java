@@ -78,6 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "로그인 성공", Toast.LENGTH_SHORT).show();
 
                 if (phoneNumber.contains("Admin")) { // 판매자
+                    Singleton.getInstance().setNowLoginID(phoneNumber);
                     startActivity(new Intent(LoginActivity.this, SellerActivity.class));
                     finish();
                 } else { // 구매자

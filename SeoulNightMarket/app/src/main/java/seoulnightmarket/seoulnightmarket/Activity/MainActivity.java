@@ -116,8 +116,15 @@ public class MainActivity extends AppCompatActivity {
         btnMyReserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Singleton.getInstance().getNowLogin()) {
-                    startActivity(new Intent(MainActivity.this, NumberTicketActivity.class));
+                if (Singleton.getInstance().getNowLogin())
+                {
+                    if(Singleton.getInstance().getNowLoginID().contains("Admin"))
+                    {
+                        startActivity(new Intent(MainActivity.this, SellerActivity.class));
+                    }
+                    else {
+                        startActivity(new Intent(MainActivity.this, NumberTicketActivity.class));
+                    }
                 } else if (!Singleton.getInstance().getNowLogin()) {
                     startActivity(new Intent(MainActivity.this, LoginActivity.class));
                 }

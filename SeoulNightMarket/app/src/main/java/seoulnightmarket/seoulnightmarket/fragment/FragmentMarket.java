@@ -200,7 +200,7 @@ public class FragmentMarket extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            adapter = new MarketAdapter(getActivity().getApplicationContext(), Singleton.getInstance().getStoreImageList(), Singleton.getInstance().getStoreNameList());
+            adapter = new MarketAdapter(getActivity(), Singleton.getInstance().getStoreImageList(), Singleton.getInstance().getStoreNameList());
             gridView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
             gridView.invalidateViews();
