@@ -7,7 +7,7 @@ import android.graphics.Bitmap;
  */
 
 public class TicketListViewItem {
-    private Bitmap orderImage;
+    private String orderImage;
     private String orderMenu;
     private int currentNumber;
     private int myOrderNumber;
@@ -17,7 +17,7 @@ public class TicketListViewItem {
 
     }
 
-    public Bitmap getOrderImage() {
+    public String getOrderImage() {
         return orderImage;
     }
 
@@ -37,7 +37,7 @@ public class TicketListViewItem {
         return waitingNumber;
     }
 
-    public void setOrderImage(Bitmap image) {
+    public void setOrderImage(String image) {
         orderImage = image;
     }
 
