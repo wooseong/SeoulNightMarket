@@ -11,7 +11,7 @@
         android:layout_weight="2"
         android:textAlignment="center"
         android:textColor="@color/md_black_1000"
-        android:textSize="20dp"/>
+        android:textSize="17dp"/>
 
     <TextView
         android:id="@+id/productPrice"
@@ -20,6 +20,6 @@
         android:layout_weight="3"
         android:textAlignment="center"
         android:textColor="@color/md_black_1000"
-        android:textSize="20dp"/>
+        android:textSize="17dp"/>
 
 </LinearLayout>
