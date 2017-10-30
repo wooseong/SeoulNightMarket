@@ -67,19 +67,19 @@ public class FragmentMarket extends Fragment {
                 btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                 break;
             case "DDP":
-                btnFoodTruck.setTextColor(Color.parseColor("#FFEB3B"));
+                btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.drawable.btn_ddp_foodtruck);
                 btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                 break;
             case "반포":
-                btnFoodTruck.setTextColor(Color.parseColor("#0D47A1"));
+                btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.drawable.btn_bp_foodtruck);
                 btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                 break;
             case "청계천":
-                btnFoodTruck.setTextColor(Color.parseColor("#512DA8"));
+                btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.drawable.btn_cgc_foodtruck);
                 btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);

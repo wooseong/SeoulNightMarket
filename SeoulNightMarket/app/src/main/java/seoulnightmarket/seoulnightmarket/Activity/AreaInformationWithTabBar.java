@@ -1,6 +1,7 @@
 package seoulnightmarket.seoulnightmarket.Activity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -24,6 +25,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -68,75 +70,69 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         tabDefault.select();
 
         TextView textViewRegion = (TextView) findViewById(R.id.textViewRegion);
-        TextView textViewDate = (TextView) findViewById(R.id.textViewDate);
-
-        ImageView placePicutre = (ImageView) findViewById(R.id.image);
+        ImageView placePicture = (ImageView) findViewById(R.id.image);
+        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.line);
 
         switch (region) {
             case "여의도":
-                placePicutre.setBackgroundResource(R.drawable.anim_yyd);
-                drawable = (AnimationDrawable) placePicutre.getBackground();
+                placePicture.setBackgroundResource(R.drawable.anim_yyd);
+                drawable = (AnimationDrawable) placePicture.getBackground();
                 drawable.start();
                 textViewRegion.setText("여의도 월드나이트마켓");
-                textViewDate.setText("매주 금토 18:00~23:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_deep_orange_400));
-                textViewRegion.setTextColor(getResources().getColor(R.color.md_light_blue_800));
-                textViewDate.setTextColor(getResources().getColor(R.color.md_light_blue_800));
-                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_light_blue_800));
-                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_light_blue_800));
+                textViewRegion.setTextColor(getResources().getColor(R.color.md_white_1000));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_black_1000), ContextCompat.getColor(this, R.color.md_black_1000));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_orange_400));
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_deep_orange_400);
+                linearLayout.setBackgroundResource(R.color.md_orange_400);
                 break;
             case "DDP":
-                placePicutre.setBackgroundResource(R.drawable.anim_ddp);
-                drawable = (AnimationDrawable) placePicutre.getBackground();
+                placePicture.setBackgroundResource(R.drawable.anim_ddp);
+                drawable = (AnimationDrawable) placePicture.getBackground();
                 drawable.start();
                 textViewRegion.setText("DDP 청춘런웨이마켓");
-                textViewDate.setText("매주 금토 18:00~23:00");
-                appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_deep_purple_400));
-                textViewRegion.setTextColor(getResources().getColor(R.color.md_yellow_600));
-                textViewDate.setTextColor(getResources().getColor(R.color.md_yellow_600));
-                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_yellow_600));
-                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_yellow_600));
-                collapsingToolbarLayout.setContentScrimResource(R.color.md_deep_purple_400);
+                appBarLayout.setBackgroundColor(Color.parseColor("#5e008a"));
+                textViewRegion.setTextColor(getResources().getColor(R.color.md_white_1000));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_black_1000), ContextCompat.getColor(this, R.color.md_black_1000));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_deep_purple_400));
+                collapsingToolbarLayout.setContentScrimResource(R.color.md_deep_purple_A200);
+                linearLayout.setBackgroundResource(R.color.md_deep_purple_400);
                 break;
             case "반포":
-                placePicutre.setBackgroundResource(R.drawable.anim_bp);
-                drawable = (AnimationDrawable) placePicutre.getBackground();
+                placePicture.setBackgroundResource(R.drawable.anim_bp);
+                drawable = (AnimationDrawable) placePicture.getBackground();
                 drawable.start();
                 textViewRegion.setText("반포 낭만달빛마켓");
-                textViewDate.setText("매주 금토 18:00~23:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_yellow_600));
-                textViewRegion.setTextColor(getResources().getColor(R.color.md_blue_900));
-                textViewDate.setTextColor(getResources().getColor(R.color.md_blue_900));
-                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_blue_900));
-                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_blue_900));
+                textViewRegion.setTextColor(getResources().getColor(R.color.md_white_1000));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_black_1000), ContextCompat.getColor(this, R.color.md_black_1000));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_yellow_500));
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_yellow_600);
+                linearLayout.setBackgroundResource(R.color.md_yellow_500);
                 break;
             case "청계천":
-                placePicutre.setBackgroundResource(R.drawable.anim_cgc);
-                drawable = (AnimationDrawable) placePicutre.getBackground();
+                placePicture.setBackgroundResource(R.drawable.anim_cgc);
+                drawable = (AnimationDrawable) placePicture.getBackground();
                 drawable.start();
                 textViewRegion.setText("청계천 타임슬립마켓");
-                textViewDate.setText("매주 토 16:30~22:30 일 16:00~21:00");
-                appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_lime_500));
-                textViewRegion.setTextColor(getResources().getColor(R.color.md_deep_purple_700));
-                textViewDate.setTextColor(getResources().getColor(R.color.md_deep_purple_700));
-                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_deep_purple_700));
-                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_deep_purple_700));
+                appBarLayout.setBackgroundColor(Color.parseColor("#bdcf1b"));
+                textViewRegion.setTextColor(getResources().getColor(R.color.md_white_1000));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_black_1000), ContextCompat.getColor(this, R.color.md_black_1000));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_light_green_500));
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_lime_500);
+                linearLayout.setBackgroundResource(R.color.md_light_green_500);
                 break;
             case "청계광장":
-                placePicutre.setBackgroundResource(R.drawable.anim_cggj);
-                drawable = (AnimationDrawable) placePicutre.getBackground();
+                placePicture.setBackgroundResource(R.drawable.anim_cggj);
+                drawable = (AnimationDrawable) placePicture.getBackground();
                 drawable.start();
                 textViewRegion.setText("청계광장");
-                textViewDate.setText("시즌별 금,토,일 18:00~23:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_cyan_800));
                 textViewRegion.setTextColor(getResources().getColor(R.color.md_white_1000));
-                textViewDate.setTextColor(getResources().getColor(R.color.md_white_1000));
-                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_white_1000), ContextCompat.getColor(this, R.color.md_yellow_500));
-                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_yellow_500));
+                tabs.setTabTextColors(ContextCompat.getColor(this, R.color.md_black_1000), ContextCompat.getColor(this, R.color.md_black_1000));
+                tabs.setSelectedTabIndicatorColor(getResources().getColor(R.color.md_teal_600));
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_cyan_800);
+                linearLayout.setBackgroundResource(R.color.md_teal_600);
                 break;
             default:
                 break;
@@ -298,5 +294,12 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        drawable.stop();
     }
 }
