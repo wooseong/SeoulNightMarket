@@ -1,5 +1,6 @@
 package seoulnightmarket.seoulnightmarket.fragment;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -32,7 +33,6 @@ public class FragmentMenu extends Fragment
 
 
     public FragmentMenu() {
-
     }
 
     @Override

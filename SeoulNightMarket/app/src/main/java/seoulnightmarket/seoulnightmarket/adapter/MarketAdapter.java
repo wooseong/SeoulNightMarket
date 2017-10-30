@@ -9,6 +9,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 import seoulnightmarket.seoulnightmarket.Activity.DetailActivity;
@@ -60,7 +62,8 @@ public class MarketAdapter extends BaseAdapter {
 
         if (image.get(position) != null) {
             CustomViewHolder holder = (CustomViewHolder) gridView.getTag();
-            holder.imageView.setImageBitmap(HttpTask.getInstance().translateBitmap(image.get(position)));
+
+            Picasso.with(context).load(image.get(position)).into(holder.imageView);
             holder.textView.setText(text.get(position));
         }
 

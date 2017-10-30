@@ -111,9 +111,9 @@ public class NumberTicketActivity extends AppCompatActivity {
 
             if (count == Singleton.getInstance().getWaitStoreList().size()) {
 
-                adapter = new TicketAdapter();
+                adapter = new TicketAdapter(getApplicationContext());
                 for (int j = 0; j < Singleton.getInstance().getWaitStoreList().size(); j++) {
-                    adapter.addItem(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getStoreImageList().get(j)), Singleton.getInstance().getWaitStoreList().get(j), Singleton.getInstance().getNowWaitList().get(j),
+                    adapter.addItem(Singleton.getInstance().getStoreImageList().get(j), Singleton.getInstance().getWaitStoreList().get(j), Singleton.getInstance().getNowWaitList().get(j),
                             Singleton.getInstance().getMyWaitList().get(j), Singleton.getInstance().getMyWaitList().get(j) - Singleton.getInstance().getNowWaitList().get(j));
                 }
 

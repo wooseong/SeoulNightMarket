@@ -1,5 +1,6 @@
 package seoulnightmarket.seoulnightmarket.adapter;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -17,10 +20,13 @@ import seoulnightmarket.seoulnightmarket.data.TicketListViewItem;
  * Created by Yookmoonsu on 2017-09-19.
  */
 
-public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder> {
+public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder>
+{
+    private Context context;
     private ArrayList<TicketListViewItem> listViewItems = new ArrayList<>();
 
-    public TicketAdapter() {
+    public TicketAdapter(Context context) {
+        this.context = context;
 
     }
 
@@ -56,7 +62,8 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.listViewItem = listViewItems.get(position);
-        holder.imageView.setImageBitmap(holder.listViewItem.getOrderImage());
+
+        Picasso.with(context).load(holder.listViewItem.getOrderImage()).into(holder.imageView);
         holder.textView0.setText(holder.listViewItem.getOrderMenu());
         holder.textView1.setText(Integer.toString(holder.listViewItem.getCurrentNumber()));
         holder.textView2.setText(Integer.toString(holder.listViewItem.getMyOrderNumber()));
@@ -74,7 +81,7 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketAdapter.ViewHolder
         return position;
     }
 
-    public void addItem(Bitmap image, String menu, int currentNumber, int myOrderNumber, int waitingNumber) {
+    public void addItem(String image, String menu, int currentNumber, int myOrderNumber, int waitingNumber) {
         TicketListViewItem item = new TicketListViewItem();
 
         item.setOrderImage(image);
