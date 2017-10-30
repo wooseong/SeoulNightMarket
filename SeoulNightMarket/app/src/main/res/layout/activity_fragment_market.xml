@@ -8,40 +8,42 @@
     tools:context="seoulnightmarket.seoulnightmarket.fragment.FragmentMarket">
 
     <LinearLayout
+        android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
-            <Button
-                android:id="@+id/foodTruck"
-                android:layout_marginLeft="10dp"
+            <FrameLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="푸드트럭"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:background="@drawable/btn_yyd_foodtruck"
-                android:onClick="foodTruck"/>
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/handMade"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="핸드메이드"
-                android:textStyle="bold"
-                android:textColor="@color/md_black_1000"
-                android:background="@drawable/btn_yyd_handmade"
-                android:onClick="handMade"/>
+                <Button
+                    android:id="@+id/foodTruck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/round_rect"
+                    android:onClick="foodTruck"
+                    android:text="푸드트럭"
+                    android:textColor="@color/md_black_1000"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/handMade"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="180dp"
+                    android:background="@drawable/round_rect"
+                    android:onClick="handMade"
+                    android:text="핸드메이드"
+                    android:textColor="@color/md_black_1000"
+                    android:textStyle="bold" />
+            </FrameLayout>
         </LinearLayout>
 
         <seoulnightmarket.seoulnightmarket.etc.ExpandableHeightGridView

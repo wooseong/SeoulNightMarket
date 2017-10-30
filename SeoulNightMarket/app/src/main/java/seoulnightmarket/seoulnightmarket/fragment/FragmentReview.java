@@ -146,8 +146,8 @@ public class FragmentReview extends Fragment {
 
             for (int i = 0; i < Singleton.getInstance().getNicknameList().size(); i++) {
                 if (imageCount < 3) {
-                    adapter.addItem(ContextCompat.getDrawable(getActivity().getApplicationContext(), users[imageCount]), Singleton.getInstance().getNicknameList().get(i),
-                            ContextCompat.getDrawable(getActivity().getApplicationContext(), flags[Singleton.getInstance().getStarScoreList().get(i) - 1]), Singleton.getInstance().getDateList().get(i), Singleton.getInstance().getDescribeList().get(i));
+                    adapter.addItem(ContextCompat.getDrawable(getActivity(), users[imageCount]), Singleton.getInstance().getNicknameList().get(i),
+                            ContextCompat.getDrawable(getActivity(), flags[Singleton.getInstance().getStarScoreList().get(i) - 1]), Singleton.getInstance().getDateList().get(i), Singleton.getInstance().getDescribeList().get(i));
                     imageCount++;
                 }
                 if (imageCount == 3) {

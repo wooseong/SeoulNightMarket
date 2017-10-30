@@ -45,7 +45,6 @@ public class FragmentMarket extends Fragment {
 
         gridView = view.findViewById(R.id.gridView);
         gridView.setExpanded(true);
-
         region = Singleton.getInstance().getRegion();
 
         type = "foodTruck";
@@ -59,35 +58,29 @@ public class FragmentMarket extends Fragment {
         HttpAsyncTask httpAsyncTask = new HttpAsyncTask("푸드트럭");
         httpAsyncTask.execute(uri);
 
+        btnFoodTruck.bringToFront();
+
+        btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
+        btnHandMade.setTextColor(Color.parseColor("#000000"));
         switch (region) {
             case "여의도":
-                btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.drawable.btn_yyd_foodtruck);
-                btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                 break;
             case "DDP":
-                btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.drawable.btn_ddp_foodtruck);
-                btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                 break;
             case "반포":
-                btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.drawable.btn_bp_foodtruck);
-                btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                 break;
             case "청계천":
-                btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.drawable.btn_cgc_foodtruck);
-                btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                 break;
             case "청계광장":
-                btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                 btnFoodTruck.setBackgroundResource(R.drawable.btn_cggj_foodtruck);
-                btnHandMade.setTextColor(Color.parseColor("#000000"));
                 btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                 break;
             default:
@@ -99,37 +92,30 @@ public class FragmentMarket extends Fragment {
             public void onClick(View view) {
                 type = "foodTruck";
                 Singleton.getInstance().setType(type);
-
                 if (type == "foodTruck") {
+                    btnFoodTruck.bringToFront();
+                    btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
+                    btnHandMade.setTextColor(Color.parseColor("#000000"));
+
                     switch (region) {
                         case "여의도":
-                            btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_yyd_foodtruck);
-                            btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                             break;
                         case "DDP":
-                            btnFoodTruck.setTextColor(Color.parseColor("#FFEB3B"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_ddp_foodtruck);
-                            btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                             break;
                         case "반포":
-                            btnFoodTruck.setTextColor(Color.parseColor("#0D47A1"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_bp_foodtruck);
-                            btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                             break;
                         case "청계천":
-                            btnFoodTruck.setTextColor(Color.parseColor("#512DA8"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_cgc_foodtruck);
-                            btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                             break;
                         case "청계광장":
-                            btnFoodTruck.setTextColor(Color.parseColor("#ffffff"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_cggj_foodtruck);
-                            btnHandMade.setTextColor(Color.parseColor("#000000"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_yyd_handmade);
                             break;
                         default:
@@ -152,37 +138,30 @@ public class FragmentMarket extends Fragment {
             public void onClick(View view) {
                 type = "handMade";
                 Singleton.getInstance().setType(type);
-
                 if (type == "handMade") {
+                    btnHandMade.bringToFront();
+                    btnFoodTruck.setTextColor(Color.parseColor("#000000"));
+                    btnHandMade.setTextColor(Color.parseColor("#ffffff"));
+
                     switch (region) {
                         case "여의도":
-                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_yyd_handmade);
-                            btnHandMade.setTextColor(Color.parseColor("#ffffff"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_yyd_foodtruck);
                             break;
                         case "DDP":
-                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_yyd_handmade);
-                            btnHandMade.setTextColor(Color.parseColor("#FFEB3B"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_ddp_foodtruck);
                             break;
                         case "반포":
-                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_yyd_handmade);
-                            btnHandMade.setTextColor(Color.parseColor("#0D47A1"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_bp_foodtruck);
                             break;
                         case "청계천":
-                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_yyd_handmade);
-                            btnHandMade.setTextColor(Color.parseColor("#512DA8"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_cgc_foodtruck);
                             break;
                         case "청계광장":
-                            btnFoodTruck.setTextColor(Color.parseColor("#000000"));
                             btnFoodTruck.setBackgroundResource(R.drawable.btn_yyd_handmade);
-                            btnHandMade.setTextColor(Color.parseColor("#ffffff"));
                             btnHandMade.setBackgroundResource(R.drawable.btn_cggj_foodtruck);
                             break;
                         default:
@@ -203,8 +182,7 @@ public class FragmentMarket extends Fragment {
         return view;
     }
 
-    public class HttpAsyncTask extends AsyncTask<String, Void, String>
-    {
+    public class HttpAsyncTask extends AsyncTask<String, Void, String> {
         String type;
 
         HttpAsyncTask(String type) {
