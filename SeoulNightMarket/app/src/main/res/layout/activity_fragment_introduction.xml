@@ -158,13 +158,13 @@
             android:textColor="@color/dark_grey"
             android:text=" - At night, there would be ghost" />
 
-        <ListView
-            android:id="@+id/introductionListView"
-            android:layout_marginTop="10dp"
+        <android.support.v7.widget.RecyclerView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/intro_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:divider="@null"
-            android:dividerHeight="0dp"/>
+            android:scrollbars="vertical">
+        </android.support.v7.widget.RecyclerView>
 
         <ImageView
             android:id="@+id/introductionFooterImage"

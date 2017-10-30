@@ -5,6 +5,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +29,6 @@ public class FragmentIntroduction extends Fragment
     String uri;
     View view;
     IntroductionAdapter adapter;
-    ListView listView;
     TextView textView0;
     TextView textView1;
     TextView textView2;
@@ -39,6 +41,8 @@ public class FragmentIntroduction extends Fragment
     ImageView imageColorView;
     ImageView imageColorView1;
     ImageView imageColorView2;
+    RecyclerView recyclerView;
+    RecyclerView.LayoutManager layoutManager;
     ArrayList<String> adapterHead = new ArrayList<String>();
     ArrayList<String> adapterTitle = new ArrayList<String>();
     ArrayList<String> adapterString = new ArrayList<String>();
@@ -58,7 +62,14 @@ public class FragmentIntroduction extends Fragment
         view = inflater.inflate(R.layout.activity_fragment_introduction, null);
         region = Singleton.getInstance().getRegion();
 
-        listView = view.findViewById(R.id.introductionListView);
+        final FragmentActivity fragment = getActivity();
+
+        recyclerView = (RecyclerView) view.findViewById(R.id.intro_recycler_view);
+        recyclerView.setHasFixedSize(true);
+
+        layoutManager = new LinearLayoutManager(fragment);
+        recyclerView.setLayoutManager(layoutManager);
+
         textView0 = view.findViewById(R.id.introductionText0);
         textView1 = view.findViewById(R.id.introductionText1);
         textView2 = view.findViewById(R.id.introductionText2);
@@ -213,7 +224,7 @@ public class FragmentIntroduction extends Fragment
             textView3.setText(R.string.textView3j);
             textView4.setText(R.string.textView4j);
             textView5.setText(R.string.timeView0j);
-            textView5.setText(R.string.timeView1j);
+            textView6.setText(R.string.timeView1j);
             imageView.setImageResource(R.drawable.cggjintro);
             imageView1.setImageResource(R.drawable.cggjintro1);
             imageColorView.setBackgroundColor(Color.parseColor("#00838F"));
@@ -243,34 +254,10 @@ public class FragmentIntroduction extends Fragment
             adapter.addItem(adapterHead.get(i), adapterTitle.get(i), adapterString.get(i));
         }
 
-        listView.setAdapter(adapter);
+        recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-        listView.invalidateViews();
+        recyclerView.invalidate();
 
-        setListViewHeightBasedOnItems(listView);
         return view;
-    }
-
-    public void setListViewHeightBasedOnItems(ListView listView)
-    { // 리스트뷰 높이 계산
-        ListAdapter listAdapter = listView.getAdapter();
-
-        if (listAdapter == null) return;
-
-        int numberOfItems = listAdapter.getCount();
-
-        int totalItemsHeight = 0;
-        for (int itemPos = 0; itemPos < numberOfItems; itemPos++) {
-            View item = listAdapter.getView(itemPos, null, listView);
-            item.measure(0, 0);
-            totalItemsHeight += item.getMeasuredHeight();
-        }
-
-        int totalDividersHeight = listView.getDividerHeight() * (numberOfItems - 1);
-
-        ViewGroup.LayoutParams params = listView.getLayoutParams();
-        params.height = totalItemsHeight + totalDividersHeight;
-        listView.setLayoutParams(params);
-        listView.requestLayout();
     }
 }

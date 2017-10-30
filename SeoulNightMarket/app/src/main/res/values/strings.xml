@@ -37,7 +37,7 @@
     <string name="timeView1d">매주 금토 18:00~23:00</string>
     <string name="textView0d">DDP 개요</string>
     <string name="textView1d">청춘의 열정이 빚는 새로운 문화\n트렌디마켓</string>
-    <string name="textView2d">상상하고(Dream), 만들며(Design),\n즐기는(Play) 트렌디마켓.\n패션의 중심에서 시작되는 맛과 멋의 새로운 힙플레이스.\n어둠이 짙게 깔리면 시작되는 흥겨운 DJ공연과 패션쇼.\n매주 DDP에서 열리는 축제의 밤.\n가장 뜨겁고 열정 넘치는 젊음을 여러분께 선사합니다.\n청춘과 청춘이 만나 새로운 문화를 만드는 DDP로\n여러분을 초대합니다.</string>
+    <string name="textView2d">상상하고(Dream), 만들며(Design), 즐기는(Play) 트렌디마켓. 패션의 중심에서 시작되는 맛과 멋의 새로운 힙플레이스. 어둠이 짙게 깔리면 시작되는 흥겨운 DJ공연과 패션쇼. 매주 DDP에서 열리는 축제의 밤, 가장 뜨겁고 열정 넘치는 젊음을 여러분께 선사합니다. 청춘과 청춘이 만나 새로운 문화를 만드는 DDP로 여러분을 초대합니다.</string>
     <string name="textView3d">DDP 구성</string>
     <string name="textView4d">서울의 랜드마크에서 즐기는\n음악과 패션, 맛있는 음식</string>
 
@@ -49,16 +49,16 @@
     <string name="listView5d">팔거리 청춘의 밤을 여는 곳</string>
     <string name="listView6d">열린마켓</string>
     <string name="listView7d">톡톡 튀는 아이디어 상품들이 한자리에</string>
-    <string name="listView8d">패션의 중심인 만큼 개성 넘치는 소품부터\n청년들의 정성이 담긴 소장 가치 높은 아이템,\n실생활에 활용할 수 있는 아이디어 상품까지\n한자리에서 만나볼 수 있습니다.\n</string>
+    <string name="listView8d">패션의 중심인 만큼 개성 넘치는 소품부터 청년들의 정성이 담긴 소장 가치 높은 아이템, 실생활에 활용할 수 있는 아이디어 상품까지 한자리에서 만나볼 수 있습니다.\n</string>
     <string name="listView9d">버스킹무대</string>
     <string name="listView10d">청년예술가들의 무대를 만나다</string>
-    <string name="listView11d">청년예술가들의 꿈을 가득 담은 즐겁고\n신나는 공연과 한 달에 한 번 특별 퍼포먼스 등\n어깨가 들썩이는 무대들을 만나보세요.\n</string>
+    <string name="listView11d">청년예술가들의 꿈을 가득 담은 즐겁고 신나는 공연과 한 달에 한 번 특별 퍼포먼스 등 어깨가 들썩이는 무대들을 만나보세요.\n</string>
     <string name="listView12d">청춘런웨이와 댄싱나이트</string>
     <string name="listView13d">화려한 밤을 즐기다</string>
-    <string name="listView14d">새로운 디자인을 창조하고 패션 트렌드를\n선도하는 장소인 만큼 신진 디자이너와의\n협업을 통해 패션쇼를 선보입니다.\n패션쇼가 끝난 후엔 특별한 공연과 파티를 즐겨보세요.\n</string>
+    <string name="listView14d">새로운 디자인을 창조하고 패션 트렌드를 선도하는 장소인 만큼 신진 디자이너와의 협업을 통해 패션쇼를 선보입니다. 패션쇼가 끝난 후엔 특별한 공연과 파티를 즐겨보세요.\n</string>
     <string name="listView15d">휴게공간</string>
     <string name="listView16d">밤의 낭만과 함께하는 곳</string>
-    <string name="listView17d">DDP의 은은한 LED 장미를 바라보며\n푸드트럭에서 구매한 음식을 즐길 수 있는 공간입니다.\n로맨틱한 서울의 밤을 함께해요.\n</string>
+    <string name="listView17d">DDP의 은은한 LED 장미를 바라보며 푸드트럭에서 구매한 음식을 즐길 수 있는 공간입니다. 로맨틱한 서울의 밤을 함께해요.\n</string>
 
     <string name="textDirection0d">DDP 오시는 길</string>
     <string name="textDirection1d">동대문디자인플라자</string>
@@ -106,19 +106,19 @@
 
     <string name="listView0c">운영존</string>
     <string name="listView1c">놀기 좋아하는 밤도깨비들아!\n여기 여기 붙어라!</string>
-    <string name="listView2c">도깨비 원정대를 위한 종합 안내소 겸 상황실입니다.\n운영본부와 의료지원 부스가 마련되어 있으니\n궁금한 점이 있거나 비상 및\n응급 상황 발생 시 언제든 찾아주세요.\n</string>
+    <string name="listView2c">도깨비 원정대를 위한 종합 안내소 겸 상황실입니다. 운영본부와 의료지원 부스가 마련되어 있으니 궁금한 점이 있거나 비상 및 응급 상황 발생 시 언제든 찾아주세요.\n</string>
     <string name="listView3c">푸드트럭존</string>
     <string name="listView4c">도깨비 잔치에는 맛있는 음식이 풍성!</string>
-    <string name="listView5c">천 리 길도 한 걸음부터!\n원정길을 든든히 지켜줄 밤도깨비 푸드트럭에서\n씹고, 뜯고, 맛보고, 즐기세요!\n</string>
+    <string name="listView5c">천 리 길도 한 걸음부터! 원정길을 든든히 지켜줄 밤도깨비 푸드트럭에서 씹고, 뜯고, 맛보고, 즐기세요!\n</string>
     <string name="listView6c">핸드메이드존</string>
     <string name="listView7c">도깨비는 반짝이는 걸 좋아해!</string>
-    <string name="listView8c">도깨비와 함께 골라보는 오색찬란 보물들!\n어디에서도 볼 수 없었던 특별한\n핸드메이드 제품들로 밤하늘이 번쩍번쩍!\n</string>
+    <string name="listView8c">도깨비와 함께 골라보는 오색찬란 보물들! 어디에서도 볼 수 없었던 특별한 핸드메이드 제품들로 밤하늘이 번쩍번쩍!\n</string>
     <string name="listView9c">이벤트존</string>
     <string name="listView10c">흥 넘치는 도깨비들이 준비한\n이벤트가 한가득!</string>
-    <string name="listView11c">도깨비야! 내 소원을 들어줘! 소원편지,\n내 방망이 어디 갔어? 아슬아슬 보틀플립,\n그냥 갈 수 없잖아! 귀 호강 버스킹, 연주회까지 문화공연\n도깨비와 함께하는 퍼레이드가 당신을 기다립니다!\n</string>
+    <string name="listView11c">도깨비야! 내 소원을 들어줘! 소원편지, 내 방망이 어디 갔어? 아슬아슬 보틀플립, 그냥 갈 수 없잖아! 귀 호강 버스킹, 연주회까지 문화공연 도깨비와 함께하는 퍼레이드가 당신을 기다립니다!\n</string>
     <string name="listView12c">휴식존</string>
     <string name="listView13c">도깨비와 함께 쉬어 가자!</string>
-    <string name="listView14c">청계천의 근사한 풍경과 함께\n푸드트럭 음식을 맛보면 즐거움이 두 배!\n밤에 더 빛나는 청계천을 즐기세요.\n</string>
+    <string name="listView14c">청계천의 근사한 풍경과 함께 푸드트럭 음식을 맛보면 즐거움이 두 배! 밤에 더 빛나는 청계천을 즐기세요.\n</string>
     <string name="textDirection0c">청계천 오시는 길</string>
     <string name="textDirection1c">청계천 광통교 일대</string>
     <string name="textAddressc">청계천 광통교 일대(을지로입구역 1∙2번 출구, 종각역 5번 출구)</string>
