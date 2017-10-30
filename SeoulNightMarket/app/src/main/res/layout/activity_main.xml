@@ -46,16 +46,15 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/detail_nav_view"
-        android:layout_width="250dp"
+        android:layout_width="220dp"
         android:layout_height="match_parent"
-        android:background="@color/md_white_1000"
         android:layout_gravity="start"
         android:fitsSystemWindows="false"
         app:itemTextColor="@color/md_black_1000"
         app:headerLayout="@layout/navheader">
 
         <LinearLayout
-            android:layout_marginTop="222dp"
+            android:layout_marginTop="180dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -64,7 +63,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_400">
             </LinearLayout>
 
             <LinearLayout
@@ -92,7 +91,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_400">
             </LinearLayout>
 
             <LinearLayout
@@ -120,7 +119,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_400">
             </LinearLayout>
 
             <LinearLayout
@@ -148,7 +147,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_400">
             </LinearLayout>
 
             <LinearLayout
@@ -176,7 +175,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_400">
             </LinearLayout>
 
             <LinearLayout
@@ -204,7 +203,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_400">
             </LinearLayout>
 
             <LinearLayout
@@ -232,7 +231,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_400">
             </LinearLayout>
 
         </LinearLayout>

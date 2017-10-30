@@ -24,15 +24,15 @@
             android:id="@+id/handMadeAppbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:contentScrim="@color/md_indigo_A400"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/handMade_collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="256dp"
+                android:background="@drawable/background_main"
                 android:fitsSystemWindows="true"
-                app:contentScrim="@color/md_indigo_A400"
+                app:contentScrim="#030210"
                 app:expandedTitleMarginEnd="64dp"
                 app:expandedTitleMarginStart="48dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
@@ -41,7 +41,7 @@
                 <ImageView
                     android:id="@+id/handMadeImage"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="208dp"
                     android:scaleType="fitXY"
                     app:layout_collapseMode="parallax" />
 
@@ -60,8 +60,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    app:tabIndicatorColor="@color/md_black_1000"
-                    app:tabSelectedTextColor="@color/md_black_1000"
+                    app:tabIndicatorColor="@color/md_yellow_500"
+                    app:tabSelectedTextColor="@color/md_yellow_500"
                     app:tabTextColor="@color/md_white_1000" />
             </android.support.design.widget.CollapsingToolbarLayout>
 

@@ -57,7 +57,7 @@ public class HandMadeActivity extends AppCompatActivity {
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
-            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_black_1000, getTheme()));
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_yellow_500, getTheme()));
             supportActionBar.setHomeAsUpIndicator(indicator);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }

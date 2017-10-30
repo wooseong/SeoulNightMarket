@@ -32,7 +32,7 @@
                 android:layout_height="320dp"
                 android:background="@drawable/background_main"
                 android:fitsSystemWindows="true"
-                app:contentScrim="@color/md_indigo_A400"
+                app:contentScrim="#030210"
                 app:expandedTitleMarginEnd="64dp"
                 app:expandedTitleMarginStart="48dp"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
@@ -47,26 +47,33 @@
 
                 <TextView
                     android:id="@+id/store_name"
-                    android:layout_marginTop="205dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/md_white_1000"
+                    android:layout_marginTop="205dp"
+                    android:text=""
                     android:textAlignment="center"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    android:text=""/>
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
 
                 <LinearLayout
-                    android:layout_marginTop="230dp"
+                    android:layout_marginTop="235dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_marginLeft="80dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_weight="2"
+                        android:src="@drawable/order"/>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="2"
-                        android:gravity="right|center"
+                        android:gravity="center"
                         android:textColor="@color/md_white_1000"
                         android:textStyle="bold"
                         android:textSize="18dp"
@@ -74,15 +81,13 @@
 
                     <TextView
                         android:id="@+id/currentOrderNumber"
-                        android:layout_marginLeft="10dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="3"
-                        android:gravity="center|left"
                         android:textColor="@color/md_white_1000"
                         android:textStyle="bold"
                         android:textSize="18dp"
-                        android:text=""/>
+                        android:text="1"/>
 
                     <Button
                         android:id="@+id/btn_ticket_make"
