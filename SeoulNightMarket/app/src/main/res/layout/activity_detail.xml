@@ -24,13 +24,13 @@
             android:id="@+id/detailAppbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/md_indigo_A400"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
             <android.support.design.widget.CollapsingToolbarLayout
                 android:id="@+id/detail_collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="320dp"
+                android:background="@drawable/background_main"
                 android:fitsSystemWindows="true"
                 app:contentScrim="@color/md_indigo_A400"
                 app:expandedTitleMarginEnd="64dp"
@@ -54,7 +54,7 @@
                     android:textAlignment="center"
                     android:textStyle="bold"
                     android:textSize="20dp"
-                    android:text="깻잎두마리치킨"/>
+                    android:text=""/>
 
                 <LinearLayout
                     android:layout_marginTop="230dp"
@@ -82,15 +82,15 @@
                         android:textColor="@color/md_white_1000"
                         android:textStyle="bold"
                         android:textSize="18dp"
-                        android:text="1"/>
+                        android:text=""/>
 
                     <Button
                         android:id="@+id/btn_ticket_make"
                         android:layout_width="match_parent"
                         android:layout_height="40dp"
                         android:layout_weight="2"
-                        android:textColor="@color/md_indigo_A400"
-                        android:background="@color/md_white_1000"
+                        android:textColor="@color/md_black_1000"
+                        android:background="@drawable/btn_yyd_handmade"
                         android:onClick="btnOrder"
                         android:textSize="18dp"
                         android:textStyle="bold"
@@ -112,8 +112,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    app:tabIndicatorColor="@color/md_orange_500"
-                    app:tabSelectedTextColor="@color/md_orange_500"
+                    app:tabIndicatorColor="@color/md_yellow_500"
+                    app:tabSelectedTextColor="@color/md_yellow_500"
                     app:tabTextColor="@color/md_white_1000" />
             </android.support.design.widget.CollapsingToolbarLayout>
 

@@ -43,10 +43,12 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
         Singleton.getInstance().setDuplicated(false);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detailToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         currentOrderNumber = (TextView) findViewById(R.id.currentOrderNumber);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.detailDrawer);
@@ -67,7 +69,7 @@ public class DetailActivity extends AppCompatActivity {
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme()); // 드로월 모양
-            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_orange_500, getTheme())); // 드로월 색깔
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_black_1000, getTheme())); // 드로월 색깔
             supportActionBar.setHomeAsUpIndicator(indicator);
         }
 

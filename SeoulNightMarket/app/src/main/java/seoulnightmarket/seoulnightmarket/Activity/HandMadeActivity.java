@@ -2,7 +2,6 @@ package seoulnightmarket.seoulnightmarket.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
@@ -42,9 +41,9 @@ public class HandMadeActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.handMadeToolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.handMadeDrawer);
-        CollapsingToolbarLayout collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.handMade_collapsing_toolbar);
 
         ImageView placePicutre = (ImageView) findViewById(R.id.handMadeImage);
         Singleton.getInstance().setStoreImageView(placePicutre);
@@ -58,7 +57,7 @@ public class HandMadeActivity extends AppCompatActivity {
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme());
-            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_orange_500, getTheme()));
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_black_1000, getTheme()));
             supportActionBar.setHomeAsUpIndicator(indicator);
             supportActionBar.setDisplayHomeAsUpEnabled(true);
         }

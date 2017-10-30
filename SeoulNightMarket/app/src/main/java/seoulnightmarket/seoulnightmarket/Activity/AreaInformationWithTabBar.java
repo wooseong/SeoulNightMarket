@@ -51,6 +51,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); // 화면에 툴바 추가
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         region = Singleton.getInstance().getRegion();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);

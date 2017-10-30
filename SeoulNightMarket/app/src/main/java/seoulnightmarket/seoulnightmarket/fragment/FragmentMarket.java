@@ -20,8 +20,8 @@ import seoulnightmarket.seoulnightmarket.etc.Singleton;
 
 
 public class FragmentMarket extends Fragment {
-    static String type = "foodTruck";
-    private String region = "";
+    private String type;
+    private String region;
     private String uri;
     public MarketAdapter adapter;
     public ExpandableHeightGridView gridView;
@@ -48,6 +48,7 @@ public class FragmentMarket extends Fragment {
 
         region = Singleton.getInstance().getRegion();
 
+        type = "foodTruck";
         Singleton.getInstance().setType(type);
 
         uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/foodstore")
