@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/navheader_height"
-    android:background="@drawable/background_splash"
+    android:background="@drawable/nav_header"
     android:orientation="vertical"
     android:padding="@dimen/md_keylines">
 

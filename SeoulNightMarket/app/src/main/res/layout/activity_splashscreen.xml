@@ -11,8 +11,8 @@
 
     <ImageView
         android:layout_marginBottom="60dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="279dp"
+        android:layout_height="97dp"
         android:id="@+id/splash"
         android:background="@drawable/splashword" />
 </LinearLayout>

@@ -1,6 +1,7 @@
 package seoulnightmarket.seoulnightmarket.Activity;
 
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -40,6 +41,7 @@ import seoulnightmarket.seoulnightmarket.fragment.FragmentMarket;
 public class AreaInformationWithTabBar extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private String region;
+    private AnimationDrawable drawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar); // 화면에 툴바 추가
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         region = Singleton.getInstance().getRegion();
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer);
@@ -71,7 +74,9 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
 
         switch (region) {
             case "여의도":
-                placePicutre.setImageResource(R.drawable.yydintro);
+                placePicutre.setBackgroundResource(R.drawable.anim_yyd);
+                drawable = (AnimationDrawable) placePicutre.getBackground();
+                drawable.start();
                 textViewRegion.setText("여의도 월드나이트마켓");
                 textViewDate.setText("매주 금토 18:00~23:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_deep_orange_400));
@@ -82,7 +87,9 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_deep_orange_400);
                 break;
             case "DDP":
-                placePicutre.setImageResource(R.drawable.ddpintro);
+                placePicutre.setBackgroundResource(R.drawable.anim_ddp);
+                drawable = (AnimationDrawable) placePicutre.getBackground();
+                drawable.start();
                 textViewRegion.setText("DDP 청춘런웨이마켓");
                 textViewDate.setText("매주 금토 18:00~23:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_deep_purple_400));
@@ -93,7 +100,9 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_deep_purple_400);
                 break;
             case "반포":
-                placePicutre.setImageResource(R.drawable.bpintro);
+                placePicutre.setBackgroundResource(R.drawable.anim_bp);
+                drawable = (AnimationDrawable) placePicutre.getBackground();
+                drawable.start();
                 textViewRegion.setText("반포 낭만달빛마켓");
                 textViewDate.setText("매주 금토 18:00~23:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_yellow_600));
@@ -104,7 +113,9 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_yellow_600);
                 break;
             case "청계천":
-                placePicutre.setImageResource(R.drawable.cgcintro);
+                placePicutre.setBackgroundResource(R.drawable.anim_cgc);
+                drawable = (AnimationDrawable) placePicutre.getBackground();
+                drawable.start();
                 textViewRegion.setText("청계천 타임슬립마켓");
                 textViewDate.setText("매주 토 16:30~22:30 일 16:00~21:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_lime_500));
@@ -115,7 +126,9 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
                 collapsingToolbarLayout.setContentScrimResource(R.color.md_lime_500);
                 break;
             case "청계광장":
-                placePicutre.setImageResource(R.drawable.cggjintro);
+                placePicutre.setBackgroundResource(R.drawable.anim_cggj);
+                drawable = (AnimationDrawable) placePicutre.getBackground();
+                drawable.start();
                 textViewRegion.setText("청계광장");
                 textViewDate.setText("시즌별 금,토,일 18:00~23:00");
                 appBarLayout.setBackgroundColor(getResources().getColor(R.color.md_cyan_800));
