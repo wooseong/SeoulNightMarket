@@ -4,7 +4,9 @@ package seoulnightmarket.seoulnightmarket.data;
  * Created by Yookmoonsu on 2017-09-17.
  */
 
-public class IntroductionListViewItem {
+public class IntroductionListViewItem
+{
+    private String introductionHeader;
     private String introductionTitle;
     private String introductionContent;
 
@@ -12,19 +14,23 @@ public class IntroductionListViewItem {
 
     }
 
+    public String getIntroductionHeader() { return introductionHeader;}
+
     public String getIntroductionTitle() {
-        return this.introductionTitle;
+        return introductionTitle;
     }
 
     public String getIntroductionContent() {
         return this.introductionContent;
     }
 
+    public void setIntroductionHeader(String header) { this.introductionHeader = header; }
+
     public void setIntroductionTitle(String title) {
-        introductionTitle = title;
+        this.introductionTitle = title;
     }
 
     public void setIntroductionContent(String content) {
-        introductionContent = content;
+        this.introductionContent = content;
     }
 }
