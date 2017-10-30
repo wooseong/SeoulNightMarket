@@ -71,16 +71,15 @@
 
     <android.support.design.widget.NavigationView
         android:id="@+id/handMade_nav_view"
-        android:layout_width="wrap_content"
+        android:layout_width="210dp"
         android:layout_height="match_parent"
-        android:background="@color/md_white_1000"
         android:layout_gravity="start"
         android:fitsSystemWindows="false"
         app:headerLayout="@layout/navheader"
         app:itemTextColor="@color/md_black_1000">
 
         <LinearLayout
-            android:layout_marginTop="222dp"
+            android:layout_marginTop="180dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -89,7 +88,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_500">
             </LinearLayout>
 
             <LinearLayout
@@ -117,7 +116,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_500">
             </LinearLayout>
 
             <LinearLayout
@@ -145,7 +144,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_500">
             </LinearLayout>
 
             <LinearLayout
@@ -173,7 +172,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_500">
             </LinearLayout>
 
             <LinearLayout
@@ -201,7 +200,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_500">
             </LinearLayout>
 
             <LinearLayout
@@ -229,7 +228,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_500">
             </LinearLayout>
 
             <LinearLayout
@@ -257,7 +256,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/md_white_1000">
+                android:background="@color/md_grey_500">
             </LinearLayout>
 
         </LinearLayout>

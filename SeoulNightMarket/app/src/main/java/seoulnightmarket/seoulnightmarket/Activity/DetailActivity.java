@@ -69,7 +69,7 @@ public class DetailActivity extends AppCompatActivity {
         ActionBar supportActionBar = getSupportActionBar();
         if (supportActionBar != null) {
             VectorDrawableCompat indicator = VectorDrawableCompat.create(getResources(), R.drawable.ic_menu, getTheme()); // 드로월 모양
-            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_black_1000, getTheme())); // 드로월 색깔
+            indicator.setTint(ResourcesCompat.getColor(getResources(), R.color.md_yellow_500, getTheme())); // 드로월 색깔
             supportActionBar.setHomeAsUpIndicator(indicator);
         }
 
