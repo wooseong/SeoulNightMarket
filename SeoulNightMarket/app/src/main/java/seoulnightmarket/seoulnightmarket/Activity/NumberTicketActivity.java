@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 import seoulnightmarket.seoulnightmarket.R;
 import seoulnightmarket.seoulnightmarket.adapter.TicketAdapter;
@@ -22,6 +23,7 @@ public class NumberTicketActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private TicketAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private TextView alterTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +32,7 @@ public class NumberTicketActivity extends AppCompatActivity {
         setContentView(R.layout.activity_number_ticket);
 
         recyclerView = (RecyclerView) findViewById(R.id.ticket_recycler_view);
+        alterTextView = (TextView) findViewById(R.id.alterView);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new LinearLayoutManager(this);
@@ -78,14 +81,23 @@ public class NumberTicketActivity extends AppCompatActivity {
             super.onPostExecute(result);
             count = 0;
 
-            for (int i = 0; i < Singleton.getInstance().getWaitStoreList().size(); i++) {
-                String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
-                        .buildUpon()
-                        .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getWaitStoreList().get(i)))
-                        .build().toString();
+            if(Singleton.getInstance().getWaitStoreList().size()>0)
+            {
+                alterTextView.setVisibility(View.INVISIBLE);
 
-                HttpAsyncTask httpAsyncTask = new HttpAsyncTask("현재 순서");
-                httpAsyncTask.execute(uri);
+                for (int i = 0; i < Singleton.getInstance().getWaitStoreList().size(); i++) {
+                    String uri = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/ticket")
+                            .buildUpon()
+                            .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getWaitStoreList().get(i)))
+                            .build().toString();
+
+                    HttpAsyncTask httpAsyncTask = new HttpAsyncTask("현재 순서");
+                    httpAsyncTask.execute(uri);
+                }
+            }
+            else
+            {
+                alterTextView.setVisibility(View.VISIBLE);
             }
         }
     }
