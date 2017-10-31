@@ -22,9 +22,11 @@
             android:textColor="@color/md_black_1000"
             android:text="공연 안내"
             android:id="@+id/textView" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <TextView
                 android:id="@+id/concertDate"
                 android:layout_width="wrap_content"
@@ -50,6 +52,7 @@
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@+id/concertDate" />
         </RelativeLayout>
+        
         <seoulnightmarket.seoulnightmarket.etc.ExpandableHeightGridView
             android:id="@+id/gridViewConcert"
             android:layout_width="wrap_content"

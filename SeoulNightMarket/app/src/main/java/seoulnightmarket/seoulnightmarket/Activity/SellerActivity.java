@@ -66,11 +66,11 @@ public class SellerActivity extends AppCompatActivity {
                 finish();
             }
         });
+
         ImageButton btnBackSeller = (ImageButton) findViewById(R.id.btnBackSeller);
         btnBackSeller.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Singleton.getInstance().setNowLogin(false);
                 startActivity(new Intent(SellerActivity.this, MainActivity.class));
                 finish();
             }
