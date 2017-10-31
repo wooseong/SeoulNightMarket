@@ -98,10 +98,10 @@ public class FragmentMenu extends Fragment
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            adapter = new MenuAdapter();
+            adapter = new MenuAdapter(getActivity());
 
             for (int i = 0; i < Singleton.getInstance().getProductImageList().size(); i++) {
-                adapter.addItem(HttpTask.getInstance().translateBitmap(Singleton.getInstance().getProductImageList().get(i)), Singleton.getInstance().getProductNameList().get(i), Singleton.getInstance().getProductPriceList().get(i));
+                adapter.addItem(Singleton.getInstance().getProductImageList().get(i), Singleton.getInstance().getProductNameList().get(i), Singleton.getInstance().getProductPriceList().get(i));
             }
 
             recyclerView.setAdapter(adapter);

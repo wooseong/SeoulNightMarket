@@ -98,21 +98,28 @@ public class FragmentReview extends Fragment {
         btnSubmit.setOnClickListener(new View.OnClickListener() { // 리뷰 남기기 버튼
             @Override
             public void onClick(View view) {
-                if (Singleton.getInstance().getNowLogin()) {
-                    url = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/review/make")
-                            .buildUpon()
-                            .appendQueryParameter("phone", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowLoginID()))
-                            .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getType()))
-                            .appendQueryParameter("score", HttpTask.getInstance().getURLEncode(starScore + ""))
-                            .appendQueryParameter("describe", HttpTask.getInstance().getURLEncode(editText.getText().toString()))
-                            .appendQueryParameter("nickname", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowSeller()))
-                            .appendQueryParameter("date", HttpTask.getInstance().getURLEncode(today))
-                            .build().toString();
+                if (Singleton.getInstance().getNowLogin())
+                {
+                    if(editText.getText().toString().length()>0) {
+                        url = Uri.parse("http://ec2-13-59-247-200.us-east-2.compute.amazonaws.com:3000/review/make")
+                                .buildUpon()
+                                .appendQueryParameter("phone", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowLoginID()))
+                                .appendQueryParameter("store", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getType()))
+                                .appendQueryParameter("score", HttpTask.getInstance().getURLEncode(starScore + ""))
+                                .appendQueryParameter("describe", HttpTask.getInstance().getURLEncode(editText.getText().toString()))
+                                .appendQueryParameter("nickname", HttpTask.getInstance().getURLEncode(Singleton.getInstance().getNowSeller()))
+                                .appendQueryParameter("date", HttpTask.getInstance().getURLEncode(today))
+                                .build().toString();
 
-                    ReviewAsyncTask reviewAsyncTask = new ReviewAsyncTask("리뷰 등록"); // 닉네임, 날짜, 평점, 리뷰 서버에 전송
-                    reviewAsyncTask.execute(url);
+                        ReviewAsyncTask reviewAsyncTask = new ReviewAsyncTask("리뷰 등록"); // 닉네임, 날짜, 평점, 리뷰 서버에 전송
+                        reviewAsyncTask.execute(url);
 
-                    Toast.makeText(getActivity(), "등록 되었습니다", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "리뷰가 등록 되었습니다.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(), "리뷰 내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);

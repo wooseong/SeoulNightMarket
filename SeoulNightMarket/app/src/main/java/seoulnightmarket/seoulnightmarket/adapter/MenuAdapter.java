@@ -1,5 +1,6 @@
 package seoulnightmarket.seoulnightmarket.adapter;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -19,8 +22,10 @@ import seoulnightmarket.seoulnightmarket.data.MenuListViewItem;
 
 public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
     private ArrayList<MenuListViewItem> listViewItemList = new ArrayList<>(); // Adapter에 추가된 데이터를 저장하기 위한 ArrayList
+    private Context context;
 
-    public MenuAdapter() { // 생성자
+    public MenuAdapter(Context context) { // 생성자
+        this.context = context;
 
     }
 
@@ -52,7 +57,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         // - get element from your dataset at this position
         // - replace the contents of the view with that element
         holder.listViewItem = listViewItemList.get(position);
-        holder.imageView.setImageBitmap(holder.listViewItem.getMenuImage()); // 아이템 내 각 위젯에 데이터 반영
+        Picasso.with(context).load(holder.listViewItem.getMenuImage()).into(holder.imageView);
         holder.textView0.setText(holder.listViewItem.getMenuName());
         holder.textView1.setText(String.valueOf(holder.listViewItem.getMenuPrice()));
     }
@@ -68,7 +73,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder> {
         return position;
     }
 
-    public void addItem(Bitmap image, String name, String price) { // 아이템 데이터 추가를 위한 함수
+    public void addItem(String image, String name, String price) { // 아이템 데이터 추가를 위한 함수
         MenuListViewItem item = new MenuListViewItem();
 
         item.setMenuImage(image);
