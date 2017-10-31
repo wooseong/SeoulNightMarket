@@ -37,7 +37,7 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/md_black_1000"
-                android:text="달력을 이용해\n 날짜를 선택해주세요"
+                android:text="달력을 터치해\n 날짜를 선택해주세요"
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true" />
 

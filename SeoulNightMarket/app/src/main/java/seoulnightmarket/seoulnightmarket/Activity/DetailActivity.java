@@ -238,8 +238,7 @@ public class DetailActivity extends AppCompatActivity {
             }
         } else {
             Toast.makeText(getApplicationContext(), "로그인이 필요한 서비스입니다", Toast.LENGTH_SHORT).show();
-
-            startActivity(new Intent(DetailActivity.this, LoginActivity.class));
+            startActivity(new Intent(DetailActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             finish();
         }
     }
