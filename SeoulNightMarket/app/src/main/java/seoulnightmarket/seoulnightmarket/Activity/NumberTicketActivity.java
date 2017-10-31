@@ -52,7 +52,6 @@ public class NumberTicketActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Singleton.getInstance().setNowLogin(false);
-                startActivity(new Intent(NumberTicketActivity.this, MainActivity.class));
                 finish();
             }
         });
@@ -61,7 +60,6 @@ public class NumberTicketActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Singleton.getInstance().setNowLogin(true);
-                startActivity(new Intent(NumberTicketActivity.this, MainActivity.class));
                 finish();
             }
         });

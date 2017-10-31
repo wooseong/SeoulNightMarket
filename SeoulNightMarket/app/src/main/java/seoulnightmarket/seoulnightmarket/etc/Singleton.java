@@ -1,9 +1,13 @@
 package seoulnightmarket.seoulnightmarket.etc;
 
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import seoulnightmarket.seoulnightmarket.Activity.MainActivity;
+import seoulnightmarket.seoulnightmarket.Activity.NumberTicketActivity;
 
 /**
  * Created by Yookmoonsu on 2017-09-17.
