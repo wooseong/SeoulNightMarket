@@ -6,8 +6,9 @@ import android.graphics.Bitmap;
  * Created by Yookmoonsu on 2017-09-16.
  */
 
-public class MenuListViewItem { // 리스트뷰에 들어갈 데이터 클래스
-    private Bitmap menuImage;
+public class MenuListViewItem
+{ // 리스트뷰에 들어갈 데이터 클래스
+    private String menuImage;
     private String menuName;
     private String menuPrice;
 
@@ -15,7 +16,7 @@ public class MenuListViewItem { // 리스트뷰에 들어갈 데이터 클래스
 
     }
 
-    public Bitmap getMenuImage() {
+    public String getMenuImage() {
         return this.menuImage;
     }
 
@@ -27,7 +28,7 @@ public class MenuListViewItem { // 리스트뷰에 들어갈 데이터 클래스
         return this.menuPrice;
     }
 
-    public void setMenuImage(Bitmap image) {
+    public void setMenuImage(String image) {
         menuImage = image;
     }
 
