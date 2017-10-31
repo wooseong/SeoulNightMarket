@@ -57,69 +57,82 @@
                     android:textStyle="bold" />
 
                 <RelativeLayout
-                    android:layout_marginTop="240dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="240dp"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/order"
-                        android:id="@+id/imageView"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="true" />
-
-                    <TextView
+                    <RelativeLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:gravity="center"
-                        android:textColor="@color/md_white_1000"
-                        android:textStyle="bold"
-                        android:textSize="18dp"
-                        android:text="대기자"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_centerVertical="true">
+
+                        <ImageView
+                            android:id="@+id/imageView"
+                            android:layout_width="40dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/order" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_toEndOf="@+id/imageView"
+                            android:gravity="center"
+                            android:text="대기자"
+                            android:textColor="@color/md_white_1000"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/currentOrderNumber"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="57dp"
+                            android:layout_toEndOf="@+id/imageView"
+                            android:gravity="center"
+                            android:text=""
+                            android:textColor="@color/md_white_1000"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginStart="5dp"
+                            android:layout_toEndOf="@+id/currentOrderNumber"
+                            android:gravity="center"
+                            android:text="명"
+                            android:textColor="@color/md_white_1000"
+                            android:textSize="18dp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+
+                    <FrameLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@+id/imageView" />
-
-                    <TextView
-                        android:id="@+id/currentOrderNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:textColor="@color/md_white_1000"
-                        android:textStyle="bold"
-                        android:gravity="center"
-                        android:textSize="18dp"
-                        android:text="12"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@+id/imageView"
-                        android:layout_marginStart="57dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-
-                        android:layout_height="30dp"
-                        android:gravity="center"
-                        android:textColor="@color/md_white_1000"
-                        android:textStyle="bold"
-                        android:textSize="18dp"
-                        android:text="명"
-                        android:layout_alignParentTop="true"
-                        android:layout_toEndOf="@+id/currentOrderNumber"
-                        android:layout_marginStart="5dp" />
-
-                    <Button
-                        android:id="@+id/btn_ticket_make"
-                        android:layout_width="wrap_content"
-                        android:layout_height="30dp"
-                        android:textColor="@color/md_black_1000"
-                        android:background="@drawable/btn_order"
-                        android:onClick="btnOrder"
-                        android:textSize="16dp"
-                        android:textStyle="bold"
-                        android:text="번호표 받기"
                         android:layout_marginEnd="15dp"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentEnd="true" />
+                        android:layout_centerVertical="true">
+
+                        <Button
+                            android:layout_width="120dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/btn_order"
+                            android:layout_gravity="center_horizontal|center_vertical"
+                            android:onClick="btnOrder"
+                            android:text="번호표 받기"
+                            android:textColor="@color/md_black_1000"
+                            android:textSize="15dp"
+                            android:textStyle="bold"/>
+                    </FrameLayout>
+
                 </RelativeLayout>
 
                 <android.support.v7.widget.Toolbar

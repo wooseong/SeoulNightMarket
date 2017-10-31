@@ -77,6 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:orientation="vertical">
+
             <TextView
                 android:id="@+id/introductionTimeText0"
                 android:layout_marginTop="50dp"

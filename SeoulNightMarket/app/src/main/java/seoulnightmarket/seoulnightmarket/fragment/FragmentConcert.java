@@ -257,7 +257,7 @@ public class FragmentConcert extends Fragment {
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
 
-            concertAdapter = new ConcertAdapter(getActivity().getApplicationContext(), Singleton.getInstance().getPerformanceImageList(), Singleton.getInstance().getPerformanceNameList()); // 그리드뷰 어댑터 연결
+            concertAdapter = new ConcertAdapter(getActivity(), Singleton.getInstance().getPerformanceImageList(), Singleton.getInstance().getPerformanceNameList()); // 그리드뷰 어댑터 연결
             gridView.setAdapter(concertAdapter);
             concertAdapter.notifyDataSetChanged();
             gridView.invalidateViews();
