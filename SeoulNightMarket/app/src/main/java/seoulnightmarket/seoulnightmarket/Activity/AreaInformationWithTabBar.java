@@ -21,6 +21,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
@@ -46,6 +47,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private String region;
     private AnimationDrawable drawable;
+    private ImageView placePicture;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +74,7 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
         tabDefault.select();
 
         TextView textViewRegion = (TextView) findViewById(R.id.textViewRegion);
-        ImageView placePicture = (ImageView) findViewById(R.id.image);
+        placePicture = (ImageView) findViewById(R.id.image);
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.line);
 
         switch (region) {
@@ -303,9 +305,33 @@ public class AreaInformationWithTabBar extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause() {
+    protected void onPause() { // 액티비티 중단 되었을때
         super.onPause();
 
         drawable.stop();
+        Log.e("Pause Test", "pause!");
+    }
+
+    @Override
+    protected void onResume() { // 액티비티 재개 했을때
+        super.onResume();
+
+        drawable.start();
+        Log.e("Resume Test", "resume!");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        Log.e("Destroy Test", "destroy!");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        finish();
+        Log.e("BackPressed Test", "BackPressed!");
     }
 }

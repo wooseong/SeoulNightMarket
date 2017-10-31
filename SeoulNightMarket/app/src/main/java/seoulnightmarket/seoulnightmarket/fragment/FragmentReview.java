@@ -121,6 +121,7 @@ public class FragmentReview extends Fragment {
                         Toast.makeText(getActivity(), "리뷰 내용을 입력해주세요.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
+                    Toast.makeText(getActivity(), "로그인이 필요한 서비스 입니다", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                     getActivity().finish();
