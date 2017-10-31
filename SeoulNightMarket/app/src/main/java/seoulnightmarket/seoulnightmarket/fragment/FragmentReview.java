@@ -122,8 +122,7 @@ public class FragmentReview extends Fragment {
                     }
                 } else {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
-                    startActivity(intent);
-                    getActivity().finish();
+                    startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 }
             }
         });

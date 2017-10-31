@@ -113,7 +113,6 @@ public class FragmentConcert extends Fragment {
                             Toast.makeText(getActivity(), "야시장 개장날이 아닙니다", Toast.LENGTH_SHORT).show();
                         } else {
                             selectedDate = String.valueOf(date.getMonth() + 1) + "월 " + String.valueOf(date.getDay()) + "일 " + "(" + day + ")";
-                            Toast.makeText(getActivity(), selectedDate, Toast.LENGTH_SHORT).show();
 
                             if (String.valueOf(date.getMonth() + 1).length() == 1) { // 1월~9월
                                 if (String.valueOf(date.getDay()).length() == 1) {
@@ -256,6 +255,11 @@ public class FragmentConcert extends Fragment {
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+
+            if(Singleton.getInstance().getPerformanceImageList().size()==0)
+            {
+                Toast.makeText(getActivity(), "선택하신 날짜에는 공연이 없습니다.", Toast.LENGTH_SHORT).show();
+            }
 
             concertAdapter = new ConcertAdapter(getActivity(), Singleton.getInstance().getPerformanceImageList(), Singleton.getInstance().getPerformanceNameList()); // 그리드뷰 어댑터 연결
             gridView.setAdapter(concertAdapter);
