@@ -2,20 +2,60 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="seoulnightmarket.seoulnightmarket">
 
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:hardwareAccelerated="false"
+        android:icon="@mipmap/icon_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:largeHeap="true"
+        android:roundIcon="@mipmap/icon_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".etc.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity.MainActivity" />
+        <activity
+            android:name=".Activity.AreaInformationWithTabBar"
+            android:theme="@style/TabBarTheme" />
+
+        <fragment android:name=".fragment.FragmentIntroduction" />
+        <fragment android:name=".fragment.FragmentMarket" />
+        <fragment android:name=".fragment.FragmentConcert" />
+        <fragment android:name=".fragment.FragmentReview" />
+        <fragment android:name=".fragment.FragmentMenu" />
+        <fragment android:name=".fragment.FragmentInformation" />
+
+        <adapter android:name=".adapter.MarketAdapter" />
+
+        <fragment android:name=".fragment.FragmentProduct" />
+        <fragment android:name=".fragment.FragmentDirections" />
+
+        <activity
+            android:name=".Activity.DetailActivity"
+            android:theme="@style/TabBarTheme"></activity>
+        <activity android:name=".Activity.NumberTicketActivity" />
+        <activity android:name=".Activity.LoginActivity" />
+        <activity android:name=".Activity.MembershipJoinActivity" />
+        <activity
+            android:name=".Activity.HandMadeActivity"
+            android:theme="@style/TabBarTheme" />
+
+        <fragment android:name=".fragment.FragmentConcertCheonggye" />
+        <fragment android:name=".fragment.FragmentConcertPlaza" />
+
+        <activity android:name=".Activity.SellerActivity" />
+
     </application>
 
 </manifest>

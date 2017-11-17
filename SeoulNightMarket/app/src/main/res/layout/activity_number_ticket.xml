@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:layout_marginLeft="5dp"
+            android:id="@+id/btnBackNumberTicket"
+            android:layout_width="20dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_weight="0.3"
+            android:background="@android:color/transparent"
+            android:scaleType="fitXY"
+            android:layout_centerVertical="true"
+            android:src="@drawable/back"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="4"
+            android:layout_marginStart="30dp"
+            android:text="번호표 현황"
+            android:textAlignment="center"
+            android:gravity="center_vertical"
+            android:textColor="@color/md_white_1000"
+            android:textSize="23dp"
+            android:textStyle="bold"/>
+        <Button
+            android:id="@+id/btnLogoutNumberTicket"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:gravity="right|center"
+            android:layout_marginEnd="20dp"
+            android:layout_marginLeft="5dp"
+            android:background="#00ff0000"
+            android:text="Log out"
+            android:textColor="#FFEB3B"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ticket_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical">
+    </android.support.v7.widget.RecyclerView>
+
+    <TextView
+        android:id="@+id/alterView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/white"
+        android:text="예약하신 번호표가 없습니다.\n 원하시는 푸드트럭에서 \n번호표 받기를 눌러 받아보세요."
+        android:textAlignment="center"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:textSize="20dp"/>
+
+</LinearLayout>

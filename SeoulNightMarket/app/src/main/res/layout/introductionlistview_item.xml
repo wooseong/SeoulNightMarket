@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusable="true"
+    android:clickable="true">
+
+    <LinearLayout
+        android:id="@+id/introdunctionListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/introductionlist0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="40dp"
+            android:textSize="17dp"
+            android:textStyle="bold"
+            android:textColor="@color/md_black_1000"
+            android:text="FoodTruck zone" />
+        <ImageView
+            android:id="@+id/indexLineColor3"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:layout_marginLeft="40dp"
+            android:background="@color/md_green_300" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="40dp"
+            android:background="#9E9E9E" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/introductionlist1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_gravity="left"
+        android:textSize="16dp"
+        android:textColor="@color/dark_grey"
+        android:text="Many young child make fresh"/>
+
+    <TextView
+        android:id="@+id/introductionlist2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_gravity="left"
+        android:textSize="15dp"
+        android:text="aslkdjfalskdjflsdfkljasdlkjasdlkjasdfkljas" />
+    </LinearLayout>
+
+</RelativeLayout>

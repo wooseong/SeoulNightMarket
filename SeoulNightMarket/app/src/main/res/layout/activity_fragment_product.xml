@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dddce2"
+    tools:context="seoulnightmarket.seoulnightmarket.fragment.FragmentProduct">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/productCardView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            card_view:cardBackgroundColor="@color/white"
+            card_view:cardUseCompatPadding="true"
+            card_view:contentPaddingLeft="8dp"
+            card_view:contentPaddingRight="8dp"
+            card_view:contentPaddingTop="5dp"
+            card_view:contentPaddingBottom="30dp"
+            card_view:cardPreventCornerOverlap="true"
+            card_view:cardElevation="10dp"
+            card_view:cardCornerRadius="7dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/handmade_store_textview"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_black_1000"
+                    android:textStyle="bold"
+                    android:text="허니모먼트"
+                    android:textSize="25dp"/>
+
+                <TextView
+                    android:id="@+id/handmade_category_textview"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="@color/md_black_1000"
+                    android:text="귀금속보석"
+                    android:textSize="18dp" />
+
+                <ImageView
+                    android:id="@+id/imageViewProduct"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="290dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"
+                    android:layout_marginBottom="20dp"/>
+
+                <ListView
+                    android:id="@+id/listViewProduct"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp">
+                </ListView>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>

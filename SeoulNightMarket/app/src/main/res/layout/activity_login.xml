@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="seoulnightmarket.seoulnightmarket.Activity.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/background_main"
+        android:gravity="center">
+
+        <EditText
+            android:id="@+id/phoneNumberText"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:textColorHint="@color/md_white_1000"
+            android:textColor="@color/md_white_1000"
+            android:maxLength="11"
+            android:hint="PhoneNumber"
+            android:layout_gravity="center" />
+
+        <EditText
+            android:id="@+id/passwordText"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:textColorHint="@color/md_white_1000"
+            android:textColor="@color/md_white_1000"
+            android:maxLength="12"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:layout_gravity="center" />
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="80dp"
+                android:onClick="btnLogin"
+                android:background="@drawable/login"
+                android:text=""/>
+
+            <Button
+                android:layout_marginLeft="30dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:onClick="btnJoin"
+                android:background="@drawable/signup"
+                android:text=""/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
